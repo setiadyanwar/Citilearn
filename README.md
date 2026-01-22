@@ -1,16 +1,69 @@
-# React + Vite
+# CitiLearn - Aviation Training Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CitiLearn is a modern, premium learning management system (LMS) dashboard specifically designed for aviation professionals (pilots, crew, and technical staff). It provides a sleek interface to monitor certification progress, mandatory updates, and operational manuals.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Personalized Hero Section**: Dynamic welcome greeting with user statistics (enrolled courses, completion rate).
+- **Resume Training**: Horizontal carousel to quickly jump back into ongoing courses with "Next Lesson" indicators.
+- **Course Topic Breakdown**: Visual donut chart using Recharts to see training distribution (Aviation, Safety, Technical, etc.) with functional time filters (Day, Month, Year).
+- **Training Library**: Comprehensive catalog with search and filters by category and status.
+- **Responsive Design**: Fully optimized for desktop and mobile devices.
+- **Dark Mode Support**: Seamless transition between light and dark themes.
+- **Interactive UI**: Micro-interactions using Framer Motion for a premium feel.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: [React 19](https://react.dev/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Charts**: [Recharts](https://recharts.org/)
+- **Routing**: [React Router 7](https://reactrouter.com/)
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/setiadyanwar/Citilearn.git
+   cd Citilearn
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+### Running Locally
+
+To start the development server:
+```bash
+npm run dev
+```
+The application will be available at `http://localhost:5173`.
+
+### Building for Production
+
+To create an optimized production build:
+```bash
+npm run build
+```
+
+## 📸 Screenshots
+
+*(You can add your screenshots here after pushing the images to the repository)*
+
+## 📄 License
+
+This project is for demonstration purposes.
+
+---
+Developed by **Antigravity AI Assistant** & **Setiady Anwar**.
