@@ -1,0 +1,596 @@
+{
+    "courses": [
+        {
+            "id": "c1",
+            "title": "Aviation Safety Management System",
+            "description": "Comprehensive guide to safety protocols and hazard identification in aviation operations. Learn how to maintain the highest standards of safety for Citilink fleet.",
+            "duration": "4h 30m",
+            "status": "On Progress",
+            "progress": 45,
+            "thumbnail": "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Introduction to SMS",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Safety Policy and Objectives",
+                            "type": "youtube",
+                            "content": "https://www.youtube.com/embed/vZRM6kb0geU",
+                            "assignment": {
+                                "question": "What is the primary goal of SMS?",
+                                "options": [
+                                    "To increase profit",
+                                    "To ensure safe operations and identify hazards",
+                                    "To monitor employee attendance",
+                                    "To manage fuel consumption"
+                                ],
+                                "correctAnswer": 1
+                            }
+                        },
+                        {
+                            "id": "l2",
+                            "title": "Safety Risk Management",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        }
+                    ]
+                },
+                {
+                    "id": "m2",
+                    "title": "Hazard Identification",
+                    "lessons": [
+                        {
+                            "id": "l3",
+                            "title": "Reactive vs Proactive Methods",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/movie.mp4"
+                        }
+                    ]
+                },
+                {
+                    "id": "m3",
+                    "title": "Safety Assurance",
+                    "lessons": [
+                        {
+                            "id": "l4",
+                            "title": "Safety Performance Monitoring",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/movie.mp4"
+                        },
+                        {
+                            "id": "l5",
+                            "title": "Management of Change",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        }
+                    ]
+                },
+                {
+                    "id": "m4",
+                    "title": "Safety Promotion",
+                    "lessons": [
+                        {
+                            "id": "l6",
+                            "title": "Training and Education",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/movie.mp4"
+                        },
+                        {
+                            "id": "l7",
+                            "title": "Safety Communication",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/movie.mp4"
+                        }
+                    ]
+                },
+                {
+                    "id": "m5",
+                    "title": "Implementation Plan",
+                    "lessons": [
+                        {
+                            "id": "l8",
+                            "title": "Phase 1: Planning",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l9",
+                            "title": "Phase 2: Reactive Processes",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/movie.mp4"
+                        }
+                    ]
+                },
+                {
+                    "id": "m6",
+                    "title": "Advanced Safety Concepts",
+                    "lessons": [
+                        {
+                            "id": "l10",
+                            "title": "Human Factors",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/movie.mp4"
+                        },
+                        {
+                            "id": "l11",
+                            "title": "Safety Culture Assessment",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l12",
+                            "title": "Incident Investigation",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/movie.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Safety"
+        },
+        {
+            "id": "c2",
+            "title": "Customer Service Excellence for Cabin Crew",
+            "description": "Master the art of providing world-class service to Citilink passengers. Focus on communication, problem-solving, and hospitality.",
+            "duration": "3h 15m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Service Fundamentals",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "The Citilink Service Standards",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        },
+                        {
+                            "id": "l2",
+                            "title": "Effective Communication",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        }
+                    ]
+                }
+            ],
+            "category": "Service"
+        },
+        {
+            "id": "c3",
+            "title": "Airbus A320 Technical Overview",
+            "description": "Technical deep dive into the systems and operations of the Airbus A320, the backbone of the Citilink fleet.",
+            "duration": "6h 00m",
+            "status": "Done",
+            "progress": 100,
+            "thumbnail": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "System Overview",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Flight Control Systems",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Technical"
+        },
+        {
+            "id": "c4",
+            "title": "Emergency Evacuation Protocols",
+            "description": "Critical procedures for ensuring passenger safety during emergency evacuations. Covers land and water ditching scenarios.",
+            "duration": "5h 15m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Basics",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Intro",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Safety"
+        },
+        {
+            "id": "c5",
+            "title": "Dangerous Goods Regulations (DGR)",
+            "description": "Learn to identify, handle, and report dangerous goods in compliance with IATA regulations.",
+            "duration": "4h 00m",
+            "status": "On Progress",
+            "progress": 20,
+            "thumbnail": "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Classification",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Class 1-9",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Safety"
+        },
+        {
+            "id": "c6",
+            "title": "Crew Resource Management (CRM)",
+            "description": "Enhance teamwork and communication in the cockpit and cabin to minimize human error.",
+            "duration": "6h 45m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Communication",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Assertiveness",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Leadership"
+        },
+        {
+            "id": "c7",
+            "title": "Aviation Security Awareness",
+            "description": "Understanding security threats and maintaining vigilance to protect aircraft, passengers, and crew.",
+            "duration": "3h 30m",
+            "status": "Done",
+            "progress": 100,
+            "thumbnail": "https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Threat Assessment",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Types of Threats",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Aviation"
+        },
+        {
+            "id": "c8",
+            "title": "First Aid for Cabin Crew",
+            "description": "Essential medical training for handling in-flight medical emergencies, from CPR to treating minor injuries.",
+            "duration": "5h 00m",
+            "status": "On Progress",
+            "progress": 60,
+            "thumbnail": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "CPR",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Adult CPR",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Aviation"
+        },
+        {
+            "id": "c9",
+            "title": "Meteorology for Pilots",
+            "description": "Advanced weather patterns, reading radar, and decision-making in adverse weather conditions.",
+            "duration": "7h 15m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1590055531615-f16d36ffe8ec?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Cloud Formation",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Cumulonimbus",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Aviation"
+        },
+        {
+            "id": "c10",
+            "title": "Fatigue Risk Management",
+            "description": "Strategies to recognize and mitigate fatigue to ensure alertness during flight operations.",
+            "duration": "2h 45m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Causes",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Circadian Rhythm",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Leadership"
+        },
+        {
+            "id": "c11",
+            "title": "Airport Operations Fundamentals",
+            "description": "Overview of ground handling, gate operations, and ramp safety procedures.",
+            "duration": "4h 15m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Ramp Safety",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Markers and Signs",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Aviation"
+        },
+        {
+            "id": "c12",
+            "title": "Effective Leadership in Aviation",
+            "description": "Leadership skills for captains and senior crew members to manage teams effectively under pressure.",
+            "duration": "5h 30m",
+            "status": "Done",
+            "progress": 100,
+            "thumbnail": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Leadership Styles",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Situational Leadership",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Leadership"
+        },
+        {
+            "id": "c13",
+            "title": "Sustainable Aviation Practices",
+            "description": "Introduction to fuel conservation, carbon offsetting, and eco-friendly flight operations.",
+            "duration": "3h 00m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Fuel Saving",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Flight Planning",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Aviation"
+        },
+        {
+            "id": "c14",
+            "title": "In-Flight Catering Services",
+            "description": "Procedures for food safety, meal presentation, and handling special dietary requests.",
+            "duration": "2h 30m",
+            "status": "On Progress",
+            "progress": 30,
+            "thumbnail": "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Food Safety",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "HACCP Basics",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Service"
+        },
+        {
+            "id": "c15",
+            "title": "Cultural Awareness in Aviation",
+            "description": "Understanding cultural differences to better serve a diverse passenger base and work with international crews.",
+            "duration": "3h 45m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1526678233379-cb41dd2949ff?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Global Etiquette",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Gestures and Meanings",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Aviation"
+        },
+        {
+            "id": "c16",
+            "title": "Aircraft Maintenance Documentation",
+            "description": "Correct procedures for logging technical issues and understanding maintenance release documents.",
+            "duration": "4h 00m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1581092921461-eab62e97a782?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "The Tech Log",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Filling the Log",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Technical"
+        },
+        {
+            "id": "c17",
+            "title": "Passenger Conflict Resolution",
+            "description": "Techniques for de-escalating conflicts with unruly passengers while maintaining safety.",
+            "duration": "3h 30m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "De-escalation",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Verbal Judo",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Aviation"
+        },
+        {
+            "id": "c18",
+            "title": "Winter Operations",
+            "description": "Standard operating procedures for de-icing and operating aircraft in freezing conditions.",
+            "duration": "4h 15m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1483664852095-d6cc6870705f?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "De-icing",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Fluid Types",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Aviation"
+        },
+        {
+            "id": "c19",
+            "title": "Auditing and Compliance",
+            "description": "Internal auditing processes to ensure adherence to Citilink and regulatory standards.",
+            "duration": "5h 00m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Audit Basics",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "Preparing for Audit",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Aviation"
+        },
+        {
+            "id": "c20",
+            "title": "NextGen Air Traffic Control",
+            "description": "Understanding future air traffic management systems and digital communications (CPDLC).",
+            "duration": "4h 30m",
+            "status": "Not Started",
+            "progress": 0,
+            "thumbnail": "https://images.unsplash.com/photo-1485906346296-6d60f4d360d0?auto=format&fit=crop&q=80&w=800",
+            "modules": [
+                {
+                    "id": "m1",
+                    "title": "Data Link",
+                    "lessons": [
+                        {
+                            "id": "l1",
+                            "title": "CPDLC Intro",
+                            "type": "video",
+                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                        }
+                    ]
+                }
+            ],
+            "category": "Aviation"
+        }
+    ]
+}

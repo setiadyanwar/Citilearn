@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700;900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #018144;
+  --color-primary-dark: #0e5b29;
+  --color-primary-light: #f0fdf4;
+  --color-accent: #f4e502;
+  --color-accent-hover: #e5d702;
+  --color-surface: #ffffff;
+  --color-background: #ffffff;
+  --color-citilink-dark: #1e1e1e;
+  --color-citilink-gray: #f5f5f5;
+
+  --font-lato: "Lato", sans-serif;
+
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --breakpoint-md: 768px;
+
+  @keyframes skeleton {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes fly-out {
+    0% {
+      transform: translateX(-40px) scale(0.8) rotate(45deg);
+      opacity: 0;
+    }
+
+    15% {
+      transform: translateX(0) scale(1) rotate(45deg);
+      opacity: 1;
+    }
+
+    85% {
+      transform: translateX(0) scale(1) rotate(45deg);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(40px) scale(0.8) rotate(45deg);
+      opacity: 0;
+    }
+  }
+
+  --animate-fly-out: fly-out 1.5s infinite ease-in-out;
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+}
+
+@layer utilities {
+  .skeleton {
+    @apply relative overflow-hidden bg-gray-200;
+  }
+
+  .skeleton::after {
+    @apply absolute inset-0 content-[''];
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: skeleton 1.5s infinite;
+  }
+}
+
+@layer base {
+  body {
+    @apply font-lato bg-background text-citilink-dark antialiased leading-relaxed;
+  }
+}
+
+@layer components {
+  .citilink-card {
+    @apply bg-surface border border-gray-200 rounded-md overflow-hidden;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white font-bold py-2.5 px-6 rounded-md hover:bg-primary-dark transition-all duration-200 inline-flex items-center gap-2 text-sm shadow-sm;
+  }
+
+  .btn-primary:active {
+    @apply transform scale-[0.98];
+  }
+
+  .btn-accent {
+    @apply bg-accent text-citilink-dark font-bold py-2.5 px-6 rounded-md hover:bg-accent-hover transition-all duration-200 inline-flex items-center gap-2 text-sm;
+  }
+
+  .progress-container {
+    @apply w-full h-2 bg-gray-100 rounded-full overflow-hidden;
+  }
+
+  .progress-bar {
+    @apply h-full bg-primary transition-all duration-500 rounded-full;
+  }
+}
+
+/* Custom Utilities */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.no-scrollbar,
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar,
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
