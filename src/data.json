@@ -4,7 +4,7 @@
             "id": "c1",
             "title": "Aviation Safety Management System",
             "description": "Comprehensive guide to safety protocols and hazard identification in aviation operations. Learn how to maintain the highest standards of safety for Citilink fleet.",
-            "duration": "4h 30m",
+            "duration": "8h 45m",
             "status": "On Progress",
             "progress": 45,
             "thumbnail": "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80&w=800",
@@ -31,9 +31,15 @@
                         },
                         {
                             "id": "l2",
-                            "title": "Safety Risk Management",
+                            "title": "SMS Framework Overview",
                             "type": "pdf",
                             "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l3",
+                            "title": "Safety Risk Management Basics",
+                            "type": "youtube",
+                            "content": "https://www.youtube.com/embed/9No-FiEInLA"
                         }
                     ]
                 },
@@ -42,10 +48,22 @@
                     "title": "Hazard Identification",
                     "lessons": [
                         {
-                            "id": "l3",
+                            "id": "l4",
                             "title": "Reactive vs Proactive Methods",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/movie.mp4"
+                            "type": "youtube",
+                            "content": "https://www.youtube.com/embed/YR5WdGrpoug"
+                        },
+                        {
+                            "id": "l5",
+                            "title": "HIRA Process Documentation",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l6",
+                            "title": "Reporting Systems",
+                            "type": "youtube",
+                            "content": "https://www.youtube.com/embed/kUfF2MTnqAw"
                         }
                     ]
                 },
@@ -54,16 +72,22 @@
                     "title": "Safety Assurance",
                     "lessons": [
                         {
-                            "id": "l4",
+                            "id": "l7",
                             "title": "Safety Performance Monitoring",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/movie.mp4"
+                            "type": "youtube",
+                            "content": "https://www.youtube.com/embed/vZRM6kb0geU"
                         },
                         {
-                            "id": "l5",
+                            "id": "l8",
                             "title": "Management of Change",
                             "type": "pdf",
                             "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l9",
+                            "title": "Continuous Improvement",
+                            "type": "youtube",
+                            "content": "https://www.youtube.com/embed/9No-FiEInLA"
                         }
                     ]
                 },
@@ -72,58 +96,46 @@
                     "title": "Safety Promotion",
                     "lessons": [
                         {
-                            "id": "l6",
-                            "title": "Training and Education",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/movie.mp4"
-                        },
-                        {
-                            "id": "l7",
-                            "title": "Safety Communication",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/movie.mp4"
-                        }
-                    ]
-                },
-                {
-                    "id": "m5",
-                    "title": "Implementation Plan",
-                    "lessons": [
-                        {
-                            "id": "l8",
-                            "title": "Phase 1: Planning",
-                            "type": "pdf",
-                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
-                        },
-                        {
-                            "id": "l9",
-                            "title": "Phase 2: Reactive Processes",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/movie.mp4"
-                        }
-                    ]
-                },
-                {
-                    "id": "m6",
-                    "title": "Advanced Safety Concepts",
-                    "lessons": [
-                        {
                             "id": "l10",
-                            "title": "Human Factors",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/movie.mp4"
+                            "title": "Training and Education",
+                            "type": "youtube",
+                            "content": "https://www.youtube.com/embed/YR5WdGrpoug"
                         },
                         {
                             "id": "l11",
-                            "title": "Safety Culture Assessment",
+                            "title": "Safety Communication Guidelines",
                             "type": "pdf",
                             "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
                         },
                         {
                             "id": "l12",
-                            "title": "Incident Investigation",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/movie.mp4"
+                            "title": "Safety Culture Development",
+                            "type": "youtube",
+                            "content": "https://www.youtube.com/embed/kUfF2MTnqAw"
+                        }
+                    ]
+                },
+                {
+                    "id": "m5",
+                    "title": "Implementation and Best Practices",
+                    "lessons": [
+                        {
+                            "id": "l13",
+                            "title": "SMS Implementation Phases",
+                            "type": "youtube",
+                            "content": "https://www.youtube.com/embed/vZRM6kb0geU"
+                        },
+                        {
+                            "id": "l14",
+                            "title": "Case Studies and Documentation",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l15",
+                            "title": "Common Challenges",
+                            "type": "youtube",
+                            "content": "https://www.youtube.com/embed/9No-FiEInLA"
                         }
                     ]
                 },
@@ -203,7 +215,7 @@
             "id": "c2",
             "title": "Customer Service Excellence for Cabin Crew",
             "description": "Master the art of providing world-class service to Citilink passengers. Focus on communication, problem-solving, and hospitality.",
-            "duration": "3h 15m",
+            "duration": "7h 30m",
             "status": "Not Started",
             "progress": 0,
             "thumbnail": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=800",
@@ -215,14 +227,116 @@
                         {
                             "id": "l1",
                             "title": "The Citilink Service Standards",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
                         },
                         {
                             "id": "l2",
-                            "title": "Effective Communication",
+                            "title": "First Impressions Matter",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l3",
+                            "title": "Professional Appearance Guidelines",
                             "type": "pdf",
                             "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        }
+                    ]
+                },
+                {
+                    "id": "m2",
+                    "title": "Effective Communication",
+                    "lessons": [
+                        {
+                            "id": "l4",
+                            "title": "Active Listening Skills",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l5",
+                            "title": "Verbal Communication",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l6",
+                            "title": "Non-Verbal Communication Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        }
+                    ]
+                },
+                {
+                    "id": "m3",
+                    "title": "Conflict Resolution",
+                    "lessons": [
+                        {
+                            "id": "l7",
+                            "title": "De-escalation Techniques",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l8",
+                            "title": "Handling Difficult Passengers",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l9",
+                            "title": "Problem Solving",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m4",
+                    "title": "Service Recovery",
+                    "lessons": [
+                        {
+                            "id": "l10",
+                            "title": "Handling Complaints",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l11",
+                            "title": "Turning Negatives into Positives",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l12",
+                            "title": "Follow-up Procedures Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        }
+                    ]
+                },
+                {
+                    "id": "m5",
+                    "title": "Cultural Sensitivity",
+                    "lessons": [
+                        {
+                            "id": "l13",
+                            "title": "Understanding Cultural Differences",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l14",
+                            "title": "Religious Considerations Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l15",
+                            "title": "Special Needs Passengers",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
                         }
                     ]
                 }
@@ -238,20 +352,128 @@
             "id": "c3",
             "title": "Airbus A320 Technical Overview",
             "description": "Technical deep dive into the systems and operations of the Airbus A320, the backbone of the Citilink fleet.",
-            "duration": "6h 00m",
+            "duration": "10h 15m",
             "status": "Done",
             "progress": 100,
             "thumbnail": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=800",
             "modules": [
                 {
                     "id": "m1",
-                    "title": "System Overview",
+                    "title": "Aircraft Systems Overview",
                     "lessons": [
                         {
                             "id": "l1",
                             "title": "Flight Control Systems",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l2",
+                            "title": "Hydraulic Systems Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l3",
+                            "title": "Electrical Systems",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m2",
+                    "title": "Cockpit Instrumentation",
+                    "lessons": [
+                        {
+                            "id": "l4",
+                            "title": "Primary Flight Display (PFD)",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l5",
+                            "title": "Navigation Display (ND)",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l6",
+                            "title": "ECAM System Documentation",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        }
+                    ]
+                },
+                {
+                    "id": "m3",
+                    "title": "Engine Systems",
+                    "lessons": [
+                        {
+                            "id": "l7",
+                            "title": "CFM56 Engine Overview",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l8",
+                            "title": "Engine Start Procedures",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l9",
+                            "title": "Fuel System",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m4",
+                    "title": "Autopilot and FMS",
+                    "lessons": [
+                        {
+                            "id": "l10",
+                            "title": "Autopilot Modes",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l11",
+                            "title": "Flight Management System Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l12",
+                            "title": "Autothrust System",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m5",
+                    "title": "Emergency Procedures",
+                    "lessons": [
+                        {
+                            "id": "l13",
+                            "title": "Engine Failure Procedures",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l14",
+                            "title": "Emergency Descent Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l15",
+                            "title": "System Failures",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
                         }
                     ]
                 }
@@ -267,20 +489,128 @@
             "id": "c4",
             "title": "Emergency Evacuation Protocols",
             "description": "Critical procedures for ensuring passenger safety during emergency evacuations. Covers land and water ditching scenarios.",
-            "duration": "5h 15m",
+            "duration": "6h 45m",
             "status": "Not Started",
             "progress": 0,
             "thumbnail": "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&q=80&w=800",
             "modules": [
                 {
                     "id": "m1",
-                    "title": "Basics",
+                    "title": "Emergency Equipment",
                     "lessons": [
                         {
                             "id": "l1",
-                            "title": "Intro",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                            "title": "Emergency Exits and Slides",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l2",
+                            "title": "Life Vests and Rafts Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l3",
+                            "title": "Fire Extinguishers",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m2",
+                    "title": "Land Evacuation",
+                    "lessons": [
+                        {
+                            "id": "l4",
+                            "title": "Evacuation Commands",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l5",
+                            "title": "Passenger Management Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l6",
+                            "title": "Crowd Control",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m3",
+                    "title": "Water Ditching",
+                    "lessons": [
+                        {
+                            "id": "l7",
+                            "title": "Ditching Procedures",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l8",
+                            "title": "Life Raft Deployment Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l9",
+                            "title": "Survival at Sea",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m4",
+                    "title": "Fire and Smoke",
+                    "lessons": [
+                        {
+                            "id": "l10",
+                            "title": "Fire Classification",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l11",
+                            "title": "Fire Fighting Techniques Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l12",
+                            "title": "Smoke Procedures",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m5",
+                    "title": "Post-Evacuation",
+                    "lessons": [
+                        {
+                            "id": "l13",
+                            "title": "Passenger Accountability",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l14",
+                            "title": "First Aid Priorities Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l15",
+                            "title": "Emergency Services Coordination",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
                         }
                     ]
                 }
@@ -291,20 +621,128 @@
             "id": "c5",
             "title": "Dangerous Goods Regulations (DGR)",
             "description": "Learn to identify, handle, and report dangerous goods in compliance with IATA regulations.",
-            "duration": "4h 00m",
+            "duration": "5h 30m",
             "status": "On Progress",
             "progress": 20,
             "thumbnail": "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&q=80&w=800",
             "modules": [
                 {
                     "id": "m1",
-                    "title": "Classification",
+                    "title": "DG Classification",
                     "lessons": [
                         {
                             "id": "l1",
-                            "title": "Class 1-9",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                            "title": "9 Classes of Dangerous Goods",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l2",
+                            "title": "Labeling and Marking Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l3",
+                            "title": "Packing Groups",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m2",
+                    "title": "Hidden Dangerous Goods",
+                    "lessons": [
+                        {
+                            "id": "l4",
+                            "title": "Common Hidden DG",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l5",
+                            "title": "Passenger Screening Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l6",
+                            "title": "Baggage Inspection",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m3",
+                    "title": "Handling Procedures",
+                    "lessons": [
+                        {
+                            "id": "l7",
+                            "title": "Loading and Stowage",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l8",
+                            "title": "Segregation Requirements Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l9",
+                            "title": "Documentation",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m4",
+                    "title": "Emergency Response",
+                    "lessons": [
+                        {
+                            "id": "l10",
+                            "title": "DG Incidents",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l11",
+                            "title": "Spill Procedures Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l12",
+                            "title": "Reporting Requirements",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m5",
+                    "title": "Regulations and Compliance",
+                    "lessons": [
+                        {
+                            "id": "l13",
+                            "title": "IATA DGR Manual Overview",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l14",
+                            "title": "National Regulations Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l15",
+                            "title": "Penalties and Enforcement",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
                         }
                     ]
                 }
@@ -322,13 +760,121 @@
             "modules": [
                 {
                     "id": "m1",
-                    "title": "Communication",
+                    "title": "Communication Skills",
                     "lessons": [
                         {
                             "id": "l1",
-                            "title": "Assertiveness",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                            "title": "Assertiveness Training",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l2",
+                            "title": "Active Listening Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l3",
+                            "title": "Briefing Techniques",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m2",
+                    "title": "Decision Making",
+                    "lessons": [
+                        {
+                            "id": "l4",
+                            "title": "Situational Awareness",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l5",
+                            "title": "Problem Solving Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l6",
+                            "title": "Risk Assessment",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m3",
+                    "title": "Teamwork",
+                    "lessons": [
+                        {
+                            "id": "l7",
+                            "title": "Team Building",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l8",
+                            "title": "Leadership Styles Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l9",
+                            "title": "Conflict Resolution",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m4",
+                    "title": "Workload Management",
+                    "lessons": [
+                        {
+                            "id": "l10",
+                            "title": "Task Prioritization",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l11",
+                            "title": "Stress Management Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l12",
+                            "title": "Fatigue Recognition",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m5",
+                    "title": "Error Management",
+                    "lessons": [
+                        {
+                            "id": "l13",
+                            "title": "Human Error Types",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l14",
+                            "title": "Error Detection and Recovery Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l15",
+                            "title": "Error Recovery Techniques",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
                         }
                     ]
                 }
@@ -339,7 +885,7 @@
             "id": "c7",
             "title": "Aviation Security Awareness",
             "description": "Understanding security threats and maintaining vigilance to protect aircraft, passengers, and crew.",
-            "duration": "3h 30m",
+            "duration": "5h 15m",
             "status": "Done",
             "progress": 100,
             "thumbnail": "https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&q=80&w=800",
@@ -350,9 +896,117 @@
                     "lessons": [
                         {
                             "id": "l1",
-                            "title": "Types of Threats",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                            "title": "Types of Security Threats",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l2",
+                            "title": "Terrorism Awareness Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l3",
+                            "title": "Threat Levels",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m2",
+                    "title": "Security Procedures",
+                    "lessons": [
+                        {
+                            "id": "l4",
+                            "title": "Access Control",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l5",
+                            "title": "Passenger Screening Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l6",
+                            "title": "Baggage Security",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m3",
+                    "title": "Suspicious Behavior",
+                    "lessons": [
+                        {
+                            "id": "l7",
+                            "title": "Behavioral Detection",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l8",
+                            "title": "Reporting Procedures Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l9",
+                            "title": "Unattended Items",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m4",
+                    "title": "Unlawful Interference",
+                    "lessons": [
+                        {
+                            "id": "l10",
+                            "title": "Hijacking Scenarios",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l11",
+                            "title": "Bomb Threats Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l12",
+                            "title": "Response Protocols",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m5",
+                    "title": "Security Regulations",
+                    "lessons": [
+                        {
+                            "id": "l13",
+                            "title": "ICAO Annex 17 Overview",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l14",
+                            "title": "National Security Programs Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l15",
+                            "title": "Compliance Requirements",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
                         }
                     ]
                 }
@@ -363,20 +1017,128 @@
             "id": "c8",
             "title": "First Aid for Cabin Crew",
             "description": "Essential medical training for handling in-flight medical emergencies, from CPR to treating minor injuries.",
-            "duration": "5h 00m",
+            "duration": "7h 00m",
             "status": "On Progress",
             "progress": 60,
             "thumbnail": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
             "modules": [
                 {
                     "id": "m1",
-                    "title": "CPR",
+                    "title": "Basic Life Support",
                     "lessons": [
                         {
                             "id": "l1",
                             "title": "Adult CPR",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l2",
+                            "title": "Child and Infant CPR Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l3",
+                            "title": "AED Usage",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m2",
+                    "title": "Airway Management",
+                    "lessons": [
+                        {
+                            "id": "l4",
+                            "title": "Choking Relief",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l5",
+                            "title": "Recovery Position Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l6",
+                            "title": "Oxygen Administration",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m3",
+                    "title": "Medical Emergencies",
+                    "lessons": [
+                        {
+                            "id": "l7",
+                            "title": "Heart Attack Recognition",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l8",
+                            "title": "Stroke Assessment Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l9",
+                            "title": "Diabetic Emergencies",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m4",
+                    "title": "Trauma Care",
+                    "lessons": [
+                        {
+                            "id": "l10",
+                            "title": "Bleeding Control",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l11",
+                            "title": "Fracture Management Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l12",
+                            "title": "Burns Treatment",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m5",
+                    "title": "Special Situations",
+                    "lessons": [
+                        {
+                            "id": "l13",
+                            "title": "Childbirth in Flight",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l14",
+                            "title": "Allergic Reactions and Medical Kit Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l15",
+                            "title": "Medical Kit Usage",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
                         }
                     ]
                 }
@@ -387,20 +1149,128 @@
             "id": "c9",
             "title": "Meteorology for Pilots",
             "description": "Advanced weather patterns, reading radar, and decision-making in adverse weather conditions.",
-            "duration": "7h 15m",
+            "duration": "8h 30m",
             "status": "Not Started",
             "progress": 0,
             "thumbnail": "https://images.unsplash.com/photo-1590055531615-f16d36ffe8ec?auto=format&fit=crop&q=80&w=800",
             "modules": [
                 {
                     "id": "m1",
-                    "title": "Cloud Formation",
+                    "title": "Atmospheric Basics",
                     "lessons": [
                         {
                             "id": "l1",
-                            "title": "Cumulonimbus",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                            "title": "Atmosphere Structure",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l2",
+                            "title": "Pressure Systems Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l3",
+                            "title": "Temperature and Humidity",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m2",
+                    "title": "Cloud Formation",
+                    "lessons": [
+                        {
+                            "id": "l4",
+                            "title": "Cloud Types",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l5",
+                            "title": "Cumulonimbus Development Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l6",
+                            "title": "Precipitation Types",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m3",
+                    "title": "Weather Hazards",
+                    "lessons": [
+                        {
+                            "id": "l7",
+                            "title": "Thunderstorms",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l8",
+                            "title": "Turbulence and Icing Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l9",
+                            "title": "Icing Conditions",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m4",
+                    "title": "Weather Reports",
+                    "lessons": [
+                        {
+                            "id": "l10",
+                            "title": "METAR Decoding",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l11",
+                            "title": "TAF Interpretation Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l12",
+                            "title": "Weather Radar",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m5",
+                    "title": "Flight Planning",
+                    "lessons": [
+                        {
+                            "id": "l13",
+                            "title": "Route Weather Analysis",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l14",
+                            "title": "Alternate Selection and Weather Decision Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l15",
+                            "title": "Weather Decision Making",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
                         }
                     ]
                 }
@@ -411,265 +1281,133 @@
             "id": "c10",
             "title": "Fatigue Risk Management",
             "description": "Strategies to recognize and mitigate fatigue to ensure alertness during flight operations.",
-            "duration": "2h 45m",
+            "duration": "4h 30m",
             "status": "Not Started",
             "progress": 0,
             "thumbnail": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=800",
             "modules": [
                 {
                     "id": "m1",
-                    "title": "Causes",
+                    "title": "Understanding Fatigue",
                     "lessons": [
                         {
                             "id": "l1",
-                            "title": "Circadian Rhythm",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
+                            "title": "Circadian Rhythms",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l2",
+                            "title": "Sleep Physiology Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l3",
+                            "title": "Fatigue Symptoms",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m2",
+                    "title": "Fatigue Causes",
+                    "lessons": [
+                        {
+                            "id": "l4",
+                            "title": "Shift Work Effects",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l5",
+                            "title": "Time Zone Changes Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l6",
+                            "title": "Workload Factors",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m3",
+                    "title": "Fatigue Countermeasures",
+                    "lessons": [
+                        {
+                            "id": "l7",
+                            "title": "Sleep Hygiene",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l8",
+                            "title": "Strategic Napping Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l9",
+                            "title": "Nutrition and Exercise",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m4",
+                    "title": "Regulatory Framework",
+                    "lessons": [
+                        {
+                            "id": "l10",
+                            "title": "Flight Time Limitations",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l11",
+                            "title": "Rest Requirements and FRMS Guide",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l12",
+                            "title": "FRMS Programs",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        }
+                    ]
+                },
+                {
+                    "id": "m5",
+                    "title": "Personal Responsibility",
+                    "lessons": [
+                        {
+                            "id": "l13",
+                            "title": "Self-Assessment",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
+                        },
+                        {
+                            "id": "l14",
+                            "title": "Reporting Fatigue and Fitness Manual",
+                            "type": "pdf",
+                            "content": "/Course/safety-management-systems-book-3-safety-risk-management.pdf"
+                        },
+                        {
+                            "id": "l15",
+                            "title": "Fitness for Duty",
+                            "type": "youtube",
+                            "content": "https://youtu.be/AtMzngYdx4s?si=Bk5pjTWzqVZJIrhm"
                         }
                     ]
                 }
             ],
             "category": "Leadership"
-        },
-        {
-            "id": "c11",
-            "title": "Airport Operations Fundamentals",
-            "description": "Overview of ground handling, gate operations, and ramp safety procedures.",
-            "duration": "4h 15m",
-            "status": "Not Started",
-            "progress": 0,
-            "thumbnail": "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&q=80&w=800",
-            "modules": [
-                {
-                    "id": "m1",
-                    "title": "Ramp Safety",
-                    "lessons": [
-                        {
-                            "id": "l1",
-                            "title": "Markers and Signs",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
-                        }
-                    ]
-                }
-            ],
-            "category": "Aviation"
-        },
-        {
-            "id": "c12",
-            "title": "Effective Leadership in Aviation",
-            "description": "Leadership skills for captains and senior crew members to manage teams effectively under pressure.",
-            "duration": "5h 30m",
-            "status": "Done",
-            "progress": 100,
-            "thumbnail": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",
-            "modules": [
-                {
-                    "id": "m1",
-                    "title": "Leadership Styles",
-                    "lessons": [
-                        {
-                            "id": "l1",
-                            "title": "Situational Leadership",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
-                        }
-                    ]
-                }
-            ],
-            "category": "Leadership"
-        },
-        {
-            "id": "c13",
-            "title": "Sustainable Aviation Practices",
-            "description": "Introduction to fuel conservation, carbon offsetting, and eco-friendly flight operations.",
-            "duration": "3h 00m",
-            "status": "Not Started",
-            "progress": 0,
-            "thumbnail": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-            "modules": [
-                {
-                    "id": "m1",
-                    "title": "Fuel Saving",
-                    "lessons": [
-                        {
-                            "id": "l1",
-                            "title": "Flight Planning",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
-                        }
-                    ]
-                }
-            ],
-            "category": "Aviation"
-        },
-        {
-            "id": "c14",
-            "title": "In-Flight Catering Services",
-            "description": "Procedures for food safety, meal presentation, and handling special dietary requests.",
-            "duration": "2h 30m",
-            "status": "On Progress",
-            "progress": 30,
-            "thumbnail": "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=800",
-            "modules": [
-                {
-                    "id": "m1",
-                    "title": "Food Safety",
-                    "lessons": [
-                        {
-                            "id": "l1",
-                            "title": "HACCP Basics",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
-                        }
-                    ]
-                }
-            ],
-            "category": "Service"
-        },
-        {
-            "id": "c15",
-            "title": "Cultural Awareness in Aviation",
-            "description": "Understanding cultural differences to better serve a diverse passenger base and work with international crews.",
-            "duration": "3h 45m",
-            "status": "Not Started",
-            "progress": 0,
-            "thumbnail": "https://images.unsplash.com/photo-1526678233379-cb41dd2949ff?auto=format&fit=crop&q=80&w=800",
-            "modules": [
-                {
-                    "id": "m1",
-                    "title": "Global Etiquette",
-                    "lessons": [
-                        {
-                            "id": "l1",
-                            "title": "Gestures and Meanings",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
-                        }
-                    ]
-                }
-            ],
-            "category": "Aviation"
-        },
-        {
-            "id": "c16",
-            "title": "Aircraft Maintenance Documentation",
-            "description": "Correct procedures for logging technical issues and understanding maintenance release documents.",
-            "duration": "4h 00m",
-            "status": "Not Started",
-            "progress": 0,
-            "thumbnail": "https://images.unsplash.com/photo-1581092921461-eab62e97a782?auto=format&fit=crop&q=80&w=800",
-            "modules": [
-                {
-                    "id": "m1",
-                    "title": "The Tech Log",
-                    "lessons": [
-                        {
-                            "id": "l1",
-                            "title": "Filling the Log",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
-                        }
-                    ]
-                }
-            ],
-            "category": "Technical"
-        },
-        {
-            "id": "c17",
-            "title": "Passenger Conflict Resolution",
-            "description": "Techniques for de-escalating conflicts with unruly passengers while maintaining safety.",
-            "duration": "3h 30m",
-            "status": "Not Started",
-            "progress": 0,
-            "thumbnail": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
-            "modules": [
-                {
-                    "id": "m1",
-                    "title": "De-escalation",
-                    "lessons": [
-                        {
-                            "id": "l1",
-                            "title": "Verbal Judo",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
-                        }
-                    ]
-                }
-            ],
-            "category": "Aviation"
-        },
-        {
-            "id": "c18",
-            "title": "Winter Operations",
-            "description": "Standard operating procedures for de-icing and operating aircraft in freezing conditions.",
-            "duration": "4h 15m",
-            "status": "Not Started",
-            "progress": 0,
-            "thumbnail": "https://images.unsplash.com/photo-1483664852095-d6cc6870705f?auto=format&fit=crop&q=80&w=800",
-            "modules": [
-                {
-                    "id": "m1",
-                    "title": "De-icing",
-                    "lessons": [
-                        {
-                            "id": "l1",
-                            "title": "Fluid Types",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
-                        }
-                    ]
-                }
-            ],
-            "category": "Aviation"
-        },
-        {
-            "id": "c19",
-            "title": "Auditing and Compliance",
-            "description": "Internal auditing processes to ensure adherence to Citilink and regulatory standards.",
-            "duration": "5h 00m",
-            "status": "Not Started",
-            "progress": 0,
-            "thumbnail": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800",
-            "modules": [
-                {
-                    "id": "m1",
-                    "title": "Audit Basics",
-                    "lessons": [
-                        {
-                            "id": "l1",
-                            "title": "Preparing for Audit",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
-                        }
-                    ]
-                }
-            ],
-            "category": "Aviation"
-        },
-        {
-            "id": "c20",
-            "title": "NextGen Air Traffic Control",
-            "description": "Understanding future air traffic management systems and digital communications (CPDLC).",
-            "duration": "4h 30m",
-            "status": "Not Started",
-            "progress": 0,
-            "thumbnail": "https://images.unsplash.com/photo-1485906346296-6d60f4d360d0?auto=format&fit=crop&q=80&w=800",
-            "modules": [
-                {
-                    "id": "m1",
-                    "title": "Data Link",
-                    "lessons": [
-                        {
-                            "id": "l1",
-                            "title": "CPDLC Intro",
-                            "type": "video",
-                            "content": "https://www.w3schools.com/html/mov_bbb.mp4"
-                        }
-                    ]
-                }
-            ],
-            "category": "Aviation"
         }
     ]
 }
