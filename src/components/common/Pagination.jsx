@@ -5,8 +5,8 @@ const Pagination = ({
     currentPage,
     totalPages,
     onPageChange,
-    showFirstLast = true,
-    showPrevNext = true
+    showPrevNext = true,
+    className = ""
 }) => {
     // Helper to generate page numbers
     const getPageNumbers = () => {
@@ -43,45 +43,47 @@ const Pagination = ({
     if (totalPages <= 1) return null;
 
     return (
-        <div className="flex items-center justify-center gap-2 mt-12 select-none">
+        <div className={`flex items-center justify-center gap-3 mt-12 select-none ${className}`}>
             {/* Previous Button */}
             {showPrevNext && (
                 <button
                     onClick={() => onPageChange(Math.max(1, currentPage - 1))}
                     disabled={currentPage === 1}
                     className={`
-                        w-10 h-10 flex items-center justify-center rounded-lg border transition-all duration-200
+                        w-11 h-11 flex items-center justify-center rounded-2xl border transition-all duration-300
                         ${currentPage === 1
-                            ? 'bg-gray-50 dark:bg-slate-900/50 text-gray-300 dark:text-slate-700 border-gray-200 dark:border-slate-800 cursor-not-allowed'
-                            : 'bg-white dark:bg-slate-900 text-gray-600 dark:text-slate-400 border-gray-300 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-primary dark:hover:text-primary'
+                            ? 'bg-gray-50/50 dark:bg-slate-900/30 text-gray-300 dark:text-slate-700 border-gray-100 dark:border-slate-800 cursor-not-allowed'
+                            : 'bg-white dark:bg-slate-900 text-gray-500 dark:text-slate-400 border-gray-100 dark:border-slate-800 hover:bg-primary/5 hover:border-primary/30 hover:text-primary dark:hover:text-primary active:scale-95'
                         }
                     `}
                     aria-label="Previous Page"
                 >
-                    <ChevronLeft size={18} strokeWidth={2.5} />
+                    <ChevronLeft size={20} strokeWidth={2.5} />
                 </button>
             )}
 
             {/* Page Numbers */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-2 bg-gray-50/50 dark:bg-slate-900/30 p-1.5 rounded-[22px] border border-gray-100 dark:border-slate-800">
                 {getPageNumbers().map((page, index) => {
                     if (page === '...') {
                         return (
-                            <div key={`dots-${index}`} className="w-8 h-8 flex items-center justify-center text-gray-400 dark:text-slate-600">
-                                <MoreHorizontal size={16} />
+                            <div key={`dots-${index}`} className="w-10 h-10 flex items-center justify-center text-gray-400 dark:text-slate-600">
+                                <MoreHorizontal size={18} />
                             </div>
                         );
                     }
+
+                    const isActive = currentPage === page;
 
                     return (
                         <button
                             key={page}
                             onClick={() => onPageChange(page)}
                             className={`
-                                min-w-[36px] h-9 px-3 flex items-center justify-center rounded-lg text-sm font-bold transition-all duration-200 border
-                                ${currentPage === page
-                                    ? 'bg-primary text-white border-primary shadow-sm transform scale-105'
-                                    : 'bg-white dark:bg-slate-900 text-gray-600 dark:text-slate-400 border-gray-200 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800 hover:border-gray-300 dark:hover:border-slate-600'
+                                min-w-[40px] h-10 px-4 flex items-center justify-center rounded-[18px] text-sm font-black transition-all duration-300
+                                ${isActive
+                                    ? 'bg-primary text-white transform scale-105'
+                                    : 'text-gray-500 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:text-primary dark:hover:text-primary active:scale-95'
                                 }
                             `}
                         >
@@ -97,15 +99,15 @@ const Pagination = ({
                     onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
                     disabled={currentPage === totalPages}
                     className={`
-                        w-10 h-10 flex items-center justify-center rounded-lg border transition-all duration-200
+                        w-11 h-11 flex items-center justify-center rounded-2xl border transition-all duration-300
                         ${currentPage === totalPages
-                            ? 'bg-gray-50 dark:bg-slate-900/50 text-gray-300 dark:text-slate-700 border-gray-200 dark:border-slate-800 cursor-not-allowed'
-                            : 'bg-white dark:bg-slate-900 text-gray-600 dark:text-slate-400 border-gray-300 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-primary dark:hover:text-primary'
+                            ? 'bg-gray-50/50 dark:bg-slate-900/30 text-gray-300 dark:text-slate-700 border-gray-100 dark:border-slate-800 cursor-not-allowed'
+                            : 'bg-white dark:bg-slate-900 text-gray-500 dark:text-slate-400 border-gray-100 dark:border-slate-800 hover:bg-primary/5 hover:border-primary/30 hover:text-primary dark:hover:text-primary active:scale-95'
                         }
                     `}
                     aria-label="Next Page"
                 >
-                    <ChevronRight size={18} strokeWidth={2.5} />
+                    <ChevronRight size={20} strokeWidth={2.5} />
                 </button>
             )}
         </div>

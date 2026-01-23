@@ -4,6 +4,7 @@ import CourseCard from '../components/dashboard/CourseCard';
 import MainSearchBar from '../components/dashboard/MainSearchBar';
 import { BookOpen, Search, Filter, LayoutGrid, List as ListIcon, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Pagination from '../components/common/Pagination';
 
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 
@@ -16,6 +17,8 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
     const [activeIndex, setActiveIndex] = useState(null);
     const [timeFilter, setTimeFilter] = useState('Month');
     const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 4;
     const scrollRef = useRef(null);
 
     const scroll = (direction) => {
@@ -48,6 +51,13 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
 
         return matchesSearch && matchesTab;
     });
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [localSearch, globalSearchQuery, activeTab]);
+
+    const totalPages = Math.ceil(filteredCourses.length / itemsPerPage);
+    const paginatedCourses = filteredCourses.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     const ongoingCourses = courses.filter(c => c.progress > 0 && c.progress < 100);
 
@@ -331,8 +341,8 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                     [1, 2, 3, 4].map(i => (
                         <div key={i} className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 h-80 rounded-3xl animate-pulse" />
                     ))
-                ) : filteredCourses.length > 0 ? (
-                    filteredCourses.map((course, index) => (
+                ) : paginatedCourses.length > 0 ? (
+                    paginatedCourses.map((course, index) => (
                         <motion.div
                             key={course.id}
                             initial={{ opacity: 0, y: 20 }}
@@ -352,6 +362,15 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                     </div>
                 )}
             </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                />
+            )}
         </div>
     );
 };

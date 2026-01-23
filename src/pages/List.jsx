@@ -3,7 +3,7 @@ import data from '../data.json';
 import DashboardHero from '../components/dashboard/DashboardHero';
 import CourseCard from '../components/dashboard/CourseCard';
 import ContinueLearningCard from '../components/dashboard/ContinueLearningCard';
-import Pagination from '../components/Pagination';
+import Pagination from '../components/common/Pagination';
 import { Play, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const CourseList = ({
@@ -39,7 +39,7 @@ const CourseList = ({
     }, []);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 8;
+    const itemsPerPage = 6;
     const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
     const statusDropdownRef = useRef(null);
 
