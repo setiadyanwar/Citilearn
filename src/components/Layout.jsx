@@ -265,7 +265,7 @@ const Header = ({
             <div className="flex items-center gap-6">
                 <button className="relative p-1 text-slate-400 hover:text-primary transition-colors">
                     <Bell size={24} />
-                    <div className="absolute -top-1 -right-1 w-5 h-5 bg-[#EF4444] rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-[10px] text-white font-bold shadow-sm">1</div>
+                    <div className="absolute -top-1 -right-1 w-5 h-5 bg-[#F1E304] rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-[10px] text-black font-bold shadow-sm">1</div>
                 </button>
 
                 <div className="profile-dropdown-container relative" ref={dropdownRef}>
