@@ -64,10 +64,6 @@ npm run build
 - `src/pages`: Main page layouts (Library, My Courses, Learning, Details).
 - `src/data.json`: The "Single Source of Truth" for all training content.
 
-## 📸 Screenshots
-
-*(Add your high-resolution screenshots here to showcase the premium UI)*
-
 ## 📄 License
 
 This project is created for **UI/UX Internship Portfolio** purposes for **Citilink Indonesia**.
