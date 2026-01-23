@@ -31,13 +31,13 @@ const DashboardHero = ({
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-8 items-stretch">
             {/* Left Card: Welcome & Search & Filters */}
-            <Card rounded="rounded-[28px]" padding="p-10" className="lg:col-span-6 relative flex flex-col justify-between overflow-hidden">
+            <Card rounded="rounded-[28px]" padding="p-10" className="lg:col-span-6 relative flex flex-col justify-between">
                 {/* Background Illustration Container */}
                 <div className="absolute inset-0 pointer-events-none select-none overflow-hidden rounded-[28px]">
                     <img
                         src="/illustrasi.svg"
                         alt="Hero Illustration"
-                        className="absolute top-0 right-0 h-[25%] md:h-[40%] w-auto object-contain translate-x-1 -translate-y-2 md:-translate-y-2 opacity-95 dark:opacity-40 transition-all duration-700 hover:scale-105"
+                        className="absolute top-0 right-0 h-[20%] md:h-[40%] w-auto object-contain translate-x-1 -translate-y-2 md:-translate-y-2 opacity-90 dark:opacity-30 transition-all duration-700 hover:scale-105"
                     />
                 </div>
 
