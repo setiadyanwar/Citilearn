@@ -28,7 +28,7 @@ const DashboardHero = ({
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-8 items-stretch">
             {/* Left Card: Welcome & Search & Filters */}
-            <div className="lg:col-span-6 bg-white dark:bg-slate-900 rounded-[28px] p-5 md:p-8 border border-gray-100 dark:border-slate-800 relative flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.01)]">
+            <div className="lg:col-span-6 bg-white dark:bg-slate-900 rounded-[28px] p-10 border border-gray-100 dark:border-slate-800 relative flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.01)]">
                 {/* Background Illustration Container (Using as a clip-path for the image) */}
                 <div className="absolute inset-0 pointer-events-none select-none overflow-hidden rounded-[28px]">
                     <img
@@ -54,7 +54,7 @@ const DashboardHero = ({
                         </h2>
 
                         <p className="text-sm text-gray-500 dark:text-slate-400 font-medium leading-relaxed max-w-sm">
-                            Monitor your flight certification progress, complete mandatory updates, and access your operational manuals here.
+                            Monitor your training progress, complete mandatory updates, and access your operational manuals here.
                         </p>
                     </div>
 
@@ -122,7 +122,7 @@ const DashboardHero = ({
             {/* Right Column: Stats Grouped Differently */}
             <div className="lg:col-span-6 flex flex-col gap-4">
                 {/* Large Top Stats Card */}
-                <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-5 md:p-7 rounded-[28px] shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col sm:flex-row items-center justify-between gap-6 h-full">
+                <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-10 rounded-[28px] shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col sm:flex-row items-center justify-between gap-6 h-full">
                     <div className="flex items-center gap-4 md:gap-5">
                         <div className="relative w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shrink-0">
                             <svg className="w-14 h-14 md:w-16 md:h-16 transform -rotate-90" viewBox="0 0 100 100">
@@ -168,7 +168,7 @@ const DashboardHero = ({
 
                 {/* Bottom Stats Row */}
                 <div className="hidden sm:grid grid-cols-2 gap-4">
-                    <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-5 rounded-[28px] shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col justify-between">
+                    <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-10 rounded-[28px] shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col justify-between">
                         <div>
                             <p className="text-[#059669] text-2xl font-black mb-0.5">112</p>
                             <p className="text-sm font-medium text-gray-500 dark:text-slate-400">Course Citilearn</p>
@@ -178,7 +178,7 @@ const DashboardHero = ({
                         </div>
                     </div>
 
-                    <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-5 rounded-[28px] shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col justify-between">
+                    <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-10 rounded-[28px] shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col justify-between">
                         <div>
                             <p className="text-[#059669] text-2xl font-black mb-0.5">220</p>
                             <p className="text-sm font-medium text-gray-500 dark:text-slate-400">Course Modules</p>

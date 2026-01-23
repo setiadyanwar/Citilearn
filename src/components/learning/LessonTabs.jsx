@@ -14,7 +14,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                         : 'border-transparent text-gray-500 dark:text-slate-500 hover:text-gray-700 dark:hover:text-white'
                         }`}
                 >
-                    Curriculum
+                    Syllabus (RPS)
                 </button>
 
                 {['overview', 'resources', 'instructor'].map((tab) => (
@@ -109,11 +109,15 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                             <div className="bg-blue-50/50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30 flex gap-4">
                                 <div className="mt-1 text-blue-500 dark:text-blue-400"><Info size={18} /></div>
                                 <div>
-                                    <h4 className="text-xs font-bold text-blue-900 dark:text-blue-300 mb-1">Learning Objectives</h4>
+                                    <h4 className="text-xs font-bold text-blue-900 dark:text-blue-300 mb-1">Learning Outcomes & Objectives (RPS)</h4>
                                     <ul className="text-xs text-blue-800 dark:text-slate-400 space-y-1 list-disc pl-4">
-                                        <li>Understand the core principles of {course.title}</li>
-                                        <li>Identify key safety protocols and compliance requirements</li>
-                                        <li>Master the operational procedures for daily tasks</li>
+                                        {(course.learningOutcomes || [
+                                            `Comprehend core principles of ${course.title}`,
+                                            "Identify key aviation safety protocols and compliance requirements",
+                                            "Master operational procedures for standard flight operations"
+                                        ]).map((outcome, index) => (
+                                            <li key={index}>{outcome}</li>
+                                        ))}
                                     </ul>
                                 </div>
                             </div>
@@ -163,7 +167,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                                 <h3 className="text-sm font-bold text-citilink-dark dark:text-white">Citilink Academy Team</h3>
                                 <p className="text-xs text-primary font-bold mb-3">Official Training Partner</p>
                                 <p className="text-xs text-gray-600 dark:text-slate-400 leading-relaxed max-w-lg">
-                                    The Citilink Academy Team consists of certified senior flight instructors and safety experts dedicated to maintaining the highest standards of aviation safety and service excellence.
+                                    The Citilink Academy Team consists of experienced senior flight instructors and safety experts dedicated to maintaining the highest standards of aviation safety and service excellence.
                                 </p>
                                 <button className="mt-4 px-4 py-2 border border-blue-100 dark:border-slate-800 text-primary text-xs font-bold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors">
                                     View Instructor Profile

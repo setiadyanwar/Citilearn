@@ -46,7 +46,7 @@ const CourseDetail = () => {
     );
 
     return (
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-6 md:py-8">
+        <div className="max-w-7xl mx-auto">
             <Breadcrumb
                 items={[
                     { label: 'My Courses', link: '/courses' },
@@ -54,10 +54,10 @@ const CourseDetail = () => {
                 ]}
             />
 
-            <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 lg:gap-12 items-start">
+            <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 lg:gap-10 items-start">
 
                 {/* Right Column: Sticky Sidebar Component (Ordered First on Mobile) */}
-                <div className="order-1 lg:order-2 w-full lg:w-auto">
+                <div className="order-1 lg:order-2 w-full lg:w-auto lg:sticky lg:top-[110px] lg:max-h-[calc(100vh-180px)] lg:overflow-y-auto no-scrollbar pb-40">
                     <CourseSidebarCard course={course} />
                 </div>
 

@@ -1,29 +1,23 @@
 import React from 'react';
-import { Clock, BookOpen, Award, CheckCircle2 } from 'lucide-react';
+import { Clock } from 'lucide-react';
 
 const CourseStatsGrid = ({ course }) => {
     return (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="p-4 rounded-xl border border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50 flex flex-col items-center justify-center text-center gap-2 transition-colors">
-                <Clock size={24} className="text-primary" />
-                <span className="text-sm font-bold text-gray-500 dark:text-slate-500 uppercase tracking-tighter">Duration</span>
-                <span className="text-lg font-black text-citilink-dark dark:text-white">{course.duration}</span>
-            </div>
-            <div className="p-4 rounded-xl border border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50 flex flex-col items-center justify-center text-center gap-2 transition-colors">
-                <BookOpen size={24} className="text-primary" />
-                <span className="text-sm font-bold text-gray-500 dark:text-slate-500 uppercase tracking-tighter">Modules</span>
-                <span className="text-lg font-black text-citilink-dark dark:text-white">{course.modules.length} Units</span>
-            </div>
-            <div className="p-4 rounded-xl border border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50 flex flex-col items-center justify-center text-center gap-2 transition-colors">
-                <Award size={24} className="text-primary" />
-                <span className="text-sm font-bold text-gray-500 dark:text-slate-500 uppercase tracking-tighter">Certificate</span>
-                <span className="text-lg font-black text-citilink-dark dark:text-white">Official</span>
-            </div>
-            <div className="p-4 rounded-xl border border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50 flex flex-col items-center justify-center text-center gap-2 transition-colors">
-                <CheckCircle2 size={24} className="text-primary" />
-                <span className="text-sm font-bold text-gray-500 dark:text-slate-500 uppercase tracking-tighter">Access</span>
-                <span className="text-lg font-black text-citilink-dark dark:text-white">Lifetime</span>
-            </div>
+        <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-3xl p-10 flex items-center justify-between shadow-sm">
+            {[
+                { label: 'Duration', value: course.duration },
+                { label: 'Modules', value: `${course.modules.length} Units` },
+                { label: 'Certificate', value: 'Official' },
+                { label: 'Access', value: 'Lifetime' }
+            ].map((stat, idx) => (
+                <div key={idx} className={`flex-1 flex flex-col items-center justify-center gap-3 ${idx < 3 ? 'border-r border-gray-100 dark:border-slate-800' : ''}`}>
+                    <Clock size={20} className="text-[#059669]" />
+                    <div className="text-center">
+                        <p className="text-xs font-bold text-gray-500 dark:text-slate-400 mb-1">{stat.label}</p>
+                        <p className="text-sm md:text-base font-black text-[#334155] dark:text-white leading-none">{stat.value}</p>
+                    </div>
+                </div>
+            ))}
         </div>
     );
 };

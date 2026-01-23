@@ -128,6 +128,11 @@
                     ]
                 }
             ],
+            "learningOutcomes": [
+                "Implement hazard identification and risk assessment (HIRA) in airport operations.",
+                "Develop robust aviation safety policies aligned with Citilink standards.",
+                "Execute reactive and proactive safety monitoring methods and safety assurance."
+            ],
             "category": "Safety"
         },
         {
@@ -158,6 +163,11 @@
                     ]
                 }
             ],
+            "learningOutcomes": [
+                "Deliver premium hospitality following Citilink service standards.",
+                "Master de-escalation techniques for passenger conflict resolution.",
+                "Communicate effectively in high-pressure in-flight environments."
+            ],
             "category": "Service"
         },
         {
@@ -181,6 +191,11 @@
                         }
                     ]
                 }
+            ],
+            "learningOutcomes": [
+                "Understand core aircraft systems and cockpit instrumentation of A320.",
+                "Execute standard operating procedures for various A320 flight phases.",
+                "Perform basic technical troubleshooting and systems monitoring."
             ],
             "category": "Technical"
         },
