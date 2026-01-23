@@ -71,6 +71,3 @@ npm run build
 ## 📄 License
 
 This project is created for **UI/UX Internship Portfolio** purposes for **Citilink Indonesia**.
-
----
-Developed with ❤️ by **Setiady Anwar** & **Antigravity AI**.
