@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, Clock, Share2, Bookmark } from 'lucide-react';
+import { Globe, Clock, Upload, BookmarkPlus } from 'lucide-react';
 
 const CourseDetailHeader = ({ course }) => {
     return (
@@ -8,14 +8,14 @@ const CourseDetailHeader = ({ course }) => {
                 <span className="self-start px-3 py-1 rounded-full bg-[#EBF7F2] dark:bg-emerald-900/20 text-[#059669] dark:text-emerald-400 text-xs font-bold border border-emerald-100 dark:border-emerald-900/30">
                     {course.category || 'Aviation'} Series
                 </span>
-                <div className="flex items-center gap-4 text-gray-400">
-                    <button className="flex items-center gap-2 text-sm font-bold hover:text-primary transition-colors">
-                        <Share2 size={18} />
-                        <u>Share</u>
+                <div className="flex items-center gap-6">
+                    <button className="flex items-center gap-[14px] text-black/80 dark:text-slate-300 hover:text-primary transition-colors group cursor-pointer">
+                        <Upload size={18} className="stroke-[1.5px]" />
+                        <span className="text-[16px] font-semibold border-b border-black/20 group-hover:border-primary transition-colors pb-0.5 leading-none">Share</span>
                     </button>
-                    <button className="flex items-center gap-2 text-sm font-bold hover:text-primary transition-colors">
-                        <Bookmark size={18} />
-                        <u>Save</u>
+                    <button className="flex items-center gap-[14px] text-black/80 dark:text-slate-300 hover:text-primary transition-colors group cursor-pointer">
+                        <BookmarkPlus size={18} className="stroke-[1.5px]" />
+                        <span className="text-[16px] font-semibold border-b border-black/20 group-hover:border-primary transition-colors pb-0.5 leading-none">Save</span>
                     </button>
                 </div>
             </div>

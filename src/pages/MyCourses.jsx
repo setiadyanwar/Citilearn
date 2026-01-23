@@ -111,7 +111,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                 {/* Resume Training */}
                 <div className="lg:col-span-8 flex flex-col">
                     <div className="flex items-center justify-between mb-3 px-1">
-                        <h2 className="text-xl font-bold flex items-center gap-2.5 text-citilink-dark dark:text-white">
+                        <h2 className="text-xl font-black flex items-center gap-2.5 text-citilink-dark dark:text-white">
                             <span className="w-1.5 h-6 bg-amber-500 rounded-full"></span>
                             Resume Training
                         </h2>
@@ -131,10 +131,10 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                         </div>
                     </div>
 
-                    <div className="flex-1 relative group">
+                    <div className="flex-1 relative">
                         <div
                             ref={scrollRef}
-                            className="flex overflow-x-auto gap-5 pb-2 no-scrollbar scroll-smooth"
+                            className="flex overflow-x-auto gap-5 pb-2 no-scrollbar scroll-smooth h-full"
                         >
                             {ongoingCourses.length > 0 ? (
                                 ongoingCourses.map(course => (
@@ -157,7 +157,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                 <div className="lg:col-span-4">
                     <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-3xl p-5 shadow-sm h-full flex flex-col justify-between">
                         <div className="flex items-center justify-between mb-4 relative">
-                            <h3 className="text-xl font-black text-gray-800 dark:text-white">Course Topic</h3>
+                            <h2 className="text-xl font-black text-gray-800 dark:text-white">Course Topic</h2>
                             <div className="relative">
                                 <button
                                     onClick={() => setIsFilterOpen(!isFilterOpen)}

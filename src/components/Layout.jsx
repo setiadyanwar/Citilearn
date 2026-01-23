@@ -277,7 +277,7 @@ const Header = ({
                             <img src="/budi_pratama.png" alt="User" className="w-full h-full object-cover" />
                         </div>
                         <div className="hidden sm:flex flex-col items-start leading-tight">
-                            <span className={`text-base font-bold ${isDark ? 'text-white' : 'text-[#334155]'}`}>Budi Pratama</span>
+                            <span className={`text-base font-bold ${isDark ? 'text-white' : 'text-[#334155]'}`}>Setiady Anwar</span>
                             <span className={`text-sm ${isDark ? 'text-slate-400' : 'text-[#94a3b8]'}`}>Senior Flight Instructor</span>
                         </div>
                     </button>

@@ -126,6 +126,70 @@
                             "content": "https://www.w3schools.com/html/movie.mp4"
                         }
                     ]
+                },
+                {
+                    "id": "m-final",
+                    "title": "Module Assessment",
+                    "lessons": [
+                        {
+                            "id": "l-final",
+                            "title": "Final Knowledge Check",
+                            "type": "quiz",
+                            "content": "Final Assessment",
+                            "assignments": [
+                                {
+                                    "question": "What is the primary objective of a Safety Management System (SMS)?",
+                                    "options": [
+                                        "Maximizing quarterly flight revenue",
+                                        "Automating pilot communication",
+                                        "Identifying hazards and managing safety risks",
+                                        "Reducing ground handling time"
+                                    ],
+                                    "correctAnswer": 2
+                                },
+                                {
+                                    "question": "Which of these is a key component of Safety Assurance?",
+                                    "options": [
+                                        "Safety performance monitoring and measurement",
+                                        "In-flight catering standards",
+                                        "Staff uniform design",
+                                        "Ticket pricing strategy"
+                                    ],
+                                    "correctAnswer": 0
+                                },
+                                {
+                                    "question": "Hazard identification should be...",
+                                    "options": [
+                                        "Done only after an accident",
+                                        "Proactive, predictive, and reactive",
+                                        "Exclusively handled by pilots",
+                                        "Ignored if costs are too high"
+                                    ],
+                                    "correctAnswer": 1
+                                },
+                                {
+                                    "question": "Which document outlines Citilink's committed approach to safety?",
+                                    "options": [
+                                        "Monthly Financial Report",
+                                        "Safety Policy and Objectives",
+                                        "Staff Vacation Policy",
+                                        "Catering Menu Guidelines"
+                                    ],
+                                    "correctAnswer": 1
+                                },
+                                {
+                                    "question": "Management of Change is necessary when...",
+                                    "options": [
+                                        "Staff uniforms are updated",
+                                        "New equipment or procedures are introduced",
+                                        "The office layout changes",
+                                        "The lunch hour is shifted"
+                                    ],
+                                    "correctAnswer": 1
+                                }
+                            ]
+                        }
+                    ]
                 }
             ],
             "learningOutcomes": [
