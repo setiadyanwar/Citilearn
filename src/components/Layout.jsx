@@ -16,6 +16,8 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import MainSearchBar from './dashboard/MainSearchBar';
+import budi_pratama from '../assets/budi_pratama.png';
+
 
 const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
     return (
@@ -274,7 +276,7 @@ const Header = ({
                         className="flex items-center gap-3 transition-all"
                     >
                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden shadow-sm shrink-0">
-                            <img src="/budi_pratama.png" alt="User" className="w-full h-full object-cover" />
+                            <img src={budi_pratama} alt="User" className="w-full h-full object-cover" />
                         </div>
                         <div className="hidden sm:flex flex-col items-start leading-tight">
                             <span className={`text-base font-bold ${isDark ? 'text-white' : 'text-[#334155]'}`}>Setiady Anwar</span>

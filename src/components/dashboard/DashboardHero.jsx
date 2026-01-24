@@ -4,6 +4,9 @@ import MainSearchBar from './MainSearchBar';
 import Card from '../common/Card';
 import CircularProgress from '../common/CircularProgress';
 import { COURSE_CATEGORIES, COURSE_STATUS_LIST } from '../../constants/course';
+import illustrasi from '../../assets/illustrasi.svg';
+import budi_pratama from '../../assets/budi_pratama.png';
+
 
 const DashboardHero = ({
     searchQuery,
@@ -35,7 +38,7 @@ const DashboardHero = ({
                 {/* Background Illustration Container */}
                 <div className="absolute inset-0 pointer-events-none select-none overflow-hidden rounded-[28px]">
                     <img
-                        src="/illustrasi.svg"
+                        src={illustrasi}
                         alt="Hero Illustration"
                         className="absolute top-0 right-0 h-[20%] md:h-[40%] w-auto object-contain translate-x-1 -translate-y-2 md:-translate-y-2 opacity-90 dark:opacity-30 transition-all duration-700 hover:scale-105"
                     />
@@ -48,7 +51,7 @@ const DashboardHero = ({
                                 Welcome Back
                             </span>
                             <div className="w-7 h-7 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
-                                <img src="/budi_pratama.png" alt="User" className="w-full h-full object-cover" />
+                                <img src={budi_pratama} alt="User" className="w-full h-full object-cover" />
                             </div>
                         </div>
 
