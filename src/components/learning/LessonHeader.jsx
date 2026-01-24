@@ -7,19 +7,19 @@ const LessonHeader = ({ activeLesson, completedLessons, toggleCompletion, setSid
 
     return (
         <div className="flex items-center justify-between gap-4">
-            <h1 className="text-2xl font-black text-slate-800 dark:text-white leading-tight flex-1">
+            <h1 className="text-2xl font-black text-citilink-dark dark:text-white leading-tight flex-1">
                 {activeLesson?.title}
             </h1>
 
             {!isQuiz && (
                 <button
                     onClick={toggleCompletion}
-                    className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-[13px] font-bold transition-all shrink-0 border ${isCompleted
-                        ? 'bg-[#EBF7F2] text-[#059669] border-[#EBF7F2] dark:bg-emerald-900/20 dark:border-emerald-900/30'
+                    className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-bold transition-all shrink-0 border ${isCompleted
+                        ? 'bg-citilearn-green-light text-citilearn-green border-citilearn-green-light dark:bg-emerald-900/20 dark:border-emerald-900/30'
                         : 'bg-white dark:bg-slate-900 border-gray-100 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-emerald-500 hover:text-emerald-500'
                         }`}
                 >
-                    <CheckCircle2 size={18} className={isCompleted ? 'text-[#059669]' : 'text-[#059669]'} />
+                    <CheckCircle2 size={18} className={isCompleted ? 'text-citilearn-green' : 'text-citilearn-green'} />
                     <span>{isCompleted ? 'Marked as Completed' : 'Mark as Completed'}</span>
                 </button>
             )}

@@ -52,12 +52,12 @@ const CourseCard = ({ course, compact = false }) => {
                 </div>
 
                 <div className={`${compact ? 'p-4' : 'p-6'} flex-1 flex flex-col`}>
-                    <h3 className={`${compact ? 'text-lg truncate' : 'text-lg line-clamp-2'} font-black text-slate-800 dark:text-white mb-1.5 leading-tight group-hover:text-primary transition-colors`} title={course.title}>{course.title}</h3>
+                    <h3 className={`${compact ? 'text-lg truncate' : 'text-lg line-clamp-2'} font-black text-citilink-dark dark:text-white mb-1.5 leading-tight group-hover:text-primary transition-colors`} title={course.title}>{course.title}</h3>
 
                     {compact ? (
                         <p className="text-sm mb-3 truncate">
                             <span className="text-gray-400 dark:text-slate-500 font-bold">Next:</span>
-                            <span className="text-slate-700 dark:text-white font-black ml-1.5 uppercase text-[10px] tracking-tight">
+                            <span className="text-citilink-dark dark:text-white font-normal ml-1.5 text-xs tracking-tight">
                                 {course.modules[0]?.lessons[0]?.title || "Module 1"}
                             </span>
                         </p>
@@ -68,15 +68,15 @@ const CourseCard = ({ course, compact = false }) => {
                     )}
 
                     <div className="mt-auto">
-                        <div className={`flex items-center gap-4 text-[10px] md:text-xs text-gray-400 dark:text-slate-500 font-black uppercase tracking-wider ${compact ? 'mb-3' : 'mb-4'} flex-wrap`}>
+                        <div className={`flex items-center gap-4 text-2xs md:text-xs text-gray-400 dark:text-slate-500 font-black uppercase tracking-wider ${compact ? 'mb-3' : 'mb-4'} flex-wrap`}>
                             <span className="flex items-center gap-1.5"><Clock size={12} className="text-primary" />{course.duration}</span>
                             <span className="flex items-center gap-1.5"><BookOpen size={12} className="text-primary" />{course.modules.length} Modules</span>
                         </div>
 
                         <div className={`${compact ? 'pt-2' : 'pt-4 border-t'} border-gray-100 dark:border-slate-800`}>
                             <div className="flex justify-between items-center mb-1.5">
-                                <span className="text-[12px] text-gray-400 dark:text-slate-500 font-black uppercase tracking-tight">Progress</span>
-                                <span className="text-[14px] font-black text-primary">{course.progress}%</span>
+                                <span className="text-xs text-gray-400 dark:text-slate-500 font-black uppercase tracking-tight">Progress</span>
+                                <span className="text-sm font-black text-primary">{course.progress}%</span>
                             </div>
                             <ProgressBar progress={course.progress} height={compact ? 'h-1.5' : 'h-2'} />
                         </div>

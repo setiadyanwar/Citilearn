@@ -27,7 +27,7 @@ const MainSearchBar = ({ searchQuery, handleSearch, variant = 'default', rightIc
         : "relative group w-full max-w-md mb-6 mx-auto md:mx-0";
 
     const inputClasses = variant === 'large'
-        ? "w-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-full py-6 md:py-7 pl-16 pr-20 text-lg font-medium text-gray-700 dark:text-white outline-none focus:border-primary/50 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.03)]"
+        ? "w-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-full py-6 md:py-7 pl-16 pr-20 text-lg font-medium text-gray-700 dark:text-white outline-none focus:border-primary/50 transition-all shadow-xl"
         : variant === 'inline'
             ? "w-full bg-gray-50/50 dark:bg-slate-800/30 border border-gray-100 dark:border-slate-800 rounded-2xl py-4 pl-12 pr-16 text-sm font-bold text-gray-700 dark:text-white outline-none focus:bg-white dark:focus:bg-slate-800 focus:border-primary/40 transition-all"
             : variant === 'compact'
@@ -94,7 +94,7 @@ const MainSearchBar = ({ searchQuery, handleSearch, variant = 'default', rightIc
                                 transition={{ duration: 0.4, ease: "easeOut" }}
                                 className="absolute"
                             >
-                                <Send size={iconSize} className="rotate-45 font-bold md:size-[20px]" />
+                                <Send size={iconSize} className="rotate-45 font-bold md:size-5" />
                             </motion.div>
                         ) : (
                             <motion.div
@@ -105,7 +105,7 @@ const MainSearchBar = ({ searchQuery, handleSearch, variant = 'default', rightIc
                                 transition={{ duration: 0.3 }}
                                 className="absolute"
                             >
-                                <ArrowRight size={iconSize} className="font-bold md:size-[20px]" strokeWidth={variant === 'large' ? 3 : 2} />
+                                <ArrowRight size={iconSize} className="font-bold md:size-5" strokeWidth={variant === 'large' ? 3 : 2} />
                             </motion.div>
                         )}
                     </AnimatePresence>

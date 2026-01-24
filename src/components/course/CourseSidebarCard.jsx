@@ -9,7 +9,7 @@ const CourseSidebarCard = ({ course }) => {
         <div className="relative">
             <div className="space-y-6">
                 {/* Main Course Card */}
-                <div className="bg-white dark:bg-slate-900 rounded-3xl border border-gray-200 dark:border-slate-800 shadow-[0_8px_30px_rgba(0,0,0,0.03)] dark:shadow-none overflow-hidden transition-colors">
+                <div className="bg-white dark:bg-slate-900 rounded-3xl border border-gray-200 dark:border-slate-800 overflow-hidden transition-colors">
                     <div className="relative h-56 group cursor-pointer overflow-hidden">
                         <img
                             src={course.thumbnail}
@@ -24,34 +24,34 @@ const CourseSidebarCard = ({ course }) => {
                         {/* Status Badge */}
                         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-2 shadow-sm">
                             <div className="w-2 h-2 rounded-full bg-[#F59E0B]" />
-                            <span className="text-[10px] font-bold text-slate-700">In Progress</span>
+                            <span className="text-3xs font-bold text-slate-700">In Progress</span>
                         </div>
                     </div>
 
                     <div className="p-10">
                         <div className="flex items-center justify-between mb-3 px-0.5 text-gray-400 dark:text-slate-500">
                             <span className="text-xs font-bold font-inter tracking-tight">Your Progress</span>
-                            <span className="text-sm font-black text-[#059669]">{course.progress}%</span>
+                            <span className="text-sm font-black text-citilearn-green">{course.progress}%</span>
                         </div>
-                        <div className="w-full h-2 bg-[#F1F5F9] dark:bg-slate-800 rounded-full overflow-hidden mb-8">
-                            <div className="h-full bg-[#059669] rounded-full" style={{ width: `${course.progress}%` }} />
+                        <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-8">
+                            <div className="h-full bg-citilearn-green rounded-full" style={{ width: `${course.progress}%` }} />
                         </div>
 
                         <button
                             onClick={() => navigate(`/learn/${course.id}`)}
-                            className="w-full h-14 bg-[#059669] hover:bg-[#047857] text-white font-bold text-lg rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-600/10 hover:-translate-y-0.5 transition-all mb-4"
+                            className="w-full h-14 bg-citilearn-green hover:bg-primary-dark text-white font-bold text-lg rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-600/10 hover:-translate-y-0.5 transition-all mb-4"
                         >
                             {course.progress === 0 ? 'Start Learning Now' : 'Continue Leaning'}
                         </button>
 
-                        <p className="text-center text-[10px] md:text-xs text-slate-400 dark:text-slate-500 font-medium tracking-tight">
+                        <p className="text-center text-3xs md:text-2xs text-slate-400 dark:text-slate-500 font-medium tracking-tight">
                             Ready to advance your skills? Let's start learning!
                         </p>
                     </div>
                 </div>
 
                 {/* Secondary Card (Learning Objectives) */}
-                <div className="bg-white dark:bg-slate-900 rounded-3xl border border-gray-100 dark:border-slate-800 p-10 shadow-sm">
+                <div className="bg-white dark:bg-slate-900 rounded-3xl border border-gray-100 dark:border-slate-800 p-10">
                     <h4 className="font-bold text-base text-citilink-dark dark:text-white mb-6">Learning Objectives & Syllabus (RPS)</h4>
                     <ul className="space-y-5">
                         {(course.learningOutcomes || [

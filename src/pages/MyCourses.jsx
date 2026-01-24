@@ -171,7 +171,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                             <div className="relative">
                                 <button
                                     onClick={() => setIsFilterOpen(!isFilterOpen)}
-                                    className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-xl text-[10px] font-bold text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group"
+                                    className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-xl text-2xs font-bold text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group"
                                 >
                                     {timeFilter} <ChevronDown size={14} className={`transition-transform duration-300 ${isFilterOpen ? 'rotate-180' : 'group-hover:translate-y-0.5'}`} />
                                 </button>
@@ -191,7 +191,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                                                         setTimeFilter(option);
                                                         setIsFilterOpen(false);
                                                     }}
-                                                    className={`w-full text-left px-4 py-2 text-[11px] font-bold transition-colors ${timeFilter === option
+                                                    className={`w-full text-left px-4 py-2 text-2xs font-bold transition-colors ${timeFilter === option
                                                         ? 'bg-primary/10 text-primary'
                                                         : 'text-gray-500 hover:bg-gray-50 dark:hover:bg-slate-800'
                                                         }`}
@@ -260,8 +260,8 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                                     >
                                         <div className="w-3.5 h-3.5 rounded-full shrink-0 shadow-sm" style={{ backgroundColor: topic.color }}></div>
                                         <div className="flex items-center gap-1.5 flex-1 min-w-0">
-                                            <span className="text-[14px] font-bold text-gray-500 dark:text-slate-400 truncate">{topic.name}</span>
-                                            <span className="text-[14px] font-black text-gray-800 dark:text-white ml-auto">{topic.value}%</span>
+                                            <span className="text-sm font-bold text-gray-500 dark:text-slate-400 truncate">{topic.name}</span>
+                                            <span className="text-sm font-black text-gray-800 dark:text-white ml-auto">{topic.value}%</span>
                                         </div>
                                     </motion.div>
                                 ))}
@@ -283,12 +283,12 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${activeTab === tab.id
-                                ? 'bg-[#059669] text-white'
+                                ? 'bg-citilearn-green text-white'
                                 : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white'
                                 }`}
                         >
                             <span>{tab.label}</span>
-                            <span className={`text-[10px] px-2 py-0.5 rounded-md min-w-[20px] text-center ${activeTab === tab.id
+                            <span className={`text-2xs px-2 py-0.5 rounded-md min-w-5 text-center ${activeTab === tab.id
                                 ? 'bg-white/20 text-white'
                                 : 'bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-gray-400 font-bold'
                                 }`}>
@@ -313,7 +313,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                         <button
                             onClick={() => setViewMode('grid')}
                             className={`p-2 rounded-xl transition-all ${viewMode === 'grid'
-                                ? 'bg-[#059669] text-white shadow-sm'
+                                ? 'bg-citilearn-green text-white shadow-sm'
                                 : 'text-gray-400 hover:text-gray-600 dark:hover:text-white'
                                 }`}
                         >
@@ -322,7 +322,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                         <button
                             onClick={() => setViewMode('list')}
                             className={`p-2 rounded-xl transition-all ${viewMode === 'list'
-                                ? 'bg-[#059669] text-white shadow-sm'
+                                ? 'bg-citilearn-green text-white shadow-sm'
                                 : 'text-gray-400 hover:text-gray-600 dark:hover:text-white'
                                 }`}
                         >

@@ -89,7 +89,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                             </div>
 
                             <div>
-                                <h3 className="text-lg font-black text-slate-800 dark:text-white mb-3">About This Lesson</h3>
+                                <h3 className="text-lg font-black text-citilink-dark dark:text-white mb-3">About This Lesson</h3>
                                 <p className="text-gray-500 dark:text-slate-400 text-sm leading-relaxed font-medium">
                                     This module covers critical aspects of <strong>{activeLesson?.title}</strong>.
                                     In this session, we will explore the fundamental procedures required for maintaining high safety standards.
@@ -98,7 +98,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                             </div>
 
                             <div className="space-y-4">
-                                <h3 className="text-lg font-black text-slate-800 dark:text-white">Learning Outcomes & Objectives (RPS)</h3>
+                                <h3 className="text-lg font-black text-citilink-dark dark:text-white">Learning Outcomes & Objectives (RPS)</h3>
                                 <div className="space-y-3">
                                     {(course.learningOutcomes || [
                                         "Implement hazard identification and risk assessment (HIRA) in airport operations.",
@@ -117,7 +117,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
 
                     {activeTab === 'resources' && (
                         <div className="space-y-4">
-                            <h3 className="text-sm font-bold text-slate-800 dark:text-white mb-4">Downloadable Materials</h3>
+                            <h3 className="text-sm font-bold text-citilink-dark dark:text-white mb-4">Downloadable Materials</h3>
                             <ResourceItem
                                 title="Lesson Slide Deck.pdf"
                                 size="2.4 MB"
@@ -139,7 +139,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                                 <img src={`https://ui-avatars.com/api/?name=Citilink+Academy&background=059669&color=fff`} alt="Instructor" className="w-full h-full object-cover" />
                             </div>
                             <div>
-                                <h3 className="text-sm font-bold text-slate-800 dark:text-white">Citilink Academy Team</h3>
+                                <h3 className="text-sm font-bold text-citilink-dark dark:text-white">Citilink Academy Team</h3>
                                 <p className="text-xs text-primary font-black mb-3">Official Training Partner</p>
                                 <p className="text-[13px] text-gray-500 dark:text-slate-400 leading-relaxed max-w-lg font-medium">
                                     The Citilink Academy Team consists of experienced senior flight instructors and safety experts dedicated to maintaining the highest standards of aviation safety and service excellence.

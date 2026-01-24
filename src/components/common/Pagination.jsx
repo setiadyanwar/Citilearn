@@ -63,7 +63,7 @@ const Pagination = ({
             )}
 
             {/* Page Numbers */}
-            <div className="flex items-center gap-2 bg-gray-50/50 dark:bg-slate-900/30 p-1.5 rounded-[22px] border border-gray-100 dark:border-slate-800">
+            <div className="flex items-center gap-2 bg-gray-50/50 dark:bg-slate-900/30 p-1.5 rounded-2xl-m border border-gray-100 dark:border-slate-800">
                 {getPageNumbers().map((page, index) => {
                     if (page === '...') {
                         return (
@@ -80,7 +80,7 @@ const Pagination = ({
                             key={page}
                             onClick={() => onPageChange(page)}
                             className={`
-                                min-w-[40px] h-10 px-4 flex items-center justify-center rounded-[18px] text-sm font-black transition-all duration-300
+                                min-w-10 h-10 px-4 flex items-center justify-center rounded-xl-p text-sm font-black transition-all duration-300
                                 ${isActive
                                     ? 'bg-primary text-white transform scale-105'
                                     : 'text-gray-500 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:text-primary dark:hover:text-primary active:scale-95'

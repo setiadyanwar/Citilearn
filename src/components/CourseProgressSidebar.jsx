@@ -49,7 +49,7 @@ const CourseProgressSidebar = ({
                     {/* Progress Header */}
                     <div className="p-6 border-b border-gray-50 dark:border-slate-800 shrink-0">
                         <div className="flex items-center justify-between mb-3 px-0.5">
-                            <span className="text-sm font-black text-slate-800 dark:text-white">Course Progress</span>
+                            <span className="text-sm font-black text-citilink-dark dark:text-white">Course Progress</span>
                             <span className="text-sm font-black text-[#059669]">{progressPercentage}%</span>
                         </div>
                         <ProgressBar progress={progressPercentage} />

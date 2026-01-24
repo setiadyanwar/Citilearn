@@ -224,7 +224,7 @@ const Header = ({
                                     >
                                         <div className="space-y-4">
                                             <div>
-                                                <p className={`text-[10px] font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-slate-500' : 'text-gray-400'}`}>Category</p>
+                                                <p className={`text-2xs font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-slate-500' : 'text-gray-400'}`}>Category</p>
                                                 <div className="flex flex-wrap gap-1.5">
                                                     {['All', 'Aviation', 'Safety', 'Technical', 'Leadership'].map(cat => (
                                                         <button
@@ -240,7 +240,7 @@ const Header = ({
                                                 </div>
                                             </div>
                                             <div>
-                                                <p className={`text-[10px] font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-slate-500' : 'text-gray-400'}`}>Status</p>
+                                                <p className={`text-2xs font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-slate-500' : 'text-gray-400'}`}>Status</p>
                                                 <div className="flex flex-wrap gap-1.5">
                                                     {['All', 'Not Started', 'On Progress', 'Done'].map(stat => (
                                                         <button
@@ -267,7 +267,7 @@ const Header = ({
             <div className="flex items-center gap-6">
                 <button className="relative p-1 text-slate-400 hover:text-primary transition-colors">
                     <Bell size={24} />
-                    <div className="absolute -top-1 -right-1 w-5 h-5 bg-[#F1E304] rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-[10px] text-black font-bold">1</div>
+                    <div className="absolute -top-1 -right-1 w-5 h-5 bg-citilearn-secondary rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-2xs text-citilink-dark font-bold">1</div>
                 </button>
 
                 <div className="profile-dropdown-container relative" ref={dropdownRef}>
@@ -279,8 +279,8 @@ const Header = ({
                             <img src={budi_pratama} alt="User" className="w-full h-full object-cover" />
                         </div>
                         <div className="hidden sm:flex flex-col items-start leading-tight">
-                            <span className={`text-base font-bold ${isDark ? 'text-white' : 'text-[#334155]'}`}>Setiady Anwar</span>
-                            <span className={`text-sm ${isDark ? 'text-slate-400' : 'text-[#94a3b8]'}`}>Senior Flight Instructor</span>
+                            <span className={`text-base font-bold ${isDark ? 'text-white' : 'text-citilink-dark'}`}>Setiady Anwar</span>
+                            <span className={`text-sm ${isDark ? 'text-slate-400' : 'text-slate-400'}`}>Senior Flight Instructor</span>
                         </div>
                     </button>
 
@@ -345,7 +345,7 @@ export const Layout = ({
     const showGlobalPip = pipVideo && !isLearningPage;
 
     return (
-        <div className={`flex min-h-screen font-lato relative transition-colors duration-300 ${isDark ? 'dark bg-slate-950 text-white' : 'bg-gray-50 text-gray-900'}`}>
+        <div className={`flex min-h-screen font-lato relative transition-colors duration-300 ${isDark ? 'dark bg-slate-950 text-white' : 'bg-gray-50 text-citilink-dark'}`}>
             <Sidebar
                 isCollapsed={isCollapsed}
                 toggleSidebar={() => setIsCollapsed(!isCollapsed)}

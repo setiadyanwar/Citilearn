@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700;900&display=swap');
 
 @import "tailwindcss";
 
@@ -10,14 +10,24 @@
   --color-accent-hover: #e5d702;
   --color-surface: #ffffff;
   --color-background: #ffffff;
-  --color-citilink-dark: #1e1e1e;
+  --color-citilink-dark: #424242;
   --color-citilink-gray: #f5f5f5;
+  --color-citilearn-secondary: #F1E304;
+  --color-citilearn-green: #059669;
+  --color-citilearn-green-light: #EBF7F2;
 
   --font-lato: "Lato", sans-serif;
+  --text-2xs: 12px;
+  --text-3xs: 10px;
 
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
+  --radius-xl-p: 18px;
+  --radius-2xl-m: 22px;
+  --radius-2xl: 24px;
+  --radius-3xl: 28px;
+  --radius-4xl: 32px;
 
   --breakpoint-md: 768px;
 
