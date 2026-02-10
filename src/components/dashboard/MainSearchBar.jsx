@@ -27,12 +27,12 @@ const MainSearchBar = ({ searchQuery, handleSearch, variant = 'default', rightIc
         : "relative group w-full max-w-md mb-6 mx-auto md:mx-0";
 
     const inputClasses = variant === 'large'
-        ? "w-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-full py-6 md:py-7 pl-16 pr-20 text-lg font-medium text-gray-700 dark:text-white outline-none focus:border-primary/50 transition-all shadow-xl"
+        ? "w-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-full py-6 md:py-7 pl-16 pr-20 text-lg font-medium text-main dark:text-white outline-none focus:border-primary/50 transition-all"
         : variant === 'inline'
-            ? "w-full bg-gray-50/50 dark:bg-slate-800/30 border border-gray-100 dark:border-slate-800 rounded-2xl py-4 pl-12 pr-16 text-sm font-bold text-gray-700 dark:text-white outline-none focus:bg-white dark:focus:bg-slate-800 focus:border-primary/40 transition-all"
+            ? "w-full bg-gray-50/50 dark:bg-slate-800/30 border border-gray-100 dark:border-slate-800 rounded-2xl py-4 pl-12 pr-16 text-sm font-bold text-main dark:text-white outline-none focus:bg-white dark:focus:bg-slate-800 focus:border-primary/40 transition-all"
             : variant === 'compact'
-                ? "w-full h-11 bg-gray-100 dark:bg-slate-800/50 border border-gray-200 dark:border-slate-700 rounded-xl pl-10 pr-12 text-sm font-medium text-gray-700 dark:text-white outline-none focus:border-primary/50 focus:bg-white dark:focus:bg-slate-900 transition-all"
-                : "w-full bg-white dark:bg-slate-800 border-2 border-gray-100 dark:border-slate-700 rounded-full py-3.5 md:py-4 pl-12 pr-16 text-sm font-bold text-gray-700 dark:text-white outline-none focus:border-primary/50 transition-all placeholder:transition-all placeholder:duration-500";
+                ? "w-full h-11 bg-gray-100 dark:bg-slate-800/50 border border-gray-200 dark:border-slate-700 rounded-xl pl-10 pr-12 text-sm font-medium text-main dark:text-white outline-none focus:border-primary/50 focus:bg-white dark:focus:bg-slate-900 transition-all"
+                : "w-full bg-white dark:bg-slate-800 border-2 border-gray-100 dark:border-slate-700 rounded-full py-3.5 md:py-4 pl-12 pr-16 text-sm font-bold text-main dark:text-white outline-none focus:border-primary/50 transition-all placeholder:transition-all placeholder:duration-500";
 
     const iconSize = variant === 'large' ? 24 : 16;
     const iconLeft = (variant === 'large' || variant === 'inline' || variant === 'compact')
@@ -42,7 +42,7 @@ const MainSearchBar = ({ searchQuery, handleSearch, variant = 'default', rightIc
     return (
         <div className={containerClasses}>
             <div className={`absolute inset-y-0 ${iconLeft} flex items-center pointer-events-none`}>
-                <Search size={iconSize} className="text-gray-400 group-focus-within:text-primary transition-colors" />
+                <Search size={iconSize} className="text-tertiary group-focus-within:text-primary transition-colors" />
             </div>
             <input
                 type="text"
@@ -68,7 +68,7 @@ const MainSearchBar = ({ searchQuery, handleSearch, variant = 'default', rightIc
                     ${variant === 'default' ? 'rounded-full' : (variant === 'inline' ? 'rounded-2xl' : 'rounded-xl')}
                     ${isSearchHovered || rightIcon
                         ? 'bg-primary text-white'
-                        : 'bg-accent text-citilink-dark'
+                        : 'bg-accent text-main'
                     }
                 `}
             >

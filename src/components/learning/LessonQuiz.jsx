@@ -3,7 +3,7 @@ import QuizHeader from './quiz/QuizHeader';
 import QuizOption from './quiz/QuizOption';
 import QuizFeedback from './quiz/QuizFeedback';
 import QuizResultSummary from './quiz/QuizResultSummary';
-import Button from '../common/Button';
+import { Button } from '@/components/ui/button';
 
 const LessonQuiz = ({
     activeLesson,

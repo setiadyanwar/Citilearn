@@ -37,8 +37,8 @@ const CourseDetail = () => {
 
     if (!course) return (
         <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-            <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-2">Course Not Found</h2>
-            <p className="text-gray-500 dark:text-slate-500 text-sm mb-6">The course you are looking for doesn't exist or has been removed.</p>
+            <h2 className="text-xl font-bold text-main dark:text-white mb-2">Course Not Found</h2>
+            <p className="text-secondary dark:text-slate-500 text-sm mb-6">The course you are looking for doesn't exist or has been removed.</p>
             <button onClick={() => navigate('/')} className="px-6 py-2.5 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
                 Back to Dashboard
             </button>

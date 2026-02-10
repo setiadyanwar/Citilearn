@@ -39,7 +39,7 @@ const CourseProgressSidebar = ({
             `}>
                 <button
                     onClick={() => navigate('/')}
-                    className="flex items-center gap-3 text-gray-400 dark:text-slate-500 font-medium text-sm hover:text-slate-700 dark:hover:text-white transition-all group w-fit mb-2 px-1"
+                    className="flex items-center gap-3 text-tertiary dark:text-slate-500 font-medium text-sm hover:text-slate-700 dark:hover:text-white transition-all group w-fit mb-2 px-1"
                 >
                     <ChevronLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                     Back to dashboard
@@ -49,7 +49,7 @@ const CourseProgressSidebar = ({
                     {/* Progress Header */}
                     <div className="p-6 border-b border-gray-50 dark:border-slate-800 shrink-0">
                         <div className="flex items-center justify-between mb-3 px-0.5">
-                            <span className="text-sm font-black text-citilink-dark dark:text-white">Course Progress</span>
+                            <span className="text-sm font-black text-main dark:text-white">Course Progress</span>
                             <span className="text-sm font-black text-[#059669]">{progressPercentage}%</span>
                         </div>
                         <ProgressBar progress={progressPercentage} />
@@ -59,7 +59,7 @@ const CourseProgressSidebar = ({
                     <div className="p-2 divide-y divide-gray-50 dark:divide-slate-800 overflow-y-auto custom-scrollbar flex-1">
                         {course.modules.map((module, mIdx) => (
                             <div key={module.id} className="py-4 first:pt-2 last:pb-2 px-2">
-                                <div className="px-2 flex items-center justify-between mb-3 text-gray-400 dark:text-slate-500 font-bold uppercase tracking-wider">
+                                <div className="px-2 flex items-center justify-between mb-3 text-tertiary dark:text-slate-500 font-bold uppercase tracking-wider">
                                     <span className="text-[10px]">Module {mIdx + 1}</span>
                                     <span className="text-[10px]">{module.lessons.length} item</span>
                                 </div>

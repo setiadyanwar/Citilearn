@@ -4,17 +4,22 @@
 
 @theme {
   --color-primary: #018144;
+  --color-primary-foreground: #ffffff;
   --color-primary-dark: #0e5b29;
   --color-primary-light: #f0fdf4;
   --color-accent: #f4e502;
   --color-accent-hover: #e5d702;
   --color-surface: #ffffff;
-  --color-background: #ffffff;
+  --color-background: #F9F9F9;
   --color-citilink-dark: #424242;
   --color-citilink-gray: #f5f5f5;
   --color-citilearn-secondary: #F1E304;
   --color-citilearn-green: #059669;
   --color-citilearn-green-light: #EBF7F2;
+
+  --color-main: #424242;
+  --color-secondary: #7A7A7A;
+  --color-tertiary: #9C9C9C;
 
   --font-lato: "Lato", sans-serif;
   --text-2xs: 12px;
@@ -102,7 +107,7 @@
 
 @layer base {
   body {
-    @apply font-lato bg-background text-citilink-dark antialiased leading-relaxed;
+    @apply font-lato bg-background text-main antialiased leading-relaxed;
   }
 }
 
@@ -112,7 +117,7 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-white font-bold py-2.5 px-6 rounded-md hover:bg-primary-dark transition-all duration-200 inline-flex items-center gap-2 text-sm shadow-sm;
+    @apply bg-primary text-white font-bold py-2.5 px-6 rounded-xl hover:bg-primary-dark transition-all duration-200 inline-flex items-center gap-2 text-sm;
   }
 
   .btn-primary:active {
@@ -120,7 +125,7 @@
   }
 
   .btn-accent {
-    @apply bg-accent text-citilink-dark font-bold py-2.5 px-6 rounded-md hover:bg-accent-hover transition-all duration-200 inline-flex items-center gap-2 text-sm;
+    @apply bg-accent text-main font-bold py-2.5 px-6 rounded-md hover:bg-accent-hover transition-all duration-200 inline-flex items-center gap-2 text-sm;
   }
 
   .progress-container {

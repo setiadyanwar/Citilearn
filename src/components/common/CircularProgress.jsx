@@ -5,7 +5,8 @@ const CircularProgress = ({
     size = 'w-16 h-16',
     strokeWidth = 10,
     color = 'text-primary',
-    trackColor = 'text-gray-100 dark:text-citilink-dark'
+    trackColor = 'text-gray-100 dark:text-main',
+    textSize = 'text-sm'
 }) => {
     const radius = 42;
     const circumference = 2 * Math.PI * radius;
@@ -32,7 +33,7 @@ const CircularProgress = ({
                     strokeLinecap="round"
                 />
             </svg>
-            <span className={`absolute inset-0 flex items-center justify-center text-sm font-black ${color}`}>
+            <span className={`absolute inset-0 flex items-center justify-center font-black ${textSize} ${color}`}>
                 {progress}%
             </span>
         </div>

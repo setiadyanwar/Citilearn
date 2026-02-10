@@ -10,7 +10,7 @@ const Breadcrumb = ({ items, onBack, showBack = true }) => {
             {showBack && (
                 <button
                     onClick={onBack || (() => navigate(-1))}
-                    className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full text-gray-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary hover:bg-primary/10 transition-all"
+                    className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full text-tertiary dark:text-slate-500 hover:text-primary dark:hover:text-primary hover:bg-primary/10 transition-all"
                     title="Go Back"
                 >
                     <ChevronLeft size={20} />
@@ -19,9 +19,9 @@ const Breadcrumb = ({ items, onBack, showBack = true }) => {
 
             {showBack && <div className="h-6 w-px bg-gray-200 dark:bg-slate-800 flex-shrink-0" />}
 
-            <nav className="flex items-center gap-2 text-sm font-bold text-gray-500 dark:text-slate-400 overflow-x-auto whitespace-nowrap no-scrollbar flex-1 min-w-0 pr-4">
+            <nav className="flex items-center gap-2 text-sm font-bold text-secondary dark:text-slate-400 overflow-x-auto whitespace-nowrap no-scrollbar flex-1 min-w-0 pr-4">
                 <div
-                    className="flex items-center gap-2 hover:text-citilink-dark dark:hover:text-white cursor-pointer transition-colors flex-shrink-0"
+                    className="flex items-center gap-2 hover:text-main dark:hover:text-white cursor-pointer transition-colors flex-shrink-0"
                     onClick={() => navigate('/')}
                 >
                     <Home size={16} />
@@ -30,11 +30,11 @@ const Breadcrumb = ({ items, onBack, showBack = true }) => {
 
                 {items.map((item, index) => (
                     <React.Fragment key={index}>
-                        <ChevronRight size={14} className="text-gray-300 dark:text-slate-700 flex-shrink-0" />
+                        <ChevronRight size={14} className="text-tertiary dark:text-slate-700 flex-shrink-0" />
                         <div
                             className={
                                 item.link
-                                    ? "hover:text-citilink-dark dark:hover:text-white cursor-pointer transition-colors flex-shrink-0"
+                                    ? "hover:text-main dark:hover:text-white cursor-pointer transition-colors flex-shrink-0"
                                     : "text-primary truncate"
                             }
                             onClick={item.link ? () => navigate(item.link) : undefined}

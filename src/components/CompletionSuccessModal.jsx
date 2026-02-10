@@ -16,7 +16,7 @@ const CompletionSuccessModal = ({ isOpen }) => {
                         initial={{ scale: 0.5, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.8, opacity: 0 }}
-                        className="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-2xl dark:shadow-none flex flex-col items-center justify-center relative overflow-hidden max-w-sm w-full mx-4 border border-transparent dark:border-slate-800"
+                        className="bg-white dark:bg-slate-900 p-8 rounded-3xl flex flex-col items-center justify-center relative overflow-hidden max-w-sm w-full mx-4 border border-transparent dark:border-slate-800"
                     >
                         {/* Animated Background Rays */}
                         <motion.div
@@ -41,11 +41,11 @@ const CompletionSuccessModal = ({ isOpen }) => {
                             transition={{ delay: 0.2 }}
                             className="relative z-10 flex flex-col items-center"
                         >
-                            <div className="w-20 h-20 bg-emerald-100 dark:bg-emerald-900/20 rounded-full flex items-center justify-center mb-4 shadow-lg shadow-emerald-200/50 dark:shadow-none">
+                            <div className="w-20 h-20 bg-emerald-100 dark:bg-emerald-900/20 rounded-full flex items-center justify-center mb-4">
                                 <CheckCircle2 size={40} className="text-emerald-500" />
                             </div>
-                            <h3 className="text-2xl font-black text-gray-800 dark:text-white mb-1">Awesome!</h3>
-                            <p className="text-gray-500 dark:text-slate-400 font-bold text-sm">Lesson Completed</p>
+                            <h3 className="text-2xl font-black text-main dark:text-white mb-1">Awesome!</h3>
+                            <p className="text-secondary dark:text-slate-400 font-bold text-sm">Lesson Completed</p>
                         </motion.div>
 
                         {/* Decorative Plane (Smaller, fast) */}

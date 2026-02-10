@@ -7,13 +7,13 @@ const QuizOption = ({ option, idx, isSelected, onClick }) => {
             className={`
                 w-full flex items-center gap-4 p-2 rounded-2xl text-left transition-all border
                 ${isSelected
-                    ? 'bg-[#EBF7F2] border-[#059669] text-[#059669]'
-                    : 'bg-transparent border-transparent hover:bg-slate-50 text-slate-600 dark:text-slate-400'}
+                    ? 'bg-primary/10 border-primary text-primary'
+                    : 'bg-transparent border-transparent hover:bg-slate-50 text-secondary dark:text-slate-400'}
             `}
         >
             <div className={`
                 w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm shrink-0 transition-all
-                ${isSelected ? 'bg-[#059669] text-white' : 'bg-[#F8FAFC] dark:bg-slate-800 text-slate-400'}
+                ${isSelected ? 'bg-primary text-white' : 'bg-gray-50 dark:bg-slate-800 text-tertiary'}
             `}>
                 {String.fromCharCode(65 + idx)}
             </div>

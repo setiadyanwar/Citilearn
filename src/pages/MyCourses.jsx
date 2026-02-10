@@ -121,20 +121,20 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                 {/* Resume Training */}
                 <div className="lg:col-span-8 flex flex-col">
                     <div className="flex items-center justify-between mb-3 px-1">
-                        <h2 className="text-xl font-black flex items-center gap-2.5 text-citilink-dark dark:text-white">
+                        <h2 className="text-xl font-black flex items-center gap-2.5 text-main dark:text-white">
                             <span className="w-1.5 h-6 bg-amber-500 rounded-full"></span>
                             Resume Training
                         </h2>
                         <div className="flex gap-2">
                             <button
                                 onClick={() => scroll('left')}
-                                className="p-1.5 rounded-full bg-gray-100 dark:bg-slate-800 text-gray-400 hover:text-primary transition-colors active:scale-90"
+                                className="p-1.5 rounded-full bg-gray-100 dark:bg-slate-800 text-tertiary hover:text-primary transition-colors active:scale-90"
                             >
                                 <ChevronLeft size={18} />
                             </button>
                             <button
                                 onClick={() => scroll('right')}
-                                className="p-1.5 rounded-full bg-gray-100 dark:bg-slate-800 text-gray-400 hover:text-primary transition-colors active:scale-90"
+                                className="p-1.5 rounded-full bg-gray-100 dark:bg-slate-800 text-tertiary hover:text-primary transition-colors active:scale-90"
                             >
                                 <ChevronRight size={18} />
                             </button>
@@ -153,7 +153,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                                     </div>
                                 ))
                             ) : (
-                                <div className="w-full bg-gray-50 dark:bg-slate-900 border border-dashed border-gray-200 dark:border-slate-800 rounded-2xl p-8 text-center text-gray-400 font-medium flex items-center justify-center">
+                                <div className="w-full bg-gray-50 dark:bg-slate-900 border border-dashed border-gray-200 dark:border-slate-800 rounded-2xl p-8 text-center text-tertiary font-medium flex items-center justify-center">
                                     No courses to resume
                                 </div>
                             )}
@@ -167,11 +167,11 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                 <div className="lg:col-span-4">
                     <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-3xl p-5 shadow-sm h-full flex flex-col justify-between">
                         <div className="flex items-center justify-between mb-4 relative">
-                            <h2 className="text-xl font-black text-gray-800 dark:text-white">Course Topic</h2>
+                            <h2 className="text-xl font-black text-main dark:text-white">Course Topic</h2>
                             <div className="relative">
                                 <button
                                     onClick={() => setIsFilterOpen(!isFilterOpen)}
-                                    className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-xl text-2xs font-bold text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group"
+                                    className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-xl text-2xs font-bold text-secondary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group"
                                 >
                                     {timeFilter} <ChevronDown size={14} className={`transition-transform duration-300 ${isFilterOpen ? 'rotate-180' : 'group-hover:translate-y-0.5'}`} />
                                 </button>
@@ -193,7 +193,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                                                     }}
                                                     className={`w-full text-left px-4 py-2 text-2xs font-bold transition-colors ${timeFilter === option
                                                         ? 'bg-primary/10 text-primary'
-                                                        : 'text-gray-500 hover:bg-gray-50 dark:hover:bg-slate-800'
+                                                        : 'text-secondary hover:bg-gray-50 dark:hover:bg-slate-800'
                                                         }`}
                                                 >
                                                     {option}
@@ -260,8 +260,8 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                                     >
                                         <div className="w-3.5 h-3.5 rounded-full shrink-0 shadow-sm" style={{ backgroundColor: topic.color }}></div>
                                         <div className="flex items-center gap-1.5 flex-1 min-w-0">
-                                            <span className="text-sm font-bold text-gray-500 dark:text-slate-400 truncate">{topic.name}</span>
-                                            <span className="text-sm font-black text-gray-800 dark:text-white ml-auto">{topic.value}%</span>
+                                            <span className="text-sm font-bold text-secondary dark:text-slate-400 truncate">{topic.name}</span>
+                                            <span className="text-sm font-black text-main dark:text-white ml-auto">{topic.value}%</span>
                                         </div>
                                     </motion.div>
                                 ))}
@@ -284,13 +284,13 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                             onClick={() => setActiveTab(tab.id)}
                             className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${activeTab === tab.id
                                 ? 'bg-citilearn-green text-white'
-                                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white'
+                                : 'text-secondary hover:text-gray-700 dark:text-gray-400 dark:hover:text-white'
                                 }`}
                         >
                             <span>{tab.label}</span>
                             <span className={`text-2xs px-2 py-0.5 rounded-md min-w-5 text-center ${activeTab === tab.id
                                 ? 'bg-white/20 text-white'
-                                : 'bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-gray-400 font-bold'
+                                : 'bg-gray-100 dark:bg-slate-800 text-secondary dark:text-gray-400 font-bold'
                                 }`}>
                                 {tab.count}
                             </span>
@@ -314,7 +314,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                             onClick={() => setViewMode('grid')}
                             className={`p-2 rounded-xl transition-all ${viewMode === 'grid'
                                 ? 'bg-citilearn-green text-white shadow-sm'
-                                : 'text-gray-400 hover:text-gray-600 dark:hover:text-white'
+                                : 'text-tertiary hover:text-gray-600 dark:hover:text-white'
                                 }`}
                         >
                             <LayoutGrid size={20} />
@@ -323,7 +323,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                             onClick={() => setViewMode('list')}
                             className={`p-2 rounded-xl transition-all ${viewMode === 'list'
                                 ? 'bg-citilearn-green text-white shadow-sm'
-                                : 'text-gray-400 hover:text-gray-600 dark:hover:text-white'
+                                : 'text-tertiary hover:text-gray-600 dark:hover:text-white'
                                 }`}
                         >
                             <ListIcon size={20} />
@@ -355,10 +355,10 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                 ) : (
                     <div className="col-span-full py-20 text-center space-y-4">
                         <div className="w-20 h-20 bg-gray-50 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto">
-                            <Search size={32} className="text-gray-300" />
+                            <Search size={32} className="text-tertiary" />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-800 dark:text-white">No courses found</h3>
-                        <p className="text-gray-500 max-w-xs mx-auto">Try adjusting your search or filters to find what you're looking for.</p>
+                        <h3 className="text-xl font-bold text-main dark:text-white">No courses found</h3>
+                        <p className="text-secondary max-w-xs mx-auto">Try adjusting your search or filters to find what you're looking for.</p>
                     </div>
                 )}
             </div>

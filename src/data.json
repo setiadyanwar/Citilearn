@@ -209,7 +209,8 @@
                 "Develop robust aviation safety policies aligned with Citilink standards.",
                 "Execute reactive and proactive safety monitoring methods and safety assurance."
             ],
-            "category": "Safety"
+            "category": "Safety",
+            "timeLeft": "4h 30m left"
         },
         {
             "id": "c2",
@@ -346,7 +347,8 @@
                 "Master de-escalation techniques for passenger conflict resolution.",
                 "Communicate effectively in high-pressure in-flight environments."
             ],
-            "category": "Service"
+            "category": "Service",
+            "timeLeft": "6h 25m left"
         },
         {
             "id": "c3",
@@ -624,6 +626,7 @@
             "duration": "5h 30m",
             "status": "On Progress",
             "progress": 20,
+            "timeLeft": "4h 15m left",
             "thumbnail": "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&q=80&w=800",
             "modules": [
                 {

@@ -5,28 +5,28 @@ const StatCard = ({ icon, label, value, trend, trendType = 'neutral', progress }
         switch (trendType) {
             case 'reward': return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 border-yellow-200 dark:border-yellow-800/50';
             case 'success': return 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/50';
-            default: return 'bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 border-gray-200 dark:border-slate-700';
+            default: return 'bg-gray-100 dark:bg-slate-800 text-secondary dark:text-slate-400 border-gray-200 dark:border-slate-700';
         }
     };
 
     return (
-        <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between transition-all duration-300 hover:border-primary dark:hover:border-primary hover:bg-emerald-50/50 dark:hover:bg-slate-800 group cursor-default relative overflow-hidden shadow-lg shadow-gray-200/50 dark:shadow-none">
+        <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between transition-all duration-300 hover:border-primary dark:hover:border-primary hover:bg-emerald-50/50 dark:hover:bg-slate-800 group cursor-default relative overflow-hidden">
             <div className="flex flex-col gap-1 w-full relative z-10">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-gray-700 dark:text-slate-400 group-hover:text-primary transition-colors">{label}</span>
+                        <span className="text-xs font-bold text-secondary dark:text-slate-400 group-hover:text-primary transition-colors">{label}</span>
                         {trend && (
                             <div className={`text-[10px] font-bold px-2 py-0.5 rounded-full border transition-colors ${getTrendStyles()}`}>
                                 {trend}
                             </div>
                         )}
                     </div>
-                    <div className="text-gray-300 dark:text-slate-600 group-hover:text-primary transition-colors shrink-0 ml-4">
+                    <div className="text-tertiary dark:text-slate-600 group-hover:text-primary transition-colors shrink-0 ml-4">
                         {icon}
                     </div>
                 </div>
 
-                <div className="text-3xl font-black text-citilink-dark dark:text-white tracking-tight mt-1">{value}</div>
+                <div className="text-3xl font-black text-main dark:text-white tracking-tight mt-1">{value}</div>
 
                 {progress !== undefined && (
                     <div className="w-full h-2.5 bg-gray-100 dark:bg-slate-800 rounded-full mt-3 overflow-hidden max-w-[85%] relative">

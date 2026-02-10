@@ -16,7 +16,7 @@ const ContinueLearningCard = ({ course }) => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center md:hidden">
-                    <div className="w-10 h-10 rounded-full bg-white/90 dark:bg-slate-900/90 flex items-center justify-center text-primary shadow-sm">
+                    <div className="w-10 h-10 rounded-full bg-white/90 dark:bg-slate-900/90 flex items-center justify-center text-primary">
                         <Play size={16} fill="currentColor" />
                     </div>
                 </div>
@@ -26,26 +26,26 @@ const ContinueLearningCard = ({ course }) => {
             <div className="p-4 flex flex-col justify-center flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-3 mb-2">
                     <Badge variant="warning" size="xs">Continue</Badge>
-                    <div className="flex items-center gap-1 text-gray-400 dark:text-slate-500 font-bold tracking-tight shrink-0">
-                        <Clock size={12} className="text-gray-400" />
+                    <div className="flex items-center gap-1 text-tertiary dark:text-slate-500 font-bold tracking-tight shrink-0">
+                        <Clock size={12} className="text-tertiary" />
                         <span className="text-2xs">{course.duration} left</span>
                     </div>
                 </div>
 
-                <h3 className="text-lg font-black text-citilink-dark dark:text-white mb-1 truncate leading-tight group-hover:text-primary transition-colors" title={course.title}>
+                <h3 className="text-lg font-black text-main dark:text-white mb-1 truncate leading-tight group-hover:text-primary transition-colors" title={course.title}>
                     {course.title}
                 </h3>
 
                 <p className="text-sm mb-4 line-clamp-1">
-                    <span className="text-gray-400 dark:text-slate-500 font-semibold">Next:</span>
-                    <span className="text-citilink-dark dark:text-white font-semibold ml-1.5 text-2xs tracking-tight">
+                    <span className="text-secondary dark:text-slate-500 font-semibold">Next:</span>
+                    <span className="text-main dark:text-white font-semibold ml-1.5 text-2xs tracking-tight">
                         {course.modules[0]?.lessons[0]?.title || "Module 1"}
                     </span>
                 </p>
 
                 <div className="space-y-1.5">
                     <div className="flex justify-between items-center font-black">
-                        <span className="text-xs text-gray-400 dark:text-slate-500 uppercase tracking-tight">Progress</span>
+                        <span className="text-xs text-tertiary dark:text-slate-500 uppercase tracking-tight">Progress</span>
                         <span className="text-sm text-primary">{course.progress}%</span>
                     </div>
                     <ProgressBar progress={course.progress} height="h-1.5" />

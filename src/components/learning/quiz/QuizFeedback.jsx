@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckCircle2, X } from 'lucide-react';
-import Button from '../../common/Button';
+import { Button } from "@/components/ui/button";
 
 const QuizFeedback = ({ isCorrect, onNext, isLastQuestion, isFinalQuiz }) => {
     return (
@@ -21,7 +21,7 @@ const QuizFeedback = ({ isCorrect, onNext, isLastQuestion, isFinalQuiz }) => {
                 </p>
             </div>
             <Button
-                variant={isCorrect ? 'primary' : 'secondary'}
+                variant={isCorrect ? 'default' : 'secondary'}
                 size="sm"
                 onClick={onNext}
             >

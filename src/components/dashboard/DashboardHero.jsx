@@ -50,16 +50,16 @@ const DashboardHero = ({
                             <span className="text-primary dark:text-emerald-400 font-bold text-base md:text-lg">
                                 Welcome Back
                             </span>
-                            <div className="w-7 h-7 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
+                            <div className="w-7 h-7 rounded-full overflow-hidden border-2 border-white shrink-0">
                                 <img src={budi_pratama} alt="User" className="w-full h-full object-cover" />
                             </div>
                         </div>
 
-                        <h2 className="text-3xl md:text-4xl font-black text-citilink-dark dark:text-white leading-tight">
+                        <h2 className="text-3xl md:text-4xl font-black text-main dark:text-white leading-tight">
                             Capt. Setiady Anwar
                         </h2>
 
-                        <p className="text-sm text-gray-500 dark:text-slate-400 font-medium leading-relaxed max-w-sm">
+                        <p className="text-base text-secondary dark:text-slate-400 font-medium leading-relaxed max-w-lg">
                             Monitor your training progress, complete mandatory updates, and access your operational manuals here.
                         </p>
                     </div>
@@ -70,14 +70,14 @@ const DashboardHero = ({
 
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-2">
                         {/* Category Filter */}
-                        <div className="flex bg-gray-50 dark:bg-slate-800/50 border border-gray-100 dark:border-slate-800 rounded-xl p-1 overflow-x-auto no-scrollbar max-w-full items-center h-10 md:h-11">
+                        <div className="flex gap-2 bg-gray-50 dark:bg-slate-800/50 border border-gray-100 dark:border-slate-800 rounded-full p-1 overflow-x-auto no-scrollbar max-w-full items-center h-10 md:h-11">
                             {COURSE_CATEGORIES.map(filter => (
                                 <button
                                     key={filter}
                                     onClick={() => setSelectedCategory(filter)}
-                                    className={`text-2xs md:text-xs font-bold px-3 md:px-4 h-full rounded-lg transition-all whitespace-nowrap ${selectedCategory === filter
-                                        ? 'bg-primary text-white shadow-md'
-                                        : 'text-gray-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 hover:text-citilink-dark dark:hover:text-white'}`}
+                                    className={`text-sm font-bold px-3 md:px-4 h-full rounded-full transition-all whitespace-nowrap ${selectedCategory === filter
+                                        ? 'bg-primary text-white'
+                                        : 'text-secondary dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 hover:text-main dark:hover:text-white'}`}
                                 >
                                     {filter}
                                 </button>
@@ -88,17 +88,17 @@ const DashboardHero = ({
                         <div className="relative z-[50]" ref={statusDropdownRef}>
                             <button
                                 onClick={() => setIsStatusDropdownOpen(!isStatusDropdownOpen)}
-                                className={`flex items-center justify-between gap-3 px-4 h-10 md:h-11 rounded-xl border text-2xs md:text-xs font-bold transition-all
+                                className={`flex items-center justify-between gap-3 px-4 h-10 md:h-11 rounded-full border text-2xs md:text-xs font-bold transition-all
                                     ${isStatusDropdownOpen
                                         ? 'border-primary bg-white dark:bg-slate-800'
-                                        : 'border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-800/50 text-gray-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50'}`}
+                                        : 'border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-800/50 text-secondary dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50'}`}
                             >
                                 <span>Status: {selectedStatus}</span>
                                 <ChevronDown size={14} className={`transition-transform duration-200 ${isStatusDropdownOpen ? 'rotate-180' : ''}`} />
                             </button>
 
                             {isStatusDropdownOpen && (
-                                <div className="absolute top-full mt-2 left-0 sm:left-auto sm:right-0 w-48 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-xl shadow-xl z-50 overflow-hidden py-1 animate-in fade-in slide-in-from-top-2 duration-200">
+                                <div className="absolute top-full mt-2 left-0 sm:left-auto sm:right-0 w-48 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-xl z-50 overflow-hidden py-1 animate-in fade-in slide-in-from-top-2 duration-200">
                                     {COURSE_STATUS_LIST.map(status => (
                                         <button
                                             key={status}
@@ -109,7 +109,7 @@ const DashboardHero = ({
                                             className={`w-full text-left px-4 py-2 text-2xs md:text-xs font-bold transition-colors
                                                 ${selectedStatus === status
                                                     ? 'bg-primary/10 text-primary'
-                                                    : 'text-gray-500 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-800'
+                                                    : 'text-secondary dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-800'
                                                 }`}
                                         >
                                             {status}
@@ -125,23 +125,34 @@ const DashboardHero = ({
             {/* Right Column: Stats */}
             <div className="lg:col-span-6 flex flex-col gap-4">
                 {/* Circular Stats Card */}
-                <Card rounded="rounded-3xl" padding="p-10" className="flex flex-col sm:flex-row items-center justify-between gap-6 h-full">
-                    <div className="flex items-center gap-4 md:gap-5">
-                        <CircularProgress progress={60} size="w-14 h-14 md:w-16 md:h-16" />
-                        <div className="text-left">
-                            <h4 className="text-base md:text-lg font-bold text-citilink-dark dark:text-white leading-tight">Course Completed</h4>
-                            <p className="text-xs md:text-sm font-medium text-slate-400 dark:text-slate-500 mt-0.5">in 2d 40h</p>
+                <Card rounded="rounded-3xl" padding="p-8" className="flex flex-row items-stretch justify-between gap-6 h-full relative overflow-hidden">
+                    {/* Background Blur Effect */}
+                    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#6AC100]/30 rounded-full blur-3xl pointer-events-none" />
+
+                    <div className="flex flex-col justify-between items-start gap-4 z-10">
+                        <CircularProgress progress={60} size="w-16 h-16 md:w-20 md:h-20" strokeWidth={10} textSize="text-lg md:text-xl" />
+                        <div className="text-left mt-auto">
+                            <h4 className="text-sm md:text-base font-bold text-main dark:text-white leading-tight">Course Completed</h4>
+                            <p className="text-xs font-medium text-tertiary dark:text-slate-500 mt-1">in 2d 40h</p>
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-end">
-                        <div className="bg-primary text-white p-2.5 md:p-3 px-4 md:px-5 rounded-xl text-center min-w-[80px] md:min-w-[90px] flex-1 sm:flex-none">
-                            <p className="text-lg md:text-xl font-black mb-0">7</p>
-                            <p className="text-3xs font-bold uppercase tracking-wider opacity-90">Enrolled</p>
+                    <div className="flex flex-col gap-3 w-full sm:w-auto z-10">
+                        <div className="flex gap-3">
+                            <div className="bg-[#00703C] text-white p-3 rounded-2xl text-center min-w-[100px] flex-1 flex flex-col justify-center items-center">
+                                <p className="text-2xl font-black mb-0 leading-none">7</p>
+                                <p className="text-sm font-medium opacity-90 mt-1">Enrolled</p>
+                            </div>
+                            <div className="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 p-3 rounded-2xl text-center min-w-[100px] flex-1 flex flex-col justify-center items-center">
+                                <p className="text-2xl font-black text-main dark:text-white mb-0 leading-none">3</p>
+                                <p className="text-sm font-medium text-tertiary mt-1">Completed</p>
+                            </div>
                         </div>
-                        <div className="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 p-2.5 md:p-3 px-4 md:px-5 rounded-xl text-center min-w-[80px] md:min-w-[90px] flex-1 sm:flex-none">
-                            <p className="text-lg md:text-xl font-black text-citilink-dark dark:text-white mb-0">3</p>
-                            <p className="text-3xs font-bold uppercase tracking-wider text-gray-400">Completed</p>
+
+                        <div className="bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-gray-100 dark:border-slate-700 rounded-2xl p-2 px-3 flex items-center gap-3 relative">
+                            <div className="absolute -top-1.5 -left-1.5 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-slate-900" />
+                            <span className="text-lg font-black text-main dark:text-white ml-1">5</span>
+                            <span className="text-sm font-medium text-secondary dark:text-slate-400 leading-tight">Mandatory Incomplete</span>
                         </div>
                     </div>
                 </Card>
@@ -151,7 +162,7 @@ const DashboardHero = ({
                     <Card rounded="rounded-3xl" className="flex flex-col justify-between">
                         <div>
                             <p className="text-primary text-2xl font-black mb-0.5">112</p>
-                            <p className="text-sm font-medium text-gray-500 dark:text-slate-400">Course Citilearn</p>
+                            <p className="text-sm font-medium text-secondary dark:text-slate-400">Course Citilearn</p>
                         </div>
                         <div className="bg-gray-50 dark:bg-slate-800 w-10 h-10 rounded-lg flex items-center justify-center self-start mt-2">
                             <BookOpen size={24} className="text-gray-300" />
@@ -161,7 +172,7 @@ const DashboardHero = ({
                     <Card rounded="rounded-3xl" className="flex flex-col justify-between">
                         <div>
                             <p className="text-primary text-2xl font-black mb-0.5">220</p>
-                            <p className="text-sm font-medium text-gray-500 dark:text-slate-400">Course Modules</p>
+                            <p className="text-sm font-medium text-secondary dark:text-slate-400">Course Modules</p>
                         </div>
                         <div className="bg-gray-50 dark:bg-slate-800 w-10 h-10 rounded-lg flex items-center justify-center self-start mt-2">
                             <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

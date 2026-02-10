@@ -14,7 +14,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                     onClick={() => setActiveTab('curriculum')}
                     className={`lg:hidden px-6 py-3 text-xs font-bold capitalize border-b-2 transition-colors flex-shrink-0 ${activeTab === 'curriculum'
                         ? 'border-primary text-primary'
-                        : 'border-transparent text-gray-500 dark:text-slate-500 hover:text-gray-700 dark:hover:text-white'
+                        : 'border-transparent text-secondary dark:text-slate-500 hover:text-gray-700 dark:hover:text-white'
                         }`}
                 >
                     Syllabus (RPS)
@@ -26,7 +26,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                         onClick={() => setActiveTab(tab)}
                         className={`px-6 py-3 text-xs font-bold capitalize border-b-2 transition-colors flex-shrink-0 ${activeTab === tab
                             ? 'border-primary text-primary'
-                            : 'border-transparent text-gray-500 dark:text-slate-500 hover:text-gray-700 dark:hover:text-white'
+                            : 'border-transparent text-secondary dark:text-slate-500 hover:text-gray-700 dark:hover:text-white'
                             }`}
                     >
                         {tab}
@@ -47,8 +47,8 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                             {course.modules.map((module, mIdx) => (
                                 <Card key={module.id} padding="p-0" className="overflow-hidden">
                                     <div className="px-4 py-3 bg-gray-50/30 dark:bg-slate-800/30 border-b border-gray-50 dark:border-slate-800 flex items-center justify-between">
-                                        <span className="text-[10px] font-bold text-gray-400 dark:text-slate-500 uppercase">Module {mIdx + 1}</span>
-                                        <span className="text-[10px] font-bold text-gray-300 dark:text-slate-600">{module.lessons.length} Item</span>
+                                        <span className="text-[10px] font-bold text-tertiary dark:text-slate-500 uppercase">Module {mIdx + 1}</span>
+                                        <span className="text-[10px] font-bold text-tertiary dark:text-slate-600">{module.lessons.length} Item</span>
                                     </div>
                                     <div className="divide-y divide-gray-50 dark:divide-slate-800">
                                         {module.lessons.map((lesson) => (
@@ -72,25 +72,25 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                     {activeTab === 'overview' && (
                         <div className="space-y-8">
                             <div className="flex flex-wrap items-center gap-y-3 gap-x-6 text-[13px] font-bold">
-                                <div className="flex items-center gap-2 text-gray-400 font-bold">
+                                <div className="flex items-center gap-2 text-tertiary font-bold">
                                     <span>Source:</span>
                                     <Badge variant="secondary">Youtube</Badge>
                                 </div>
-                                <div className="flex items-center gap-2 text-gray-400">
+                                <div className="flex items-center gap-2 text-tertiary">
                                     <Clock size={16} />
                                     <span>Duration:</span>
-                                    <span className="text-slate-700 dark:text-slate-300">15m</span>
+                                    <span className="text-secondary dark:text-slate-300">15m</span>
                                 </div>
-                                <div className="flex items-center gap-2 text-gray-400">
+                                <div className="flex items-center gap-2 text-tertiary">
                                     <Globe size={16} />
                                     <span>Language:</span>
-                                    <span className="text-slate-700 dark:text-slate-300">English</span>
+                                    <span className="text-secondary dark:text-slate-300">English</span>
                                 </div>
                             </div>
 
                             <div>
-                                <h3 className="text-lg font-black text-citilink-dark dark:text-white mb-3">About This Lesson</h3>
-                                <p className="text-gray-500 dark:text-slate-400 text-sm leading-relaxed font-medium">
+                                <h3 className="text-lg font-black text-main dark:text-white mb-3">About This Lesson</h3>
+                                <p className="text-secondary dark:text-slate-400 text-sm leading-relaxed font-medium">
                                     This module covers critical aspects of <strong>{activeLesson?.title}</strong>.
                                     In this session, we will explore the fundamental procedures required for maintaining high safety standards.
                                     Please ensure you watch the entire video and complete the assessment to validate your understanding.
@@ -98,15 +98,15 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                             </div>
 
                             <div className="space-y-4">
-                                <h3 className="text-lg font-black text-citilink-dark dark:text-white">Learning Outcomes & Objectives (RPS)</h3>
+                                <h3 className="text-lg font-black text-main dark:text-white">Learning Outcomes & Objectives (RPS)</h3>
                                 <div className="space-y-3">
                                     {(course.learningOutcomes || [
                                         "Implement hazard identification and risk assessment (HIRA) in airport operations.",
                                         "Develop robust aviation safety policies aligned with Citilink standards.",
                                         "Execute reactive and proactive safety monitoring methods and safety assurance."
                                     ]).map((outcome, index) => (
-                                        <div key={index} className="flex items-start gap-3.5 text-gray-500 dark:text-slate-400">
-                                            <div className="mt-1 shrink-0 text-gray-400"><BookOpen size={20} /></div>
+                                        <div key={index} className="flex items-start gap-3.5 text-secondary dark:text-slate-400">
+                                            <div className="mt-1 shrink-0 text-tertiary"><BookOpen size={20} /></div>
                                             <span className="text-sm font-medium leading-relaxed">{outcome}</span>
                                         </div>
                                     ))}
@@ -117,7 +117,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
 
                     {activeTab === 'resources' && (
                         <div className="space-y-4">
-                            <h3 className="text-sm font-bold text-citilink-dark dark:text-white mb-4">Downloadable Materials</h3>
+                            <h3 className="text-sm font-bold text-main dark:text-white mb-4">Downloadable Materials</h3>
                             <ResourceItem
                                 title="Lesson Slide Deck.pdf"
                                 size="2.4 MB"
@@ -139,9 +139,9 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                                 <img src={`https://ui-avatars.com/api/?name=Citilink+Academy&background=059669&color=fff`} alt="Instructor" className="w-full h-full object-cover" />
                             </div>
                             <div>
-                                <h3 className="text-sm font-bold text-citilink-dark dark:text-white">Citilink Academy Team</h3>
+                                <h3 className="text-sm font-bold text-main dark:text-white">Citilink Academy Team</h3>
                                 <p className="text-xs text-primary font-black mb-3">Official Training Partner</p>
-                                <p className="text-[13px] text-gray-500 dark:text-slate-400 leading-relaxed max-w-lg font-medium">
+                                <p className="text-[13px] text-secondary dark:text-slate-400 leading-relaxed max-w-lg font-medium">
                                     The Citilink Academy Team consists of experienced senior flight instructors and safety experts dedicated to maintaining the highest standards of aviation safety and service excellence.
                                 </p>
                                 <button className="mt-4 px-5 py-2 border border-gray-100 dark:border-slate-800 text-primary text-xs font-black rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 transition-all">
@@ -163,11 +163,11 @@ const ResourceItem = ({ title, size, type, iconColor }) => (
                 <FileText size={20} />
             </div>
             <div>
-                <div className="text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">{title}</div>
-                <div className="text-[10px] text-gray-400 dark:text-slate-500 font-medium">{size} • {type}</div>
+                <div className="text-xs font-bold text-secondary dark:text-slate-300 group-hover:text-primary transition-colors">{title}</div>
+                <div className="text-[10px] text-tertiary dark:text-slate-500 font-medium">{size} • {type}</div>
             </div>
         </div>
-        <button className="p-2 text-gray-400 dark:text-slate-600 group-hover:text-primary transition-colors">
+        <button className="p-2 text-tertiary dark:text-slate-600 group-hover:text-primary transition-colors">
             <Download size={18} />
         </button>
     </Card>

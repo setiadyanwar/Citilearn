@@ -34,7 +34,7 @@ const LessonContent = ({ activeLesson, course, isPip, videoContainerRef, videoRe
                     zIndex: 0
                 }}
                 transition={{ duration: 0 }}
-                className="bg-black overflow-hidden shadow-sm group border border-gray-900/10 dark:border-slate-800"
+                className="bg-black overflow-hidden group border border-gray-900/10 dark:border-slate-800"
             >
                 {isPip && (activeLesson?.type === 'video' || activeLesson?.type === 'youtube') && (
                     <div className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
