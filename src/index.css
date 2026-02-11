@@ -20,6 +20,8 @@
   --color-main: #424242;
   --color-secondary: #7A7A7A;
   --color-tertiary: #9C9C9C;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #f8fafc;
 
   --font-lato: "Lato", sans-serif;
   --text-2xs: 12px;
