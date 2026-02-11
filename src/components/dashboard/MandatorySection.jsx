@@ -32,16 +32,16 @@ const MandatorySection = ({ courses = [] }) => {
                     </p>
                 </div>
 
-                <div className="hidden sm:flex items-center gap-3">
+                <div className="hidden sm:flex items-center gap-2">
                     <div className="text-right">
-                        <div className="text-sm text-secondary dark:text-slate-400">Finish</div>
-                        <div className="text-sm text-secondary dark:text-slate-400">before</div>
+                        <div className="text-xs text-secondary dark:text-slate-400 font-medium">Finish</div>
+                        <div className="text-xs text-secondary dark:text-slate-400 font-medium">before</div>
                     </div>
-                    <div className="border border-primary rounded-xl overflow-hidden w-16 text-center">
-                        <div className="bg-white dark:bg-slate-900 py-1 text-sm font-semibold text-main dark:text-white border-b border-gray-100 dark:border-slate-700">
+                    <div className="border border-primary rounded-lg overflow-hidden w-12 text-center shadow-sm">
+                        <div className="bg-primary/5 dark:bg-slate-900 py-0.5 text-[10px] font-bold text-primary uppercase border-b border-primary/20">
                             Jan
                         </div>
-                        <div className="bg-white dark:bg-slate-900 py-1 text-xl font-bold text-primary">
+                        <div className="bg-white dark:bg-slate-900 py-0.5 text-base font-bold text-main dark:text-white">
                             24
                         </div>
                     </div>
@@ -52,16 +52,19 @@ const MandatorySection = ({ courses = [] }) => {
                 {/* Scroll Buttons */}
                 <button
                     onClick={() => scroll('left')}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-white dark:bg-slate-800 rounded-full shadow-md text-tertiary hover:text-primary transition-all opacity-0 group-hover/section:opacity-100 disabled:opacity-0 -ml-3"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-white dark:bg-slate-800 rounded-full text-tertiary hover:text-primary transition-all opacity-0 group-hover/section:opacity-100 disabled:opacity-0 -ml-3 border border-gray-100"
                 >
                     <ChevronLeft size={18} />
                 </button>
                 <button
                     onClick={() => scroll('right')}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-white dark:bg-slate-800 rounded-full shadow-md text-tertiary hover:text-primary transition-all opacity-0 group-hover/section:opacity-100 disabled:opacity-0 -mr-3"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-white dark:bg-slate-800 rounded-full text-tertiary hover:text-primary transition-all opacity-0 group-hover/section:opacity-100 disabled:opacity-0 -mr-3 border border-gray-100"
                 >
                     <ChevronRight size={18} />
                 </button>
+
+                {/* Right Fade Mask */}
+                <div className="absolute -right-6 top-0 bottom-4 w-32 bg-gradient-to-l from-white from-20% dark:from-slate-900 to-transparent pointer-events-none z-[5]" />
 
                 <div
                     ref={scrollRef}

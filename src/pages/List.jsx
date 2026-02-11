@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import data from '../data.json';
 import DashboardHero from '../components/dashboard/DashboardHero';
 import CourseCard from '../components/dashboard/CourseCard';
 import MandatorySection from '../components/dashboard/MandatorySection';
 import ResumeSection from '../components/dashboard/ResumeSection';
-import Pagination from '../components/common/Pagination';
+
 import { Filter } from 'lucide-react';
 
 const CourseList = ({
@@ -27,8 +28,8 @@ const CourseList = ({
         return () => clearTimeout(timer);
     }, []);
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 6;
+
+
     const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
     const statusDropdownRef = useRef(null);
 
@@ -44,9 +45,7 @@ const CourseList = ({
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [searchQuery, selectedCategory, selectedStatus]);
+
 
     // Filter by Search Query (Global)
     const searchFilteredCourses = courses.filter(course =>
@@ -63,26 +62,42 @@ const CourseList = ({
     // Main Grid Filter Logic
     const recommendedCourses = searchFilteredCourses.filter(course => {
         const matchesCategory = selectedCategory === 'All' || course.category === selectedCategory;
+        const isCompleted = course.status === 'Completed' || course.progress === 100;
 
         // Status Filter
         let matchesStatus = true;
-        if (selectedStatus === 'Not Started') matchesStatus = course.status !== 'On Progress' && course.status !== 'Completed' && course.progress === 0;
-        else if (selectedStatus === 'On Progress') matchesStatus = course.status === 'On Progress';
-        else if (selectedStatus === 'Done') matchesStatus = course.status === 'Completed' || course.progress === 100;
+        if (selectedStatus === 'Not Started') {
+            matchesStatus = course.status !== 'On Progress' && !isCompleted && course.progress === 0;
+        } else if (selectedStatus === 'On Progress') {
+            matchesStatus = course.status === 'On Progress';
+        } else if (selectedStatus === 'Done') {
+            matchesStatus = isCompleted;
+        } else if (selectedStatus === 'All') {
+            // Default view: Show "Not Started" and "In Progress", HIDE "Completed"
+            matchesStatus = !isCompleted;
+        }
 
-        const isResumeItem = course.status === 'On Progress' && course.progress > 0;
-        const hideBecauseResume = selectedStatus === 'All' && isResumeItem && searchQuery === '';
+        // Removed hideBecauseResume logic to allow In Progress items in the main grid
 
-        return matchesCategory && matchesStatus && !hideBecauseResume;
+        return matchesCategory && matchesStatus;
+    }).sort((a, b) => {
+        // Sort Logic: "Not Available" (Coming Soon) first, then others
+        const now = new Date();
+        const aAvailable = !a.availableAt || new Date(a.availableAt) <= now;
+        const bAvailable = !b.availableAt || new Date(b.availableAt) <= now;
+
+        if (!aAvailable && bAvailable) return -1; // a is unavailable (Coming Soon), put it first
+        if (aAvailable && !bAvailable) return 1;  // b is unavailable, put it first
+        return 0; // maintain original order for others
     });
 
-    const mainGridTotalPages = Math.ceil(recommendedCourses.length / itemsPerPage);
-    const mainGridPaginated = recommendedCourses.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    // Limit to 2 rows (4 columns * 2 rows = 8 items) for the dashboard view
+    const displayedCourses = recommendedCourses.slice(0, 8);
 
     if (loading) {
         return (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[1, 2, 3].map(i => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                {[1, 2, 3, 4].map(i => (
                     <div key={i} className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 h-[450px] rounded-xl p-6">
                         <div className="skeleton h-48 w-full mb-6 rounded-sm bg-gray-100 dark:bg-slate-800" />
                         <div className="space-y-4">
@@ -125,18 +140,23 @@ const CourseList = ({
                 </div>
 
                 {/* Main Course Grid Headers */}
-                <div className="mb-6">
+                <div className="mb-6 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <h2 className="text-lg md:text-xl font-bold text-main dark:text-white flex items-center gap-2 md:gap-3">
                             <div className="w-1.5 h-6 bg-primary rounded-full shrink-0"></div>
-                            <span className="truncate">{searchQuery ? 'Search Results' : 'Training Library'}</span>
+                            <span className="truncate">{searchQuery ? 'Search Results' : 'Recommendation Skill Up'}</span>
                         </h2>
                     </div>
+                    {!searchQuery && (
+                        <Link to="/courses" className="text-sm font-bold text-primary hover:text-primary-dark transition-colors">
+                            Show All
+                        </Link>
+                    )}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 pb-8 min-h-[500px] content-start">
-                    {mainGridPaginated.length > 0 ? (
-                        mainGridPaginated.map(course => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-8 min-h-[500px] content-start">
+                    {displayedCourses.length > 0 ? (
+                        displayedCourses.map(course => (
                             <CourseCard key={course.id} course={course} />
                         ))
                     ) : (
@@ -147,13 +167,7 @@ const CourseList = ({
                 </div>
 
                 {/* Pagination */}
-                {mainGridTotalPages > 1 && (
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={mainGridTotalPages}
-                        onPageChange={setCurrentPage}
-                    />
-                )}
+
 
                 <div className="pb-12"></div>
             </div>

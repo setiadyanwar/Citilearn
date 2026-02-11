@@ -9,21 +9,23 @@ const ResumeSection = ({ courses = [] }) => {
                 <button className="text-sm font-bold text-primary hover:underline">Show All</button>
             </div>
 
-            <div className="flex flex-col gap-4 overflow-y-auto no-scrollbar pr-1 relative h-[260px]">
-                {courses.length > 0 ? (
-                    courses.map(course => (
-                        <div key={course.id}>
-                            <DashboardCourseCard course={course} variant="resume" />
+            <div className="relative h-[260px]">
+                <div className="h-full overflow-y-auto no-scrollbar pr-1 pb-4 flex flex-col gap-4">
+                    {courses.length > 0 ? (
+                        courses.map(course => (
+                            <div key={course.id}>
+                                <DashboardCourseCard course={course} variant="resume" />
+                            </div>
+                        ))
+                    ) : (
+                        <div className="text-center py-8 text-secondary dark:text-slate-500 text-sm">
+                            No courses in progress.
                         </div>
-                    ))
-                ) : (
-                    <div className="text-center py-8 text-secondary dark:text-slate-500 text-sm">
-                        No courses in progress.
-                    </div>
-                )}
+                    )}
+                </div>
 
-                {/* Gradient Overlay for Spoiler Effect */}
-                <div className="sticky bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-slate-900 to-transparent pointer-events-none -mb-4 sm:-mb-0" />
+                {/* Bottom Fade Mask - Positioned Absolute Over Scroll Area */}
+                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-slate-900 to-transparent pointer-events-none z-10 rounded-b-3xl" />
             </div>
         </div>
     );

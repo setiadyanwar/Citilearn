@@ -5,8 +5,9 @@
             "title": "Aviation Safety Management System",
             "description": "Comprehensive guide to safety protocols and hazard identification in aviation operations. Learn how to maintain the highest standards of safety for Citilink fleet.",
             "duration": "8h 45m",
-            "status": "On Progress",
-            "progress": 45,
+            "status": "Not Started",
+            "availableAt": "2026-02-12T18:45:00",
+            "progress": 0,
             "thumbnail": "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80&w=800",
             "modules": [
                 {

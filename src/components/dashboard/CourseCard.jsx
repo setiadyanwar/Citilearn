@@ -1,85 +1,199 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, BookOpen, Play } from 'lucide-react';
+import { Clock, BookOpen, Bookmark, Download, AlertCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import Card from '../common/Card';
 import Badge from '../common/Badge';
 import ProgressBar from '../common/ProgressBar';
+import BookmarkButton from '../common/BookmarkButton';
 import { COURSE_STATUS } from '../../constants/course';
 
 const CourseCard = ({ course, compact = false }) => {
-    const getStatusBadge = (status) => {
-        if (compact) return null;
-        switch (status) {
-            case COURSE_STATUS.DONE:
-                return (
-                    <Badge variant="success" size="sm" className="gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        Completed
-                    </Badge>
-                );
-            case COURSE_STATUS.ON_PROGRESS:
-                return (
-                    <Badge variant="warning" size="sm" className="gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                        In Progress
-                    </Badge>
-                );
-            default:
-                return (
-                    <Badge variant="secondary" size="sm" className="gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
-                        Not Started
-                    </Badge>
-                );
+    const [isBookmarked, setIsBookmarked] = useState(course.isBookmarked || false);
+    const [timeLeft, setTimeLeft] = useState('');
+
+    // Countdown logic for "Coming Soon" courses
+    useEffect(() => {
+        if (course.availableAt) {
+            const calculateTimeLeft = () => {
+                const availableDate = new Date(course.availableAt);
+                const now = new Date();
+                const difference = availableDate - now;
+
+                if (difference > 0) {
+                    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+                    const minutes = Math.floor((difference / 1000 / 60) % 60);
+                    const seconds = Math.floor((difference / 1000) % 60);
+                    setTimeLeft(`${hours}h:${minutes}m:${seconds}s`);
+                } else {
+                    setTimeLeft(null); // Available
+                }
+            };
+
+            calculateTimeLeft();
+            const timer = setInterval(calculateTimeLeft, 1000);
+            return () => clearInterval(timer);
         }
+    }, [course.availableAt]);
+
+    const handleBookmark = (e) => {
+        e.preventDefault(); // Prevent link navigation
+        e.stopPropagation();
+        setIsBookmarked(!isBookmarked);
+    };
+
+    const isAvailable = !course.availableAt || new Date(course.availableAt) <= new Date();
+    const isCompleted = course.status === COURSE_STATUS.DONE;
+    const inProgress = course.status === COURSE_STATUS.ON_PROGRESS;
+    const notStarted = course.status === COURSE_STATUS.NOT_STARTED || (!course.status && isAvailable);
+
+    // Determine Status Badge
+    const renderStatusBadge = () => {
+        if (isCompleted) {
+            return (
+                <Badge variant="success" size="sm" className="bg-white text-green-600 font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                    Completed
+                </Badge>
+            );
+        }
+        if (inProgress) {
+            return (
+                <Badge variant="warning" size="sm" className="bg-white text-orange-500 font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-orange-500"></span>
+                    In Progress
+                </Badge>
+            );
+        }
+        if (!isAvailable) {
+            return (
+                <Badge variant="secondary" size="sm" className="bg-white text-gray-500 font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-gray-400"></span>
+                    Not Started
+                </Badge>
+            );
+        }
+        return (
+            <Badge variant="secondary" size="sm" className="bg-white text-gray-500 font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-gray-400"></span>
+                Not Started
+            </Badge>
+        );
     };
 
     return (
-        <Card padding="p-0" className="group flex flex-col h-full overflow-hidden hover:border-primary transition-all duration-300">
-            <Link to={`/course/${course.id}`} className="flex flex-col h-full">
-                <div className={`relative ${compact ? 'h-40' : 'h-48'} bg-gray-100 dark:bg-slate-800 border-b border-gray-100 dark:border-slate-800 overflow-hidden`}>
+        <Card padding="p-0" className="group flex flex-col h-full overflow-hidden transition-all duration-300 border border-gray-100 rounded-2xl">
+            <Link to={isAvailable ? `/course/${course.id}` : '#'} className={`flex flex-col h-full ${!isAvailable ? 'cursor-not-allowed' : ''}`}>
+                {/* Image Section */}
+                <div className={`relative ${compact ? 'h-40' : 'h-48'} bg-gray-100 dark:bg-slate-800 overflow-hidden`}>
                     <img
                         src={course.thumbnail}
                         alt={course.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className={`w-full h-full object-cover transition-transform duration-700 ${isAvailable ? 'group-hover:scale-105' : 'grayscale opacity-80'}`}
                     />
-                    {!compact && <div className="absolute top-4 left-4">{getStatusBadge(course.status)}</div>}
-                    <div className="absolute inset-0 bg-black/40 dark:bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="bg-white dark:bg-primary text-primary dark:text-white px-5 py-2.5 rounded-xl font-black text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 flex items-center gap-2">
-                            <Play size={16} fill="currentColor" /> {course.progress > 0 ? 'Continue' : 'Start Learning'}
-                        </div>
+
+                    {/* Status Badge (Top Left) */}
+                    <div className="absolute top-4 left-4 z-10">
+                        {renderStatusBadge()}
                     </div>
+
+                    {/* Bookmark Toggle (Top Right) - Only if NOT completed/certificate */}
+                    {!isCompleted && (
+                        <div className="absolute top-4 right-4 z-10">
+                            <BookmarkButton isBookmarked={isBookmarked} size={18} />
+                        </div>
+                    )}
                 </div>
 
-                <div className={`${compact ? 'p-4' : 'p-6'} flex-1 flex flex-col`}>
-                    <h3 className={`${compact ? 'text-lg truncate' : 'text-lg line-clamp-2'} font-black text-main dark:text-white mb-1.5 leading-tight group-hover:text-primary transition-colors`} title={course.title}>{course.title}</h3>
-
-                    {compact ? (
-                        <p className="text-sm mb-3 truncate">
-                            <span className="text-tertiary dark:text-slate-500 font-bold">Next:</span>
-                            <span className="text-main dark:text-white font-semibold ml-1.5 text-xs tracking-tight">
-                                {course.modules[0]?.lessons[0]?.title || "Module 1"}
+                {/* Content Section */}
+                <div className={`${compact ? 'p-4' : 'p-5'} flex-1 flex flex-col`}>
+                    {/* Meta Info */}
+                    <div className="flex items-center gap-4 text-xs font-bold text-tertiary mb-3 tracking-wide">
+                        <span className="text-secondary">{course.category || 'General'}</span>
+                        {course.duration && (
+                            <span className="flex items-center gap-1.5 text-tertiary">
+                                <Clock size={14} className="text-primary" />
+                                {course.duration}
                             </span>
-                        </p>
-                    ) : (
-                        <p className="text-sm text-secondary dark:text-slate-400 mb-6 line-clamp-2 leading-relaxed font-medium">
+                        )}
+                        {(course.modulesCount > 0 || course.modules?.length > 0) && (
+                            <span className="flex items-center gap-1.5 text-tertiary">
+                                <BookOpen size={14} className="text-primary" />
+                                {course.modulesCount || course.modules?.length} Modules
+                            </span>
+                        )}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className={`${compact ? 'text-base' : 'text-xl'} font-bold text-main dark:text-white mb-2 line-clamp-2 leading-tight group-hover:text-primary transition-colors`} title={course.title}>
+                        {course.title}
+                    </h3>
+
+                    {/* Description (Optional) */}
+                    {!compact && course.description && (
+                        <p className="text-sm text-secondary dark:text-slate-400 mb-4 line-clamp-2 leading-relaxed font-medium">
                             {course.description}
                         </p>
                     )}
 
-                    <div className="mt-auto">
-                        <div className={`flex items-center gap-4 text-2xs md:text-xs text-tertiary dark:text-slate-500 font-black uppercase tracking-wider ${compact ? 'mb-3' : 'mb-4'} flex-wrap`}>
-                            <span className="flex items-center gap-1.5"><Clock size={12} className="text-primary" />{course.duration}</span>
-                            <span className="flex items-center gap-1.5"><BookOpen size={12} className="text-primary" />{course.modules.length} Modules</span>
-                        </div>
+                    <div className="mt-auto pt-4">
+                        {/* 1. NOT AVAILABLE (Coming Soon) */}
+                        {!isAvailable && (
+                            <Button
+                                disabled
+                                className="w-full bg-gray-100 text-gray-500 font-bold rounded-xl h-11 border border-gray-200 cursor-not-allowed"
+                            >
+                                Not Available: {timeLeft || 'Loading...'}
+                            </Button>
+                        )}
 
-                        <div className={`${compact ? 'pt-2' : 'pt-4 border-t'} border-gray-100 dark:border-slate-800`}>
-                            <div className="flex justify-between items-center mb-1.5">
-                                <span className="text-xs text-tertiary dark:text-slate-500 font-black uppercase tracking-tight">Progress</span>
-                                <span className="text-sm font-black text-primary">{course.progress}%</span>
+                        {/* 2. COMPLETED (Download Certificate) */}
+                        {isAvailable && isCompleted && (
+                            <div className="flex flex-col gap-3">
+                                {course.finishedAt && (
+                                    <span className="text-sm font-medium text-secondary">
+                                        Finished at: {course.finishedAt}
+                                    </span>
+                                )}
+                                <Button
+                                    className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-xl h-11 flex items-center justify-center gap-2"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        // Handle download logic
+                                        console.log("Download Certificate clicked");
+                                    }}
+                                >
+                                    Download Certificate
+                                    <Download size={18} />
+                                </Button>
                             </div>
-                            <ProgressBar progress={course.progress} height={compact ? 'h-1.5' : 'h-2'} />
-                        </div>
+                        )}
+
+                        {/* 3. IN PROGRESS */}
+                        {isAvailable && inProgress && (
+                            <div className="space-y-2">
+                                <div className="flex justify-between items-end mb-1">
+                                    <span className="text-xs font-bold text-tertiary uppercase">Progress</span>
+                                    <span className="text-sm font-bold text-primary">{course.progress}%</span>
+                                </div>
+                                <ProgressBar
+                                    progress={course.progress}
+                                    height="h-2"
+                                    color="bg-primary"
+                                    trackColor="bg-gray-100"
+                                    rounded="rounded-full"
+                                />
+                            </div>
+                        )}
+
+                        {/* 4. NOT STARTED */}
+                        {isAvailable && notStarted && (
+                            <Button
+                                className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-xl h-11"
+                            >
+                                Start Learn
+                            </Button>
+                        )}
                     </div>
                 </div>
             </Link>

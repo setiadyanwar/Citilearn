@@ -165,7 +165,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
 
                 {/* Course Topic Donut Chart */}
                 <div className="lg:col-span-4">
-                    <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-3xl p-5 shadow-sm h-full flex flex-col justify-between">
+                    <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-3xl p-5 h-full flex flex-col justify-between">
                         <div className="flex items-center justify-between mb-4 relative">
                             <h2 className="text-xl font-black text-main dark:text-white">Course Topic</h2>
                             <div className="relative">
@@ -182,7 +182,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                             animate={{ opacity: 1, y: 0, scale: 1 }}
                                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                            className="absolute right-0 mt-2 w-28 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-xl shadow-xl z-50 overflow-hidden"
+                                            className="absolute right-0 mt-2 w-28 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-xl z-50 overflow-hidden"
                                         >
                                             {['Day', 'Month', 'Year'].map((option) => (
                                                 <button
@@ -239,7 +239,6 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                                             contentStyle={{
                                                 borderRadius: '16px',
                                                 border: 'none',
-                                                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
                                                 fontSize: '13px',
                                                 fontWeight: 'bold',
                                                 padding: '12px 16px'
@@ -258,7 +257,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                                         onMouseLeave={() => setActiveIndex(null)}
                                         animate={{ opacity: activeIndex === null || activeIndex === i ? 1 : 0.5 }}
                                     >
-                                        <div className="w-3.5 h-3.5 rounded-full shrink-0 shadow-sm" style={{ backgroundColor: topic.color }}></div>
+                                        <div className="w-3.5 h-3.5 rounded-full shrink-0" style={{ backgroundColor: topic.color }}></div>
                                         <div className="flex items-center gap-1.5 flex-1 min-w-0">
                                             <span className="text-sm font-bold text-secondary dark:text-slate-400 truncate">{topic.name}</span>
                                             <span className="text-sm font-black text-main dark:text-white ml-auto">{topic.value}%</span>
@@ -309,11 +308,11 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                     </div>
 
                     {/* View Mode Toggles */}
-                    <div className="flex items-center gap-1.5 p-1 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl shadow-sm">
+                    <div className="flex items-center gap-1.5 p-1 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl">
                         <button
                             onClick={() => setViewMode('grid')}
                             className={`p-2 rounded-xl transition-all ${viewMode === 'grid'
-                                ? 'bg-citilearn-green text-white shadow-sm'
+                                ? 'bg-citilearn-green text-white'
                                 : 'text-tertiary hover:text-gray-600 dark:hover:text-white'
                                 }`}
                         >
@@ -322,7 +321,7 @@ const MyCourses = ({ searchQuery: globalSearchQuery, handleSearch: handleGlobalS
                         <button
                             onClick={() => setViewMode('list')}
                             className={`p-2 rounded-xl transition-all ${viewMode === 'list'
-                                ? 'bg-citilearn-green text-white shadow-sm'
+                                ? 'bg-citilearn-green text-white'
                                 : 'text-tertiary hover:text-gray-600 dark:hover:text-white'
                                 }`}
                         >
