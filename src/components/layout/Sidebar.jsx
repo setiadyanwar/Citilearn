@@ -11,6 +11,11 @@ import {
     Smile
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "../ui/tooltip";
 
 const NavItem = ({ to, icon, label, isCollapsed, end, activePatterns, isDark, onClick }) => {
     const location = useLocation();
@@ -38,51 +43,78 @@ const NavItem = ({ to, icon, label, isCollapsed, end, activePatterns, isDark, on
             : isDark ? 'text-gray-400 hover:bg-slate-800 hover:text-white font-medium' : 'text-gray-500 hover:bg-gray-50 hover:text-main font-medium'}
     `;
 
-    if (to) {
-        return (
-            <NavLink to={to} end={end} className={baseClasses}>
-                {content}
-            </NavLink>
-        );
-    }
-
-    return (
+    const element = to ? (
+        <NavLink to={to} end={end} className={baseClasses}>
+            {content}
+        </NavLink>
+    ) : (
         <div onClick={onClick} className={baseClasses}>
             {content}
         </div>
     );
+
+    if (isCollapsed) {
+        return (
+            <Tooltip delayDuration={0}>
+                <TooltipTrigger asChild>
+                    {element}
+                </TooltipTrigger>
+                <TooltipContent side="right">
+                    <p>{label}</p>
+                </TooltipContent>
+            </Tooltip>
+        );
+    }
+
+    return element;
 };
 
 const NavGroup = ({ icon, label, children, isCollapsed, isDark, isOpen, onToggle }) => {
-    return (
-        <div>
-            <div
-                onClick={() => !isCollapsed && onToggle()}
-                className={`
-                    flex items-center py-3.5 rounded-lg transition-all duration-200 group overflow-hidden whitespace-nowrap cursor-pointer select-none
-                    ${isCollapsed ? 'justify-center px-0' : 'px-4 gap-3 justify-between'}
-                    ${isOpen && !isCollapsed
-                        ? 'bg-primary-light text-primary font-bold'
-                        : isDark ? 'text-gray-400 hover:bg-slate-800 hover:text-white font-medium' : 'text-gray-500 hover:bg-gray-50 hover:text-main font-medium'}
-                `}
-            >
-                <div className="flex items-center gap-3">
-                    <div className={`shrink-0 relative flex items-center justify-center w-5 h-5`}>
-                        {icon}
-                    </div>
-                    {!isCollapsed && (
-                        <span className="text-sm transition-all duration-300 truncate">
-                            {label}
-                        </span>
-                    )}
+    const header = (
+        <div
+            onClick={() => !isCollapsed && onToggle()}
+            className={`
+                flex items-center py-3.5 rounded-lg transition-all duration-200 group overflow-hidden whitespace-nowrap cursor-pointer select-none
+                ${isCollapsed ? 'justify-center px-0' : 'px-4 gap-3 justify-between'}
+                ${isOpen && !isCollapsed
+                    ? 'bg-primary-light text-primary font-bold'
+                    : isDark ? 'text-gray-400 hover:bg-slate-800 hover:text-white font-medium' : 'text-gray-500 hover:bg-gray-50 hover:text-main font-medium'}
+            `}
+        >
+            <div className="flex items-center gap-3">
+                <div className={`shrink-0 relative flex items-center justify-center w-5 h-5`}>
+                    {icon}
                 </div>
                 {!isCollapsed && (
-                    <div className={isOpen ? 'rotate-180 transition-transform' : 'transition-transform'}>
-                        <ChevronDown size={16} />
-                    </div>
+                    <span className="text-sm transition-all duration-300 truncate">
+                        {label}
+                    </span>
                 )}
             </div>
+            {!isCollapsed && (
+                <div className={isOpen ? 'rotate-180 transition-transform' : 'transition-transform'}>
+                    <ChevronDown size={16} />
+                </div>
+            )}
+        </div>
+    );
 
+    if (isCollapsed) {
+        return (
+            <Tooltip delayDuration={0}>
+                <TooltipTrigger asChild>
+                    {header}
+                </TooltipTrigger>
+                <TooltipContent side="right">
+                    <p>{label}</p>
+                </TooltipContent>
+            </Tooltip>
+        );
+    }
+
+    return (
+        <div>
+            {header}
             <AnimatePresence>
                 {isOpen && !isCollapsed && (
                     <motion.div
@@ -225,17 +257,35 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
 
                 <div className={`mt-auto border-t ${isDark ? 'border-slate-800' : 'border-gray-100'} p-2`}>
                     <div className="flex items-center justify-between gap-1 overflow-hidden">
-                        <NavLink
-                            to="/settings"
-                            className={({ isActive }) => `flex items-center gap-3 py-3.5 rounded-lg transition-all duration-200 flex-1 
-                        ${isCollapsed ? 'justify-center px-0' : 'px-3'}
-                        ${isActive
-                                    ? 'bg-primary-light text-primary font-bold'
-                                    : isDark ? 'text-gray-400 hover:bg-slate-800 hover:text-white' : 'text-gray-500 hover:bg-gray-50'}`}
-                        >
-                            <Settings size={20} className="shrink-0" />
-                            {!isCollapsed && <span className="text-sm font-medium">Settings</span>}
-                        </NavLink>
+                        {isCollapsed ? (
+                            <Tooltip delayDuration={0}>
+                                <TooltipTrigger asChild>
+                                    <NavLink
+                                        to="/settings"
+                                        className={({ isActive }) => `flex items-center gap-3 py-3.5 rounded-lg transition-all duration-200 flex-1 justify-center px-0
+                                    ${isActive
+                                                ? 'bg-primary-light text-primary font-bold'
+                                                : isDark ? 'text-gray-400 hover:bg-slate-800 hover:text-white' : 'text-gray-500 hover:bg-gray-50'}`}
+                                    >
+                                        <Settings size={20} className="shrink-0" />
+                                    </NavLink>
+                                </TooltipTrigger>
+                                <TooltipContent side="right">
+                                    <p>Settings</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        ) : (
+                            <NavLink
+                                to="/settings"
+                                className={({ isActive }) => `flex items-center gap-3 py-3.5 rounded-lg transition-all duration-200 flex-1 px-3
+                            ${isActive
+                                        ? 'bg-primary-light text-primary font-bold'
+                                        : isDark ? 'text-gray-400 hover:bg-slate-800 hover:text-white' : 'text-gray-500 hover:bg-gray-50'}`}
+                            >
+                                <Settings size={20} className="shrink-0" />
+                                <span className="text-sm font-medium">Settings</span>
+                            </NavLink>
+                        )}
 
                         {!isCollapsed && (
                             <button

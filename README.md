@@ -56,13 +56,66 @@ To create an optimized production build:
 npm run build
 ```
 
-## 🏗️ Project Structure
+## 📁 Folder Structure
 
-- `src/components/common`: Reusable design system components.
-- `src/components/dashboard`: Feature-specific components for the main view.
-- `src/constants`: Centralized UI tokens and business logic enums.
-- `src/pages`: Main page layouts (Library, My Courses, Learning, Details).
-- `src/data.json`: The "Single Source of Truth" for all training content.
+```
+src/
+├── api/                          # API integration layer
+│   ├── client.js                 # Axios configuration with interceptors
+│   ├── endpoints.js              # API endpoint constants
+│   └── services/                 # API service modules
+│       ├── authService.js        # Authentication API calls
+│       └── courseService.js      # Course API calls
+│
+├── assets/                       # Static assets
+│   ├── images/
+│   └── icons/
+│
+├── components/                   # Reusable components
+│   ├── common/                   # Generic reusable components
+│   ├── course/                   # Course-specific components
+│   ├── dashboard/                # Dashboard-specific components
+│   ├── learning/                 # Learning-specific components
+│   ├── layout/                   # Layout components
+│   │   ├── Header.jsx
+│   │   ├── Sidebar.jsx
+│   │   └── Layout.jsx
+│   └── ui/                       # shadcn/ui components
+│
+├── config/                       # Configuration files
+│   └── app.config.js             # App-wide configuration
+│
+├── constants/                    # Constants
+│   ├── course.js
+│   └── ui.js
+│
+├── contexts/                     # React Context providers
+│
+├── hooks/                        # Custom React hooks
+│   ├── useAuth.js                # Authentication hook
+│   └── useDebounce.js            # Debounce hook
+│
+├── lib/                          # Third-party library configs
+│   └── utils.js
+│
+├── pages/                        # Page components
+│   ├── Dashboard.jsx             # Dashboard page
+│   ├── ExploreCourses.jsx        # Explore courses page
+│   ├── CourseDetail.jsx          # Course detail page
+│   ├── CourseLearning.jsx        # Course learning page
+│   └── Login.jsx                 # Login page
+│
+├── routes/                       # Route definitions
+│
+├── services/                     # Business logic services
+│
+├── utils/                        # Utility functions
+│   ├── helpers.js                # Common helper functions
+│   └── validators.js             # Validation functions
+│
+├── App.jsx                       # Main App component
+└── main.jsx                      # Entry point
+```
 
 ## 📄 License
 

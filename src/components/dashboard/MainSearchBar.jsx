@@ -27,7 +27,7 @@ const MainSearchBar = ({ searchQuery, handleSearch, variant = 'default', rightIc
         : "relative group w-full max-w-md mb-6 mx-auto md:mx-0";
 
     const inputClasses = variant === 'large'
-        ? "w-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-full py-6 md:py-7 pl-16 pr-20 text-lg font-medium text-main dark:text-white outline-none focus:border-primary/50 transition-all"
+        ? "w-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-full py-3 pl-12 pr-14 text-base font-medium text-main dark:text-white outline-none focus:border-primary/50 transition-all"
         : variant === 'inline'
             ? "w-full bg-gray-50/50 dark:bg-slate-800/30 border border-gray-100 dark:border-slate-800 rounded-2xl py-4 pl-12 pr-16 text-sm font-bold text-main dark:text-white outline-none focus:bg-white dark:focus:bg-slate-800 focus:border-primary/40 transition-all"
             : variant === 'compact'
@@ -36,7 +36,7 @@ const MainSearchBar = ({ searchQuery, handleSearch, variant = 'default', rightIc
 
     const iconSize = variant === 'large' ? 24 : 16;
     const iconLeft = (variant === 'large' || variant === 'inline' || variant === 'compact')
-        ? (variant === 'large' ? "left-6" : (variant === 'compact' ? "left-3" : "left-4"))
+        ? (variant === 'large' ? "left-5" : (variant === 'compact' ? "left-3" : "left-4"))
         : "left-4";
 
     return (
@@ -64,7 +64,7 @@ const MainSearchBar = ({ searchQuery, handleSearch, variant = 'default', rightIc
                 onMouseEnter={() => setIsSearchHovered(true)}
                 onMouseLeave={() => setIsSearchHovered(false)}
                 className={`absolute flex items-center justify-center transition-all duration-500 active:scale-95 overflow-hidden
-                    ${variant === 'large' ? 'right-3 top-3 bottom-3 aspect-square rounded-full' : 'right-1.5 top-1.5 bottom-1.5 aspect-square'}
+                    ${variant === 'large' ? 'right-2 top-2 bottom-2 aspect-square rounded-full' : 'right-1.5 top-1.5 bottom-1.5 aspect-square'}
                     ${variant === 'default' ? 'rounded-full' : (variant === 'inline' ? 'rounded-2xl' : 'rounded-xl')}
                     ${isSearchHovered || rightIcon
                         ? 'bg-primary text-white'

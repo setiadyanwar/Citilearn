@@ -1,4 +1,4 @@
-{
+﻿{
     "courses": [
         {
             "id": "c1",
@@ -1147,7 +1147,7 @@
                     ]
                 }
             ],
-            "category": "Aviation"
+            "category": "Safety"
         },
         {
             "id": "c9",
@@ -1414,7 +1414,7 @@
             "category": "Leadership"
         },
         {
-            "id": "c7",
+            "id": "c13",
             "title": "Introduction to Aviation Law",
             "description": "Basics of aviation regulations and legal framework for airlines.",
             "duration": "4h 20m",
@@ -1431,7 +1431,7 @@
             "category": "Aviation"
         },
         {
-            "id": "c8",
+            "id": "c14",
             "title": "Ground Handling Procedures",
             "description": "Standard procedures for ground operations and safety.",
             "duration": "5h 10m",
@@ -1448,7 +1448,7 @@
             "category": "Technical"
         },
         {
-            "id": "c9",
+            "id": "c15",
             "title": "In-flight Sales Strategy",
             "description": "Maximize revenue through effective in-flight service and sales.",
             "duration": "3h 45m",
@@ -1465,7 +1465,7 @@
             "category": "Service"
         },
         {
-            "id": "c10",
+            "id": "c16",
             "title": "Leadership in Crisis",
             "description": "How to lead teams effectively during emergency scenarios.",
             "duration": "6h 00m",
@@ -1482,7 +1482,7 @@
             "category": "Leadership"
         },
         {
-            "id": "c11",
+            "id": "c17",
             "title": "First Aid for Flight Crews",
             "description": "Essential medical procedures and emergency care in the air.",
             "duration": "8h 30m",
@@ -1499,7 +1499,7 @@
             "category": "Safety"
         },
         {
-            "id": "c12",
+            "id": "c18",
             "title": "Airport Security Protocols",
             "description": "Standard security measures and threat identification at airports.",
             "duration": "5h 15m",

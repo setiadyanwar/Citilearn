@@ -8,7 +8,7 @@ import ProgressBar from '../common/ProgressBar';
 import BookmarkButton from '../common/BookmarkButton';
 import { COURSE_STATUS } from '../../constants/course';
 
-const CourseCard = ({ course, compact = false }) => {
+const CourseCard = ({ course, compact = false, variant = 'default' }) => {
     const [isBookmarked, setIsBookmarked] = useState(course.isBookmarked || false);
     const [timeLeft, setTimeLeft] = useState('');
 
@@ -50,39 +50,19 @@ const CourseCard = ({ course, compact = false }) => {
     // Determine Status Badge
     const renderStatusBadge = () => {
         if (isCompleted) {
-            return (
-                <Badge variant="success" size="sm" className="bg-white text-green-600 font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-green-500"></span>
-                    Completed
-                </Badge>
-            );
+            return <Badge variant="completed" size="sm">Completed</Badge>;
         }
         if (inProgress) {
-            return (
-                <Badge variant="warning" size="sm" className="bg-white text-orange-500 font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-orange-500"></span>
-                    In Progress
-                </Badge>
-            );
+            return <Badge variant="in-progress" size="sm">In Progress</Badge>;
         }
-        if (!isAvailable) {
-            return (
-                <Badge variant="secondary" size="sm" className="bg-white text-gray-500 font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-gray-400"></span>
-                    Not Started
-                </Badge>
-            );
+        if (course.status === COURSE_STATUS.FAILED) {
+            return <Badge variant="failed" size="sm">Failed</Badge>;
         }
-        return (
-            <Badge variant="secondary" size="sm" className="bg-white text-gray-500 font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-gray-400"></span>
-                Not Started
-            </Badge>
-        );
+        return <Badge variant="not-started" size="sm">Not Started</Badge>;
     };
 
     return (
-        <Card padding="p-0" className="group flex flex-col h-full overflow-hidden transition-all duration-300 border border-gray-100 rounded-2xl">
+        <Card padding="p-0" className="group flex flex-col h-full overflow-hidden transition-all duration-300 border border-gray-100 dark:border-slate-800 rounded-2xl">
             <Link to={isAvailable ? `/course/${course.id}` : '#'} className={`flex flex-col h-full ${!isAvailable ? 'cursor-not-allowed' : ''}`}>
                 {/* Image Section */}
                 <div className={`relative ${compact ? 'h-40' : 'h-48'} bg-gray-100 dark:bg-slate-800 overflow-hidden`}>

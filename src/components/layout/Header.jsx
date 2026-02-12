@@ -8,8 +8,8 @@ import {
     Filter
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import MainSearchBar from './dashboard/MainSearchBar';
-import budi_pratama from '../assets/budi_pratama.png';
+import MainSearchBar from '../dashboard/MainSearchBar';
+import budi_pratama from '../../assets/budi_pratama.png';
 
 const Header = ({
     isDark,
@@ -45,7 +45,7 @@ const Header = ({
     const getPageTitle = () => {
         const path = location.pathname;
         if (path === '/' || path.includes('/list')) return 'Dashboard';
-        if (path === '/courses') return 'My Course';
+        if (path === '/courses') return 'Explore Courses';
         if (path.includes('/course')) return 'Course Details';
         if (path.includes('/learn')) return 'Learning Session';
         if (path.includes('/achievements')) return 'Achievements';

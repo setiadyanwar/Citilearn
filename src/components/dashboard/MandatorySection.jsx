@@ -1,8 +1,11 @@
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight, AlertCircle, Calendar } from 'lucide-react';
 import DashboardCourseCard from './DashboardCourseCard';
+import MandatoryIllustration from './MandatoryIllustration';
+import Badge from '../common/Badge';
 
 const MandatorySection = ({ courses = [] }) => {
+    const isEmpty = !courses || courses.length === 0;
     const scrollRef = useRef(null);
 
     const scroll = (direction) => {
@@ -22,9 +25,9 @@ const MandatorySection = ({ courses = [] }) => {
                 <div>
                     <h2 className="text-lg font-bold text-main dark:text-white flex items-center gap-3">
                         Mandatory Courses
-                        <span className="px-2 py-0.5 rounded-full bg-red-50 text-red-500 border border-red-100 dark:bg-red-500/10 dark:border-red-500/20 text-xs font-bold">
-                            High Priority
-                        </span>
+                        <Badge variant={isEmpty ? "outline" : "mandatory"}>
+                            {isEmpty ? "Not available" : "High Priority"}
+                        </Badge>
                     </h2>
                     <p className="text-sm text-secondary dark:text-slate-400 mt-1 flex items-center gap-2">
                         Mandatory Roadmap compliance for Q4
@@ -38,55 +41,68 @@ const MandatorySection = ({ courses = [] }) => {
                         <div className="text-xs text-secondary dark:text-slate-400 font-medium">before</div>
                     </div>
                     <div className="border border-primary rounded-lg overflow-hidden w-12 text-center shadow-sm">
-                        <div className="bg-primary/5 dark:bg-slate-900 py-0.5 text-[10px] font-bold text-primary uppercase border-b border-primary/20">
+                        <div className="bg-primary/5 dark:bg-slate-900 py-0.5 text-3xs font-bold text-primary uppercase border-b border-primary/20">
                             Jan
                         </div>
                         <div className="bg-white dark:bg-slate-900 py-0.5 text-base font-bold text-main dark:text-white">
-                            24
+                            -
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="relative">
-                {/* Scroll Buttons */}
-                <button
-                    onClick={() => scroll('left')}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-white dark:bg-slate-800 rounded-full text-tertiary hover:text-primary transition-all opacity-0 group-hover/section:opacity-100 disabled:opacity-0 -ml-3 border border-gray-100"
-                >
-                    <ChevronLeft size={18} />
-                </button>
-                <button
-                    onClick={() => scroll('right')}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-white dark:bg-slate-800 rounded-full text-tertiary hover:text-primary transition-all opacity-0 group-hover/section:opacity-100 disabled:opacity-0 -mr-3 border border-gray-100"
-                >
-                    <ChevronRight size={18} />
-                </button>
-
-                {/* Right Fade Mask */}
-                <div className="absolute -right-6 top-0 bottom-4 w-32 bg-gradient-to-l from-white from-20% dark:from-slate-900 to-transparent pointer-events-none z-[5]" />
-
-                <div
-                    ref={scrollRef}
-                    className="flex overflow-x-auto gap-4 pb-4 -mx-2 px-2 snap-x no-scrollbar scroll-smooth"
-                >
-                    {courses.map(course => (
-                        <div key={course.id} className="min-w-[300px] md:min-w-[441px] md:w-[441px] snap-center shrink-0">
-                            <DashboardCourseCard course={course} variant="mandatory" />
-                        </div>
-                    ))}
+            {isEmpty ? (
+                <div className="flex flex-col items-center justify-center py-6">
+                    <div className="w-44 aspect-[194/148] mb-6">
+                        <MandatoryIllustration />
+                    </div>
+                    <div className="text-center">
+                        <h3 className="text-base font-bold text-main dark:text-white mb-2">
+                            No mandatory courses available.
+                        </h3>
+                        <p className="text-sm text-secondary dark:text-slate-400">
+                            Oops... looks like you're off the hook for now
+                        </p>
+                    </div>
                 </div>
+            ) : (
+                <div className="relative">
+                    <button
+                        onClick={() => scroll('left')}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-white dark:bg-slate-800 rounded-full text-tertiary hover:text-primary transition-all opacity-0 group-hover/section:opacity-100 disabled:opacity-0 -ml-3 border border-gray-100"
+                    >
+                        <ChevronLeft size={18} />
+                    </button>
+                    <button
+                        onClick={() => scroll('right')}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-white dark:bg-slate-800 rounded-full text-tertiary hover:text-primary transition-all opacity-0 group-hover/section:opacity-100 disabled:opacity-0 -mr-3 border border-gray-100"
+                    >
+                        <ChevronRight size={18} />
+                    </button>
 
-                {/* Dots Indicator */}
-                <div className="flex justify-center gap-1.5 mt-2">
-                    {courses.slice(0, 3).map((_, idx) => (
-                        <div
-                            key={idx}
-                            className={`h-1.5 rounded-full transition-all ${idx === 0 ? 'w-6 bg-primary' : 'w-1.5 bg-gray-200 dark:bg-slate-700'}`}
-                        />
-                    ))}
+                    <div className="absolute -right-6 top-0 bottom-4 w-32 bg-linear-to-l from-white from-20% dark:from-slate-900 to-transparent pointer-events-none z-5" />
+
+                    <div
+                        ref={scrollRef}
+                        className="flex overflow-x-auto gap-4 pb-4 -mx-2 px-2 snap-x no-scrollbar scroll-smooth"
+                    >
+                        {courses.map(course => (
+                            <div key={course.id} className="min-w-[300px] md:min-w-[441px] md:w-[441px] snap-center shrink-0">
+                                <DashboardCourseCard course={course} variant="mandatory" />
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="flex justify-center gap-1.5 mt-2">
+                        {courses.slice(0, 3).map((_, idx) => (
+                            <div
+                                key={idx}
+                                className={`h-1.5 rounded-full transition-all ${idx === 0 ? 'w-6 bg-primary' : 'w-1.5 bg-gray-200 dark:bg-slate-700'}`}
+                            />
+                        ))}
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 };

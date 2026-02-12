@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Layout } from './components/Layout';
-import CourseList from './pages/List';
-import MyCourses from './pages/MyCourses';
-import CourseDetail from './pages/Detail';
-import CourseLearning from './pages/Learning';
+import { Layout } from './components/layout/Layout';
+import Dashboard from './pages/Dashboard';
+import ExploreCourses from './pages/ExploreCourses';
+import CourseDetail from './pages/CourseDetail';
+import CourseLearning from './pages/CourseLearning';
 import LoginPage from './pages/Login';
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
           >
             <Routes>
               <Route path="/" element={
-                <CourseList
+                <Dashboard
                   searchQuery={searchQuery}
                   handleSearch={handleSearch}
                   selectedCategory={selectedCategory}
@@ -43,12 +43,12 @@ function App() {
                   setSelectedStatus={setSelectedStatus}
                 />
               } />
-              <Route path="/courses" element={<MyCourses searchQuery={searchQuery} handleSearch={handleSearch} />} />
+              <Route path="/courses" element={<ExploreCourses searchQuery={searchQuery} handleSearch={handleSearch} />} />
               <Route path="/course/:id" element={<CourseDetail />} />
               <Route path="/learn/:id" element={<CourseLearning setGlobalPip={setPipVideo} />} />
               {/* Fallback for other routes */}
               <Route path="*" element={
-                <CourseList
+                <Dashboard
                   searchQuery={searchQuery}
                   handleSearch={handleSearch}
                   selectedCategory={selectedCategory}

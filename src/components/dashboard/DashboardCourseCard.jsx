@@ -1,5 +1,6 @@
 import React from 'react';
 import BookmarkButton from '../common/BookmarkButton';
+import Badge from '../common/Badge';
 import { Clock, BookOpen } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,7 +18,7 @@ const DashboardCourseCard = ({ course, variant = 'resume' }) => {
                 <img
                     src={course.thumbnail}
                     alt={course.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-2 left-2 z-10">
                     <BookmarkButton size={14} className="p-1.5" />
@@ -30,9 +31,7 @@ const DashboardCourseCard = ({ course, variant = 'resume' }) => {
                     <div className="flex items-center justify-between font-medium mb-2">
                         <div className="flex items-center gap-2">
                             {isMandatory && (
-                                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold border bg-red-50 text-red-500 border-red-100 dark:bg-red-500/10 dark:border-red-500/20">
-                                    Mandatory
-                                </span>
+                                <Badge variant="mandatory" showDot>Mandatory</Badge>
                             )}
                             <span className="text-xs text-tertiary">{course.category}</span>
                         </div>

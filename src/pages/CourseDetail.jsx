@@ -49,7 +49,7 @@ const CourseDetail = () => {
         <div className="max-w-7xl mx-auto">
             <Breadcrumb
                 items={[
-                    { label: 'My Courses', link: '/courses' },
+                    { label: 'Explore Courses', link: '/courses' },
                     { label: course.title, link: null }
                 ]}
             />
