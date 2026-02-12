@@ -10,14 +10,14 @@ import { ChevronLeft, ChevronRight, ChevronDown, LayoutGrid, List as ListIcon, S
 import { COURSE_CATEGORIES } from '../constants/course';
 
 const WingDecorationLeft = () => (
-    <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-8 left-8 md:left-24 hidden md:block">
+    <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-8 left-4 lg:left-24 hidden lg:block opacity-50 xl:opacity-100">
         <path d="M0 20L80 0L30 40L0 20Z" fill="#D0E92A" />
         <path d="M10 50L90 30L40 70L10 50Z" fill="#D0E92A" />
     </svg>
 );
 
 const WingDecorationRight = () => (
-    <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-8 right-8 md:right-24 hidden md:block transform scale-x-[-1]">
+    <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-8 right-4 lg:right-24 hidden lg:block transform scale-x-[-1] opacity-50 xl:opacity-100">
         <path d="M0 20L80 0L30 40L0 20Z" fill="#D0E92A" />
         <path d="M10 50L90 30L40 70L10 50Z" fill="#D0E92A" />
     </svg>
@@ -84,7 +84,7 @@ const ExploreCourses = () => {
 
     return (
         <div className="pb-20 space-y-8 animate-fade-in">
-            <div className="relative z-50 -mt-6 -mx-6 px-6 pt-10 pb-8 mb-4">
+            <div className="relative z-50 -mt-6 md:-mx-6 px-6 pt-10 pb-8 mb-4">
                 <WingDecorationLeft />
                 <WingDecorationRight />
 
@@ -94,7 +94,7 @@ const ExploreCourses = () => {
                     </h1>
 
                     {/* Search Bar - Reusing MainSearchBar */}
-                    <div className="max-w-xl mx-auto mb-8">
+                    <div className="mx-auto mb-5 md:mb-10 w-full max-w-xl md:px-0">
                         <MainSearchBar
                             searchQuery={searchQuery}
                             handleSearch={(e) => setSearchQuery(e.target.value)}
@@ -102,18 +102,26 @@ const ExploreCourses = () => {
                         />
                     </div>
 
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-                        <TopicDropdown />
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 w-full px-4 md:px-0">
+                        {/* Desktop Only Inline Topic Dropdown */}
+                        <div className="hidden md:flex w-full md:w-auto justify-center">
+                            <TopicDropdown />
+                        </div>
 
-                        <div className="flex items-center gap-3">
-                            <span className="text-sm font-bold text-secondary dark:text-slate-400">Category:</span>
-                            <div className="flex gap-2 bg-gray-50 dark:bg-slate-800/50 border border-gray-100 dark:border-slate-800 rounded-full p-1 overflow-x-auto no-scrollbar max-w-full items-center h-10 md:h-11">
+                        {/* Mobile FAB Topic Dropdown (Doesn't take space in flow) */}
+                        <div className="md:hidden h-0 overflow-visible">
+                            <TopicDropdown />
+                        </div>
+
+                        <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+                            <span className="text-sm font-bold text-secondary dark:text-slate-400 shrink-0 hidden sm:inline">Category:</span>
+                            <div className="flex gap-2 bg-gray-50 dark:bg-slate-800/50 border border-gray-100 dark:border-slate-800 rounded-full p-1 overflow-x-auto no-scrollbar w-full sm:w-auto items-center h-10 md:h-11 justify-start">
                                 {COURSE_CATEGORIES.map(filter => (
                                     <button
                                         key={filter}
                                         onClick={() => setSelectedCategory(filter)}
-                                        className={`text-sm font-bold px-3 md:px-4 h-full rounded-full transition-all whitespace-nowrap cursor-pointer ${selectedCategory === filter
-                                            ? 'bg-primary text-white'
+                                        className={`text-xs md:text-sm font-bold px-3 md:px-4 h-full rounded-full transition-all whitespace-nowrap cursor-pointer ${selectedCategory === filter
+                                            ? 'bg-primary text-white shadow-sm'
                                             : 'text-secondary dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 hover:text-main dark:hover:text-white'
                                             }`}
                                     >
@@ -153,7 +161,7 @@ const ExploreCourses = () => {
                         >
                             {loading ? (
                                 [1, 2, 3].map(i => (
-                                    <div key={i} className="snap-start min-w-[300px] md:min-w-[360px] flex flex-col sm:flex-row gap-3 p-3 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl animate-pulse">
+                                    <div key={i} className="snap-start min-w-[280px] sm:min-w-[320px] md:min-w-[360px] flex flex-col sm:flex-row gap-3 p-3 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl animate-pulse">
                                         <div className="w-full sm:w-28 h-40 sm:h-28 bg-gray-200 dark:bg-slate-800 rounded-xl shrink-0" />
                                         <div className="flex-1 space-y-3 py-1">
                                             <div className="flex justify-between items-center">
@@ -174,7 +182,7 @@ const ExploreCourses = () => {
                                 ))
                             ) : (
                                 resumeCourses.map(course => (
-                                    <div key={course.id} className="snap-start min-w-[300px] md:min-w-[360px]">
+                                    <div key={course.id} className="snap-start min-w-[280px] sm:min-w-[320px] md:min-w-[360px]">
                                         <DashboardCourseCard course={course} variant="resume" />
                                     </div>
                                 ))
@@ -186,39 +194,42 @@ const ExploreCourses = () => {
 
             {/* Course Tabs & Controls */}
             <div className="px-2">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
-                    {/* Tabs */}
-                    <Tabs
-                        activeTab={activeTab}
-                        onTabChange={setActiveTab}
-                        tabs={[
-                            { id: 'mandatory', label: 'Mandatory', count: mandatoryCourses.length },
-                            { id: 'skills-up', label: 'Skills-Up', count: skillsUpCourses.length }
-                        ]}
-                    />
-
-                    {/* Filter & View Toggle */}
-                    <div className="flex items-center gap-3">
-                        <StatusDropdown
-                            selectedStatus={selectedStatus}
-                            onSelectStatus={setSelectedStatus}
-                            isOpen={isStatusDropdownOpen}
-                            onToggle={setIsStatusDropdownOpen}
-                        />
-                        <div className="flex bg-white dark:bg-slate-900 p-1 rounded-xl border border-gray-100 dark:border-slate-800">
-                            <button
-                                onClick={() => setViewMode('grid')}
-                                className={`p-2 rounded-lg transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-citilearn-green text-white' : 'text-secondary hover:text-primary'}`}
-                            >
-                                <LayoutGrid size={16} />
-                            </button>
-                            <button
-                                onClick={() => setViewMode('list')}
-                                className={`p-2 rounded-lg transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-citilearn-green text-white' : 'text-secondary hover:text-primary'}`}
-                            >
-                                <ListIcon size={16} />
-                            </button>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                    <div className="flex items-center gap-3 w-full md:w-auto">
+                        <div className="grow md:grow-0">
+                            <Tabs
+                                activeTab={activeTab}
+                                onTabChange={setActiveTab}
+                                tabs={[
+                                    { id: 'mandatory', label: 'Mandatory', count: mandatoryCourses.length },
+                                    { id: 'skills-up', label: 'Skills-Up', count: skillsUpCourses.length }
+                                ]}
+                            />
                         </div>
+                        <div className="shrink-0">
+                            <StatusDropdown
+                                selectedStatus={selectedStatus}
+                                onSelectStatus={setSelectedStatus}
+                                isOpen={isStatusDropdownOpen}
+                                onToggle={setIsStatusDropdownOpen}
+                            />
+                        </div>
+                    </div>
+
+                    {/* View Toggle - Desktop Only */}
+                    <div className="hidden md:flex bg-white dark:bg-slate-900 p-1 rounded-xl border border-gray-100 dark:border-slate-800 self-end md:self-auto">
+                        <button
+                            onClick={() => setViewMode('grid')}
+                            className={`p-2 rounded-lg transition-all cursor-pointer ${viewMode === 'grid' ? 'bg-citilearn-green text-white' : 'text-secondary hover:text-primary'}`}
+                        >
+                            <LayoutGrid size={16} />
+                        </button>
+                        <button
+                            onClick={() => setViewMode('list')}
+                            className={`p-2 rounded-lg transition-all cursor-pointer ${viewMode === 'list' ? 'bg-citilearn-green text-white' : 'text-secondary hover:text-primary'}`}
+                        >
+                            <ListIcon size={16} />
+                        </button>
                     </div>
                 </div>
 

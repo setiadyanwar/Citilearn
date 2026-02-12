@@ -27,12 +27,12 @@ const StatusDropdown = ({ selectedStatus, onSelectStatus, isOpen, onToggle }) =>
                         ? 'border-primary bg-white dark:bg-slate-800'
                         : 'border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-800/50 text-secondary dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50'}`}
             >
-                <span>Status: {selectedStatus}</span>
+                <span><span className="hidden sm:inline">Status: </span>{selectedStatus}</span>
                 <ChevronDown size={14} className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {isOpen && (
-                <div className="absolute top-full mt-2 left-0 sm:left-auto sm:right-0 w-48 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-xl z-50 overflow-hidden py-1 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="absolute top-full mt-2 right-0 w-48 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-xl z-50 overflow-hidden py-1 animate-in fade-in slide-in-from-top-2 duration-200 shadow-xl shadow-black/5">
                     {COURSE_STATUS_LIST.map(status => (
                         <button
                             key={status}
