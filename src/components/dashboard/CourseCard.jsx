@@ -21,10 +21,16 @@ const CourseCard = ({ course, compact = false, variant = 'default' }) => {
                 const difference = availableDate - now;
 
                 if (difference > 0) {
+                    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
                     const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
                     const minutes = Math.floor((difference / 1000 / 60) % 60);
                     const seconds = Math.floor((difference / 1000) % 60);
-                    setTimeLeft(`${hours}h:${minutes}m:${seconds}s`);
+
+                    if (days > 0) {
+                        setTimeLeft(`${days}d ${hours}h ${minutes}m`);
+                    } else {
+                        setTimeLeft(`${hours}h ${minutes}m ${seconds}s`);
+                    }
                 } else {
                     setTimeLeft(null); // Available
                 }
@@ -86,7 +92,7 @@ const CourseCard = ({ course, compact = false, variant = 'default' }) => {
                 </div>
 
                 {/* Content Section */}
-                <div className={`${compact ? 'p-4' : 'p-5'} flex-1 flex flex-col`}>
+                <div className={`${compact ? 'p-4' : 'p-4 sm:p-5'} flex-1 flex flex-col`}>
                     {/* Meta Info */}
                     <div className="flex items-center gap-4 text-xs font-bold text-tertiary mb-3 tracking-wide">
                         <span className="text-secondary">{course.category || 'General'}</span>
@@ -123,7 +129,7 @@ const CourseCard = ({ course, compact = false, variant = 'default' }) => {
                                 disabled
                                 className="w-full bg-gray-100 text-gray-500 font-bold rounded-xl h-11 border border-gray-200 cursor-not-allowed"
                             >
-                                Not Available: {timeLeft || 'Loading...'}
+                                Available in {timeLeft || 'Loading...'}
                             </Button>
                         )}
 

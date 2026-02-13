@@ -6,10 +6,44 @@
             "description": "Comprehensive guide to safety protocols and hazard identification in aviation operations. Learn how to maintain the highest standards of safety for Citilink fleet.",
             "duration": "8h 45m",
             "status": "Not Started",
-            "availableAt": "2026-02-12T18:45:00",
+            "availableAt": "2026-03-20T09:00:00",
             "progress": 0,
             "thumbnail": "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80&w=800",
             "modules": [
+                {
+                    "id": "m-pre",
+                    "title": "Pra Test Knowledge",
+                    "lessons": [
+                        {
+                            "id": "l-pre",
+                            "title": "Pre Test",
+                            "type": "quiz",
+                            "content": "Pre Assessment",
+                            "assignments": [
+                                {
+                                    "question": "What is the primary objective of a Safety Management System (SMS)?",
+                                    "options": [
+                                        "Maximizing quarterly flight revenue",
+                                        "Automating pilot communication",
+                                        "Identifying hazards and managing safety risks",
+                                        "Reducing ground handling time"
+                                    ],
+                                    "correctAnswer": 2
+                                },
+                                {
+                                    "question": "Which of these is a key component of Safety Assurance?",
+                                    "options": [
+                                        "Safety performance monitoring and measurement",
+                                        "In-flight catering standards",
+                                        "Staff uniform design",
+                                        "Ticket pricing strategy"
+                                    ],
+                                    "correctAnswer": 0
+                                }
+                            ]
+                        }
+                    ]
+                },
                 {
                     "id": "m1",
                     "title": "Introduction to SMS",
@@ -18,17 +52,7 @@
                             "id": "l1",
                             "title": "Safety Policy and Objectives",
                             "type": "youtube",
-                            "content": "https://www.youtube.com/embed/vZRM6kb0geU",
-                            "assignment": {
-                                "question": "What is the primary goal of SMS?",
-                                "options": [
-                                    "To increase profit",
-                                    "To ensure safe operations and identify hazards",
-                                    "To monitor employee attendance",
-                                    "To manage fuel consumption"
-                                ],
-                                "correctAnswer": 1
-                            }
+                            "content": "https://www.youtube.com/embed/vZRM6kb0geU"
                         },
                         {
                             "id": "l2",
@@ -41,6 +65,24 @@
                             "title": "Safety Risk Management Basics",
                             "type": "youtube",
                             "content": "https://www.youtube.com/embed/9No-FiEInLA"
+                        },
+                        {
+                            "id": "l-m1-quiz",
+                            "title": "Module 1 Quiz",
+                            "type": "quiz",
+                            "content": "Module 1 Assessment",
+                            "assignments": [
+                                {
+                                    "question": "What is the primary goal of SMS?",
+                                    "options": [
+                                        "To increase profit",
+                                        "To ensure safe operations and identify hazards",
+                                        "To monitor employee attendance",
+                                        "To manage fuel consumption"
+                                    ],
+                                    "correctAnswer": 1
+                                }
+                            ]
                         }
                     ]
                 },

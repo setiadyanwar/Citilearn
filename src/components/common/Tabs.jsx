@@ -9,12 +9,12 @@ const Tabs = ({ tabs, activeTab, onTabChange, className = "" }) => {
                     <button
                         key={tab.id}
                         onClick={() => onTabChange(tab.id)}
-                        className={`px-3 py-1.5 rounded-full text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${isActive
+                        className={`px-3 py-1.5 rounded-full text-sm font-bold transition-all flex items-center gap-2 cursor-pointer min-w-0 ${isActive
                             ? 'bg-citilearn-green text-white'
                             : 'text-secondary hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
                             }`}
                     >
-                        {tab.label}
+                        <span className="truncate">{tab.label}</span>
                         {tab.count !== undefined && (
                             <span className={`px-2 py-0.5 rounded-full text-3xs font-extrabold ml-1 ${isActive
                                 ? 'bg-white/20 text-white'

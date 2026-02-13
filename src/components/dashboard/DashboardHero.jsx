@@ -34,7 +34,7 @@ const DashboardHero = ({
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-8 items-stretch">
             {/* Left Card: Welcome & Search & Filters */}
-            <Card rounded="rounded-3xl" padding="p-10" className="lg:col-span-6 relative flex flex-col justify-between">
+            <Card rounded="rounded-3xl" padding="p-4 sm:p-10" className="lg:col-span-6 relative flex flex-col justify-between">
                 {/* Background Illustration Container */}
                 <div className="absolute inset-0 pointer-events-none select-none overflow-hidden rounded-3xl">
                     <img
@@ -85,7 +85,7 @@ const DashboardHero = ({
                         </div>
 
                         {/* Status Filter Dropdown */}
-                        <div className="relative z-[50]" ref={statusDropdownRef}>
+                        <div className="relative z-50" ref={statusDropdownRef}>
                             <button
                                 onClick={() => setIsStatusDropdownOpen(!isStatusDropdownOpen)}
                                 className={`flex items-center justify-between gap-3 px-4 h-10 md:h-11 rounded-full border text-2xs md:text-xs font-bold transition-all
@@ -125,7 +125,7 @@ const DashboardHero = ({
             {/* Right Column: Stats */}
             <div className="lg:col-span-6 flex flex-col gap-4">
                 {/* Circular Stats Card */}
-                <Card rounded="rounded-3xl" padding="p-8" className="flex flex-row items-stretch justify-between gap-6 h-full relative overflow-hidden">
+                <Card rounded="rounded-3xl" padding="p-4 sm:p-8" className="flex flex-row items-stretch justify-between gap-6 h-full relative overflow-hidden">
                     {/* Background Blur Effect */}
                     <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#6AC100]/30 rounded-full blur-3xl pointer-events-none" />
 

@@ -59,7 +59,7 @@ export const Layout = ({
                         setSelectedStatus={setSelectedStatus}
                     />
 
-                    <div className="px-2 py-6 md:p-10 flex-1">
+                    <div className="p-4 md:p-10 flex-1">
                         {children}
                     </div>
                 </main>

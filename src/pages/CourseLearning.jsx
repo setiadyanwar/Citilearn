@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import data from '../data.json';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft } from 'lucide-react';
@@ -9,10 +9,12 @@ import LessonHeader from '../components/learning/LessonHeader';
 import LessonContent from '../components/learning/LessonContent';
 import LessonTabs from '../components/learning/LessonTabs';
 import LessonQuiz from '../components/learning/LessonQuiz';
+import QuizLanding from '../components/learning/QuizLanding';
 
 const CourseLearning = ({ setGlobalPip }) => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
     const [course, setCourse] = useState(null);
     const [activeLesson, setActiveLesson] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -24,6 +26,7 @@ const CourseLearning = ({ setGlobalPip }) => {
     const [completedLessons, setCompletedLessons] = useState(new Set());
     const [showCompletionSuccess, setShowCompletionSuccess] = useState(false);
     const [isSidebarOpen, setSidebarOpen] = useState(false);
+    const [quizStarted, setQuizStarted] = useState(false);
 
     // Multi-question quiz states
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -39,12 +42,26 @@ const CourseLearning = ({ setGlobalPip }) => {
             const found = data.courses.find(c => c.id === id);
             setCourse(found);
             if (found && found.modules.length > 0) {
-                setActiveLesson(found.modules[0].lessons[0]);
+                // Check for targetLessonId from navigation state
+                const targetLessonId = location.state?.targetLessonId;
+                let initialLesson = found.modules[0].lessons[0];
+
+                if (targetLessonId) {
+                    for (const module of found.modules) {
+                        const l = module.lessons.find(l => l.id === targetLessonId);
+                        if (l) {
+                            initialLesson = l;
+                            break;
+                        }
+                    }
+                }
+
+                setActiveLesson(initialLesson);
             }
             setLoading(false);
         }, 500);
         return () => clearTimeout(timer);
-    }, [id]);
+    }, [id, location.state]);
 
     useEffect(() => {
         // Reset quiz state when switching lessons
@@ -53,6 +70,7 @@ const CourseLearning = ({ setGlobalPip }) => {
         setShowResult(false);
         setSelectedOption(null);
         setQuizFinalResult(null);
+        setQuizStarted(false);
     }, [activeLesson]);
 
     useEffect(() => {
@@ -100,6 +118,19 @@ const CourseLearning = ({ setGlobalPip }) => {
                 total: totalQuestions,
                 percentage
             });
+
+            // Save history
+            const passed = percentage >= 75;
+            const newHistoryItem = {
+                date: new Date().toISOString(),
+                score: percentage,
+                passed: passed
+            };
+            const storageKey = `quiz_history_${activeLesson.id}`;
+            const existing = localStorage.getItem(storageKey);
+            const history = existing ? JSON.parse(existing) : [];
+            history.push(newHistoryItem);
+            localStorage.setItem(storageKey, JSON.stringify(history));
 
             // If it's a regular lesson with one quiz, or if they finished final quiz
             if (activeLesson.type !== 'quiz' || percentage >= 70) { // arbitrary pass mark for final
@@ -193,31 +224,9 @@ const CourseLearning = ({ setGlobalPip }) => {
             <main className="flex-1 w-full min-w-0 space-y-6">
                 <div className="space-y-6 pb-10">
                     {isFinalQuiz ? (
-                        <>
-                            <LessonHeader
-                                activeLesson={activeLesson}
-                                completedLessons={completedLessons}
-                                toggleCompletion={toggleCompletion}
-                                setSidebarOpen={setSidebarOpen}
-                                isSidebarOpen={isSidebarOpen}
-                            />
-                            <div ref={quizRef}>
-                                <LessonQuiz
-                                    activeLesson={activeLesson}
-                                    showResult={showResult}
-                                    selectedOption={selectedOption}
-                                    setSelectedOption={setSelectedOption}
-                                    handleAssignmentSubmit={handleAssignmentSubmit}
-                                    isCorrect={isCorrect}
-                                    handleRetry={handleRetry}
-                                    nextLesson={nextLesson}
-                                    currentQuestionIndex={currentQuestionIndex}
-                                    nextQuestion={nextQuestion}
-                                    quizFinalResult={quizFinalResult}
-                                    isFinalQuiz={true}
-                                />
-                            </div>
-                        </>
+                        <QuizLanding
+                            activeLesson={activeLesson}
+                        />
                     ) : (
                         <>
                             <LessonContent

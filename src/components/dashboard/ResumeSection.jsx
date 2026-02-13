@@ -5,13 +5,13 @@ const ResumeSection = ({ courses = [] }) => {
     const isEmpty = courses.length === 0;
 
     return (
-        <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-3xl p-6 h-full flex flex-col">
+        <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-3xl p-4 sm:p-6 h-full flex flex-col">
             <div className="flex justify-between items-center mb-6 shrink-0">
                 <h2 className="text-lg font-bold text-main dark:text-white">Resume Training</h2>
                 <button className="text-sm font-bold text-primary hover:underline">Show All</button>
             </div>
 
-            <div className={`relative ${isEmpty ? 'flex-1 flex flex-col items-center justify-center' : 'h-[260px]'}`}>
+            <div className={`relative ${isEmpty ? 'flex-1 flex flex-col items-center justify-center' : 'xl:h-[260px]'}`}>
                 {isEmpty ? (
                     <div className="flex flex-col items-center justify-center -mt-4">
                         <div className="w-32 aspect-194/148 mb-6">
@@ -27,9 +27,9 @@ const ResumeSection = ({ courses = [] }) => {
                         </div>
                     </div>
                 ) : (
-                    <div className="h-full overflow-y-auto no-scrollbar pr-1 pb-4 flex flex-col gap-4">
+                    <div className="h-full overflow-x-auto xl:overflow-y-auto no-scrollbar -mx-4 px-4 xl:mx-0 xl:px-0 pr-1 pb-4 flex flex-row xl:flex-col gap-4">
                         {courses.map(course => (
-                            <div key={course.id}>
+                            <div key={course.id} className="min-w-[280px] sm:min-w-[320px] xl:min-w-0 xl:w-full">
                                 <DashboardCourseCard course={course} variant="resume" />
                             </div>
                         ))}

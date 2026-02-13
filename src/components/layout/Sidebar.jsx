@@ -239,7 +239,7 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                             isOpen={openGroup === 'Collaboration'}
                             onToggle={() => handleToggle('Collaboration')}
                         >
-                            {['Supergreeners Care', 'Supergreeners Talk', "Supergreneers Story"].map((item) => (
+                            {['Supergreeners Talk', "Supergreneers Story"].map((item) => (
                                 <NavLink
                                     key={item}
                                     to={`/collaboration/${item.toLowerCase().replace(/\s+/g, '-')}`}
@@ -262,7 +262,7 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                                 <TooltipTrigger asChild>
                                     <NavLink
                                         to="/settings"
-                                        className={({ isActive }) => `flex items-center gap-3 py-3.5 rounded-lg transition-all duration-200 flex-1 justify-center px-0
+                                        className={({ isActive }) => `flex items-center py-3.5 rounded-lg transition-all duration-200 flex-1 justify-center px-0
                                     ${isActive
                                                 ? 'bg-primary-light text-primary font-bold'
                                                 : isDark ? 'text-gray-400 hover:bg-slate-800 hover:text-white' : 'text-gray-500 hover:bg-gray-50'}`}
@@ -277,7 +277,7 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                         ) : (
                             <NavLink
                                 to="/settings"
-                                className={({ isActive }) => `flex items-center gap-3 py-3.5 rounded-lg transition-all duration-200 flex-1 px-3
+                                className={({ isActive }) => `flex items-center gap-3 py-3.5 rounded-lg transition-all duration-200 flex-1 px-4
                             ${isActive
                                         ? 'bg-primary-light text-primary font-bold'
                                         : isDark ? 'text-gray-400 hover:bg-slate-800 hover:text-white' : 'text-gray-500 hover:bg-gray-50'}`}

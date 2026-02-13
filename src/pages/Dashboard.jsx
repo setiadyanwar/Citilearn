@@ -208,7 +208,7 @@ const Dashboard = ({
     }
 
     return (
-        <div className="space-y-12">
+        <div className="space-y-6 md:space-y-12">
             <DashboardHero
                 searchQuery={searchQuery}
                 handleSearch={handleSearch}
@@ -220,17 +220,17 @@ const Dashboard = ({
                 setIsStatusDropdownOpen={setIsStatusDropdownOpen}
             />
 
-            <div className="space-y-8 pt-4" ref={coursesRef}>
+            <div className="space-y-4 md:space-y-8 pt-4" ref={coursesRef}>
 
                 {/* New Dashboard Sections */}
-                <div className="grid grid-cols-1 xl:grid-cols-10 gap-6 mb-8">
+                <div className="flex flex-col xl:flex-row gap-4 xl:gap-6 mb-8">
                     {/* Mandatory Courses Section */}
-                    <div className="min-w-0 h-full xl:col-span-7">
+                    <div className="min-w-0 w-full xl:w-[68%]">
                         <MandatorySection courses={mandatoryCourses} />
                     </div>
 
-                    {/* Resume Training Section */}
-                    <div className="min-w-0 h-full xl:col-span-3">
+                    {/* Resume Training Scrolling Logic */}
+                    <div className="min-w-0 w-full xl:w-[32%]">
                         <ResumeSection courses={continueLearningCourses} />
                     </div>
                 </div>
@@ -250,7 +250,7 @@ const Dashboard = ({
                     )}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-8 min-h-[500px] content-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 pb-8 min-h-[500px] content-start">
                     {displayedCourses.length > 0 ? (
                         displayedCourses.map(course => (
                             <CourseCard key={course.id} course={course} />

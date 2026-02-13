@@ -20,7 +20,7 @@ const MandatorySection = ({ courses = [] }) => {
     };
 
     return (
-        <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-3xl p-6 relative overflow-hidden group/section h-full flex flex-col justify-between">
+        <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-3xl p-4 sm:p-6 relative overflow-hidden group/section h-full flex flex-col justify-between">
             <div className="flex justify-between items-start mb-6">
                 <div>
                     <h2 className="text-lg font-bold text-main dark:text-white flex items-center gap-3">
@@ -53,7 +53,7 @@ const MandatorySection = ({ courses = [] }) => {
 
             {isEmpty ? (
                 <div className="flex flex-col items-center justify-center py-6">
-                    <div className="w-44 aspect-[194/148] mb-6">
+                    <div className="w-44 aspect-194/148 mb-6">
                         <MandatoryIllustration />
                     </div>
                     <div className="text-center">
@@ -84,17 +84,17 @@ const MandatorySection = ({ courses = [] }) => {
 
                     <div
                         ref={scrollRef}
-                        className="flex overflow-x-auto gap-4 pb-4 -mx-2 px-2 snap-x no-scrollbar scroll-smooth"
+                        className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x no-scrollbar scroll-smooth"
                     >
                         {courses.map(course => (
-                            <div key={course.id} className="min-w-[300px] md:min-w-[441px] md:w-[441px] snap-center shrink-0">
+                            <div key={course.id} className="w-[330px] sm:w-[360px] md:w-[400px] snap-center shrink-0">
                                 <DashboardCourseCard course={course} variant="mandatory" />
                             </div>
                         ))}
                     </div>
 
-                    <div className="flex justify-center gap-1.5 mt-2">
-                        {courses.slice(0, 3).map((_, idx) => (
+                    <div className="flex justify-center gap-1.5 mt-4">
+                        {courses.map((_, idx) => (
                             <div
                                 key={idx}
                                 className={`h-1.5 rounded-full transition-all ${idx === 0 ? 'w-6 bg-primary' : 'w-1.5 bg-gray-200 dark:bg-slate-700'}`}

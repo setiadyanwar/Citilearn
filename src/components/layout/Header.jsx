@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import {
     Bell,
     PanelLeft,
     User,
     LogOut,
-    Filter
+    Filter,
+    UserCog
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import MainSearchBar from '../dashboard/MainSearchBar';
@@ -175,17 +176,26 @@ const Header = ({
                                 initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                className={`absolute right-0 mt-2 w-48 rounded-xl border z-100 overflow-hidden ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-200'}`}
+                                className={`absolute right-0 mt-2 w-56 rounded-xl border z-100 overflow-hidden ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-200 shadow-lg shadow-gray-200/50'}`}
                             >
-                                <div className="p-1.5">
-                                    <button className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold transition-colors ${isDark ? 'text-gray-300 hover:bg-slate-800 hover:text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-primary'}`}>
+                                <div className="p-1.5 space-y-0.5">
+                                    <Link to="/" className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isDark ? 'text-gray-300 hover:bg-slate-800 hover:text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-primary'}`}>
                                         <User size={18} />
-                                        Profile
-                                    </button>
-                                    <div className={`h-px my-1 ${isDark ? 'bg-slate-800' : 'bg-gray-100'}`} />
-                                    <button className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold transition-colors text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10`}>
+                                        Profile & Dashboard
+                                    </Link>
+
+                                    <div className={`h-px mx-2 ${isDark ? 'bg-slate-800' : 'bg-gray-100'}`} />
+
+                                    <Link to="/admin" className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isDark ? 'text-gray-300 hover:bg-slate-800 hover:text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-primary'}`}>
+                                        <UserCog size={18} />
+                                        Admin Panel
+                                    </Link>
+
+                                    <div className={`h-px mx-2 ${isDark ? 'bg-slate-800' : 'bg-gray-100'}`} />
+
+                                    <button className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold transition-colors ${isDark ? 'text-red-400 hover:bg-red-500/10' : 'text-red-500 hover:bg-red-50'}`}>
                                         <LogOut size={18} />
-                                        Sign Out
+                                        Logout
                                     </button>
                                 </div>
                             </motion.div>
