@@ -6,18 +6,30 @@ The platform focuses on operational efficiency, providing a sleek interface to m
 
 ## ✨ Key Features
 
+### 🎓 Learner Experience
 - **Personalized Learning Hub**: Dynamic hero section with real-time statistics (enrolled courses, completion rates, and learning hours).
 - **Resume Training Intelligence**: Intelligently tracks progress and allows users to jump back into lessons via a signature carousel.
-- **Visual Analytics**: Interactive donut charts (via Recharts) providing a clear breakdown of training distribution across categories (Aviation, Safety, Technical, etc.).
 - **Smart Training Library**: Advanced course filtering by category and status, integrated with a custom-built premium pagination system.
-- **Premium Design System**: Atomic design approach with reusable common components (Buttons, Cards, Badges, Progress Bars).
-- **Dark Mode Optimized**: Native support for dark/light themes with a color palette tailored for aviation environments.
-- **Fluid Micro-interactions**: Smooth transitions and animations powered by Framer Motion.
+- **Focus Mode & Assessments**: Dedicated examination interface (`FocusTest`) with distraction-free layout, timers, and progress tracking.
+- **Video Picture-in-Picture (PiP)**: Continue watching training videos while navigating other sections of the dashboard.
+- **Visual Analytics**: Interactive donut charts (via Recharts) providing a clear breakdown of training distribution across categories (Aviation, Safety, Technical, etc.).
+
+### 🏢 Digital Workplace (New)
+- **Culture Hub**: Dedicated sections for 'Agent of Culture', 'Activation', and 'Awards' to foster company values.
+- **Collaboration Space**: 'Supergreeners Talk' and 'Story' pages for internal communication and engagement.
+
+### 🛡️ Admin & Instructor Studio
+- **Course Management System**: Full granular control to create and edit Courses.
+- **Module & Lesson Editor**: Drag-and-drop capability (planned) and intuitive forms for structuring learning paths.
+- **Assessment Manager**: Robust tools to create quizzes (`QuestionEditor`), manage question banks, and assign tests to modules.
+- **User Assignment**: Tools to assign courses to specific user groups or individuals.
 
 ## 🛠️ Technical Excellence
 
 - **Core**: Built with [React 19](https://react.dev/) and [Vite](https://vitejs.dev/) for ultra-fast performance.
 - **Styling**: Leverages [Tailwind CSS v4](https://tailwindcss.com/) for a modern utility-first approach.
+- **UI Architecture**: Implements **shadcn/ui** patterns using [Radix UI](https://www.radix-ui.com/) primitives and `class-variance-authority` for accessible, robust components.
+- **Motion**: Fluid micro-interactions and page transitions powered by [Framer Motion](https://www.framer.com/motion/).
 - **State & Logic**: Clean component architecture with centralized constants for UI tokens and course metadata.
 - **Data Architecture**: Data-driven UI using a comprehensive `data.json` structure representing complex course modules and lessons.
 
@@ -60,61 +72,34 @@ npm run build
 
 ```
 src/
+├── admin/                        # Admin specific components (if any distinctive)
 ├── api/                          # API integration layer
-│   ├── client.js                 # Axios configuration with interceptors
-│   ├── endpoints.js              # API endpoint constants
-│   └── services/                 # API service modules
-│       ├── authService.js        # Authentication API calls
-│       └── courseService.js      # Course API calls
-│
-├── assets/                       # Static assets
-│   ├── images/
-│   └── icons/
-│
-├── components/                   # Reusable components
-│   ├── common/                   # Generic reusable components
-│   ├── course/                   # Course-specific components
-│   ├── dashboard/                # Dashboard-specific components
-│   ├── learning/                 # Learning-specific components
-│   ├── layout/                   # Layout components
-│   │   ├── Header.jsx
-│   │   ├── Sidebar.jsx
-│   │   └── Layout.jsx
-│   └── ui/                       # shadcn/ui components
-│
-├── config/                       # Configuration files
-│   └── app.config.js             # App-wide configuration
-│
-├── constants/                    # Constants
-│   ├── course.js
-│   └── ui.js
-│
-├── contexts/                     # React Context providers
-│
+│   ├── client.js                 # Axios configuration
+│   └── services/                 # Service modules
+├── assets/                       # Static assets (images, icons, logos)
+├── components/                   # Component Library
+│   ├── admin/                    # Admin-specific UI blocks
+│   ├── common/                   # Shared atoms (Badge, Button, Card)
+│   ├── course/                   # Course display components
+│   ├── dashboard/                # Dashboard widgets & charts
+│   ├── layout/                   # Layout shells (Sidebar, AdminLayout)
+│   ├── learning/                 # Lesson player & quiz interfaces
+│   └── ui/                       # shadcn/ui primitives (Tooltip, Label, etc.)
+├── config/                       # Application configuration
+├── constants/                    # Static data & UI tokens
+├── contexts/                     # Global state providers
 ├── hooks/                        # Custom React hooks
-│   ├── useAuth.js                # Authentication hook
-│   └── useDebounce.js            # Debounce hook
-│
-├── lib/                          # Third-party library configs
-│   └── utils.js
-│
-├── pages/                        # Page components
-│   ├── Dashboard.jsx             # Dashboard page
-│   ├── ExploreCourses.jsx        # Explore courses page
-│   ├── CourseDetail.jsx          # Course detail page
-│   ├── CourseLearning.jsx        # Course learning page
-│   └── Login.jsx                 # Login page
-│
-├── routes/                       # Route definitions
-│
-├── services/                     # Business logic services
-│
-├── utils/                        # Utility functions
-│   ├── helpers.js                # Common helper functions
-│   └── validators.js             # Validation functions
-│
-├── App.jsx                       # Main App component
-└── main.jsx                      # Entry point
+├── lib/                          # Utilities (cn, tw-merge)
+├── pages/                        # Route Pages
+│   ├── admin/                    # Admin Pages (CourseEditor, AssessmentManager)
+│   ├── CourseDetail.jsx          # Course overview
+│   ├── CourseLearning.jsx        # Learning player wrapper
+│   ├── Dashboard.jsx             # Main learner dashboard
+│   ├── ExploreCourses.jsx        # Course catalog
+│   ├── FocusTest.jsx             # Examination mode
+│   └── Login.jsx                 # Auth entry
+├── routes/                       # Routing configuration
+└── utils/                        # Helpers & formatters
 ```
 
 ## 📄 License
