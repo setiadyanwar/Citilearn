@@ -160,9 +160,11 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                 />
             )}
             <aside
-                className={`flex flex-col fixed md:sticky top-0 h-screen z-100 transition-all duration-300 ease-in-out border-r
-                ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-200'} 
-                ${isCollapsed ? 'w-0 -translate-x-full md:w-16 md:translate-x-0' : 'w-64 translate-x-0'}`}
+                className={`fixed top-0 left-0 h-screen z-100 flex flex-col transition-all duration-300 ease-in-out border-r
+                ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-200'}
+                ${isCollapsed
+                        ? 'w-16 -translate-x-full md:translate-x-0'
+                        : 'w-64 translate-x-0 md:shadow-none'}`}
             >
                 <div className={`h-16 flex items-center transition-all duration-300 ${isCollapsed ? 'justify-center' : 'px-4 gap-2'}`}>
                     <img
@@ -297,7 +299,7 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                         )}
                     </div>
                 </div>
-            </aside>
+            </aside >
         </>
     );
 };

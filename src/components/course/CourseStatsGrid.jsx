@@ -14,7 +14,7 @@ const CourseStatsGrid = ({ course }) => {
                     <stat.icon size={24} className="text-citilearn-green" />
                     <div className="text-center mt-2">
                         <p className="text-2xs font-bold text-tertiary dark:text-slate-500 tracking-wider mb-3.5 leading-none">{stat.label}</p>
-                        <p className="text-sm font-black text-main dark:text-white leading-none">{stat.value}</p>
+                        <p className="text-sm font-bold text-main dark:text-white leading-none">{stat.value}</p>
                     </div>
                 </div>
             ))}

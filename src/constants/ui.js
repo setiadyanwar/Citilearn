@@ -10,7 +10,7 @@ export const BADGE_VARIANTS = {
 };
 
 export const BADGE_SIZES = {
-    xs: 'px-1.5 py-0.5 text-2xs font-black tracking-wider',
+    xs: 'px-1.5 py-0.5 text-2xs font-bold tracking-wider',
     sm: 'px-2 py-0.5 text-2xs font-bold tracking-tight',
     md: 'px-3 py-1 text-xs font-bold'
 };

@@ -7,8 +7,9 @@ import Badge from '../common/Badge';
 import ProgressBar from '../common/ProgressBar';
 import BookmarkButton from '../common/BookmarkButton';
 import { COURSE_STATUS } from '../../constants/course';
+import { cn } from '@/lib/utils';
 
-const CourseCard = ({ course, compact = false, variant = 'default' }) => {
+const CourseCard = ({ course, compact = false, variant = 'default', disabled = false }) => {
     const [isBookmarked, setIsBookmarked] = useState(course.isBookmarked || false);
     const [timeLeft, setTimeLeft] = useState('');
 
@@ -175,7 +176,11 @@ const CourseCard = ({ course, compact = false, variant = 'default' }) => {
                         {/* 4. NOT STARTED */}
                         {isAvailable && notStarted && (
                             <Button
-                                className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-xl h-11"
+                                disabled={disabled}
+                                className={cn(
+                                    "w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-xl h-11",
+                                    disabled && "opacity-50 cursor-not-allowed pointer-events-none"
+                                )}
                             >
                                 Start Learn
                             </Button>

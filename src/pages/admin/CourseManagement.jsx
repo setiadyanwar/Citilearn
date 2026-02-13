@@ -1,8 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Plus, Filter, MoreVertical, Users, BookOpen, PlayCircle, Edit, Clock } from 'lucide-react';
+import {
+    Search,
+    Plus,
+    Filter,
+    MoreVertical,
+    Users,
+    BookOpen,
+    PlayCircle,
+    Edit,
+    Clock,
+    FileText,
+    Trash2,
+    CheckCircle,
+    LayoutGrid,
+    List
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import data from '../../data.json';
-import MainSearchBar from '../../components/dashboard/MainSearchBar';
+import Tabs from '../../components/common/Tabs';
+import Pagination from '../../components/common/Pagination';
+
+// Import shadcn/ui components
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const CourseManagement = () => {
     // Load courses from data.json and augment with mock admin data
@@ -16,15 +44,27 @@ const CourseManagement = () => {
             enrolled: course.enrolled || Math.floor(Math.random() * 200) + 20, // Mock enrollment data
             assignedUsers: course.assignedUsers || Math.floor(Math.random() * 50), // Mock assignment data
             lastUpdated: "2 days ago", // Mock timestamp
-            // Normalize status for Admin filtering (Draft vs Published)
-            // For demo purposes, we map 'Not Started' to 'Draft' sometimes, or use existing status key if suitable
-            status: ['Published', 'Draft'][Math.floor(Math.random() * 2)] // Randomize status for demo variety as data.json status is User Progress oriented
+            status: ['Published', 'Draft'][Math.floor(Math.random() * 2)] // Randomize status
         }));
         setCourses(loadedCourses);
     }, []);
 
     const [activeTab, setActiveTab] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+
+    const counts = {
+        all: courses.length,
+        published: courses.filter(c => c.status === 'Published').length,
+        draft: courses.filter(c => c.status === 'Draft').length,
+    };
+
+    const filterTabs = [
+        { id: 'all', label: 'All', count: counts.all },
+        { id: 'published', label: 'Published', count: counts.published },
+        { id: 'draft', label: 'Draft', count: counts.draft },
+    ];
 
     const filteredCourses = courses.filter(course => {
         const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -33,149 +73,195 @@ const CourseManagement = () => {
         return matchesSearch && matchesStatus;
     });
 
+    // Pagination logic
+    const totalPages = Math.ceil(filteredCourses.length / itemsPerPage);
+    const paginatedCourses = filteredCourses.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+
+    // Reset page when filtering
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchQuery, activeTab]);
+
+    // Helper for Category Colors (Neutral Gray Standard)
+    const getCategoryColor = (category) => {
+        return 'bg-slate-50 text-slate-600 border-slate-200';
+    };
+
     return (
-        <div className="h-full flex flex-col animate-fade-in">
-            {/* Header Section (Fixed) */}
-            <div className="flex-none space-y-6 mb-6">
+        <div className="w-full animate-fade-in flex flex-col">
+            {/* Header and Controls Area */}
+            <div className="px-8 pt-6 pb-2 space-y-3 shrink-0">
+                {/* Header Section */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div>
-                        <h1 className="text-2xl font-bold text-main">Course Management</h1>
-                        <p className="text-secondary text-sm mt-1">Create, edit, and manage your training programs</p>
+                        <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Course Management</h1>
+                        <p className="text-slate-500 text-sm mt-1 font-medium">Create and manage your training programs</p>
                     </div>
-                    <Link
-                        to="/admin/courses/create"
-                        className="inline-flex items-center gap-2 bg-citilearn-green text-white px-4 py-2 rounded-lg font-medium hover:bg-emerald-600 transition-colors text-sm"
-                    >
-                        <Plus size={18} />
-                        Create Course
+                    <Link to="/admin/courses/create">
+                        <Button className="font-bold rounded-xl h-9 px-5 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                            <Plus size={16} className="mr-2" />
+                            Create Course
+                        </Button>
                     </Link>
                 </div>
 
-                {/* Filters & Search */}
-                <div className="flex flex-col md:flex-row gap-3 bg-white p-3 rounded-xl border border-gray-200 items-center">
-                    <div className="flex-1 w-full md:w-auto">
-                        <MainSearchBar
-                            searchQuery={searchQuery}
-                            handleSearch={(e) => setSearchQuery(e.target.value)}
-                            variant="compact"
+                {/* Controls Bar */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                    {/* Search */}
+                    <div className="w-full md:w-96">
+                        <Input
+                            icon={Search}
+                            placeholder="Search courses..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="bg-white border-slate-200 focus-visible:ring-slate-100"
                         />
                     </div>
-                    <div className="flex gap-2">
-                        {['All', 'Published', 'Draft'].map((tab) => (
-                            <button
-                                key={tab}
-                                onClick={() => setActiveTab(tab.toLowerCase())}
-                                className={`px-4 py-3 rounded-xl text-sm font-bold whitespace-nowrap transition-colors ${activeTab === tab.toLowerCase()
-                                    ? 'bg-citilearn-green text-white'
-                                    : 'bg-gray-50 text-secondary hover:bg-gray-100 border border-transparent hover:border-gray-200'
-                                    }`}
-                            >
-                                {tab}
-                            </button>
-                        ))}
-                        <button className="px-3 py-3 rounded-xl bg-gray-50 text-secondary hover:bg-gray-100 border border-transparent hover:border-gray-200 transition-colors">
-                            <Filter size={18} />
-                        </button>
-                    </div>
+
+                    {/* Tabs */}
+                    <Tabs
+                        tabs={filterTabs}
+                        activeTab={activeTab}
+                        onTabChange={setActiveTab}
+                    />
                 </div>
             </div>
 
-            {/* Course List (Scrollable) */}
-            <div className="flex-1 overflow-y-auto min-h-0 pr-2 -mr-2 pb-4">
-                <div className="space-y-3">
-                    {filteredCourses.map((course) => (
-                        <div
-                            key={course.id}
-                            className="group bg-white rounded-xl p-4 border border-gray-200 hover:border-primary/50 transition-all duration-200"
-                        >
-                            <div className="flex flex-col md:flex-row md:items-center gap-5">
-                                {/* Thumbnail */}
-                                <div className="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-gray-100">
-                                    <img
-                                        src={course.thumbnail}
-                                        alt={course.title}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                    />
-                                </div>
-
-                                {/* Info */}
-                                <div className="flex-1 min-w-0 py-1">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md ${course.category === 'Safety' ? 'bg-orange-50 text-orange-600' :
-                                                course.category === 'Technical' ? 'bg-blue-50 text-blue-600' :
-                                                    course.category === 'Service' ? 'bg-purple-50 text-purple-600' :
-                                                        'bg-gray-50 text-gray-600'
-                                            }`}>
-                                            {course.category}
-                                        </span>
-                                        {course.assignedUsers > 0 && (
-                                            <>
-                                                <span className="text-gray-300 mx-1">•</span>
-                                                <span className="text-xs font-medium px-2 py-0.5 rounded bg-gray-100 text-gray-600 flex items-center gap-1">
-                                                    <Users size={12} />
-                                                    {course.assignedUsers} Assigned
-                                                </span>
-                                            </>
-                                        )}
-                                    </div>
-                                    <h3 className="text-lg font-bold text-main mb-1 group-hover:text-primary transition-colors">{course.title}</h3>
-                                    <p className="text-sm text-secondary mb-3 line-clamp-1">{course.description}</p>
-                                    <div className="flex items-center gap-4 text-xs font-medium text-secondary">
-                                        <div className="flex items-center gap-1.5 bg-gray-50 px-2 py-1 rounded">
-                                            <BookOpen size={14} className="text-gray-400" />
-                                            <span>{course.modules} Modules</span>
-                                        </div>
-                                        <div className="flex items-center gap-1.5 bg-gray-50 px-2 py-1 rounded">
-                                            <Clock size={14} className="text-gray-400" />
-                                            <span>{course.duration}</span>
-                                        </div>
-                                        <div className="flex items-center gap-1.5 bg-gray-50 px-2 py-1 rounded">
-                                            <Users size={14} className="text-gray-400" />
-                                            <span>{course.enrolled} Enrolled</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Status & Actions */}
-                                <div className="flex flex-row md:flex-col items-center md:items-end gap-3 justify-between md:justify-center border-t md:border-t-0 border-gray-100 pt-3 md:pt-0 mt-2 md:mt-0">
-                                    <div className={`px-3 py-1 rounded-full text-xs font-bold border ${course.status === 'Published'
-                                        ? 'bg-emerald-50 text-emerald-700 border-emerald-100'
-                                        : 'bg-gray-100 text-gray-600 border-gray-200'
-                                        }`}>
-                                        {course.status}
-                                    </div>
-
-                                    <div className="flex items-center gap-1">
-                                        {[
-                                            { to: `/admin/course/${course.id}/assign`, icon: Users, color: 'text-amber-600', bg: 'hover:bg-amber-50', title: 'Assign' },
-                                            { to: `/admin/course/${course.id}/edit?tab=curriculum`, icon: PlayCircle, color: 'text-blue-600', bg: 'hover:bg-blue-50', title: 'Content' },
-                                            { to: `/admin/course/${course.id}/edit`, icon: Edit, color: 'text-emerald-600', bg: 'hover:bg-emerald-50', title: 'Edit' }
-                                        ].map((action, idx) => (
-                                            <Link
-                                                key={idx}
-                                                to={action.to}
-                                                className={`p-2 text-gray-400 hover:${action.color} ${action.bg} rounded-lg transition-all`}
-                                                title={action.title}
+            {/* Data Table Container */}
+            <div className="px-8 mt-6 flex flex-col mb-10">
+                <div className="border border-slate-200 bg-white rounded-2xl overflow-hidden">
+                    <Table>
+                        <TableHeader className="sticky top-[0px] z-20 bg-slate-50 border-b border-slate-200">
+                            <TableRow className="hover:bg-transparent border-none">
+                                <TableHead className="w-[40%] font-bold text-slate-500 h-12 pl-6">Course Info</TableHead>
+                                <TableHead className="w-[15%] font-bold text-slate-500 h-12">Category</TableHead>
+                                <TableHead className="w-[10%] font-bold text-slate-500 h-12">Modules</TableHead>
+                                <TableHead className="w-[10%] font-bold text-slate-500 h-12">Stats</TableHead>
+                                <TableHead className="w-[10%] font-bold text-slate-500 h-12">Status</TableHead>
+                                <TableHead className="w-[15%] text-right font-bold text-slate-500 h-12 pr-6">Actions</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {paginatedCourses.length > 0 ? (
+                                paginatedCourses.map((course) => (
+                                    <TableRow key={course.id} className="group hover:bg-slate-100/60 border-slate-100 transition-all duration-200 cursor-pointer">
+                                        <TableCell className="py-4 pl-6">
+                                            <div className="flex items-start gap-4">
+                                                <div className="w-20 h-14 rounded-lg overflow-hidden shrink-0 border border-slate-100 bg-slate-100 group-hover:border-slate-200 transition-all duration-300">
+                                                    <img
+                                                        src={course.thumbnail}
+                                                        alt={course.title}
+                                                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                                                    />
+                                                </div>
+                                                <div className="min-w-0 flex-1">
+                                                    <h3 className="font-bold text-slate-900 truncate leading-tight mb-1 group-hover:text-amber-600 transition-colors">{course.title}</h3>
+                                                    <p className="text-xs text-slate-500 line-clamp-1 mb-1.5">{course.description}</p>
+                                                    <div className="flex items-center gap-2">
+                                                        <div className="text-3xs bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded font-medium border border-slate-200 flex items-center gap-1">
+                                                            <Clock size={10} />
+                                                            Updated {course.lastUpdated}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </TableCell>
+                                        <TableCell>
+                                            <span className={`inline-flex px-2.5 py-1 rounded-md text-3xs font-bold uppercase tracking-wide border ${getCategoryColor(course.category)}`}>
+                                                {course.category}
+                                            </span>
+                                        </TableCell>
+                                        <TableCell>
+                                            <div className="flex items-center gap-2 text-sm font-bold text-slate-600">
+                                                <div className="p-1.5 bg-blue-50 text-blue-600 rounded-md">
+                                                    <LayoutGrid size={14} />
+                                                </div>
+                                                {course.modules}
+                                            </div>
+                                        </TableCell>
+                                        <TableCell>
+                                            <div className="space-y-1">
+                                                <div className="flex items-center gap-1.5 text-xs text-slate-600 font-medium">
+                                                    <Users size={12} className="text-slate-400" />
+                                                    <span>{course.enrolled}</span>
+                                                </div>
+                                                <div className="flex items-center gap-1.5 text-xs text-slate-600 font-medium">
+                                                    <Clock size={12} className="text-slate-400" />
+                                                    <span>{course.duration}</span>
+                                                </div>
+                                            </div>
+                                        </TableCell>
+                                        <TableCell>
+                                            <div className={`inline-flex items-center pl-1.5 pr-2.5 py-1 rounded-full text-xs font-bold border transition-colors ${course.status === 'Published'
+                                                ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                                                : 'bg-slate-100 text-slate-600 border-slate-200'
+                                                }`}>
+                                                <span className={`w-1.5 h-1.5 rounded-full mr-2 ${course.status === 'Published' ? 'bg-emerald-500' : 'bg-slate-500'
+                                                    }`}></span>
+                                                {course.status}
+                                            </div>
+                                        </TableCell>
+                                        <TableCell className="text-right pr-6">
+                                            <div className="flex items-center justify-end gap-1">
+                                                <Link to={`/admin/course/${course.id}/assign`}>
+                                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-amber-600 hover:bg-amber-50 rounded-lg">
+                                                        <Users size={16} />
+                                                    </Button>
+                                                </Link>
+                                                <Link to={`/admin/course/${course.id}/edit?tab=curriculum`}>
+                                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg">
+                                                        <List size={16} />
+                                                    </Button>
+                                                </Link>
+                                                <Link to={`/admin/course/${course.id}/edit`}>
+                                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg">
+                                                        <Edit size={16} />
+                                                    </Button>
+                                                </Link>
+                                            </div>
+                                        </TableCell>
+                                    </TableRow>
+                                ))
+                            ) : (
+                                <TableRow>
+                                    <TableCell colSpan={6} className="h-64 text-center">
+                                        <div className="flex flex-col items-center justify-center text-slate-500">
+                                            <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4 border border-slate-100">
+                                                <Search className="w-8 h-8 text-slate-300" />
+                                            </div>
+                                            <p className="font-bold text-lg text-slate-700">No courses found</p>
+                                            <p className="text-sm text-slate-400 mt-1 max-w-xs mx-auto">
+                                                We couldn't find any courses matching your search "{searchQuery}"
+                                            </p>
+                                            <Button
+                                                variant="outline"
+                                                className="mt-4 border-slate-200 hover:bg-slate-50 hover:text-slate-700"
+                                                onClick={() => { setSearchQuery(''); setActiveTab('all'); }}
                                             >
-                                                <action.icon size={18} />
-                                            </Link>
-                                        ))}
-                                        <button className="p-2 text-gray-400 hover:text-main hover:bg-gray-100 rounded-lg transition-colors">
-                                            <MoreVertical size={18} />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                                                Clear Filters
+                                            </Button>
+                                        </div>
+                                    </TableCell>
+                                </TableRow>
+                            )}
+                        </TableBody>
+                    </Table>
+                </div>
 
-                    {filteredCourses.length === 0 && (
-                        <div className="text-center py-16 bg-white rounded-xl border border-dashed border-gray-300">
-                            <BookOpen className="mx-auto text-gray-300 mb-4" size={48} />
-                            <h3 className="text-main font-bold text-lg mb-1">No courses found</h3>
-                            <p className="text-sm text-secondary">Broaden your search or create a new course.</p>
-                        </div>
-                    )}
+                {/* Pagination / Footer Info - Minimalist */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-6 shrink-0">
+                    <div className="text-xs text-slate-400 font-medium whitespace-nowrap">
+                        Showing {paginatedCourses.length} of {filteredCourses.length} courses
+                    </div>
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={setCurrentPage}
+                        className="mt-0"
+                    />
                 </div>
             </div>
         </div>

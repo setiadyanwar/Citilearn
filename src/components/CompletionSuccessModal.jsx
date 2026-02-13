@@ -44,7 +44,7 @@ const CompletionSuccessModal = ({ isOpen }) => {
                             <div className="w-20 h-20 bg-emerald-100 dark:bg-emerald-900/20 rounded-full flex items-center justify-center mb-4">
                                 <CheckCircle2 size={40} className="text-emerald-500" />
                             </div>
-                            <h3 className="text-2xl font-black text-main dark:text-white mb-1">Awesome!</h3>
+                            <h3 className="text-2xl font-bold text-main dark:text-white mb-1">Awesome!</h3>
                             <p className="text-secondary dark:text-slate-400 font-bold text-sm">Lesson Completed</p>
                         </motion.div>
 

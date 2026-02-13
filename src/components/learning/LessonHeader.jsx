@@ -7,7 +7,7 @@ const LessonHeader = ({ activeLesson, completedLessons, toggleCompletion, setSid
 
     return (
         <div className="flex items-center justify-between gap-4">
-            <h1 className="text-2xl font-black text-main dark:text-white leading-tight flex-1">
+            <h1 className="text-2xl font-bold text-main dark:text-white leading-tight flex-1">
                 {activeLesson?.title}
             </h1>
 

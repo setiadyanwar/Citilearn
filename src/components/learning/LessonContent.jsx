@@ -55,18 +55,18 @@ const LessonContent = ({ activeLesson, course, isPip, videoContainerRef, videoRe
                                 <ShieldCheck size={40} className="text-primary animate-pulse" />
                             </div>
                             <div>
-                                <h2 className="text-2xl font-black text-white mb-2">Final Knowledge Check</h2>
+                                <h2 className="text-2xl font-bold text-white mb-2">Final Knowledge Check</h2>
                                 <p className="text-slate-400 text-sm leading-relaxed">
                                     You have reached the end of this module. Complete this comprehensive assessment to validate your learning and proceed to the next stage.
                                 </p>
                             </div>
                             <div className="flex items-center justify-center gap-3">
                                 <div className="px-4 py-2 bg-white/5 rounded-xl border border-white/10">
-                                    <div className="text-[10px] uppercase font-black text-slate-500 mb-1">Pass Score</div>
+                                    <div className="text-[10px] uppercase font-bold text-slate-500 mb-1">Pass Score</div>
                                     <div className="text-sm font-bold text-white">100%</div>
                                 </div>
                                 <div className="px-4 py-2 bg-white/5 rounded-xl border border-white/10">
-                                    <div className="text-[10px] uppercase font-black text-slate-500 mb-1">Time Limit</div>
+                                    <div className="text-[10px] uppercase font-bold text-slate-500 mb-1">Time Limit</div>
                                     <div className="text-sm font-bold text-white">No Limit</div>
                                 </div>
                             </div>

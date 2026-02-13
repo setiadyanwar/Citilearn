@@ -39,7 +39,7 @@ const ModuleEditor = () => {
                         <ArrowLeft size={20} />
                     </Link>
                     <div>
-                        <h1 className="text-2xl font-black text-main">
+                        <h1 className="text-2xl font-bold text-main">
                             {isEditing ? 'Edit Module' : 'Add New Module'}
                         </h1>
                         <p className="text-sm text-secondary font-medium">Configure module content and settings</p>

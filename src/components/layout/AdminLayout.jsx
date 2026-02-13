@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { PanelLeft, LayoutDashboard, FolderOpen, ClipboardCheck, Database, Users, Bell, ChevronRight, Home } from 'lucide-react';
+import { PanelLeft, LayoutDashboard, FolderOpen, ClipboardCheck, Database, Users, ChevronRight, Home } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import Header from '../layout/Header';
 import budi_pratama from '../../assets/budi_pratama.png';
 
 const AdminSidebarItem = ({ icon: Icon, label, collapsed, active, to }) => (
@@ -20,7 +21,7 @@ const AdminSidebarItem = ({ icon: Icon, label, collapsed, active, to }) => (
             </span>
         )}
         {collapsed && (
-            <div className={`absolute left-full top-1/2 -translate-y-1/2 ml-3 px-3 py-1.5 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-[100] whitespace-nowrap font-bold shadow-xl`}>
+            <div className={`absolute left-full top-1/2 -translate-y-1/2 ml-3 px-3 py-1.5 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-[100] whitespace-nowrap font-bold`}>
                 {label}
                 <div className="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 border-4 border-transparent border-r-gray-800"></div>
             </div>
@@ -29,13 +30,31 @@ const AdminSidebarItem = ({ icon: Icon, label, collapsed, active, to }) => (
 );
 
 const AdminLayout = ({ children }) => {
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(window.innerWidth < 768);
     const location = useLocation();
 
+    // Auto-collapse on mobile when route changes or window resize
+    React.useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 1024) {
+                setCollapsed(true);
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    React.useEffect(() => {
+        if (window.innerWidth < 1024) {
+            setCollapsed(true);
+        }
+    }, [location.pathname]);
+
     // Check if current page requires fixed layout (no main scrollbar)
-    const isFixedPage = location.pathname === '/admin/courses';
+    const isFixedPage = false; // Allow natural scrolling for better visibility on all screens
 
     const getBreadcrumbs = () => {
+        // ... (rest of breadcrumbs logic remains same)
         const path = location.pathname;
         const parts = path.split('/').filter(p => p);
 
@@ -92,28 +111,7 @@ const AdminLayout = ({ children }) => {
     return (
         <div className="h-screen bg-gray-50 flex flex-col font-lato overflow-hidden">
             {/* Header */}
-            <header className="h-16 bg-white border-b border-gray-100 px-6 flex items-center justify-between shrink-0 z-40 relative">
-                <div className="flex items-center gap-4">
-                    <h1 className="text-lg font-bold text-main">Admin Panel</h1>
-                </div>
-
-                <div className="flex items-center gap-6">
-                    <button className="relative p-2 text-secondary hover:text-primary transition-colors">
-                        <Bell size={20} />
-                        <div className="absolute top-1.5 right-1.5 w-2 h-2 bg-accent rounded-full border border-white"></div>
-                    </button>
-
-                    <div className="flex items-center gap-3 border-l border-gray-100 pl-6">
-                        <div className="w-9 h-9 rounded-full overflow-hidden border border-gray-200">
-                            <img src={budi_pratama} alt="User" className="w-full h-full object-cover" />
-                        </div>
-                        <div className="hidden sm:flex flex-col leading-tight">
-                            <span className="text-sm font-bold text-main">Setiadyanwar</span>
-                            <span className="text-xs text-secondary">Senior Flight Instructor</span>
-                        </div>
-                    </div>
-                </div>
-            </header>
+            <Header hideSidebarToggle={true} />
 
             {/* Breadcrumb Bar with Sidebar Toggle */}
             <div className="px-6 py-4 flex items-center gap-4 shrink-0 z-30">
@@ -132,13 +130,22 @@ const AdminLayout = ({ children }) => {
             </div>
 
             {/* Body */}
-            <div className="flex flex-1 overflow-hidden p-4 md:p-6 pt-0 gap-6 bg-gray-50/50">
-                {/* Sidebar - z-50 to strictly overlay any content in Main (like dashboard cards) */}
+            <div className="flex flex-1 overflow-hidden p-0 lg:p-6 lg:pt-0 gap-0 lg:gap-6 bg-gray-50/50 relative">
+                {/* Mobile Overlay */}
+                <div
+                    className={`fixed inset-0 bg-slate-900/60 z-[90] lg:hidden transition-opacity duration-300 backdrop-blur-sm ${collapsed ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                    onClick={() => setCollapsed(true)}
+                />
+
+                {/* Sidebar */}
                 <aside
-                    className={`bg-white rounded-3xl border border-gray-100 flex flex-col transition-all duration-300 ease-in-out shrink-0 h-full sticky top-0 z-50 ${collapsed ? 'w-[80px]' : 'w-72'
+                    className={`bg-white lg:rounded-3xl border-r lg:border border-gray-100 flex flex-col transition-all duration-300 ease-in-out shrink-0 h-full fixed lg:sticky top-0 left-0 z-100 lg:z-50 
+                    ${collapsed
+                            ? 'w-0 lg:w-[80px] -translate-x-full lg:translate-x-0'
+                            : 'w-[280px] translate-x-0 lg:shadow-none'
                         }`}
                 >
-                    <div className={`flex-1 p-4 custom-scrollbar ${collapsed ? 'overflow-visible' : 'overflow-y-auto'}`}>
+                    <div className={`flex-1 p-4 custom-scrollbar overflow-y-auto ${collapsed ? 'opacity-0 lg:opacity-100' : 'opacity-100'}`}>
                         <nav className="flex flex-col gap-1">
                             {menuItems.map((item) => (
                                 <AdminSidebarItem
@@ -146,7 +153,7 @@ const AdminLayout = ({ children }) => {
                                     icon={item.icon}
                                     label={item.label}
                                     to={item.path}
-                                    collapsed={collapsed}
+                                    collapsed={collapsed && window.innerWidth >= 1024}
                                     active={location.pathname === item.path || (location.pathname.startsWith(item.path) && item.path !== '/admin')}
                                 />
                             ))}
@@ -155,7 +162,7 @@ const AdminLayout = ({ children }) => {
                 </aside>
 
                 {/* Main Content Area */}
-                <main className={`flex-1 min-w-0 relative scroll-smooth z-0 ${isFixedPage ? 'overflow-hidden flex flex-col' : 'overflow-y-auto'}`}>
+                <main className={`flex-1 min-w-0 relative scroll-smooth z-0 p-4 lg:p-0 ${isFixedPage ? 'overflow-hidden flex flex-col' : 'overflow-y-auto'}`}>
                     <div className={`min-h-full ${isFixedPage ? 'h-full flex flex-col' : 'pb-10'}`}>
                         {children}
                     </div>

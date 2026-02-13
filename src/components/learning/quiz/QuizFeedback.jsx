@@ -9,7 +9,7 @@ const QuizFeedback = ({ isCorrect, onNext, isLastQuestion, isFinalQuiz }) => {
                 {isCorrect ? <CheckCircle2 size={20} /> : <X size={20} />}
             </div>
             <div className="flex-1">
-                <h5 className={`font-black text-base leading-none mb-1 ${isCorrect ? 'text-emerald-600' : 'text-red-600'}`}>
+                <h5 className={`font-bold text-base leading-none mb-1 ${isCorrect ? 'text-emerald-600' : 'text-red-600'}`}>
                     {isCorrect ? 'Outstanding!' : isFinalQuiz ? 'Almost there!' : 'Incorrect answer'}
                 </h5>
                 <p className="text-[13px] text-slate-500 font-medium">

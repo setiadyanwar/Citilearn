@@ -6,9 +6,9 @@ const ProgressStatsCard = () => {
         <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-4 rounded-xl flex flex-col justify-between transition-all duration-300 hover:border-primary dark:hover:border-primary group cursor-pointer relative overflow-hidden h-full">
             <div className="flex items-start justify-between mb-2">
                 <div className="flex flex-col gap-1">
-                    <span className="text-3xs font-black text-tertiary dark:text-slate-500 uppercase tracking-widest">Daily Goal</span>
+                    <span className="text-3xs font-bold text-tertiary dark:text-slate-500 uppercase tracking-widest">Daily Goal</span>
                     <div className="flex items-center gap-2">
-                        <span className="text-3xl font-black text-main dark:text-white tracking-tight">2/3</span>
+                        <span className="text-3xl font-bold text-main dark:text-white tracking-tight">2/3</span>
                         <span className="text-sm font-bold text-tertiary dark:text-slate-600 mt-1.5">Units</span>
                     </div>
                 </div>

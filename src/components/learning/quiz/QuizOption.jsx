@@ -12,7 +12,7 @@ const QuizOption = ({ option, idx, isSelected, onClick }) => {
             `}
         >
             <div className={`
-                w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm shrink-0 transition-all
+                w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 transition-all
                 ${isSelected ? 'bg-primary text-white' : 'bg-gray-50 dark:bg-slate-800 text-tertiary'}
             `}>
                 {String.fromCharCode(65 + idx)}

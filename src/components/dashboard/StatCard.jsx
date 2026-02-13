@@ -26,7 +26,7 @@ const StatCard = ({ icon, label, value, trend, trendType = 'neutral', progress }
                     </div>
                 </div>
 
-                <div className="text-3xl font-black text-main dark:text-white tracking-tight mt-1">{value}</div>
+                <div className="text-3xl font-bold text-main dark:text-white tracking-tight mt-1">{value}</div>
 
                 {progress !== undefined && (
                     <div className="w-full h-2.5 bg-gray-100 dark:bg-slate-800 rounded-full mt-3 overflow-hidden max-w-[85%] relative">

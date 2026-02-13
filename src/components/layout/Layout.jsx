@@ -22,6 +22,19 @@ export const Layout = ({
     const isLearningPage = location.pathname.includes('/learn');
 
     useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 768) {
+                setIsCollapsed(true);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Initial check
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 350) {
                 setShowScrollSearch(true);
@@ -33,19 +46,26 @@ export const Layout = ({
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Close sidebar on mobile when route changes
+    useEffect(() => {
+        if (window.innerWidth < 768) {
+            setIsCollapsed(true);
+        }
+    }, [location.pathname]);
+
     // Auto-hide global PiP if we return to learning page
     const showGlobalPip = pipVideo && !isLearningPage;
 
     return (
         <TooltipProvider>
-            <div className={`flex min-h-screen font-lato relative transition-colors duration-300 ${isDark ? 'dark bg-slate-950 text-white' : 'bg-background text-main'}`}>
+            <div className={`min-h-screen font-lato relative transition-colors duration-300 ${isDark ? 'dark bg-slate-950 text-white' : 'bg-background text-main'}`}>
                 <Sidebar
                     isCollapsed={isCollapsed}
                     toggleSidebar={() => setIsCollapsed(!isCollapsed)}
                     isDark={isDark}
                     setIsDark={setIsDark}
                 />
-                <main className="flex-1 flex flex-col min-w-0 transition-all duration-300">
+                <main className={`flex flex-col min-w-0 transition-all duration-300 min-h-screen ${isCollapsed ? 'md:pl-16' : 'md:pl-64'}`}>
                     <Header
                         isDark={isDark}
                         setIsDark={setIsDark}
@@ -59,7 +79,7 @@ export const Layout = ({
                         setSelectedStatus={setSelectedStatus}
                     />
 
-                    <div className="p-4 md:p-10 flex-1">
+                    <div className="p-3 md:p-8 flex-1">
                         {children}
                     </div>
                 </main>

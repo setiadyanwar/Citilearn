@@ -12,8 +12,8 @@ const ModuleEditModal = ({ module, onSave, onClose }) => {
 
     // Use Portal for Module Modal as well to avoid z-index/overflow issues
     return createPortal(
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4 animate-fade-in">
-            <div className="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto transform transition-all shadow-2xl scale-100">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-100 p-4 animate-fade-in">
+            <div className="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto transform transition-all scale-100">
                 <div className="p-6">
                     <div className="flex justify-between items-start mb-6">
                         <h3 className="text-xl font-bold text-main">
@@ -57,7 +57,7 @@ const ModuleEditModal = ({ module, onSave, onClose }) => {
                             </button>
                             <button
                                 onClick={() => onSave(editData)}
-                                className="px-6 py-2 bg-citilearn-green text-white text-sm font-bold rounded-xl hover:bg-emerald-600 transition-colors shadow-lg shadow-citilearn-green/20"
+                                className="px-6 py-2 bg-citilearn-green text-white text-sm font-bold rounded-xl hover:bg-emerald-600 transition-colors"
                             >
                                 Save
                             </button>
@@ -204,166 +204,164 @@ const CurriculumTab = ({ courseId }) => {
     };
 
     return (
-        <>
-            <div className="space-y-8">
-                {/* Header - Minimalist Text Only */}
-                <div className="flex justify-between items-end border-b border-gray-200 pb-4">
-                    <div>
-                        <h3 className="text-xl font-bold text-main">Curriculum</h3>
-                        <p className="text-sm text-secondary mt-1">
-                            {modules.length} modules • {modules.reduce((acc, m) => acc + m.lessons.length, 0)} items
-                        </p>
+        <div className="space-y-8 pb-4">
+            {/* Header - Minimalist Text Only */}
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end border-b border-gray-200 pb-4 gap-4">
+                <div>
+                    <h3 className="text-xl font-bold text-main">Curriculum</h3>
+                    <p className="text-sm text-secondary mt-1">
+                        {modules.length} modules • {modules.reduce((acc, m) => acc + m.lessons.length, 0)} items
+                    </p>
+                </div>
+                <button
+                    onClick={() => {
+                        setEditingModule(null);
+                        setShowModuleModal(true);
+                    }}
+                    className="text-sm font-bold text-citilearn-green hover:text-emerald-700 flex items-center gap-2 px-3 py-2 hover:bg-emerald-50 rounded-lg transition-colors w-full sm:w-auto justify-center sm:justify-start border border-emerald-100 sm:border-transparent"
+                >
+                    <Plus size={18} /> Add Module
+                </button>
+            </div>
+
+            {/* Modules List - Clean List Style (No Cards/Containers) */}
+            {modules.length > 0 ? (
+                <div className="space-y-6">
+                    {modules.map((module, moduleIndex) => {
+                        const isExpanded = expandedModules.has(module.id);
+
+                        return (
+                            <div key={module.id} className="group">
+                                {/* Module Header - Transparent */}
+                                <div className="flex items-start gap-4 py-2 hover:bg-gray-50 px-2 rounded-xl transition-colors cursor-pointer" onClick={() => toggleModule(module.id)}>
+                                    <button className="mt-1 text-gray-300 hover:text-main cursor-move" onClick={(e) => e.stopPropagation()}>
+                                        <GripVertical size={20} />
+                                    </button>
+
+                                    <div className="mt-1 text-secondary group-hover:text-primary transition-colors">
+                                        {isExpanded ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
+                                    </div>
+
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-center justify-between gap-3">
+                                            <h4 className="text-base md:text-lg font-bold text-main group-hover:text-primary transition-colors truncate">
+                                                {moduleIndex + 1}. {module.title}
+                                            </h4>
+                                            {/* Actions appear on hover on desktop, always visible or better toggle on mobile */}
+                                            <div className="flex items-center gap-1 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+                                                <button onClick={(e) => { e.stopPropagation(); setEditingModule(module); setShowModuleModal(true); }} className="p-1.5 text-secondary hover:text-primary rounded-lg hover:bg-gray-100">
+                                                    <Edit size={14} />
+                                                </button>
+                                                <button onClick={(e) => { e.stopPropagation(); handleDeleteModule(module.id); }} className="p-1.5 text-secondary hover:text-red-500 rounded-lg hover:bg-red-50">
+                                                    <Trash2 size={14} />
+                                                </button>
+                                            </div>
+                                        </div>
+                                        {module.description && (
+                                            <p className="text-sm text-secondary mt-1">{module.description}</p>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Lessons List - Indented Clean List */}
+                                {isExpanded && (
+                                    <div className="pl-8 sm:pl-14 pt-2 space-y-1 relative">
+                                        {/* Vertical Guide Line */}
+                                        <div className="absolute left-[17px] sm:left-[29px] top-2 bottom-4 w-px bg-gray-200/50"></div>
+
+                                        {module.lessons.map((lesson, lessonIndex) => (
+                                            <div
+                                                key={lesson.id}
+                                                className="relative flex items-center gap-3 sm:gap-4 p-2 sm:p-3 rounded-lg hover:bg-white border border-transparent hover:border-gray-100 transition-all group/lesson"
+                                            >
+                                                {/* Horizontal Guide Line */}
+                                                <div className="absolute -left-[15px] sm:-left-[27px] top-1/2 w-3 sm:w-4 h-px bg-gray-200/50"></div>
+
+                                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${getTypeBadge(lesson.type)}`}>
+                                                    {getTypeIcon(lesson.type)}
+                                                </div>
+
+                                                <div className="flex-1 min-w-0 flex items-center justify-between">
+                                                    <div>
+                                                        <h5 className="text-sm font-bold text-main group-hover/lesson:text-primary transition-colors">
+                                                            {lesson.title}
+                                                        </h5>
+                                                        <div className="flex items-center gap-3 mt-1">
+                                                            <span className="text-3xs uppercase font-bold text-secondary opacity-60">
+                                                                {lesson.type.replace('-', ' ')}
+                                                            </span>
+                                                            <span className="flex items-center gap-1 text-3xs font-bold text-secondary opacity-60">
+                                                                <Clock size={10} /> {lesson.duration || '15 min'}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex items-center gap-2 opacity-100 sm:opacity-0 group-hover/lesson:opacity-100 transition-opacity">
+                                                        <Link
+                                                            to={['quiz', 'pre-test', 'post-test'].includes(lesson.type)
+                                                                ? `/admin/course/${courseId}/assessment/${lesson.type}?moduleId=${module.id}&lessonId=${lesson.id}`
+                                                                : `/admin/course/${courseId}/module/${module.id}/lesson/${lesson.id}`
+                                                            }
+                                                            className="text-3xs md:text-xs font-bold text-secondary hover:text-primary px-2 md:px-3 py-1 md:py-1.5 hover:bg-gray-50 rounded-lg transition-colors border border-transparent hover:border-gray-100"
+                                                        >
+                                                            Edit
+                                                        </Link>
+                                                        <button className="text-secondary hover:text-red-500 p-1.5 rounded-lg hover:bg-red-50 transition-colors">
+                                                            <Trash2 size={14} />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+
+                                        {/* Add Item Actions */}
+                                        <div className="relative pt-2 pl-2 sm:pl-3">
+                                            <div className="absolute -left-[15px] sm:-left-[27px] top-5 w-3 sm:w-4 h-px bg-gray-200/50"></div>
+                                            <div className="flex flex-wrap items-center gap-2">
+                                                <Link
+                                                    to={`/admin/course/${courseId}/module/${module.id}/lesson/new?type=youtube`}
+                                                    className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-primary bg-white border border-gray-200 hover:border-primary px-3 py-1.5 rounded-lg transition-all"
+                                                >
+                                                    <Plus size={12} /> Lesson
+                                                </Link>
+                                                <Link
+                                                    to={`/admin/course/${courseId}/assessment/quiz?moduleId=${module.id}`}
+                                                    className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-purple-600 bg-white border border-gray-200 hover:border-purple-200 px-3 py-1.5 rounded-lg transition-all"
+                                                >
+                                                    <Plus size={12} /> Quiz
+                                                </Link>
+                                                <Link
+                                                    to={`/admin/course/${courseId}/assessment/post-test?moduleId=${module.id}`}
+                                                    className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-indigo-600 bg-white border border-gray-200 hover:border-indigo-200 px-3 py-1.5 rounded-lg transition-all"
+                                                >
+                                                    <Plus size={12} /> Test
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })}
+                </div>
+            ) : (
+                <div className="py-12 text-center">
+                    <div className="w-16 h-16 bg-gray-100/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Video className="text-gray-300" size={32} />
                     </div>
+                    <h4 className="text-main font-bold mb-1">Start building curriculum</h4>
+                    <p className="text-sm text-secondary mb-4">No modules added yet.</p>
                     <button
                         onClick={() => {
                             setEditingModule(null);
                             setShowModuleModal(true);
                         }}
-                        className="text-sm font-bold text-citilearn-green hover:text-emerald-700 flex items-center gap-2 px-3 py-2 hover:bg-emerald-50 rounded-lg transition-colors"
+                        className="text-sm font-bold text-citilearn-green hover:text-emerald-700 inline-flex items-center gap-2"
                     >
-                        <Plus size={18} /> Add Module
+                        <Plus size={16} /> Create First Module
                     </button>
                 </div>
-
-                {/* Modules List - Clean List Style (No Cards/Containers) */}
-                {modules.length > 0 ? (
-                    <div className="space-y-6">
-                        {modules.map((module, moduleIndex) => {
-                            const isExpanded = expandedModules.has(module.id);
-
-                            return (
-                                <div key={module.id} className="group">
-                                    {/* Module Header - Transparent */}
-                                    <div className="flex items-start gap-4 py-2 hover:bg-gray-50 -mx-2 px-2 rounded-xl transition-colors cursor-pointer" onClick={() => toggleModule(module.id)}>
-                                        <button className="mt-1 text-gray-300 hover:text-main cursor-move" onClick={(e) => e.stopPropagation()}>
-                                            <GripVertical size={20} />
-                                        </button>
-
-                                        <div className="mt-1 text-secondary group-hover:text-primary transition-colors">
-                                            {isExpanded ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
-                                        </div>
-
-                                        <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-3">
-                                                <h4 className="text-lg font-bold text-main group-hover:text-primary transition-colors">
-                                                    {moduleIndex + 1}. {module.title}
-                                                </h4>
-                                                {/* Actions appear on hover */}
-                                                <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                    <button onClick={(e) => { e.stopPropagation(); setEditingModule(module); setShowModuleModal(true); }} className="p-1.5 text-secondary hover:text-primary rounded-lg hover:bg-gray-100">
-                                                        <Edit size={14} />
-                                                    </button>
-                                                    <button onClick={(e) => { e.stopPropagation(); handleDeleteModule(module.id); }} className="p-1.5 text-secondary hover:text-red-500 rounded-lg hover:bg-red-50">
-                                                        <Trash2 size={14} />
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            {module.description && (
-                                                <p className="text-sm text-secondary mt-1">{module.description}</p>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    {/* Lessons List - Indented Clean List */}
-                                    {isExpanded && (
-                                        <div className="pl-14 pt-2 space-y-1 relative">
-                                            {/* Vertical Guide Line */}
-                                            <div className="absolute left-[29px] top-2 bottom-4 w-px bg-gray-200/50"></div>
-
-                                            {module.lessons.map((lesson, lessonIndex) => (
-                                                <div
-                                                    key={lesson.id}
-                                                    className="relative flex items-center gap-4 p-3 rounded-lg hover:bg-white border border-transparent hover:border-gray-100 transition-all group/lesson"
-                                                >
-                                                    {/* Horizontal Guide Line */}
-                                                    <div className="absolute -left-[27px] top-1/2 w-4 h-px bg-gray-200/50"></div>
-
-                                                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${getTypeBadge(lesson.type)}`}>
-                                                        {getTypeIcon(lesson.type)}
-                                                    </div>
-
-                                                    <div className="flex-1 min-w-0 flex items-center justify-between">
-                                                        <div>
-                                                            <h5 className="text-sm font-bold text-main group-hover/lesson:text-primary transition-colors">
-                                                                {lesson.title}
-                                                            </h5>
-                                                            <div className="flex items-center gap-3 mt-1">
-                                                                <span className="text-[10px] uppercase font-bold text-secondary opacity-60">
-                                                                    {lesson.type.replace('-', ' ')}
-                                                                </span>
-                                                                <span className="flex items-center gap-1 text-[10px] font-bold text-secondary opacity-60">
-                                                                    <Clock size={10} /> {lesson.duration || '15 min'}
-                                                                </span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="flex items-center gap-2 opacity-0 group-hover/lesson:opacity-100 transition-opacity">
-                                                            <Link
-                                                                to={['quiz', 'pre-test', 'post-test'].includes(lesson.type)
-                                                                    ? `/admin/course/${courseId}/assessment/${lesson.type}?moduleId=${module.id}&lessonId=${lesson.id}`
-                                                                    : `/admin/course/${courseId}/module/${module.id}/lesson/${lesson.id}`
-                                                                }
-                                                                className="text-xs font-bold text-secondary hover:text-primary px-3 py-1.5 hover:bg-gray-50 rounded-lg transition-colors"
-                                                            >
-                                                                Edit {['quiz', 'pre-test', 'post-test'].includes(lesson.type) ? 'Questions' : 'Content'}
-                                                            </Link>
-                                                            <button className="text-secondary hover:text-red-500 p-1.5 rounded-lg hover:bg-red-50 transition-colors">
-                                                                <Trash2 size={14} />
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
-
-                                            {/* Add Item Actions */}
-                                            <div className="relative pt-2 pl-3">
-                                                <div className="absolute -left-[27px] top-5 w-4 h-px bg-gray-200/50"></div>
-                                                <div className="flex items-center gap-2">
-                                                    <Link
-                                                        to={`/admin/course/${courseId}/module/${module.id}/lesson/new?type=youtube`}
-                                                        className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-primary bg-white border border-gray-200 hover:border-primary px-3 py-1.5 rounded-lg transition-all"
-                                                    >
-                                                        <Plus size={12} /> Lesson
-                                                    </Link>
-                                                    <Link
-                                                        to={`/admin/course/${courseId}/assessment/quiz?moduleId=${module.id}`}
-                                                        className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-purple-600 bg-white border border-gray-200 hover:border-purple-200 px-3 py-1.5 rounded-lg transition-all"
-                                                    >
-                                                        <Plus size={12} /> Quiz
-                                                    </Link>
-                                                    <Link
-                                                        to={`/admin/course/${courseId}/assessment/post-test?moduleId=${module.id}`}
-                                                        className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-indigo-600 bg-white border border-gray-200 hover:border-indigo-200 px-3 py-1.5 rounded-lg transition-all"
-                                                    >
-                                                        <Plus size={12} /> Test
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
-                ) : (
-                    <div className="py-12 text-center">
-                        <div className="w-16 h-16 bg-gray-100/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <Video className="text-gray-300" size={32} />
-                        </div>
-                        <h4 className="text-main font-bold mb-1">Start building curriculum</h4>
-                        <p className="text-sm text-secondary mb-4">No modules added yet.</p>
-                        <button
-                            onClick={() => {
-                                setEditingModule(null);
-                                setShowModuleModal(true);
-                            }}
-                            className="text-sm font-bold text-citilearn-green hover:text-emerald-700 inline-flex items-center gap-2"
-                        >
-                            <Plus size={16} /> Create First Module
-                        </button>
-                    </div>
-                )}
-            </div>
+            )}
 
             {/* Module Edit Modal - Simplified */}
             {showModuleModal && (
@@ -376,7 +374,7 @@ const CurriculumTab = ({ courseId }) => {
                     }}
                 />
             )}
-        </>
+        </div>
     );
 };
 

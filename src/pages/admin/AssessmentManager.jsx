@@ -54,7 +54,7 @@ const AssessmentManager = () => {
                         <ArrowLeft size={20} />
                     </Link>
                     <div>
-                        <h1 className="text-2xl font-black text-main">{getAssessmentTitle()} Settings</h1>
+                        <h1 className="text-2xl font-bold text-main">{getAssessmentTitle()} Settings</h1>
                         <p className="text-sm text-secondary font-medium">Configure assessment rules and manage questions</p>
                     </div>
                 </div>

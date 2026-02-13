@@ -48,7 +48,7 @@ const LessonQuiz = ({
             />
 
             <div className="mb-6">
-                {isFinalQuiz && <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Question</p>}
+                {isFinalQuiz && <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Question</p>}
                 <h4 className={`${isFinalQuiz ? 'text-base' : 'text-[15px]'} font-bold text-slate-700 dark:text-slate-300 leading-relaxed`}>
                     {currentQuiz.question}
                 </h4>

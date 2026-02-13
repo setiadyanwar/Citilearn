@@ -89,7 +89,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                             </div>
 
                             <div>
-                                <h3 className="text-lg font-black text-main dark:text-white mb-3">About This Lesson</h3>
+                                <h3 className="text-lg font-bold text-main dark:text-white mb-3">About This Lesson</h3>
                                 <p className="text-secondary dark:text-slate-400 text-sm leading-relaxed font-medium">
                                     This module covers critical aspects of <strong>{activeLesson?.title}</strong>.
                                     In this session, we will explore the fundamental procedures required for maintaining high safety standards.
@@ -98,7 +98,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                             </div>
 
                             <div className="space-y-4">
-                                <h3 className="text-lg font-black text-main dark:text-white">Learning Outcomes & Objectives (RPS)</h3>
+                                <h3 className="text-lg font-bold text-main dark:text-white">Learning Outcomes & Objectives (RPS)</h3>
                                 <div className="space-y-3">
                                     {(course.learningOutcomes || [
                                         "Implement hazard identification and risk assessment (HIRA) in airport operations.",
@@ -140,11 +140,11 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                             </div>
                             <div>
                                 <h3 className="text-sm font-bold text-main dark:text-white">Citilink Academy Team</h3>
-                                <p className="text-xs text-primary font-black mb-3">Official Training Partner</p>
+                                <p className="text-xs text-primary font-bold mb-3">Official Training Partner</p>
                                 <p className="text-[13px] text-secondary dark:text-slate-400 leading-relaxed max-w-lg font-medium">
                                     The Citilink Academy Team consists of experienced senior flight instructors and safety experts dedicated to maintaining the highest standards of aviation safety and service excellence.
                                 </p>
-                                <button className="mt-4 px-5 py-2 border border-gray-100 dark:border-slate-800 text-primary text-xs font-black rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 transition-all">
+                                <button className="mt-4 px-5 py-2 border border-gray-100 dark:border-slate-800 text-primary text-xs font-bold rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 transition-all">
                                     View Instructor Profile
                                 </button>
                             </div>

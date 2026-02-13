@@ -55,7 +55,7 @@ const DashboardHero = ({
                             </div>
                         </div>
 
-                        <h2 className="text-3xl md:text-4xl font-black text-main dark:text-white leading-tight">
+                        <h2 className="text-3xl md:text-4xl font-bold text-main dark:text-white leading-tight">
                             Capt. Setiady Anwar
                         </h2>
 
@@ -140,18 +140,18 @@ const DashboardHero = ({
                     <div className="flex flex-col gap-3 w-full sm:w-auto z-10">
                         <div className="flex gap-3">
                             <div className="bg-[#00703C] text-white p-3 rounded-2xl text-center min-w-[100px] flex-1 flex flex-col justify-center items-center">
-                                <p className="text-2xl font-black mb-0 leading-none">7</p>
+                                <p className="text-2xl font-bold mb-0 leading-none">7</p>
                                 <p className="text-sm font-medium opacity-90 mt-1">Enrolled</p>
                             </div>
                             <div className="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 p-3 rounded-2xl text-center min-w-[100px] flex-1 flex flex-col justify-center items-center">
-                                <p className="text-2xl font-black text-main dark:text-white mb-0 leading-none">3</p>
+                                <p className="text-2xl font-bold text-main dark:text-white mb-0 leading-none">3</p>
                                 <p className="text-sm font-medium text-tertiary mt-1">Completed</p>
                             </div>
                         </div>
 
                         <div className="bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-gray-100 dark:border-slate-700 rounded-2xl p-2 px-3 flex items-center gap-3 relative">
                             <div className="absolute -top-1.5 -left-1.5 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-slate-900" />
-                            <span className="text-lg font-black text-main dark:text-white ml-1">5</span>
+                            <span className="text-lg font-bold text-main dark:text-white ml-1">5</span>
                             <span className="text-sm font-medium text-secondary dark:text-slate-400 leading-tight">Mandatory Incomplete</span>
                         </div>
                     </div>
@@ -161,7 +161,7 @@ const DashboardHero = ({
                 <div className="hidden sm:grid grid-cols-2 gap-4 flex-1">
                     <Card rounded="rounded-3xl" className="flex flex-col justify-between">
                         <div>
-                            <p className="text-primary text-2xl font-black mb-0.5">112</p>
+                            <p className="text-primary text-2xl font-bold mb-0.5">112</p>
                             <p className="text-sm font-medium text-secondary dark:text-slate-400">Course Citilearn</p>
                         </div>
                         <div className="bg-gray-50 dark:bg-slate-800 w-10 h-10 rounded-lg flex items-center justify-center self-start mt-2">
@@ -171,7 +171,7 @@ const DashboardHero = ({
 
                     <Card rounded="rounded-3xl" className="flex flex-col justify-between">
                         <div>
-                            <p className="text-primary text-2xl font-black mb-0.5">220</p>
+                            <p className="text-primary text-2xl font-bold mb-0.5">220</p>
                             <p className="text-sm font-medium text-secondary dark:text-slate-400">Course Modules</p>
                         </div>
                         <div className="bg-gray-50 dark:bg-slate-800 w-10 h-10 rounded-lg flex items-center justify-center self-start mt-2">

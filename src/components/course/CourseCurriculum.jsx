@@ -7,7 +7,7 @@ const CourseCurriculum = ({ course }) => {
     return (
         <section className="space-y-6">
             <div className="flex items-center justify-between pb-2">
-                <h2 className="text-xl md:text-2xl font-black text-main dark:text-white">Course Curriculum</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-main dark:text-white">Course Curriculum</h2>
                 <span className="text-sm font-bold text-tertiary dark:text-slate-500">{totalLessons} Lesson Total</span>
             </div>
 

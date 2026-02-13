@@ -80,7 +80,7 @@ const Pagination = ({
                             key={page}
                             onClick={() => onPageChange(page)}
                             className={`
-                                min-w-10 h-10 px-4 flex items-center justify-center rounded-xl-p text-sm font-black transition-all duration-300
+                                min-w-10 h-10 px-4 flex items-center justify-center rounded-xl-p text-sm font-bold transition-all duration-300
                                 ${isActive
                                     ? 'bg-primary text-white transform scale-105'
                                     : 'text-gray-500 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:text-primary dark:hover:text-primary active:scale-95'

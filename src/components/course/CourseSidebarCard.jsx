@@ -31,7 +31,7 @@ const CourseSidebarCard = ({ course }) => {
                     <div className="p-10">
                         <div className="flex items-center justify-between mb-3 px-0.5 text-tertiary dark:text-slate-500">
                             <span className="text-xs font-bold font-inter tracking-tight">Your Progress</span>
-                            <span className="text-sm font-black text-citilearn-green">{course.progress}%</span>
+                            <span className="text-sm font-bold text-citilearn-green">{course.progress}%</span>
                         </div>
                         <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-8">
                             <div className="h-full bg-citilearn-green rounded-full" style={{ width: `${course.progress}%` }} />

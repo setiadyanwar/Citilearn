@@ -22,7 +22,8 @@ const Header = ({
     selectedCategory,
     setSelectedCategory,
     selectedStatus,
-    setSelectedStatus
+    setSelectedStatus,
+    hideSidebarToggle = false
 }) => {
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -55,14 +56,16 @@ const Header = ({
     };
 
     return (
-        <header className={`h-16 border-b flex items-center justify-between px-2 md:px-10 sticky top-0 z-90 transition-colors duration-300 ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-100'}`}>
+        <header className={`h-16 border-b flex items-center justify-between px-3 md:px-8 sticky top-0 z-90 transition-colors duration-300 ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-100'}`}>
             <div className="flex items-center gap-6 flex-1 min-w-0">
-                <button
-                    onClick={toggleSidebar}
-                    className={`p-2 rounded-lg border transition-all ${isDark ? 'border-slate-800 text-slate-400 hover:bg-slate-800' : 'border-gray-200 text-gray-500 hover:bg-gray-50'} hover:text-primary hover:border-primary/30`}
-                >
-                    <PanelLeft size={20} />
-                </button>
+                {!hideSidebarToggle && (
+                    <button
+                        onClick={toggleSidebar}
+                        className={`p-2 rounded-lg border transition-all ${isDark ? 'border-slate-800 text-slate-400 hover:bg-slate-800' : 'border-gray-200 text-gray-500 hover:bg-gray-50'} hover:text-primary hover:border-primary/30`}
+                    >
+                        <PanelLeft size={20} />
+                    </button>
+                )}
                 <AnimatePresence mode="wait">
                     {(!showSearch || window.innerWidth >= 768) ? (
                         <motion.h1

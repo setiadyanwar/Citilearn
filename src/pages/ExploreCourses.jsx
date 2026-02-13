@@ -89,7 +89,7 @@ const ExploreCourses = () => {
                 <WingDecorationRight />
 
                 <div className="max-w-4xl mx-auto text-center relative z-10 mt-4">
-                    <h1 className="text-3xl md:text-4xl font-black text-main dark:text-white mb-6 tracking-tight">
+                    <h1 className="text-3xl md:text-4xl font-bold text-main dark:text-white mb-6 tracking-tight">
                         Let's Upgrade make <span className="text-citilearn-green">your skills up</span> <TreeIcon />
                     </h1>
 

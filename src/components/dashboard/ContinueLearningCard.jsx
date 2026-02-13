@@ -32,7 +32,7 @@ const ContinueLearningCard = ({ course }) => {
                     </div>
                 </div>
 
-                <h3 className="text-lg font-black text-main dark:text-white mb-1 truncate leading-tight group-hover:text-primary transition-colors" title={course.title}>
+                <h3 className="text-lg font-bold text-main dark:text-white mb-1 truncate leading-tight group-hover:text-primary transition-colors" title={course.title}>
                     {course.title}
                 </h3>
 
@@ -44,7 +44,7 @@ const ContinueLearningCard = ({ course }) => {
                 </p>
 
                 <div className="space-y-1.5">
-                    <div className="flex justify-between items-center font-black">
+                    <div className="flex justify-between items-center font-bold">
                         <span className="text-xs text-tertiary dark:text-slate-500 uppercase tracking-tight">Progress</span>
                         <span className="text-sm text-primary">{course.progress}%</span>
                     </div>

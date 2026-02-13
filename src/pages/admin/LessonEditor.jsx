@@ -39,7 +39,7 @@ const LessonEditor = () => {
                 : 'border-transparent bg-gray-50 hover:bg-white hover:border-gray-200'
                 }`}
         >
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${lessonData.type === type ? 'bg-white text-citilearn-green shadow-sm' : 'bg-white text-gray-400 group-hover:text-gray-600'
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${lessonData.type === type ? 'bg-white text-citilearn-green' : 'bg-white text-gray-400 group-hover:text-gray-600'
                 }`}>
                 <Icon size={20} />
             </div>
@@ -66,7 +66,7 @@ const LessonEditor = () => {
                         <ArrowLeft size={20} />
                     </Link>
                     <div>
-                        <h1 className="text-2xl font-black text-main">
+                        <h1 className="text-2xl font-bold text-main">
                             {isNew ? 'New Lesson' : 'Edit Lesson'}
                         </h1>
                         <p className="text-sm text-secondary font-medium">Manage learning content</p>
@@ -74,7 +74,7 @@ const LessonEditor = () => {
                 </div>
                 <button
                     onClick={handleSave}
-                    className="flex items-center gap-2 px-6 py-2.5 bg-citilearn-green text-white rounded-xl font-bold hover:bg-emerald-600 transition-colors shadow-lg shadow-citilearn-green/20"
+                    className="flex items-center gap-2 px-6 py-2.5 bg-citilearn-green text-white rounded-xl font-bold hover:bg-emerald-600 transition-colors"
                 >
                     <Save size={18} />
                     Save Lesson
@@ -83,7 +83,7 @@ const LessonEditor = () => {
 
             <div className="max-w-4xl mx-auto space-y-8">
                 {/* 1. Basic Info & Type */}
-                <div className="bg-white rounded-3xl p-8 border border-gray-100/50 shadow-sm">
+                <div className="bg-white rounded-3xl p-8 border border-gray-100/50">
                     <div className="space-y-8">
                         <div>
                             <label className="block text-sm font-bold text-main mb-3">Lesson Title</label>
@@ -117,7 +117,7 @@ const LessonEditor = () => {
                 </div>
 
                 {/* 2. Content Editor */}
-                <div className="bg-white rounded-3xl p-8 border border-gray-100/50 shadow-sm space-y-6">
+                <div className="bg-white rounded-3xl p-8 border border-gray-100/50 space-y-6">
                     <h3 className="text-lg font-bold text-main flex items-center gap-2">
                         {lessonData.type === 'youtube' ? <Video size={20} className="text-blue-500" /> : <FileText size={20} className="text-orange-500" />}
                         {lessonData.type === 'youtube' ? 'Video Configuration' : 'Document Configuration'}

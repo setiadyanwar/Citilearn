@@ -162,7 +162,7 @@ const TopicDropdown = () => {
                                             <ArrowLeft size={20} className="text-main dark:text-white" />
                                         </button>
                                     )}
-                                    <h2 className="text-lg font-black text-main dark:text-white">
+                                    <h2 className="text-lg font-bold text-main dark:text-white">
                                         {mobileStage === 'topics' ? 'Popular Topics' : activeTopicData?.label}
                                     </h2>
                                 </div>

@@ -20,7 +20,7 @@ const CourseDetailHeader = ({ course }) => {
                 </div>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-black text-main dark:text-white leading-tight tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-main dark:text-white leading-tight tracking-tight">
                 {course.title}
             </h1>
 

@@ -81,7 +81,7 @@ const UserAssignment = () => {
                         <ArrowLeft size={20} />
                     </Link>
                     <div>
-                        <h1 className="text-2xl font-black text-main">Assign Users</h1>
+                        <h1 className="text-2xl font-bold text-main">Assign Users</h1>
                         <p className="text-sm text-secondary font-medium">Manage who is required to take this mandatory course</p>
                     </div>
                 </div>
@@ -167,7 +167,7 @@ const UserAssignment = () => {
                         {/* Modal Header */}
                         <div className="p-6 border-b border-gray-100 flex justify-between items-center">
                             <div>
-                                <h2 className="text-xl font-black text-main">Assign to Course</h2>
+                                <h2 className="text-xl font-bold text-main">Assign to Course</h2>
                                 <p className="text-sm text-secondary">Select users, departments, or roles</p>
                             </div>
                             <button
