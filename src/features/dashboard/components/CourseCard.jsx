@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Clock, BookOpen, Bookmark, Download, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Card from '@/components/common/Card';
@@ -10,6 +10,7 @@ import { COURSE_STATUS } from '@/constants/course';
 import { cn } from '@/lib/utils';
 
 const CourseCard = ({ course, compact = false, variant = 'default', disabled = false }) => {
+    const navigate = useNavigate();
     const [isBookmarked, setIsBookmarked] = useState(course.isBookmarked || false);
     const [timeLeft, setTimeLeft] = useState('');
 
@@ -54,6 +55,18 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
     const inProgress = course.status === COURSE_STATUS.ON_PROGRESS;
     const notStarted = course.status === COURSE_STATUS.NOT_STARTED || (!course.status && isAvailable);
 
+    const handleCardClick = () => {
+        if (isAvailable && !disabled) {
+            navigate(`/course/${course.id}`);
+        }
+    };
+
+    const handleActionClick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        navigate(`/learn/${course.id}`);
+    };
+
     // Determine Status Badge
     const renderStatusBadge = () => {
         if (isCompleted) {
@@ -69,8 +82,12 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
     };
 
     return (
-        <Card padding="p-0" className="group flex flex-col h-full overflow-hidden transition-all duration-300 border border-gray-100 dark:border-slate-800 rounded-2xl">
-            <Link to={isAvailable ? `/course/${course.id}` : '#'} className={`flex flex-col h-full ${!isAvailable ? 'cursor-not-allowed' : ''}`}>
+        <Card
+            padding="p-0"
+            className={`group flex flex-col h-full overflow-hidden transition-all duration-300 border border-gray-100 dark:border-slate-800 rounded-2xl ${isAvailable && !disabled ? 'cursor-pointer' : 'cursor-not-allowed'}`}
+            onClick={handleCardClick}
+        >
+            <div className={`flex flex-col h-full ${!isAvailable ? 'opacity-75' : ''}`}>
                 {/* Image Section */}
                 <div className={`relative ${compact ? 'h-40' : 'h-48'} bg-gray-100 dark:bg-slate-800 overflow-hidden`}>
                     <img
@@ -158,36 +175,53 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
 
                         {/* 3. IN PROGRESS */}
                         {isAvailable && inProgress && (
-                            <div className="space-y-2">
-                                <div className="flex justify-between items-end mb-1">
-                                    <span className="text-xs font-bold text-tertiary uppercase">Progress</span>
-                                    <span className="text-sm font-bold text-primary">{course.progress}%</span>
+                            <div className="space-y-3">
+                                <div className="space-y-2">
+                                    <div className="flex justify-between items-end mb-1">
+                                        <span className="text-xs font-bold text-tertiary uppercase">Progress</span>
+                                        <span className="text-sm font-bold text-primary">{course.progress}%</span>
+                                    </div>
+                                    <ProgressBar
+                                        progress={course.progress}
+                                        height="h-2"
+                                        color="bg-primary"
+                                        trackColor="bg-gray-100"
+                                        rounded="rounded-full"
+                                    />
                                 </div>
-                                <ProgressBar
-                                    progress={course.progress}
-                                    height="h-2"
-                                    color="bg-primary"
-                                    trackColor="bg-gray-100"
-                                    rounded="rounded-full"
-                                />
+                                <Button
+                                    className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-xl h-11"
+                                    onClick={handleActionClick}
+                                >
+                                    Continue Learning
+                                </Button>
+                                <p className="text-center text-sm font-normal text-tertiary">
+                                    Ready to advance your skills? Let's continue learning!
+                                </p>
                             </div>
                         )}
 
                         {/* 4. NOT STARTED */}
                         {isAvailable && notStarted && (
-                            <Button
-                                disabled={disabled}
-                                className={cn(
-                                    "w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-xl h-11",
-                                    disabled && "opacity-50 cursor-not-allowed pointer-events-none"
-                                )}
-                            >
-                                Start Learn
-                            </Button>
+                            <div className="space-y-3">
+                                <Button
+                                    disabled={disabled}
+                                    className={cn(
+                                        "w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-xl h-11",
+                                        disabled && "opacity-50 cursor-not-allowed pointer-events-none"
+                                    )}
+                                    onClick={handleActionClick}
+                                >
+                                    Start Learn
+                                </Button>
+                                <p className="text-center text-sm font-normal text-tertiary">
+                                    Ready to advance your skills? Let's start learning!
+                                </p>
+                            </div>
                         )}
                     </div>
                 </div>
-            </Link>
+            </div>
         </Card>
     );
 };

@@ -1,13 +1,14 @@
 import React from 'react';
 import { Globe, Clock, Upload, BookmarkPlus } from 'lucide-react';
+import Badge from '@/components/common/Badge';
 
 const CourseDetailHeader = ({ course }) => {
     return (
         <header className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
-                <span className="self-start px-3 py-1 rounded-full bg-citilearn-green-light dark:bg-emerald-900/20 text-citilearn-green dark:text-emerald-400 text-xs font-bold border border-emerald-100 dark:border-emerald-900/30">
-                    {course.category || 'Aviation'} Series
-                </span>
+                <Badge variant="success" className="self-start rounded-full">
+                    {course.category || 'Aviation'}
+                </Badge>
                 <div className="flex items-center gap-6">
                     <button className="flex items-center gap-3.5 text-main/80 dark:text-slate-300 hover:text-primary transition-colors group cursor-pointer">
                         <Upload size={18} className="stroke-[1.5px]" />
@@ -30,7 +31,7 @@ const CourseDetailHeader = ({ course }) => {
 
             <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-2xs font-bold">
+                    <div className="w-8 h-8 rounded-full bg-primary-light flex items-center justify-center text-primary text-2xs font-bold">
                         CA
                     </div>
                     <span className="text-sm font-bold text-secondary dark:text-slate-300">Citilink Academy</span>

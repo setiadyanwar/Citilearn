@@ -4,12 +4,16 @@ import { useRoutes, Navigate } from 'react-router-dom';
 // Layouts
 import { Layout } from '@/layouts/Layout';
 import AdminLayout from '@/layouts/AdminLayout';
+import ProfileLayout from '@/layouts/ProfileLayout';
 
 // Auth Features
 import { LoginPage } from '@/features/auth';
 
 // Dashboard Features
 import Dashboard from '@/features/dashboard/routes/Dashboard';
+
+// Profile Features
+import MyProfile from '@/features/profile/routes/MyProfile';
 
 // Courses Features
 import ExploreCourses from '@/features/courses/routes/ExploreCourses';
@@ -39,6 +43,20 @@ export const AppRoutes = () => {
 
         // Focus Test (No Layout)
         { path: '/exam/:courseId/:lessonId', element: <FocusTest /> },
+
+        // Profile Routes
+        {
+            path: '/profile',
+            element: <ProfileLayout />,
+            children: [
+                { path: '', element: <MyProfile /> },
+                { path: 'learning', element: <div className="p-10 text-center text-gray-400 font-bold">My Learning (Coming Soon)</div> },
+                { path: 'leaderboard', element: <div className="p-10 text-center text-gray-400 font-bold">Leaderboard (Coming Soon)</div> },
+                { path: 'saved', element: <div className="p-10 text-center text-gray-400 font-bold">Saved Courses (Coming Soon)</div> },
+                { path: 'certificates', element: <div className="p-10 text-center text-gray-400 font-bold">My Certificates (Coming Soon)</div> },
+                { path: 'settings', element: <div className="p-10 text-center text-gray-400 font-bold">Settings (Coming Soon)</div> }
+            ]
+        },
 
         // Admin Routes
         {

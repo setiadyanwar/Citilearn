@@ -39,6 +39,7 @@ const Header = ({
         if (path.includes('/learn')) return 'Learning Session';
         if (path.includes('/achievements')) return 'Achievements';
         if (path.includes('/settings')) return 'Settings';
+        if (path.includes('/profile')) return 'Dashboard Profile';
         return 'Dashboard';
     };
 
@@ -98,7 +99,7 @@ const Header = ({
                                 className={`absolute right-0 mt-2 w-56 rounded-xl border z-100 overflow-hidden ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-200 shadow-lg shadow-gray-200/50'}`}
                             >
                                 <div className="p-1.5 space-y-0.5">
-                                    <Link to="/" className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isDark ? 'text-gray-300 hover:bg-slate-800 hover:text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-primary'}`}>
+                                    <Link to="/profile" className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isDark ? 'text-gray-300 hover:bg-slate-800 hover:text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-primary'}`}>
                                         <User size={18} />
                                         Profile & Dashboard
                                     </Link>

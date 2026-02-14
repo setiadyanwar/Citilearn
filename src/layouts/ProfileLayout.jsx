@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { PanelLeft, LayoutDashboard, FolderOpen, ClipboardCheck, Database, Users, ChevronRight, Home } from 'lucide-react';
+import { PanelLeft, User, BookOpen, BarChart2, Bookmark, Award, Settings, Home, ChevronRight } from 'lucide-react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import Header from './Header';
 
-
 // eslint-disable-next-line no-unused-vars
-const AdminSidebarItem = ({ icon: Icon, label, collapsed, active, to }) => (
+const ProfileSidebarItem = ({ icon: Icon, label, collapsed, active, to }) => (
     <Link
         to={to}
         className={`flex items-center gap-3 p-3 rounded-xl transition-all mb-1 group relative ${active
@@ -30,7 +29,7 @@ const AdminSidebarItem = ({ icon: Icon, label, collapsed, active, to }) => (
     </Link>
 );
 
-const AdminLayout = () => {
+const ProfileLayout = () => {
     const [collapsed, setCollapsed] = useState(window.innerWidth < 768);
     const location = useLocation();
 
@@ -51,31 +50,24 @@ const AdminLayout = () => {
         }
     }, [location.pathname]);
 
-    // Check if current page requires fixed layout (no main scrollbar)
-    const isFixedPage = false; // Allow natural scrolling for better visibility on all screens
-
     const getBreadcrumbs = () => {
-        // ... (rest of breadcrumbs logic remains same)
         const path = location.pathname;
         const parts = path.split('/').filter(p => p);
 
         const labels = {
-            'admin': 'Admin',
-            'courses': 'Course Management',
-            'assessment': 'Assessment',
-            'cms': 'CMS CompanyHub',
-            'users': 'Users Hub',
-            'create': 'Create New',
-            'edit': 'Edit',
-            'module': 'Module',
-            'lesson': 'Lesson'
+            'profile': 'My Profile',
+            'learning': 'My Learning',
+            'leaderboard': 'Leaderboard',
+            'saved': 'Saved Course',
+            'certificates': 'My Certificates',
+            'settings': 'Settings'
         };
 
         return (
             <div className="flex items-center gap-2 text-sm text-secondary overflow-hidden whitespace-nowrap">
                 <Link to="/" className="hover:text-primary flex items-center gap-1.5 transition-colors">
                     <Home size={14} />
-                    <span className="hidden sm:inline">Home</span>
+                    <span className="hidden sm:inline">Dashboard</span>
                 </Link>
                 {parts.map((part, index) => {
                     const isLast = index === parts.length - 1;
@@ -102,11 +94,12 @@ const AdminLayout = () => {
     };
 
     const menuItems = [
-        { icon: LayoutDashboard, label: 'Dashboard', path: '/admin' },
-        { icon: FolderOpen, label: 'Course Management', path: '/admin/courses' },
-        { icon: ClipboardCheck, label: 'Assessment & Grading', path: '/admin/assessment' },
-        { icon: Database, label: 'CMS CompanyHub', path: '/admin/cms' },
-        { icon: Users, label: 'Users Hub', path: '/admin/users' },
+        { icon: User, label: 'My Profile', path: '/profile' },
+        { icon: BookOpen, label: 'My Learning', path: '/profile/learning' },
+        { icon: BarChart2, label: 'Leaderboard and performance', path: '/profile/leaderboard' },
+        { icon: Bookmark, label: 'Saved Course', path: '/profile/saved' },
+        { icon: Award, label: 'My Certificates', path: '/profile/certificates' },
+        { icon: Settings, label: 'Settings', path: '/profile/settings' },
     ];
 
     return (
@@ -143,19 +136,19 @@ const AdminLayout = () => {
                     className={`bg-white lg:rounded-3xl border-r lg:border border-gray-100 flex flex-col transition-all duration-300 ease-in-out shrink-0 h-fit fixed lg:sticky top-0 left-0 z-100 lg:z-50 
                     ${collapsed
                             ? 'w-0 lg:w-20 -translate-x-full lg:translate-x-0'
-                            : 'w-70 translate-x-0 lg:shadow-none'
+                            : 'w-[300px] translate-x-0 lg:shadow-none'
                         }`}
                 >
                     <div className={`p-4 ${collapsed ? 'opacity-0 lg:opacity-100' : 'opacity-100'}`}>
                         <nav className="flex flex-col gap-1">
                             {menuItems.map((item) => (
-                                <AdminSidebarItem
+                                <ProfileSidebarItem
                                     key={item.path}
                                     icon={item.icon}
                                     label={item.label}
                                     to={item.path}
                                     collapsed={collapsed && window.innerWidth >= 1024}
-                                    active={location.pathname === item.path || (location.pathname.startsWith(item.path) && item.path !== '/admin')}
+                                    active={location.pathname === item.path || (location.pathname.startsWith(item.path) && item.path !== '/profile')}
                                 />
                             ))}
                         </nav>
@@ -163,8 +156,8 @@ const AdminLayout = () => {
                 </aside>
 
                 {/* Main Content Area */}
-                <main className={`flex-1 min-w-0 relative scroll-smooth z-0 p-4 lg:p-0 ${isFixedPage ? 'overflow-hidden flex flex-col' : 'overflow-y-auto'}`}>
-                    <div className={`min-h-full ${isFixedPage ? 'h-full flex flex-col' : 'pb-10'}`}>
+                <main className="flex-1 min-w-0 relative scroll-smooth z-0 p-4 lg:p-0 overflow-y-auto">
+                    <div className="min-h-full pb-10">
                         <Outlet />
                     </div>
                 </main>
@@ -173,4 +166,4 @@ const AdminLayout = () => {
     );
 };
 
-export default AdminLayout;
+export default ProfileLayout;

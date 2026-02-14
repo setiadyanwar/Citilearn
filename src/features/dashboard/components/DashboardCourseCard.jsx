@@ -55,7 +55,7 @@ const DashboardCourseCard = ({ course, variant = 'resume' }) => {
             className={`flex flex-row gap-4 p-4 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl cursor-pointer group overflow-hidden transition-all duration-300 ${isLocked ? 'opacity-75 grayscale cursor-not-allowed hover:shadow-none' : 'hover:shadow-lg hover:shadow-primary/5'}`}
         >
             {/* Thumbnail */}
-            <div className={`relative shrink-0 rounded-xl overflow-hidden ${isMandatory ? 'w-28 h-auto' : 'w-20 h-20 sm:w-28 sm:h-auto'}`}>
+            <div className="relative shrink-0 rounded-xl overflow-hidden w-28 h-auto">
                 <img
                     src={course.thumbnail}
                     alt={course.title}

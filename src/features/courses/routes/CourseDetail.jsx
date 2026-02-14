@@ -48,6 +48,7 @@ const CourseDetail = () => {
     return (
         <div className="max-w-7xl mx-auto">
             <Breadcrumb
+                showBack={false}
                 items={[
                     { label: 'Explore Courses', link: '/courses' },
                     { label: course.title, link: null }
@@ -57,7 +58,7 @@ const CourseDetail = () => {
             <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 lg:gap-10 items-start">
 
                 {/* Right Column: Sticky Sidebar Component (Ordered First on Mobile) */}
-                <div className="order-1 lg:order-2 w-full lg:w-auto lg:sticky lg:top-[110px] lg:max-h-[calc(100vh-180px)] lg:overflow-y-auto no-scrollbar pb-40">
+                <div className="order-1 lg:order-2 w-full lg:w-auto lg:sticky lg:top-28 h-fit z-40 self-start">
                     <CourseSidebarCard course={course} />
                 </div>
 

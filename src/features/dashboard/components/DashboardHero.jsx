@@ -34,7 +34,7 @@ const DashboardHero = ({
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-8 items-stretch">
             {/* Left Card: Welcome & Search & Filters */}
-            <Card rounded="rounded-3xl" padding="p-4 sm:p-10" className="lg:col-span-6 relative flex flex-col justify-between">
+            <Card rounded="rounded-3xl" padding="p-4 sm:p-10" className="lg:col-span-6 relative flex flex-col justify-between z-20">
                 {/* Background Illustration Container */}
                 <div className="absolute inset-0 pointer-events-none select-none overflow-hidden rounded-3xl">
                     <img
@@ -149,7 +149,7 @@ const DashboardHero = ({
                             </div>
                         </div>
 
-                        <div className="bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-gray-100 dark:border-slate-700 rounded-2xl p-2 px-3 flex items-center gap-3 relative">
+                        <div className="bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-gray-100 dark:border-slate-700 rounded-2xl p-2 px-3 flex items-center justify-center gap-3 relative">
                             <div className="absolute -top-1.5 -left-1.5 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-slate-900" />
                             <span className="text-lg font-bold text-main dark:text-white ml-1">5</span>
                             <span className="text-sm font-medium text-secondary dark:text-slate-400 leading-tight">Mandatory Incomplete</span>

@@ -109,10 +109,7 @@
 
 @layer base {
 
-  html,
-  body {
-    @apply overflow-x-hidden;
-  }
+
 
   body {
     @apply font-lato bg-background text-main antialiased leading-relaxed;

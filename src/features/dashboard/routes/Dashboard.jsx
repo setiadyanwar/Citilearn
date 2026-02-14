@@ -17,7 +17,7 @@ const Dashboard = () => {
         selectedStatus,
         setSelectedStatus,
     } = useDashboardFilter();
-    
+
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
     const coursesRef = useRef(null);

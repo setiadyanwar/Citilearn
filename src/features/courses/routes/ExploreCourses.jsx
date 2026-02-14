@@ -194,42 +194,41 @@ const ExploreCourses = () => {
 
             {/* Course Tabs & Controls */}
             <div className="px-2">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-                    <div className="flex items-center gap-3 w-full md:w-auto">
-                        <div className="grow md:grow-0">
-                            <Tabs
-                                activeTab={activeTab}
-                                onTabChange={setActiveTab}
-                                tabs={[
-                                    { id: 'mandatory', label: 'Mandatory', count: mandatoryCourses.length },
-                                    { id: 'skills-up', label: 'Skills-Up', count: skillsUpCourses.length }
-                                ]}
-                            />
-                        </div>
-                        <div className="shrink-0">
-                            <StatusDropdown
-                                selectedStatus={selectedStatus}
-                                onSelectStatus={setSelectedStatus}
-                                isOpen={isStatusDropdownOpen}
-                                onToggle={setIsStatusDropdownOpen}
-                            />
-                        </div>
+                <div className="flex items-center justify-between gap-3 md:gap-4 mb-8">
+                    <div className="min-w-0 flex-1 md:w-auto md:flex-none">
+                        <Tabs
+                            activeTab={activeTab}
+                            onTabChange={setActiveTab}
+                            tabs={[
+                                { id: 'mandatory', label: 'Mandatory', count: mandatoryCourses.length },
+                                { id: 'skills-up', label: 'Skills-Up', count: skillsUpCourses.length }
+                            ]}
+                        />
                     </div>
 
-                    {/* View Toggle - Desktop Only */}
-                    <div className="hidden md:flex bg-white dark:bg-slate-900 p-1 rounded-xl border border-gray-100 dark:border-slate-800 self-end md:self-auto">
-                        <button
-                            onClick={() => setViewMode('grid')}
-                            className={`p-2 rounded-lg transition-all cursor-pointer ${viewMode === 'grid' ? 'bg-citilearn-green text-white' : 'text-secondary hover:text-primary'}`}
-                        >
-                            <LayoutGrid size={16} />
-                        </button>
-                        <button
-                            onClick={() => setViewMode('list')}
-                            className={`p-2 rounded-lg transition-all cursor-pointer ${viewMode === 'list' ? 'bg-citilearn-green text-white' : 'text-secondary hover:text-primary'}`}
-                        >
-                            <ListIcon size={16} />
-                        </button>
+                    <div className="shrink-0 flex items-center gap-3">
+                        <StatusDropdown
+                            selectedStatus={selectedStatus}
+                            onSelectStatus={setSelectedStatus}
+                            isOpen={isStatusDropdownOpen}
+                            onToggle={setIsStatusDropdownOpen}
+                        />
+
+                        {/* View Toggle - Desktop Only */}
+                        <div className="hidden md:flex bg-white dark:bg-slate-900 p-1 rounded-xl border border-gray-100 dark:border-slate-800">
+                            <button
+                                onClick={() => setViewMode('grid')}
+                                className={`p-2 rounded-lg transition-all cursor-pointer ${viewMode === 'grid' ? 'bg-citilearn-green text-white' : 'text-secondary hover:text-primary'}`}
+                            >
+                                <LayoutGrid size={16} />
+                            </button>
+                            <button
+                                onClick={() => setViewMode('list')}
+                                className={`p-2 rounded-lg transition-all cursor-pointer ${viewMode === 'list' ? 'bg-citilearn-green text-white' : 'text-secondary hover:text-primary'}`}
+                            >
+                                <ListIcon size={16} />
+                            </button>
+                        </div>
                     </div>
                 </div>
 

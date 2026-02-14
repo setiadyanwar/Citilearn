@@ -22,7 +22,7 @@ const StatusDropdown = ({ selectedStatus, onSelectStatus, isOpen, onToggle }) =>
         <div className="relative z-50" ref={dropdownRef}>
             <button
                 onClick={() => onToggle(!isOpen)}
-                className={`flex items-center justify-between gap-3 px-4 h-10 md:h-11 rounded-full border text-2xs md:text-sm font-bold transition-all cursor-pointer
+                className={`flex items-center justify-between gap-3 px-4 h-11 md:h-12 rounded-full border text-2xs md:text-sm font-bold transition-all cursor-pointer
                     ${isOpen
                         ? 'border-primary bg-white dark:bg-slate-800'
                         : 'border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-800/50 text-secondary dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50'}`}
