@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PanelLeft, LayoutDashboard, FolderOpen, ClipboardCheck, Database, Users, ChevronRight, Home } from 'lucide-react';
+import { PanelLeft, LayoutDashboard, FolderOpen, ClipboardCheck, Database, Users, ChevronRight, Home, X } from 'lucide-react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import Header from './Header';
 
@@ -31,7 +31,8 @@ const AdminSidebarItem = ({ icon: Icon, label, collapsed, active, to }) => (
 );
 
 const AdminLayout = () => {
-    const [collapsed, setCollapsed] = useState(window.innerWidth < 768);
+    const [collapsed, setCollapsed] = useState(window.innerWidth < 1024);
+    const [isDark, setIsDark] = useState(false);
     const location = useLocation();
 
     // Auto-collapse on mobile when route changes or window resize
@@ -42,6 +43,7 @@ const AdminLayout = () => {
             }
         };
         window.addEventListener('resize', handleResize);
+        handleResize(); // Initial check
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
@@ -55,7 +57,6 @@ const AdminLayout = () => {
     const isFixedPage = false; // Allow natural scrolling for better visibility on all screens
 
     const getBreadcrumbs = () => {
-        // ... (rest of breadcrumbs logic remains same)
         const path = location.pathname;
         const parts = path.split('/').filter(p => p);
 
@@ -72,7 +73,7 @@ const AdminLayout = () => {
         };
 
         return (
-            <div className="flex items-center gap-2 text-sm text-secondary overflow-hidden whitespace-nowrap">
+            <div className={`flex items-center gap-2 text-sm overflow-hidden whitespace-nowrap ${isDark ? 'text-slate-400' : 'text-secondary'}`}>
                 <Link to="/" className="hover:text-primary flex items-center gap-1.5 transition-colors">
                     <Home size={14} />
                     <span className="hidden sm:inline">Home</span>
@@ -110,15 +111,23 @@ const AdminLayout = () => {
     ];
 
     return (
-        <div className="h-screen bg-gray-50 flex flex-col font-lato overflow-hidden">
+        <div className={`h-screen flex flex-col font-lato overflow-hidden transition-colors duration-300 ${isDark ? 'bg-slate-950 text-white' : 'bg-gray-50'}`}>
             {/* Header */}
-            <Header hideSidebarToggle={true} />
+            <Header
+                isDark={isDark}
+                setIsDark={setIsDark}
+                hideSidebarToggle={true}
+            />
 
             {/* Breadcrumb Bar with Sidebar Toggle */}
-            <div className="px-6 py-4 flex items-center gap-4 shrink-0 z-30">
+            <div className={`px-6 py-4 flex items-center gap-4 shrink-0 z-[110] ${isDark ? 'bg-slate-900/50 border-b border-white/5' : ''}`}>
                 <button
-                    onClick={() => setCollapsed(!collapsed)}
-                    className="p-2 rounded-xl bg-white border border-gray-200 hover:bg-gray-50 text-secondary transition-colors"
+                    type="button"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setCollapsed(!collapsed);
+                    }}
+                    className={`p-2 rounded-xl border transition-all ${isDark ? 'bg-slate-900 border-slate-800 text-slate-400' : 'bg-white border-gray-200 text-secondary hover:bg-gray-50'}`}
                     title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}
                 >
                     <PanelLeft
@@ -126,27 +135,40 @@ const AdminLayout = () => {
                         className={`transition-transform duration-300 ${collapsed ? 'rotate-180' : ''}`}
                     />
                 </button>
-                <div className="h-6 w-px bg-gray-200 mx-1"></div>
+                <div className={`h-6 w-px mx-1 ${isDark ? 'bg-white/10' : 'bg-gray-200'}`}></div>
                 {getBreadcrumbs()}
             </div>
 
             {/* Body */}
-            <div className="flex flex-1 overflow-hidden p-0 lg:p-6 lg:pt-0 gap-0 lg:gap-6 bg-gray-50/50 relative">
+            <div className="flex flex-1 overflow-hidden p-0 lg:p-6 lg:pt-0 gap-0 lg:gap-6 relative">
                 {/* Mobile Overlay */}
                 <div
-                    className={`fixed inset-0 bg-slate-900/60 z-90 lg:hidden transition-opacity duration-300 backdrop-blur-sm ${collapsed ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                    className={`fixed inset-0 bg-slate-900/60 z-[120] lg:hidden transition-opacity duration-300 backdrop-blur-sm ${collapsed ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                     onClick={() => setCollapsed(true)}
                 />
 
                 {/* Sidebar */}
                 <aside
-                    className={`bg-white lg:rounded-3xl border-r lg:border border-gray-100 flex flex-col transition-all duration-300 ease-in-out shrink-0 h-fit fixed lg:sticky top-0 left-0 z-100 lg:z-50 
+                    className={`${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-100'} lg:rounded-3xl border-r lg:border flex flex-col transition-all duration-300 ease-in-out shrink-0 h-full lg:h-fit fixed lg:sticky top-0 left-0 z-[130] lg:z-50 overflow-hidden
                     ${collapsed
-                            ? 'w-0 lg:w-20 -translate-x-full lg:translate-x-0'
-                            : 'w-70 translate-x-0 lg:shadow-none'
+                            ? 'w-0 lg:w-20 -translate-x-full lg:translate-x-0 pointer-events-none lg:pointer-events-auto shadow-none'
+                            : 'w-[300px] translate-x-0 shadow-2xl lg:shadow-none'
                         }`}
                 >
-                    <div className={`p-4 ${collapsed ? 'opacity-0 lg:opacity-100' : 'opacity-100'}`}>
+                    {/* Mobile Sidebar Header */}
+                    {!collapsed && (
+                        <div className={`lg:hidden flex items-center justify-between p-4 border-b ${isDark ? 'border-slate-800' : 'border-gray-50'}`}>
+                            <span className={`font-bold ${isDark ? 'text-white' : 'text-main'}`}>Dashboard Admin</span>
+                            <button
+                                onClick={() => setCollapsed(true)}
+                                className={`p-2 -mr-2 transition-colors ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-400 hover:text-primary'}`}
+                            >
+                                <X size={20} />
+                            </button>
+                        </div>
+                    )}
+
+                    <div className={`p-4 transition-opacity duration-300 ${collapsed ? 'opacity-0 lg:opacity-100' : 'opacity-100'}`}>
                         <nav className="flex flex-col gap-1">
                             {menuItems.map((item) => (
                                 <AdminSidebarItem

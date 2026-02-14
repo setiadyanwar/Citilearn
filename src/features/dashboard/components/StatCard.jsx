@@ -10,7 +10,7 @@ const StatCard = ({ icon, label, value, trend, trendType = 'neutral', progress }
     };
 
     return (
-        <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between transition-all duration-300 hover:border-primary dark:hover:border-primary hover:bg-emerald-50/50 dark:hover:bg-slate-800 group cursor-default relative overflow-hidden">
+        <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between transition-all duration-300 hover:border-primary dark:hover:border-primary group cursor-default relative overflow-hidden">
             <div className="flex flex-col gap-1 w-full relative z-10">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">

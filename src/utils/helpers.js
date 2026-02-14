@@ -158,3 +158,14 @@ export const getInitials = (name) => {
 export const sleep = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 };
+/**
+ * Format points for display (1000 -> 1k, 1500 -> 1.5k)
+ * @param {number} n - Points to format
+ * @returns {string|number} Formatted points
+ */
+export const formatPoints = (n) => {
+    if (n >= 1000) {
+        return (n / 1000).toFixed(n % 1000 === 0 ? 0 : 1) + 'k';
+    }
+    return n;
+};

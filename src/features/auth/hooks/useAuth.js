@@ -6,19 +6,25 @@
 import { useState, useEffect } from 'react';
 import authService from '../api/authService';
 
+import budi_pratama from '@/assets/budi_pratama.png';
+
 export const useAuth = () => {
-    const [user, setUser] = useState(null);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
+    // Mock user for development
+    const mockUser = {
+        name: "Setiady Anwar",
+        email: "setiadyanwar@gmail.com",
+        role: "Senior Flight Instructor",
+        points: 3000,
+        avatar: budi_pratama,
+        badge: "Cruise" // This will be dynamic based on points anyway
+    };
+
+    const [user, setUser] = useState(authService.getCurrentUser() || mockUser);
+    const [isAuthenticated, setIsAuthenticated] = useState(authService.isAuthenticated() || true); // Default to true for dev
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        // Check if user is authenticated on mount
-        const currentUser = authService.getCurrentUser();
-        const authenticated = authService.isAuthenticated();
-
-        setUser(currentUser);
-        setIsAuthenticated(authenticated);
-        setIsLoading(false);
+        // Initial check already done in useState, but we can re-verify if needed
     }, []);
 
     const login = async (credentials) => {

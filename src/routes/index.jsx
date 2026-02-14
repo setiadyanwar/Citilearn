@@ -14,6 +14,7 @@ import Dashboard from '@/features/dashboard/routes/Dashboard';
 
 // Profile Features
 import MyProfile from '@/features/profile/routes/MyProfile';
+import MyLearning from '@/features/profile/routes/MyLearning';
 
 // Courses Features
 import ExploreCourses from '@/features/courses/routes/ExploreCourses';
@@ -50,7 +51,7 @@ export const AppRoutes = () => {
             element: <ProfileLayout />,
             children: [
                 { path: '', element: <MyProfile /> },
-                { path: 'learning', element: <div className="p-10 text-center text-gray-400 font-bold">My Learning (Coming Soon)</div> },
+                { path: 'learning', element: <MyLearning /> },
                 { path: 'leaderboard', element: <div className="p-10 text-center text-gray-400 font-bold">Leaderboard (Coming Soon)</div> },
                 { path: 'saved', element: <div className="p-10 text-center text-gray-400 font-bold">Saved Courses (Coming Soon)</div> },
                 { path: 'certificates', element: <div className="p-10 text-center text-gray-400 font-bold">My Certificates (Coming Soon)</div> },
