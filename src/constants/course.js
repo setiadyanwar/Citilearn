@@ -1,4 +1,4 @@
-export const COURSE_CATEGORIES = ['All', 'Aviation', 'Safety', 'Technical', 'Leadership'];
+export const COURSE_CATEGORIES = ['All', 'Safety', 'Service', 'Technical', 'Leadership', 'Aviation'];
 
 export const COURSE_STATUS = {
     ALL: 'All',
