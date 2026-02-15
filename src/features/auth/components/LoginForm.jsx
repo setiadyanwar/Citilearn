@@ -62,13 +62,13 @@ const LoginForm = () => {
     };
 
     return (
-        <div className="w-full max-w-md p-10 bg-white rounded-4xl">
+        <div className="w-full max-w-md px-5 py-8 md:p-10 bg-white rounded-3xl md:rounded-4xl">
             {/* Logo & Header */}
             <div className="mb-10 text-left">
                 <div className="mb-6 flex items-center">
                     <img src="/Logo/Mark.svg" alt="Citilink Logo" className="w-12 h-12 object-contain" />
                 </div>
-                <h1 className="text-3xl font-bold text-main tracking-tight mb-2">Welcome to Citilearn</h1>
+                <h1 className="text-2xl md:text-3xl font-bold text-main tracking-tight mb-2">Welcome to Citilearn</h1>
                 <p className="text-tertiary text-sm font-medium">Let's learn and grow up together</p>
             </div>
 
@@ -81,7 +81,7 @@ const LoginForm = () => {
                         setError(null);
                         setSuccess(null);
                     }}
-                    className={`flex-1 py-3 px-4 rounded-xl text-base transition-all duration-200 ${loginMethod === 'sso'
+                    className={`flex-1 py-3 px-2 rounded-xl text-sm md:text-base whitespace-nowrap transition-all duration-200 ${loginMethod === 'sso'
                         ? 'bg-white text-primary font-medium'
                         : 'text-main font-regular hover:text-secondary'
                         } disabled:opacity-50 disabled:cursor-not-allowed`}
@@ -95,7 +95,7 @@ const LoginForm = () => {
                         setError(null);
                         setSuccess(null);
                     }}
-                    className={`flex-1 py-3 px-4 rounded-xl text-base transition-all duration-200 ${loginMethod === 'email'
+                    className={`flex-1 py-3 px-2 rounded-xl text-sm md:text-base whitespace-nowrap transition-all duration-200 ${loginMethod === 'email'
                         ? 'bg-white text-primary font-medium'
                         : 'text-main font-regular hover:text-secondary'
                         } disabled:opacity-50 disabled:cursor-not-allowed`}

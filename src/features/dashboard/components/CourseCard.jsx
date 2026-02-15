@@ -13,6 +13,20 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
     const navigate = useNavigate();
     const [isBookmarked, setIsBookmarked] = useState(course.isBookmarked || false);
     const [timeLeft, setTimeLeft] = useState('');
+    const [displayProgress, setDisplayProgress] = useState(course.progress || 0);
+
+    // Calculate dynamic progress from localStorage
+    useEffect(() => {
+        const savedCompleted = localStorage.getItem(`course_progress_${course.id}`);
+        if (savedCompleted) {
+            const completedIds = JSON.parse(savedCompleted);
+            const totalLessons = course.modules?.reduce((acc, m) => acc + (m.lessons?.length || 0), 0) || course.modulesCount || 1;
+            const percentage = Math.round((completedIds.length / totalLessons) * 100);
+            setDisplayProgress(percentage);
+        } else {
+            setDisplayProgress(course.progress || 0);
+        }
+    }, [course.id, course.modules, course.modulesCount, course.progress]);
 
     // Countdown logic for "Coming Soon" courses
     useEffect(() => {
@@ -51,20 +65,32 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
     };
 
     const isAvailable = !course.availableAt || new Date(course.availableAt) <= new Date();
-    const isCompleted = course.status === COURSE_STATUS.DONE;
-    const inProgress = course.status === COURSE_STATUS.ON_PROGRESS;
-    const notStarted = course.status === COURSE_STATUS.NOT_STARTED || (!course.status && isAvailable);
+    const isActuallyCompleted = displayProgress === 100;
+    const isCompleted = course.status === COURSE_STATUS.DONE || isActuallyCompleted;
+    const inProgress = (course.status === COURSE_STATUS.ON_PROGRESS || (displayProgress > 0 && !isActuallyCompleted)) && !isActuallyCompleted;
+    const notStarted = (course.status === COURSE_STATUS.NOT_STARTED || (!course.status && isAvailable)) && displayProgress === 0;
 
     const handleCardClick = () => {
         if (isAvailable && !disabled) {
-            navigate(`/course/${course.id}`);
+            if (inProgress) {
+                navigate(`/profile/learning/${course.id}`);
+            } else {
+                navigate(`/course/${course.id}`);
+            }
         }
     };
 
     const handleActionClick = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        navigate(`/learn/${course.id}`);
+
+        // If not enrolled/not started AND in dashboard grid, go to course landing page
+        if (notStarted && !compact) {
+            navigate(`/course/${course.id}`);
+        } else {
+            // Already on landing page or already enrolled, go to learning interface
+            navigate(`/profile/learning/${course.id}`);
+        }
     };
 
     // Determine Status Badge
@@ -112,16 +138,16 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
                 {/* Content Section */}
                 <div className={`${compact ? 'p-4' : 'p-4 sm:p-5'} flex-1 flex flex-col`}>
                     {/* Meta Info */}
-                    <div className="flex items-center gap-4 text-xs font-bold text-tertiary mb-3 tracking-wide">
-                        <span className="text-secondary">{course.category || 'General'}</span>
+                    <div className="flex items-center gap-4 text-xs font-bold text-tertiary mb-3 tracking-wide flex-nowrap overflow-x-auto no-scrollbar">
+                        <span className="text-secondary whitespace-nowrap">{course.category || 'General'}</span>
                         {course.duration && (
-                            <span className="flex items-center gap-1.5 text-tertiary">
+                            <span className="flex items-center gap-1.5 text-tertiary whitespace-nowrap">
                                 <Clock size={14} className="text-primary" />
                                 {course.duration}
                             </span>
                         )}
                         {(course.modulesCount > 0 || course.modules?.length > 0) && (
-                            <span className="flex items-center gap-1.5 text-tertiary">
+                            <span className="flex items-center gap-1.5 text-tertiary whitespace-nowrap">
                                 <BookOpen size={14} className="text-primary" />
                                 {course.modulesCount || course.modules?.length} Modules
                             </span>
@@ -143,81 +169,41 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
                     <div className="mt-auto pt-4">
                         {/* 1. NOT AVAILABLE (Coming Soon) */}
                         {!isAvailable && (
-                            <Button
-                                disabled
-                                className="w-full bg-gray-100 text-gray-500 font-bold rounded-xl h-11 border border-gray-200 cursor-not-allowed"
-                            >
+                            <div className="w-full bg-gray-50 text-gray-400 font-bold rounded-xl h-11 border border-gray-100 flex items-center justify-center text-sm">
                                 Available in {timeLeft || 'Loading...'}
-                            </Button>
-                        )}
-
-                        {/* 2. COMPLETED (Download Certificate) */}
-                        {isAvailable && isCompleted && (
-                            <div className="flex flex-col gap-3">
-                                {course.finishedAt && (
-                                    <span className="text-sm font-medium text-secondary">
-                                        Finished at: {course.finishedAt}
-                                    </span>
-                                )}
-                                <Button
-                                    className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-xl h-11 flex items-center justify-center gap-2"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        // Handle download logic
-                                        console.log("Download Certificate clicked");
-                                    }}
-                                >
-                                    Download Certificate
-                                    <Download size={18} />
-                                </Button>
                             </div>
                         )}
 
-                        {/* 3. IN PROGRESS */}
-                        {isAvailable && inProgress && (
-                            <div className="space-y-3">
-                                <div className="space-y-2">
-                                    <div className="flex justify-between items-end mb-1">
-                                        <span className="text-xs font-bold text-tertiary uppercase">Progress</span>
-                                        <span className="text-sm font-bold text-primary">{course.progress}%</span>
-                                    </div>
-                                    <ProgressBar
-                                        progress={course.progress}
-                                        height="h-2"
-                                        color="bg-primary"
-                                        trackColor="bg-gray-100"
-                                        rounded="rounded-full"
-                                    />
+                        {/* 2. COMPLETED or IN PROGRESS */}
+                        {isAvailable && (isCompleted || inProgress) && (
+                            <div className="space-y-2">
+                                <div className="flex justify-between items-end mb-1">
+                                    <span className="text-3xs font-bold text-tertiary uppercase tracking-wider">Progress</span>
+                                    <span className="text-sm font-bold text-primary">{isCompleted ? '100' : displayProgress}%</span>
                                 </div>
-                                <Button
-                                    className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-xl h-11"
-                                    onClick={handleActionClick}
-                                >
-                                    Continue Learning
-                                </Button>
-                                <p className="text-center text-sm font-normal text-tertiary">
-                                    Ready to advance your skills? Let's continue learning!
-                                </p>
+                                <ProgressBar
+                                    progress={isCompleted ? 100 : displayProgress}
+                                    height="h-2"
+                                    color="bg-primary"
+                                    trackColor="bg-gray-100"
+                                    rounded="rounded-full"
+                                />
+                                {isCompleted && course.finishedAt && (
+                                    <p className="text-3xs font-medium text-tertiary mt-1">
+                                        Finished at: {course.finishedAt}
+                                    </p>
+                                )}
                             </div>
                         )}
 
-                        {/* 4. NOT STARTED */}
+                        {/* 3. NOT STARTED */}
                         {isAvailable && notStarted && (
-                            <div className="space-y-3">
-                                <Button
-                                    disabled={disabled}
-                                    className={cn(
-                                        "w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-xl h-11",
-                                        disabled && "opacity-50 cursor-not-allowed pointer-events-none"
-                                    )}
-                                    onClick={handleActionClick}
-                                >
-                                    Start Learn
-                                </Button>
-                                <p className="text-center text-sm font-normal text-tertiary">
-                                    Ready to advance your skills? Let's start learning!
-                                </p>
-                            </div>
+                            <Button
+                                className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-xl h-11 shadow-none transition-all active:scale-[0.98]"
+                                onClick={handleActionClick}
+                            >
+                                {compact ? 'Enroll Now' : 'Start Learn'}
+                            </Button>
                         )}
                     </div>
                 </div>

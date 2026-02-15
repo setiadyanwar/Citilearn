@@ -41,6 +41,16 @@ const CourseLearning = ({ setGlobalPip }) => {
         const timer = setTimeout(() => {
             const found = data.courses.find(c => c.id === id);
             setCourse(found);
+
+            // Load completed lessons from localStorage
+            const savedCompleted = localStorage.getItem(`course_progress_${id}`);
+            if (savedCompleted) {
+                setCompletedLessons(new Set(JSON.parse(savedCompleted)));
+            } else if (found && found.progress > 0) {
+                // Initial fallback if not in localStorage but has progress in data.json
+                // This is just a mock logic for the initial state
+            }
+
             if (found && found.modules.length > 0) {
                 // Check for targetLessonId from navigation state
                 const targetLessonId = location.state?.targetLessonId;
@@ -62,6 +72,13 @@ const CourseLearning = ({ setGlobalPip }) => {
         }, 500);
         return () => clearTimeout(timer);
     }, [id, location.state]);
+
+    // Save progress whenever completedLessons changes
+    useEffect(() => {
+        if (course && course.id) {
+            localStorage.setItem(`course_progress_${course.id}`, JSON.stringify([...completedLessons]));
+        }
+    }, [completedLessons, course]);
 
     useEffect(() => {
         // Reset quiz state when switching lessons
@@ -170,12 +187,8 @@ const CourseLearning = ({ setGlobalPip }) => {
         if (next) {
             setActiveLesson(next);
         } else {
-            // Final lesson of the course
-            if (isFinalQuiz) {
-                navigate('/dashboard');
-            } else {
-                navigate(`/course/${course.id}`);
-            }
+            // Final lesson of the course, go back to my learning list
+            navigate('/profile/learning');
         }
     };
 
@@ -192,7 +205,6 @@ const CourseLearning = ({ setGlobalPip }) => {
             } else {
                 newSet.add(activeLesson.id);
                 setShowCompletionSuccess(true);
-                setTimeout(() => setShowCompletionSuccess(false), 3000);
             }
             return newSet;
         });
@@ -274,7 +286,13 @@ const CourseLearning = ({ setGlobalPip }) => {
                 </div>
             </main>
 
-            <CompletionSuccessModal isOpen={showCompletionSuccess} />
+            <CompletionSuccessModal
+                isOpen={showCompletionSuccess}
+                onContinue={() => {
+                    setShowCompletionSuccess(false);
+                    nextLesson();
+                }}
+            />
         </div >
     );
 };

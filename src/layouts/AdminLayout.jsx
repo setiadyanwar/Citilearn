@@ -149,10 +149,10 @@ const AdminLayout = () => {
 
                 {/* Sidebar */}
                 <aside
-                    className={`${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-100'} lg:rounded-3xl border-r lg:border flex flex-col transition-all duration-300 ease-in-out shrink-0 h-full lg:h-fit fixed lg:sticky top-0 left-0 z-[130] lg:z-50 overflow-hidden
+                    className={`${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-100'} lg:rounded-3xl border-r lg:border flex flex-col transition-all duration-300 ease-in-out shrink-0 h-full lg:h-fit fixed lg:sticky top-0 left-0 z-[130] lg:z-50
                     ${collapsed
-                            ? 'w-0 lg:w-20 -translate-x-full lg:translate-x-0 pointer-events-none lg:pointer-events-auto shadow-none'
-                            : 'w-[300px] translate-x-0 shadow-2xl lg:shadow-none'
+                            ? 'w-0 lg:w-20 -translate-x-full lg:translate-x-0 pointer-events-none lg:pointer-events-auto shadow-none overflow-visible'
+                            : 'w-[300px] translate-x-0 shadow-2xl lg:shadow-none overflow-hidden'
                         }`}
                 >
                     {/* Mobile Sidebar Header */}

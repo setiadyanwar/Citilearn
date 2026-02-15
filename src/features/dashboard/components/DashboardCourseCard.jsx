@@ -11,6 +11,20 @@ const DashboardCourseCard = ({ course, variant = 'resume' }) => {
     // State for availability countdown
     const [timeLeft, setTimeLeft] = React.useState('');
     const [isLocked, setIsLocked] = React.useState(false);
+    const [displayProgress, setDisplayProgress] = React.useState(course.progress || 0);
+
+    // Calculate dynamic progress from localStorage
+    React.useEffect(() => {
+        const savedCompleted = localStorage.getItem(`course_progress_${course.id}`);
+        if (savedCompleted) {
+            const completedIds = JSON.parse(savedCompleted);
+            const totalLessons = course.modules?.reduce((acc, m) => acc + (m.lessons?.length || 0), 0) || course.modulesCount || 1;
+            const percentage = Math.round((completedIds.length / totalLessons) * 100);
+            setDisplayProgress(percentage);
+        } else {
+            setDisplayProgress(course.progress || 0);
+        }
+    }, [course.id, course.modules, course.modulesCount, course.progress]);
 
     React.useEffect(() => {
         if (course.availableAt) {
@@ -45,14 +59,19 @@ const DashboardCourseCard = ({ course, variant = 'resume' }) => {
 
     const handleClick = () => {
         if (!isLocked) {
-            navigate(`/course/${course.id}`);
+            const isActuallyCompleted = displayProgress === 100;
+            if (course.status === 'On Progress' || (displayProgress > 0 && !isActuallyCompleted)) {
+                navigate(`/profile/learning/${course.id}`);
+            } else {
+                navigate(`/course/${course.id}`);
+            }
         }
     };
 
     return (
         <div
             onClick={handleClick}
-            className={`flex flex-row gap-4 p-4 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl cursor-pointer group overflow-hidden transition-all duration-300 ${isLocked ? 'opacity-75 grayscale cursor-not-allowed hover:shadow-none' : 'hover:shadow-lg hover:shadow-primary/5'}`}
+            className={`flex flex-row gap-4 p-4 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl cursor-pointer group overflow-hidden transition-all duration-300 ${isLocked ? 'opacity-75 grayscale cursor-not-allowed' : ''}`}
         >
             {/* Thumbnail */}
             <div className="relative shrink-0 rounded-xl overflow-hidden w-28 h-auto">
@@ -91,6 +110,15 @@ const DashboardCourseCard = ({ course, variant = 'resume' }) => {
                     <h3 className={`text-base font-bold text-main dark:text-white mb-1 transition-colors overflow-hidden whitespace-nowrap overflow-ellipsis block w-full ${!isLocked ? 'group-hover:text-primary' : ''}`}>
                         {course.title}
                     </h3>
+                    <div className="flex items-center gap-2 mb-2">
+                        {displayProgress === 100 ? (
+                            <Badge variant="completed" size="compact">Completed</Badge>
+                        ) : displayProgress > 0 ? (
+                            <Badge variant="in-progress" size="compact">In Progress</Badge>
+                        ) : (
+                            <Badge variant="not-started" size="compact">Not Started</Badge>
+                        )}
+                    </div>
                     <p className="text-xs text-secondary dark:text-slate-400 mb-3 block w-full overflow-hidden whitespace-nowrap overflow-ellipsis">
                         {course.description}
                     </p>
@@ -122,13 +150,13 @@ const DashboardCourseCard = ({ course, variant = 'resume' }) => {
                             <div className="flex justify-between items-center mb-1.5">
                                 <span className="text-xs font-medium text-tertiary">Progress</span>
                                 <span className="text-xs font-bold text-primary">
-                                    {course.progress}%
+                                    {displayProgress}%
                                 </span>
                             </div>
                             <div className="h-1.5 w-full bg-gray-100 dark:bg-slate-800 rounded-full overflow-hidden">
                                 <div
                                     className="h-full rounded-full bg-primary"
-                                    style={{ width: `${course.progress}%` }}
+                                    style={{ width: `${displayProgress}%` }}
                                 />
                             </div>
                         </div>

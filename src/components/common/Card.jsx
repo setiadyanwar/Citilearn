@@ -6,10 +6,14 @@ const Card = ({
     className = '',
     variant = 'default',
     rounded = 'rounded-2xl',
-    padding = 'p-6'
+    padding = 'p-6',
+    ...props
 }) => {
     return (
-        <div className={`${CARD_VARIANTS[variant]} ${rounded} ${padding} ${className}`}>
+        <div
+            className={`${CARD_VARIANTS[variant]} ${rounded} ${padding} ${className}`}
+            {...props}
+        >
             {children}
         </div>
     );

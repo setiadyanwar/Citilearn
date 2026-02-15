@@ -98,7 +98,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                             </div>
 
                             <div className="space-y-4">
-                                <h3 className="text-lg font-bold text-main dark:text-white">Learning Outcomes & Objectives (RPS)</h3>
+                                <h3 className="text-lg font-bold text-main dark:text-white">Learning Outcomes</h3>
                                 <div className="space-y-3">
                                     {(course.learningOutcomes || [
                                         "Implement hazard identification and risk assessment (HIRA) in airport operations.",

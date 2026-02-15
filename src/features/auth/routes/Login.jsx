@@ -23,7 +23,7 @@ const LoginPage = () => {
             </div>
 
             {/* Right Section - Login Form */}
-            <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white lg:bg-gray-50/30">
+            <div className="w-full lg:w-1/2 flex items-center justify-center p-4 md:p-8 bg-white lg:bg-gray-50/30">
                 <LoginForm />
             </div>
         </div>

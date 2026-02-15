@@ -15,6 +15,7 @@ import Dashboard from '@/features/dashboard/routes/Dashboard';
 // Profile Features
 import MyProfile from '@/features/profile/routes/MyProfile';
 import MyLearning from '@/features/profile/routes/MyLearning';
+import Grades from '@/features/profile/routes/Grades';
 
 // Courses Features
 import ExploreCourses from '@/features/courses/routes/ExploreCourses';
@@ -52,6 +53,8 @@ export const AppRoutes = () => {
             children: [
                 { path: '', element: <MyProfile /> },
                 { path: 'learning', element: <MyLearning /> },
+                { path: 'learning/grades', element: <Grades /> },
+                { path: 'learning/:id', element: <CourseLearning /> },
                 { path: 'leaderboard', element: <div className="p-10 text-center text-gray-400 font-bold">Leaderboard (Coming Soon)</div> },
                 { path: 'saved', element: <div className="p-10 text-center text-gray-400 font-bold">Saved Courses (Coming Soon)</div> },
                 { path: 'certificates', element: <div className="p-10 text-center text-gray-400 font-bold">My Certificates (Coming Soon)</div> },
@@ -88,7 +91,6 @@ export const AppRoutes = () => {
                 { path: '', element: <Dashboard /> },
                 { path: 'courses', element: <ExploreCourses /> },
                 { path: 'course/:id', element: <CourseDetail /> },
-                { path: 'learn/:id', element: <CourseLearning /> },
                 { path: '*', element: <Dashboard /> }
             ]
         }

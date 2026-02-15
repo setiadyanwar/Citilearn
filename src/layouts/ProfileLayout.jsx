@@ -29,6 +29,8 @@ const ProfileSidebarItem = ({ icon: Icon, label, collapsed, active, to }) => (
     </Link>
 );
 
+import data from '@/data.json';
+
 const ProfileLayout = () => {
     const [collapsed, setCollapsed] = useState(window.innerWidth < 1024);
     const [isDark, setIsDark] = useState(false);
@@ -62,7 +64,8 @@ const ProfileLayout = () => {
             'leaderboard': 'Leaderboard',
             'saved': 'Saved Course',
             'certificates': 'My Certificates',
-            'settings': 'Settings'
+            'settings': 'Settings',
+            'grades': 'Grades'
         };
 
         return (
@@ -73,18 +76,30 @@ const ProfileLayout = () => {
                 </Link>
                 {parts.map((part, index) => {
                     const isLast = index === parts.length - 1;
-                    const label = labels[part] || part.charAt(0).toUpperCase() + part.slice(1);
+
+                    // Logic to resolve Course ID to Course Title
+                    let label = labels[part];
+                    if (!label) {
+                        // Check if this looks like a course ID (e.g., starts with 'c' followed by numbers)
+                        const course = data.courses.find(c => c.id === part);
+                        if (course) {
+                            label = course.title;
+                        } else {
+                            label = part.charAt(0).toUpperCase() + part.slice(1);
+                        }
+                    }
+
                     const to = '/' + parts.slice(0, index + 1).join('/');
 
-                    if (part.length > 20 || !isNaN(part)) return null;
+                    if (part.length > 50 || !isNaN(part)) return null;
 
                     return (
                         <React.Fragment key={index}>
                             <ChevronRight size={14} className="text-gray-400 shrink-0" />
                             {isLast ? (
-                                <span className="font-bold text-citilearn-green truncate max-w-37.5">{label}</span>
+                                <span className="font-bold text-citilearn-green truncate max-w-64">{label}</span>
                             ) : (
-                                <Link to={to} className="hover:text-primary transition-colors truncate max-w-25">
+                                <Link to={to} className="hover:text-primary transition-colors truncate max-w-32">
                                     {label}
                                 </Link>
                             )}
@@ -143,10 +158,10 @@ const ProfileLayout = () => {
 
                 {/* Sidebar */}
                 <aside
-                    className={`${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-100'} lg:rounded-3xl border-r lg:border flex flex-col transition-all duration-300 ease-in-out shrink-0 h-full lg:h-fit fixed lg:sticky top-0 left-0 z-[130] lg:z-50 overflow-hidden
+                    className={`${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-100'} lg:rounded-3xl border-r lg:border flex flex-col transition-all duration-300 ease-in-out shrink-0 h-full lg:h-fit fixed lg:sticky top-0 left-0 z-[130] lg:z-50 
                     ${collapsed
-                            ? 'w-0 lg:w-20 -translate-x-full lg:translate-x-0 pointer-events-none lg:pointer-events-auto shadow-none'
-                            : 'w-[300px] translate-x-0 shadow-2xl lg:shadow-none'
+                            ? 'w-0 lg:w-20 -translate-x-full lg:translate-x-0 pointer-events-none lg:pointer-events-auto shadow-none overflow-visible'
+                            : 'w-[300px] translate-x-0 shadow-2xl lg:shadow-none overflow-hidden'
                         }`}
                 >
                     {/* Mobile Sidebar Header */}
@@ -179,7 +194,7 @@ const ProfileLayout = () => {
                 </aside>
 
                 {/* Main Content Area */}
-                <main className="flex-1 min-w-0 relative scroll-smooth z-0 p-4 lg:p-0 overflow-y-auto">
+                <main className="flex-1 min-w-0 scroll-smooth p-4 lg:p-0 overflow-y-auto">
                     <div className="min-h-full pb-10">
                         <Outlet />
                     </div>

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { LogOut } from 'lucide-react';
+import { LogOut, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ProfileBanner from '../components/ProfileBanner';
 import ProfileInfoCard from '../components/ProfileInfoCard';
@@ -7,7 +7,7 @@ import { useAuthContext } from '@/contexts/useAuthContext';
 
 const MyProfile = () => {
     const { user } = useAuthContext();
-    const [fileName, setFileName] = useState('cv-setiady.pdf');
+    const [fileName, setFileName] = useState('');
     const fileInputRef = useRef(null);
 
     const handleEditPhoto = () => {
@@ -26,7 +26,7 @@ const MyProfile = () => {
     };
 
     return (
-        <div className="space-y-6 max-w-5xl mx-auto">
+        <div className="pb-10 w-full space-y-8 animate-fade-in">
             {/* Banner Section */}
             <ProfileBanner user={user} onEditPhoto={handleEditPhoto} />
 
@@ -68,7 +68,10 @@ const MyProfile = () => {
                     {/* Column 3 - Resume */}
                     <div className="space-y-2">
                         <label className="text-sm font-bold text-main">CV/Resume</label>
-                        <div className="border border-citilearn-green rounded-xl flex items-center overflow-hidden bg-white">
+                        <div
+                            onClick={handleButtonClick}
+                            className="group cursor-pointer border border-dashed border-gray-300 hover:border-citilearn-green rounded-xl flex items-center h-12 overflow-hidden bg-gray-50/30 hover:bg-white transition-all duration-200"
+                        >
                             <input
                                 type="file"
                                 ref={fileInputRef}
@@ -76,15 +79,11 @@ const MyProfile = () => {
                                 className="hidden"
                                 accept=".pdf"
                             />
-                            <button
-                                type="button"
-                                onClick={handleButtonClick}
-                                className="bg-white text-citilearn-green font-bold text-sm px-4 py-2 hover:bg-gray-50 transition-colors"
-                            >
+                            <div className="h-full w-[30%] min-w-[120px] bg-gray-100 group-hover:bg-citilearn-green group-hover:text-white text-secondary font-bold text-sm px-4 flex items-center justify-center transition-colors border-r border-gray-200">
                                 Choose File
-                            </button>
-                            <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate border-l border-gray-100 italic">
-                                {fileName}
+                            </div>
+                            <span className={`w-[70%] px-4 text-sm truncate border-none outline-none ${!fileName ? 'text-tertiary italic' : 'text-main font-medium'}`}>
+                                {fileName || 'Upload your CV (PDF max 2MB)'}
                             </span>
                         </div>
                         <p className="text-xs text-secondary mt-1">document .pdf</p>

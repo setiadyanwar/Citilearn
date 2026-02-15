@@ -51,7 +51,7 @@ const ProfileAvatar = ({ imageUrl, name, level = 'Boarding', points = 0, showPoi
         <div className={`flex items-center ${currentSize.gap}`}>
             {/* Avatar Section */}
             <div className="relative shrink-0">
-                <div className={`${currentSize.container} rounded-full bg-linear-to-b ${styles.gradient} shadow-xl`}>
+                <div className={`${currentSize.container} rounded-full bg-linear-to-b ${styles.gradient}`}>
                     <img
                         src={imageUrl}
                         alt={name}
@@ -66,7 +66,7 @@ const ProfileAvatar = ({ imageUrl, name, level = 'Boarding', points = 0, showPoi
                                     <img src={HatIcon} alt="Hat" className="w-full h-auto drop-shadow-md" />
                                 </div>
                             )}
-                            <span className={`bg-linear-to-b ${styles.gradient} text-white font-bold rounded-full border-white shadow-sm whitespace-nowrap block leading-none ${currentSize.badge.replace(/-bottom-[^\s]+/, '')}`}>
+                            <span className={`bg-linear-to-b ${styles.gradient} text-white font-bold rounded-full border-white whitespace-nowrap block leading-none ${currentSize.badge.replace(/-bottom-[^\s]+/, '')}`}>
                                 {currentLevel}
                             </span>
                         </div>

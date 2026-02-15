@@ -26,7 +26,7 @@ const Header = ({
         if (path === '/' || path.includes('/list')) return 'Dashboard';
         if (path === '/courses') return 'Explore Courses';
         if (path.includes('/course')) return 'Course Details';
-        if (path.includes('/learn')) return 'Learning Session';
+        if (path.includes('/learn')) return 'My Learning';
         if (path.includes('/achievements')) return 'Achievements';
         if (path.includes('/settings')) return 'Settings';
         if (path.includes('/profile')) return 'Dashboard Profile';
