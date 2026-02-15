@@ -91,18 +91,28 @@ const CourseLearning = ({ setGlobalPip }) => {
     }, [activeLesson]);
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (!videoContainerRef.current) return;
-            const videoRect = videoContainerRef.current.getBoundingClientRect();
-            if (videoRect.bottom < 100) {
-                setIsPip(true);
-            } else {
-                setIsPip(false);
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                // If the video container is not intersecting (out of view)
+                // AND it is positioned above the viewport (top < 0), usage has scrolled past it -> Enable PiP.
+                // Otherwise (intersecting or below viewport), disable PiP.
+                setIsPip(!entry.isIntersecting && entry.boundingClientRect.top < 0);
+            },
+            {
+                root: null, // viewport
+                threshold: 0, // Trigger immediately when visibility changes
+            }
+        );
+
+        if (videoContainerRef.current) {
+            observer.observe(videoContainerRef.current);
+        }
+
+        return () => {
+            if (videoContainerRef.current) {
+                observer.unobserve(videoContainerRef.current);
             }
         };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
     }, [activeLesson]);
 
     const handleAssignmentSubmit = () => {
