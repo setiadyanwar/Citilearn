@@ -6,7 +6,7 @@ import QuizStats from './quiz/QuizStats';
 import QuizRules from './quiz/QuizRules';
 import QuizHistory from './quiz/QuizHistory';
 
-const QuizLanding = ({ activeLesson }) => {
+const QuizLanding = ({ activeLesson, onNextLesson }) => {
     const navigate = useNavigate();
     const { id: courseId } = useParams();
     // Mock data for history or retrieve from localStorage
@@ -67,7 +67,10 @@ const QuizLanding = ({ activeLesson }) => {
                         </p>
                     </div>
 
-                    <QuizStats bestScore={stats.bestScore} />
+                    <QuizStats
+                        bestScore={stats.bestScore}
+                        passingScore={activeLesson.passingGrade}
+                    />
                 </div>
             </div>
 
@@ -77,25 +80,38 @@ const QuizLanding = ({ activeLesson }) => {
                     <QuizRules
                         title={activeLesson.title}
                         questionCount={questionCount}
+                        passingScore={activeLesson.passingGrade}
+                        durationMinutes={activeLesson.timeLimit}
+                        maxAttempts={activeLesson.maxAttempts || (isPreTest ? 1 : 3)}
                     />
 
                     <div className="pt-2">
-                        <Button
-                            onClick={handleStart}
-                            className="bg-emerald-600 hover:bg-emerald-700 text-white min-w-[160px] h-11 text-base active:scale-95 transition-all"
-                        >
-                            {history.length > 0 ? (
-                                <>
-                                    <RotateCcw className="w-4 h-4 mr-2" />
-                                    Re-Attempt
-                                </>
-                            ) : (
-                                <>
-                                    <Play className="w-4 h-4 mr-2 fill-current" />
-                                    Start Quiz
-                                </>
-                            )}
-                        </Button>
+                        {stats.passed && onNextLesson ? (
+                            <Button
+                                onClick={onNextLesson}
+                                variant="default"
+                                className="min-w-[200px] h-11 text-base font-bold active:scale-95 transition-all"
+                            >
+                                Continue to Next Lesson
+                            </Button>
+                        ) : (
+                            <Button
+                                onClick={handleStart}
+                                className="bg-emerald-600 hover:bg-emerald-700 text-white min-w-[160px] h-11 text-base active:scale-95 transition-all"
+                            >
+                                {history.length > 0 ? (
+                                    <>
+                                        <RotateCcw className="w-4 h-4 mr-2" />
+                                        Re-Attempt
+                                    </>
+                                ) : (
+                                    <>
+                                        <Play className="w-4 h-4 mr-2 fill-current" />
+                                        {isPreTest || activeLesson.id.includes('final') ? 'Start Test' : 'Start Quiz'}
+                                    </>
+                                )}
+                            </Button>
+                        )}
                     </div>
                 </div>
 

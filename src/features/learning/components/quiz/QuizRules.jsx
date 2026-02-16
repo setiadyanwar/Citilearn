@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '@/components/common/Card';
 
-const QuizRules = ({ title, questionCount, passingScore = 75, durationMinutes = 5, retryWaitMinutes = 1 }) => {
+const QuizRules = ({ title, questionCount, passingScore = 80, durationMinutes = 30, retryWaitMinutes = 1, maxAttempts = 3 }) => {
     return (
         <div>
             <h3 className="text-2xl font-bold text-main dark:text-white mb-4">
@@ -22,6 +22,10 @@ const QuizRules = ({ title, questionCount, passingScore = 75, durationMinutes = 
                     <li className="flex items-start gap-3">
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 shrink-0" />
                         <span>Durasi ujian : <strong>{durationMinutes} menit</strong></span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 shrink-0" />
+                        <span>Jumlah maksimal percobaan : <strong>{maxAttempts} kali</strong></span>
                     </li>
                     <li className="flex items-start gap-3">
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 shrink-0" />

@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '@/components/common/Card';
 
-const QuizStats = ({ bestScore, passingScore = 70 }) => {
+const QuizStats = ({ bestScore, passingScore = 80 }) => {
     const isPassed = bestScore >= passingScore;
 
     return (

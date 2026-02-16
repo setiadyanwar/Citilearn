@@ -4,7 +4,7 @@ import {
     Video, FileText, HelpCircle, Users, CheckSquare, Clock, Upload,
     Settings, Layout, BookOpen, GraduationCap, Building, Search, Eye,
     Calendar as CalendarIcon,
-    Info, MonitorPlay, AlertCircle
+    Info, MonitorPlay, AlertCircle, Check, ChevronsUpDown
 } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import CurriculumTab from '@/features/admin/components/CurriculumTab';
@@ -26,11 +26,19 @@ import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 import { DatePicker } from "@/components/ui/date-picker"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
 
 const CourseEditor = () => {
     const { id } = useParams();
     const isEditing = !!id;
     const [activeTab, setActiveTab] = useState('basic');
+    const [categories, setCategories] = useState(["Safety", "Technical", "Soft Skill", "Leadership", "Service"]);
+    const [categorySearch, setCategorySearch] = useState("");
+    const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
     const [courseData, setCourseData] = useState({
         title: isEditing ? "Safety Procedures V2" : "",
@@ -44,6 +52,11 @@ const CourseEditor = () => {
         isLifetime: false,
         duration: "2h 15m",
         modulesCount: 5,
+        learningObjectives: isEditing ? [
+            "Implement hazard identification and risk assessment (HIRA) in airport operations.",
+            "Develop robust aviation safety policies aligned with Citilink standards.",
+            "Execute reactive and proactive safety monitoring methods and safety assurance."
+        ] : [],
     });
 
     // Preview Object (Reactive)
@@ -152,21 +165,89 @@ const CourseEditor = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         <div className="space-y-3">
                                             <Label className="text-sm font-bold text-muted-foreground">Category</Label>
-                                            <Select
-                                                value={courseData.category}
-                                                onValueChange={(val) => setCourseData({ ...courseData, category: val })}
-                                            >
-                                                <SelectTrigger className="h-12 rounded-xl bg-white border-slate-200">
-                                                    <SelectValue placeholder="Select Category" />
-                                                </SelectTrigger>
-                                                <SelectContent>
-                                                    <SelectItem value="Safety">Safety</SelectItem>
-                                                    <SelectItem value="Technical">Technical</SelectItem>
-                                                    <SelectItem value="Soft Skill">Soft Skill</SelectItem>
-                                                    <SelectItem value="Leadership">Leadership</SelectItem>
-                                                    <SelectItem value="Service">Service</SelectItem>
-                                                </SelectContent>
-                                            </Select>
+                                            <Popover open={isCategoryOpen} onOpenChange={setIsCategoryOpen}>
+                                                <PopoverTrigger asChild>
+                                                    <Button
+                                                        variant="outline"
+                                                        role="combobox"
+                                                        aria-expanded={isCategoryOpen}
+                                                        className="w-full h-12 justify-between rounded-xl bg-white border-slate-200 font-medium text-slate-700 hover:bg-slate-50 focus:ring-0 focus-visible:ring-0"
+                                                    >
+                                                        {courseData.category
+                                                            ? courseData.category
+                                                            : "Select Category"}
+                                                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                                    </Button>
+                                                </PopoverTrigger>
+                                                <PopoverContent className="w-[300px] p-0 rounded-xl shadow-sm border-slate-200" align="start">
+                                                    <div className="flex items-center border-b border-slate-100 p-3 bg-slate-50/50">
+                                                        <Search className="mr-2 h-4 w-4 shrink-0 opacity-40 text-slate-400" />
+                                                        <input
+                                                            placeholder="Search or add category..."
+                                                            className="flex h-8 w-full rounded-md bg-transparent text-sm outline-none border-none focus:ring-0 placeholder:text-slate-400 disabled:cursor-not-allowed disabled:opacity-50"
+                                                            value={categorySearch}
+                                                            onChange={(e) => setCategorySearch(e.target.value)}
+                                                            onKeyDown={(e) => {
+                                                                if (e.key === 'Enter' && categorySearch && !categories.includes(categorySearch)) {
+                                                                    setCategories([...categories, categorySearch]);
+                                                                    setCourseData({ ...courseData, category: categorySearch });
+                                                                    setCategorySearch("");
+                                                                    setIsCategoryOpen(false);
+                                                                }
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <div className="max-h-[300px] overflow-y-auto p-1">
+                                                        {categories
+                                                            .filter(c => c.toLowerCase().includes(categorySearch.toLowerCase()))
+                                                            .map((cat) => (
+                                                                <div
+                                                                    key={cat}
+                                                                    className={cn(
+                                                                        "relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2.5 text-sm font-medium outline-none transition-colors",
+                                                                        courseData.category === cat ? "bg-primary/10 text-primary" : "text-slate-600 hover:bg-slate-100/80 hover:text-slate-900"
+                                                                    )}
+                                                                    onClick={() => {
+                                                                        setCourseData({ ...courseData, category: cat });
+                                                                        setIsCategoryOpen(false);
+                                                                        setCategorySearch("");
+                                                                    }}
+                                                                >
+                                                                    <div className="flex items-center gap-2 flex-1">
+                                                                        <div className={cn(
+                                                                            "h-2 w-2 rounded-full",
+                                                                            courseData.category === cat ? "bg-primary" : "bg-slate-300"
+                                                                        )} />
+                                                                        {cat}
+                                                                    </div>
+                                                                    {courseData.category === cat && (
+                                                                        <Check className="h-4 w-4 text-primary" />
+                                                                    )}
+                                                                </div>
+                                                            ))}
+                                                        {categorySearch && !categories.some(c => c.toLowerCase() === categorySearch.toLowerCase()) && (
+                                                            <div
+                                                                className="flex cursor-pointer items-center rounded-lg px-3 py-3 text-sm font-bold text-primary bg-primary/5 hover:bg-primary/10 transition-all border border-dashed border-primary/20 mt-1 mx-1 mb-1"
+                                                                onClick={() => {
+                                                                    const newCat = categorySearch.charAt(0).toUpperCase() + categorySearch.slice(1);
+                                                                    setCategories([...categories, newCat]);
+                                                                    setCourseData({ ...courseData, category: newCat });
+                                                                    setCategorySearch("");
+                                                                    setIsCategoryOpen(false);
+                                                                }}
+                                                            >
+                                                                <Plus className="mr-2 h-4 w-4" />
+                                                                Add "{categorySearch}"
+                                                            </div>
+                                                        )}
+                                                        {categories.filter(c => c.toLowerCase().includes(categorySearch.toLowerCase())).length === 0 && !categorySearch && (
+                                                            <div className="py-6 text-center text-sm text-muted-foreground">
+                                                                No category found.
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </PopoverContent>
+                                            </Popover>
                                         </div>
                                         <div className="space-y-3">
                                             <div className="flex items-center justify-between">
@@ -200,9 +281,9 @@ const CourseEditor = () => {
                                     />
                                 </div>
 
-                                {/* Availability / Lifetime Access */}
+                                {/* Course Availability */}
                                 <div className="p-0 space-y-6">
-                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 gap-4">
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-200/60 pb-4 gap-4">
                                         <div className="space-y-1">
                                             <Label className="text-sm md:text-base font-bold text-foreground">Course Availability</Label>
                                             <p className="text-xs md:text-sm text-muted-foreground">Set time limits or allow lifetime access</p>
@@ -247,6 +328,76 @@ const CourseEditor = () => {
                                                     className="bg-white border-slate-200"
                                                 />
                                             </div>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Learning Objectives */}
+                                <div className="space-y-4">
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200/60 pb-4">
+                                        <div className="space-y-1">
+                                            <Label className="text-sm md:text-base font-bold text-foreground">Learning Objectives</Label>
+                                            <p className="text-xs text-muted-foreground font-medium">What knowledge/skills will the students gain?</p>
+                                        </div>
+                                        <Button
+                                            type="button"
+                                            variant="outline"
+                                            size="sm"
+                                            onClick={() => {
+                                                const currentObjectives = courseData.learningObjectives || [];
+                                                setCourseData({
+                                                    ...courseData,
+                                                    learningObjectives: [...currentObjectives, ""]
+                                                });
+                                            }}
+                                            className="h-8 px-3 rounded-lg border-primary/20 text-primary hover:bg-primary/5 font-bold text-xs flex items-center gap-1.5 shrink-0"
+                                        >
+                                            <Plus size={14} />
+                                            Add Objective
+                                        </Button>
+                                    </div>
+
+                                    {(courseData.learningObjectives || []).length > 0 ? (
+                                        <div className="space-y-3">
+                                            {(courseData.learningObjectives || []).map((objective, index) => (
+                                                <div key={index} className="group relative flex items-start gap-3 animate-in fade-in slide-in-from-top-1 px-4 py-3 rounded-xl border border-slate-100 bg-slate-50/30 hover:bg-white hover:border-slate-200 transition-all">
+                                                    <div className="mt-2.5 h-1.5 w-1.5 rounded-full bg-primary/40 shrink-0" />
+                                                    <Input
+                                                        value={objective}
+                                                        onChange={(e) => {
+                                                            const newObjectives = [...courseData.learningObjectives];
+                                                            newObjectives[index] = e.target.value;
+                                                            setCourseData({ ...courseData, learningObjectives: newObjectives });
+                                                        }}
+                                                        placeholder="e.g., Implement hazard identification and risk assessment..."
+                                                        className="border-none bg-transparent h-auto p-0 focus-visible:ring-0 text-sm font-medium shadow-none placeholder:text-slate-400 leading-relaxed"
+                                                    />
+                                                    <Button
+                                                        type="button"
+                                                        variant="ghost"
+                                                        size="icon"
+                                                        onClick={() => {
+                                                            const newObjectives = courseData.learningObjectives.filter((_, i) => i !== index);
+                                                            setCourseData({ ...courseData, learningObjectives: newObjectives });
+                                                        }}
+                                                        className="h-7 w-7 rounded-lg text-slate-300 hover:text-destructive hover:bg-destructive/5 opacity-0 group-hover:opacity-100 transition-all shrink-0"
+                                                    >
+                                                        <Trash2 size={14} />
+                                                    </Button>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div
+                                            onClick={() => {
+                                                setCourseData({ ...courseData, learningObjectives: [""] });
+                                            }}
+                                            className="h-24 rounded-2xl border-2 border-dashed border-slate-100 flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-slate-200 hover:bg-slate-50/50 transition-all group"
+                                        >
+                                            <div className="p-2 bg-slate-50 rounded-lg group-hover:bg-primary/10 group-hover:text-primary transition-colors text-slate-400">
+                                                <Plus size={20} />
+                                            </div>
+                                            <span className="text-xs font-bold text-muted-foreground group-hover:text-primary transition-colors">Add your first objective</span>
                                         </div>
                                     )}
                                 </div>

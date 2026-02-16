@@ -68,6 +68,27 @@ const CourseDetail = () => {
 
                     <CourseStatsGrid course={course} />
 
+                    {/* Learning Objectives Section */}
+                    <div className="space-y-6">
+                        <h2 className="text-xl md:text-2xl font-bold text-main dark:text-white leading-none">Learning Objectives</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+                            {(course.learningOutcomes || [
+                                "Implement hazard identification and risk assessment (HIRA) in airport operations.",
+                                "Develop robust aviation safety policies aligned with Citilink standards.",
+                                "Execute reactive and proactive safety monitoring methods and safety assurance."
+                            ]).map((outcome, idx) => (
+                                <div key={idx} className="flex gap-4">
+                                    <div className="h-6 w-6 rounded-full bg-emerald-50 dark:bg-emerald-900/10 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-100 dark:border-emerald-800">
+                                        <div className="h-2 w-2 rounded-full bg-emerald-500" />
+                                    </div>
+                                    <p className="text-sm md:text-base font-medium text-secondary dark:text-slate-400 leading-relaxed">
+                                        {outcome}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
                     <CourseCurriculum course={course} />
                 </div>
             </div>

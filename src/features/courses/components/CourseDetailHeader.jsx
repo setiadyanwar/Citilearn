@@ -1,6 +1,7 @@
 import React from 'react';
 import { Globe, Clock, Upload, BookmarkPlus } from 'lucide-react';
 import Badge from '@/components/common/Badge';
+import UserProfile from '@/components/common/UserProfile';
 
 const CourseDetailHeader = ({ course }) => {
     return (
@@ -31,9 +32,11 @@ const CourseDetailHeader = ({ course }) => {
 
             <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary-light flex items-center justify-center text-primary text-2xs font-bold">
-                        CA
-                    </div>
+                    <UserProfile
+                        name="Citilink Academy"
+                        size="sm"
+                        showBorder={true}
+                    />
                     <span className="text-sm font-bold text-secondary dark:text-slate-300">Citilink Academy</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm font-bold text-secondary dark:text-slate-400">

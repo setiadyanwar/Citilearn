@@ -12,7 +12,7 @@ const FocusTest = () => {
     const { courseId, lessonId } = useParams();
     const navigate = useNavigate();
     const [lesson, setLesson] = useState(null);
-    const [timeLeft, setTimeLeft] = useState(300); // 5 minutes default
+    const [timeLeft, setTimeLeft] = useState(1800); // 30 minutes default
     const [answers, setAnswers] = useState({});
     const [cameraActive, setCameraActive] = useState(false);
     const [showMobileNav, setShowMobileNav] = useState(false);
@@ -32,6 +32,11 @@ const FocusTest = () => {
                 }
             }
             setLesson(foundLesson);
+            if (foundLesson && foundLesson.timeLimit) {
+                setTimeLeft(foundLesson.timeLimit * 60);
+            } else if (foundLesson) {
+                setTimeLeft(30 * 60); // Default 30 mins
+            }
         }
     }, [courseId, lessonId]);
 
@@ -142,7 +147,7 @@ const FocusTest = () => {
         });
 
         const percentage = Math.round((score / questions.length) * 100);
-        const passed = percentage >= 75;
+        const passed = percentage >= (lesson.passingGrade || 80);
 
         // Save history
         const newHistoryItem = {
@@ -157,9 +162,7 @@ const FocusTest = () => {
         localStorage.setItem(storageKey, JSON.stringify(history));
 
         // Redirect back to course learning page
-        // We can pass state to show result immediately if we want, 
-        // but for now let's just go back and let the logic there handle "completed" or "history"
-        navigate(`/learn/${courseId}`, { state: { targetLessonId: lessonId } });
+        navigate(`/profile/learning/${courseId}`, { state: { targetLessonId: lessonId } });
     };
 
     if (!lesson) return <div className="p-10">Loading...</div>;

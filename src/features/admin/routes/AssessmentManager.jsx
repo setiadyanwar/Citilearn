@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Save, Plus, Trash2, Settings, Clock, CheckCircle, XCircle, Edit, GripVertical } from 'lucide-react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate, useSearchParams } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Reorder } from 'framer-motion';
+import data from '@/data.json';
 
 const AssessmentManager = () => {
     const { courseId, assessmentType } = useParams(); // assessmentType: pre-test, quiz, post-test
     const navigate = useNavigate();
 
+    const [searchParams] = useSearchParams();
+    const moduleId = searchParams.get('moduleId');
+    const lessonId = searchParams.get('lessonId');
+
     const [assessmentData, setAssessmentData] = useState({
-        title: assessmentType === 'pre-test' ? 'Pre-Test' : assessmentType === 'post-test' ? 'Post-Test' : 'Module Quiz',
+        title: '',
         enabled: true,
         passingGrade: 80,
-        timeLimit: 30, // minutes
+        timeLimit: 30,
         maxAttempts: 3,
         showResults: true,
         shuffleQuestions: false,
@@ -18,23 +25,75 @@ const AssessmentManager = () => {
         allowReview: true
     });
 
-    const [questions, setQuestions] = useState([
-        {
-            id: 1,
-            question: "What is the primary purpose of safety equipment?",
-            type: "multiple-choice",
-            points: 10,
-            answers: ["Protection", "Decoration", "Comfort", "Style"],
-            correctAnswer: 0
-        },
-        {
-            id: 2,
-            question: "Describe the emergency evacuation procedure.",
-            type: "essay",
-            points: 20,
-            minWords: 50
+    const [questions, setQuestions] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    React.useEffect(() => {
+        // Find course
+        const course = data.courses.find(c => c.id === courseId);
+        if (!course) {
+            setIsLoading(false);
+            return;
         }
-    ]);
+
+        let targetAssessment = null;
+
+        if (lessonId) {
+            // Edit existing lesson quiz
+            course.modules.forEach(m => {
+                const lesson = m.lessons.find(l => l.id === lessonId);
+                if (lesson && lesson.type === 'quiz') {
+                    targetAssessment = lesson;
+                }
+            });
+        }
+
+        // Fallback or specific type matching if lessonId not found or not provided
+        if (!targetAssessment) {
+            if (assessmentType === 'pre-test') {
+                const mPre = course.modules.find(m => m.id === 'm-pre' || m.id === 'pre-test' || m.title.toLowerCase().includes('pre'));
+                targetAssessment = mPre?.lessons.find(l => l.type === 'quiz');
+            } else if (assessmentType === 'post-test') {
+                const mFinal = course.modules.find(m => m.id === 'm-final' || m.id === 'post-test' || m.title.toLowerCase().includes('final'));
+                targetAssessment = mFinal?.lessons.find(l => l.type === 'quiz');
+            } else if (moduleId) {
+                const module = course.modules.find(m => m.id === moduleId);
+                targetAssessment = module?.lessons.find(l => l.type === 'quiz');
+            }
+        }
+
+        if (targetAssessment) {
+            setAssessmentData(prev => ({
+                ...prev,
+                title: targetAssessment.title || prev.title,
+                passingGrade: targetAssessment.passingGrade || 80,
+                timeLimit: targetAssessment.timeLimit || 30,
+                maxAttempts: targetAssessment.maxAttempts || 3,
+                showResults: targetAssessment.showResults !== undefined ? targetAssessment.showResults : true,
+                shuffleQuestions: targetAssessment.shuffleQuestions || false,
+                shuffleAnswers: targetAssessment.shuffleAnswers || true,
+                allowReview: targetAssessment.allowReview !== undefined ? targetAssessment.allowReview : true
+            }));
+
+            // Map assignments to questions format
+            if (targetAssessment.assignments) {
+                const mappedQuestions = targetAssessment.assignments.map((q, idx) => ({
+                    id: idx + 1, // Stable 1-indexed ID for linking
+                    question: q.question,
+                    type: "multiple-choice",
+                    points: 1, // Default if not in data.json
+                    answers: q.options,
+                    correctAnswer: q.correctAnswer
+                }));
+                setQuestions(mappedQuestions);
+            }
+        } else {
+            // New assessment logic - keep empty
+            setQuestions([]);
+        }
+
+        setIsLoading(false);
+    }, [courseId, assessmentType, moduleId, lessonId]);
 
     const getAssessmentTitle = () => {
         switch (assessmentType) {
@@ -59,17 +118,20 @@ const AssessmentManager = () => {
                     </div>
                 </div>
                 <div className="flex gap-3">
-                    <Link
-                        to={`/admin/course/${courseId}/assessment/${assessmentType}/question/new`}
-                        className="px-4 py-2 text-sm font-bold text-white bg-main rounded-xl hover:bg-gray-800 transition-colors flex items-center gap-2"
+                    <Button
+                        asChild
+                        variant="secondary"
                     >
-                        <Plus size={16} />
-                        Add Question
-                    </Link>
-                    <button className="px-5 py-2 text-sm font-bold text-white bg-citilearn-green rounded-xl hover:bg-emerald-600 transition-colors flex items-center gap-2">
-                        <Save size={16} />
+                        <Link to={`/admin/course/${courseId}/assessment/${assessmentType}/question/new${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`}>
+                            <Plus size={16} />
+                            Add Question
+                        </Link>
+                    </Button>
+                    <Button
+                        variant="default"
+                    >
                         Save Settings
-                    </button>
+                    </Button>
                 </div>
             </div>
 
@@ -188,7 +250,7 @@ const AssessmentManager = () => {
                                 <span className="text-sm font-bold text-main">{questions.length}</span>
                             </div>
                             <div className="flex justify-between items-center">
-                                <span className="text-sm text-secondary">Total Points</span>
+                                <span className="text-sm text-secondary">Total Point</span>
                                 <span className="text-sm font-bold text-main">{questions.reduce((sum, q) => sum + (q.points || 0), 0)}</span>
                             </div>
                             <div className="flex justify-between items-center">
@@ -201,88 +263,100 @@ const AssessmentManager = () => {
 
                 {/* Questions List */}
                 <div className="lg:col-span-2 space-y-4">
-                    <div className="bg-white p-6 rounded-3xl border border-gray-100">
-                        <div className="flex justify-between items-center mb-6">
-                            <h3 className="text-lg font-bold text-main">Questions ({questions.length})</h3>
-                            <div className="text-xs text-secondary bg-gray-50 px-3 py-1.5 rounded-lg font-medium">
-                                Drag to reorder
-                            </div>
+                    {isLoading ? (
+                        <div className="bg-white p-12 rounded-3xl border border-gray-100 flex items-center justify-center">
+                            <p className="text-secondary font-medium">Loading Assessment...</p>
                         </div>
-
-                        {questions.length > 0 ? (
-                            <div className="space-y-3">
-                                {questions.map((question, index) => (
-                                    <div key={question.id} className="group p-4 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors border border-transparent hover:border-gray-200">
-                                        <div className="flex items-start gap-4">
-                                            <button className="mt-1 text-gray-300 hover:text-main cursor-move">
-                                                <GripVertical size={20} />
-                                            </button>
-                                            <div className="flex-1 min-w-0">
-                                                <div className="flex items-start justify-between gap-4 mb-2">
-                                                    <h4 className="text-sm font-bold text-main">
-                                                        {index + 1}. {question.question}
-                                                    </h4>
-                                                    <div className="flex items-center gap-2 shrink-0">
-                                                        <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md">
-                                                            {question.points} pts
-                                                        </span>
-                                                        <span className="text-xs font-medium text-gray-500 bg-white px-2 py-1 rounded-md border border-gray-200 capitalize">
-                                                            {question.type.replace('-', ' ')}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                {question.type === 'multiple-choice' && question.answers && (
-                                                    <div className="mt-3 space-y-1.5">
-                                                        {question.answers.map((answer, idx) => (
-                                                            <div key={idx} className="flex items-center gap-2 text-xs">
-                                                                {idx === question.correctAnswer ? (
-                                                                    <CheckCircle size={14} className="text-green-500" />
-                                                                ) : (
-                                                                    <XCircle size={14} className="text-gray-300" />
-                                                                )}
-                                                                <span className={idx === question.correctAnswer ? 'text-green-700 font-medium' : 'text-gray-500'}>
-                                                                    {answer}
-                                                                </span>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                )}
-                                                {question.type === 'essay' && (
-                                                    <p className="text-xs text-secondary mt-2">Minimum {question.minWords} words required</p>
-                                                )}
-                                            </div>
-                                            <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                <Link
-                                                    to={`/admin/course/${courseId}/assessment/${assessmentType}/question/${question.id}`}
-                                                    className="p-2 text-secondary hover:text-primary hover:bg-white rounded-lg border border-transparent hover:border-gray-200 transition-all"
-                                                >
-                                                    <Edit size={16} />
-                                                </Link>
-                                                <button className="p-2 text-red-400 hover:text-red-500 hover:bg-white rounded-lg border border-transparent hover:border-red-100 transition-all">
-                                                    <Trash2 size={16} />
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <div className="text-center py-12">
-                                <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-100">
-                                    <Settings className="text-gray-300" size={32} />
+                    ) : (
+                        <div className="bg-white p-6 rounded-3xl border border-gray-100">
+                            <div className="flex justify-between items-center mb-6">
+                                <h3 className="text-lg font-bold text-main">Questions ({questions.length})</h3>
+                                <div className="text-xs text-secondary bg-gray-50 px-3 py-1.5 rounded-lg font-medium">
+                                    Drag to reorder
                                 </div>
-                                <h4 className="text-main font-bold mb-1">No questions yet</h4>
-                                <p className="text-sm text-secondary mb-4">Start by adding your first question</p>
-                                <Link
-                                    to={`/admin/course/${courseId}/assessment/${assessmentType}/question/new`}
-                                    className="inline-flex items-center gap-2 px-4 py-2 bg-main text-white text-sm font-bold rounded-xl hover:bg-gray-800 transition-colors"
-                                >
-                                    <Plus size={16} />
-                                    Add Question
-                                </Link>
                             </div>
-                        )}
-                    </div>
+
+                            {questions.length > 0 ? (
+                                <Reorder.Group axis="y" values={questions} onReorder={setQuestions} className="space-y-3">
+                                    {questions.map((question, index) => (
+                                        <Reorder.Item
+                                            key={question.id}
+                                            value={question}
+                                            className="group p-4 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors border border-transparent hover:border-gray-200"
+                                        >
+                                            <div className="flex items-start gap-4">
+                                                <div className="mt-1 text-gray-300 group-hover:text-main cursor-grab active:cursor-grabbing">
+                                                    <GripVertical size={20} />
+                                                </div>
+                                                <div className="flex-1 min-w-0">
+                                                    <div className="flex items-start justify-between gap-4 mb-2">
+                                                        <h4 className="text-sm font-bold text-main">
+                                                            {index + 1}. {question.question}
+                                                        </h4>
+                                                        <div className="flex items-center gap-2 shrink-0">
+                                                            <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md">
+                                                                {question.points} point
+                                                            </span>
+                                                            <span className="text-xs font-medium text-gray-500 bg-white px-2 py-1 rounded-md border border-gray-200 capitalize">
+                                                                {question.type.replace('-', ' ')}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    {question.type === 'multiple-choice' && question.answers && (
+                                                        <div className="mt-3 space-y-1.5">
+                                                            {question.answers.map((answer, idx) => (
+                                                                <div key={idx} className="flex items-center gap-2 text-xs">
+                                                                    {idx === question.correctAnswer ? (
+                                                                        <CheckCircle size={14} className="text-green-500" />
+                                                                    ) : (
+                                                                        <XCircle size={14} className="text-gray-300" />
+                                                                    )}
+                                                                    <span className={idx === question.correctAnswer ? 'text-green-700 font-medium' : 'text-gray-500'}>
+                                                                        {answer}
+                                                                    </span>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                    {question.type === 'essay' && (
+                                                        <p className="text-xs text-secondary mt-2">Minimum {question.minWords} words required</p>
+                                                    )}
+                                                </div>
+                                                <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    <Link
+                                                        to={`/admin/course/${courseId}/assessment/${assessmentType}/question/${question.id}${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`}
+                                                        className="p-2 text-secondary hover:text-primary hover:bg-white rounded-lg border border-transparent hover:border-gray-200 transition-all"
+                                                    >
+                                                        <Edit size={16} />
+                                                    </Link>
+                                                    <button className="p-2 text-red-400 hover:text-red-500 hover:bg-white rounded-lg border border-transparent hover:border-red-100 transition-all">
+                                                        <Trash2 size={16} />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </Reorder.Item>
+                                    ))}
+                                </Reorder.Group>
+                            ) : (
+                                <div className="text-center py-12">
+                                    <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-100">
+                                        <Settings className="text-gray-300" size={32} />
+                                    </div>
+                                    <h4 className="text-main font-bold mb-1">No questions yet</h4>
+                                    <p className="text-sm text-secondary mb-4">Start by adding your first question</p>
+                                    <Button
+                                        asChild
+                                        variant="secondary"
+                                    >
+                                        <Link to={`/admin/course/${courseId}/assessment/${assessmentType}/question/new`}>
+                                            <Plus size={16} />
+                                            Add Question
+                                        </Link>
+                                    </Button>
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

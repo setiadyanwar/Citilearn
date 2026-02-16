@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, Globe, FileText, Download, BookOpen } from 'lucide-react';
 import Card from '@/components/common/Card';
 import Badge from '@/components/common/Badge';
+import UserProfile from '@/components/common/UserProfile';
 import LessonListItem from './LessonListItem';
 
 const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLesson, completedLessons }) => {
@@ -12,7 +13,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                 {/* Mobile-only Curriculum Tab */}
                 <button
                     onClick={() => setActiveTab('curriculum')}
-                    className={`lg:hidden px-6 py-3 text-xs font-bold capitalize border-b-2 transition-colors flex-shrink-0 ${activeTab === 'curriculum'
+                    className={`lg:hidden px-6 py-3 text-xs font-bold border-b-2 transition-colors shrink-0 ${activeTab === 'curriculum'
                         ? 'border-primary text-primary'
                         : 'border-transparent text-secondary dark:text-slate-500 hover:text-gray-700 dark:hover:text-white'
                         }`}
@@ -20,11 +21,11 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                     Syllabus (RPS)
                 </button>
 
-                {['overview', 'resources', 'instructor'].map((tab) => (
+                {['Overview', 'Resources', 'Instructor'].map((tab) => (
                     <button
-                        key={tab}
-                        onClick={() => setActiveTab(tab)}
-                        className={`px-6 py-3 text-xs font-bold capitalize border-b-2 transition-colors flex-shrink-0 ${activeTab === tab
+                        key={tab.toLowerCase()}
+                        onClick={() => setActiveTab(tab.toLowerCase())}
+                        className={`px-6 py-3 text-xs font-bold border-b-2 transition-colors shrink-0 ${activeTab === tab.toLowerCase()
                             ? 'border-primary text-primary'
                             : 'border-transparent text-secondary dark:text-slate-500 hover:text-gray-700 dark:hover:text-white'
                             }`}
@@ -47,8 +48,8 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                             {course.modules.map((module, mIdx) => (
                                 <Card key={module.id} padding="p-0" className="overflow-hidden">
                                     <div className="px-4 py-3 bg-gray-50/30 dark:bg-slate-800/30 border-b border-gray-50 dark:border-slate-800 flex items-center justify-between">
-                                        <span className="text-[10px] font-bold text-tertiary dark:text-slate-500 uppercase">Module {mIdx + 1}</span>
-                                        <span className="text-[10px] font-bold text-tertiary dark:text-slate-600">{module.lessons.length} Item</span>
+                                        <span className="text-3xs font-bold text-tertiary dark:text-slate-500 uppercase">Module {mIdx + 1}</span>
+                                        <span className="text-3xs font-bold text-tertiary dark:text-slate-600">{module.lessons.length} Item</span>
                                     </div>
                                     <div className="divide-y divide-gray-50 dark:divide-slate-800">
                                         {module.lessons.map((lesson) => (
@@ -134,19 +135,40 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                     )}
 
                     {activeTab === 'instructor' && (
-                        <div className="flex items-start gap-6">
-                            <div className="w-16 h-16 rounded-full bg-gray-200 dark:bg-slate-800 overflow-hidden flex-shrink-0">
-                                <img src={`https://ui-avatars.com/api/?name=Citilink+Academy&background=059669&color=fff`} alt="Instructor" className="w-full h-full object-cover" />
-                            </div>
-                            <div>
-                                <h3 className="text-sm font-bold text-main dark:text-white">Citilink Academy Team</h3>
-                                <p className="text-xs text-primary font-bold mb-3">Official Training Partner</p>
-                                <p className="text-[13px] text-secondary dark:text-slate-400 leading-relaxed max-w-lg font-medium">
-                                    The Citilink Academy Team consists of experienced senior flight instructors and safety experts dedicated to maintaining the highest standards of aviation safety and service excellence.
-                                </p>
-                                <button className="mt-4 px-5 py-2 border border-gray-100 dark:border-slate-800 text-primary text-xs font-bold rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 transition-all">
-                                    View Instructor Profile
-                                </button>
+                        <div className="space-y-6">
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                {(activeLesson?.instructors || (activeLesson?.instructor ? [activeLesson.instructor] : [])).length > 0 ? (
+                                    (activeLesson?.instructors || [activeLesson.instructor]).map((ins, idx) => (
+                                        <div key={idx} className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50/50 dark:bg-slate-800/20 border border-gray-100 dark:border-slate-800">
+                                            <UserProfile
+                                                imageUrl={ins.avatar}
+                                                name={ins.name}
+                                                size="sm"
+                                                showBorder={true}
+                                                className="shrink-0"
+                                            />
+                                            <div className="min-w-0">
+                                                <h4 className="text-sm font-bold text-main dark:text-white truncate">{ins.name}</h4>
+                                                <p className="text-3xs text-tertiary dark:text-slate-500 font-bold">Instructor</p>
+                                            </div>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50/50 dark:bg-slate-800/20 border border-gray-100 dark:border-slate-800">
+                                        <UserProfile
+                                            imageUrl={null}
+                                            name="Citilink Academy"
+                                            size="sm"
+                                            showBorder={true}
+                                            className="shrink-0"
+                                        />
+                                        <div>
+                                            <h4 className="text-sm font-bold text-main dark:text-white">Citilink Academy</h4>
+                                            <p className="text-3xs text-tertiary dark:text-slate-500 font-bold">Instructor</p>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     )}
@@ -164,7 +186,7 @@ const ResourceItem = ({ title, size, type, iconColor }) => (
             </div>
             <div>
                 <div className="text-xs font-bold text-secondary dark:text-slate-300 group-hover:text-primary transition-colors">{title}</div>
-                <div className="text-[10px] text-tertiary dark:text-slate-500 font-medium">{size} • {type}</div>
+                <div className="text-3xs text-tertiary dark:text-slate-500 font-medium">{size} • {type}</div>
             </div>
         </div>
         <button className="p-2 text-tertiary dark:text-slate-600 group-hover:text-primary transition-colors">

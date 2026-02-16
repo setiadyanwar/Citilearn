@@ -18,7 +18,7 @@ const ProfileBanner = ({ user, onEditPhoto }) => {
     const isMorning = hours >= 4 && hours < 16;
 
     return (
-        <div className={`relative rounded-3xl overflow-hidden p-6 md:p-10 flex items-center justify-between text-white transition-colors duration-1000 h-[210px] md:h-[228px] ${isMorning ? 'bg-linear-to-r from-cyan-400 to-blue-500' : 'bg-slate-900'}`}>
+        <div className={`relative rounded-3xl overflow-hidden p-6 md:p-10 flex items-center justify-between text-white transition-colors duration-1000 h-full md:h-[252px] ${isMorning ? 'bg-linear-to-r from-cyan-400 to-blue-500' : 'bg-slate-900'}`}>
 
             {/* SVG Background Layer */}
             <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
@@ -34,23 +34,22 @@ const ProfileBanner = ({ user, onEditPhoto }) => {
                 <ProfileAvatar
                     imageUrl={user.avatar}
                     name={user.name}
-                    level={user.badge}
                     points={user.points || 35}
                     showPoints={false}
                 />
 
-                <div className="text-center md:text-left space-y-1 flex-1">
-                    <h1 className="text-lg md:text-[20px] font-bold uppercase tracking-wide drop-shadow-sm">
+                <div className="text-center md:text-left space-y-0 flex-1">
+                    <h1 className="text-lg md:text-[20px] font-bold uppercase tracking-wide">
                         {user.name}
                     </h1>
-                    <p className="text-white/90 text-sm md:text-base font-medium drop-shadow-sm">
+                    <p className="text-white/90 text-sm md:text-base font-medium">
                         {user.email}
                     </p>
 
                     <Button
                         onClick={onEditPhoto}
                         variant="white"
-                        className="mt-3 md:mt-3 font-bold gap-2 text-sm h-9 md:h-9 px-6 md:px-4 rounded-xl"
+                        className="mt-3 md:mt-3 font-bold gap-2 text-sm h-10 md:h-10 px-6 md:px-4 rounded-xl"
                         size="sm"
                     >
                         <Edit size={14} />

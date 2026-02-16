@@ -147,7 +147,7 @@ const CourseLearning = ({ setGlobalPip }) => {
             });
 
             // Save history
-            const passed = percentage >= 75;
+            const passed = percentage >= (activeLesson.passingGrade || 80);
             const newHistoryItem = {
                 date: new Date().toISOString(),
                 score: percentage,
@@ -248,6 +248,7 @@ const CourseLearning = ({ setGlobalPip }) => {
                     {isFinalQuiz ? (
                         <QuizLanding
                             activeLesson={activeLesson}
+                            onNextLesson={nextLesson}
                         />
                     ) : (
                         <>

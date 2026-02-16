@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Plus, GripVertical, Video, FileText, HelpCircle, Trash2, Edit, ChevronDown, ChevronRight, Clock, Save, X, CheckSquare, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Reorder } from 'framer-motion';
 
 
 const ModuleEditModal = ({ module, onSave, onClose }) => {
@@ -226,17 +227,17 @@ const CurriculumTab = ({ courseId }) => {
 
             {/* Modules List - Clean List Style (No Cards/Containers) */}
             {modules.length > 0 ? (
-                <div className="space-y-6">
+                <Reorder.Group axis="y" values={modules} onReorder={setModules} className="space-y-6">
                     {modules.map((module, moduleIndex) => {
                         const isExpanded = expandedModules.has(module.id);
 
                         return (
-                            <div key={module.id} className="group">
+                            <Reorder.Item key={module.id} value={module} className="group">
                                 {/* Module Header - Transparent */}
                                 <div className="flex items-start gap-4 py-2 hover:bg-gray-50 px-2 rounded-xl transition-colors cursor-pointer" onClick={() => toggleModule(module.id)}>
-                                    <button className="mt-1 text-gray-300 hover:text-main cursor-move" onClick={(e) => e.stopPropagation()}>
+                                    <div className="mt-1 text-gray-300 hover:text-main cursor-grab active:cursor-grabbing" onClick={(e) => e.stopPropagation()}>
                                         <GripVertical size={20} />
-                                    </button>
+                                    </div>
 
                                     <div className="mt-1 text-secondary group-hover:text-primary transition-colors">
                                         {isExpanded ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
@@ -340,10 +341,10 @@ const CurriculumTab = ({ courseId }) => {
                                         </div>
                                     </div>
                                 )}
-                            </div>
+                            </Reorder.Item>
                         );
                     })}
-                </div>
+                </Reorder.Group>
             ) : (
                 <div className="py-12 text-center">
                     <div className="w-16 h-16 bg-gray-100/50 rounded-full flex items-center justify-center mx-auto mb-4">

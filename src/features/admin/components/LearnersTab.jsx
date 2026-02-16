@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
+import UserProfile from '@/components/common/UserProfile';
 
 const LearnersTab = ({ courseId }) => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -175,12 +176,15 @@ const LearnersTab = ({ courseId }) => {
                                             className="w-5 h-5 rounded-md border-slate-300 dark:border-slate-700"
                                         />
                                     </div>
-                                    <div className="w-11 h-11 bg-primary-light dark:bg-primary/20 text-primary rounded-full flex items-center justify-center font-bold text-sm shrink-0 border border-primary/10">
-                                        {user.name.split(' ').map(n => n[0]).join('')}
-                                    </div>
+                                    <UserProfile
+                                        imageUrl={user.avatar} // Assuming user object might have avatar
+                                        name={user.name}
+                                        size="sm"
+                                        className="shrink-0"
+                                    />
                                     <div className="flex-1 min-w-0">
                                         <h4 className="font-bold text-foreground text-base truncate">{user.name}</h4>
-                                        <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground truncate">{user.role} • {user.department}</p>
+                                        <p className="text-sm font-bold text-muted-foreground truncate">{user.role} {user.department}</p>
                                     </div>
                                     {isAssigned(user.id, 'individual') && (
                                         <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-lg text-3xs font-bold uppercase tracking-widest border border-emerald-100 dark:border-emerald-500/20">

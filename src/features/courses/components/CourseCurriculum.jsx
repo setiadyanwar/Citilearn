@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Play, FileText, CheckCircle2 } from 'lucide-react';
 
 const CourseCurriculum = ({ course }) => {
+    const navigate = useNavigate();
     const totalLessons = course.modules.reduce((acc, m) => acc + m.lessons.length, 0);
 
     const handleLessonClick = (lesson) => {

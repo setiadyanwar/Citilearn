@@ -16,7 +16,7 @@ export const useAuth = () => {
         role: "Senior Flight Instructor",
         points: 3000,
         avatar: budi_pratama,
-        badge: "Cruise" // This will be dynamic based on points anyway
+        badge: "Captain" // This will be dynamic based on points anyway
     };
 
     const [user, setUser] = useState(authService.getCurrentUser() || mockUser);

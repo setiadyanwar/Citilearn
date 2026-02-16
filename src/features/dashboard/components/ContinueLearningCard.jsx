@@ -53,7 +53,7 @@ const ContinueLearningCard = ({ course }) => {
             </div>
 
             {/* Full Card Link Overlay */}
-            <Link to={`/learn/${course.id}`} className="absolute inset-0 z-10" />
+            <Link to={`/profile/learning/${course.id}`} className="absolute inset-0 z-10" />
         </Card>
     );
 };

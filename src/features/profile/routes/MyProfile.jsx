@@ -37,7 +37,7 @@ const MyProfile = () => {
                     <div className="space-y-6">
                         <div className="space-y-2">
                             <label className="text-sm font-semibold text-main">Full Name</label>
-                            <p className="text-secondary font-medium">SETIADY IBRAHIM ANWAR</p>
+                            <p className="text-secondary font-medium">Setiady Ibrahim Anwar</p>
                         </div>
                         <div className="space-y-2">
                             <label className="text-sm font-semibold text-main">Division</label>
