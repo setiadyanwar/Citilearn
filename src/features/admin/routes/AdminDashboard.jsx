@@ -4,15 +4,15 @@ import { Button } from '@/components/ui/button';
 import data from '@/data.json';
 
 // Standard Admin Components
-import AdminPageShell from '../components/AdminPageShell';
-import ManagementHeader from '../components/ManagementHeader';
+import AdminPageShell from '../components/layout/AdminPageShell';
+import ManagementHeader from '../components/layout/ManagementHeader';
 
 // Modular Components
 import StatCard from '@/features/dashboard/components/StatCard';
-import CourseRow from '@/features/admin/components/CourseRow';
-import EngagementChart from '@/features/admin/components/EngagementChart';
-import ActivityFeed from '@/features/admin/components/ActivityFeed';
-import Leaderboard from '@/features/admin/components/Leaderboard';
+import CourseRow from '@/features/admin/components/course/management/CourseRow';
+import EngagementChart from '@/features/admin/components/dashboard/EngagementChart';
+import ActivityFeed from '@/features/admin/components/dashboard/ActivityFeed';
+import Leaderboard from '@/features/admin/components/dashboard/Leaderboard';
 
 const AdminDashboard = () => {
     const stats = useMemo(() => {

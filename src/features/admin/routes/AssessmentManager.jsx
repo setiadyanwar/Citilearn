@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button';
 import data from '@/data.json';
 
 // Standard Admin Components
-import AdminPageShell from '../components/AdminPageShell';
-import ManagementHeader from '../components/ManagementHeader';
+import AdminPageShell from '../components/layout/AdminPageShell';
+import ManagementHeader from '../components/layout/ManagementHeader';
 
 // Sub-components
 import AssessmentSettings from '../components/assessment/AssessmentSettings';

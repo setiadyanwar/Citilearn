@@ -8,12 +8,12 @@ import { Button } from "@/components/ui/button";
 import MainSearchBar from '@/features/dashboard/components/MainSearchBar';
 
 // Standard Admin Components
-import AdminPageShell from '../components/AdminPageShell';
-import ManagementHeader from '../components/ManagementHeader';
-import FilterBar from '../components/FilterBar';
+import AdminPageShell from '../components/layout/AdminPageShell';
+import ManagementHeader from '../components/layout/ManagementHeader';
+import FilterBar from '../components/shared/FilterBar';
 
 // Sub-components
-import CourseManagementTable from '../components/course/CourseManagementTable';
+import CourseManagementTable from '../components/course/management/CourseManagementTable';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const CourseManagement = () => {

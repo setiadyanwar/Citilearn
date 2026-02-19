@@ -3,13 +3,13 @@ import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import data from '@/data.json';
 
 // Standard Admin Components
-import AdminPageShell from '../components/AdminPageShell';
+import AdminPageShell from '../components/layout/AdminPageShell';
 
 // Modular Components
-import EditorHeader from '../components/QuestionEditor/EditorHeader';
-import QuestionContent from '../components/QuestionEditor/QuestionContent';
-import AnswerOptions from '../components/QuestionEditor/AnswerOptions';
-import EditorSidebar from '../components/QuestionEditor/EditorSidebar';
+import EditorHeader from '../components/course/question/EditorHeader';
+import QuestionContent from '../components/course/question/QuestionContent';
+import AnswerOptions from '../components/course/question/AnswerOptions';
+import EditorSidebar from '../components/course/question/EditorSidebar';
 
 const QuestionEditor = () => {
     const { courseId, assessmentType, questionId } = useParams();

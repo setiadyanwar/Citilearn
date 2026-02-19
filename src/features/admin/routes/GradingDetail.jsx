@@ -4,7 +4,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import data from '@/data.json';
 
 // Standard Admin Components
-import AdminPageShell from '../components/AdminPageShell';
+import AdminPageShell from '../components/layout/AdminPageShell';
 
 // Sub-components
 import GradingDetailView from '../components/grading/GradingDetailView';

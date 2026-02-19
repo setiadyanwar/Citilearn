@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Settings, BookOpen, Users, Clock } from 'lucide-react';
-import AdminHeader from '@/features/admin/components/AdminHeader';
-import CategoryPicker from '@/features/admin/components/CategoryPicker';
-import LearningObjectivesManager from '@/features/admin/components/LearningObjectivesManager';
+import AdminHeader from '@/features/admin/components/layout/AdminHeader';
+import CategoryPicker from '@/features/admin/components/course/editor/CategoryPicker';
+import LearningObjectivesManager from '@/features/admin/components/course/editor/LearningObjectivesManager';
 import ImageUploader from '@/components/common/ImageUploader';
-import CurriculumTab from '@/features/admin/components/CurriculumTab';
-import LearnersTab from '@/features/admin/components/LearnersTab';
+import CurriculumTab from '@/features/admin/components/course/editor/CurriculumTab';
+import LearnersTab from '@/features/admin/components/course/editor/LearnersTab';
 import Tabs from '@/components/common/Tabs';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,11 +14,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
 // Standard Admin Components
-import AdminPageShell from '../components/AdminPageShell';
+import AdminPageShell from '../components/layout/AdminPageShell';
 
 // Sub-components
-import CourseAvailabilitySettings from '../components/course/CourseAvailabilitySettings';
-import CourseEditorPreview from '../components/course/CourseEditorPreview';
+import CourseAvailabilitySettings from '../components/course/editor/CourseAvailabilitySettings';
+import CourseEditorPreview from '../components/course/editor/CourseEditorPreview';
 
 const CourseEditor = () => {
     const { id } = useParams();

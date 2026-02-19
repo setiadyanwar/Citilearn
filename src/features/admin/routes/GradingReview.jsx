@@ -14,9 +14,9 @@ import {
 import data from '@/data.json';
 
 // Standard Admin Components
-import AdminPageShell from '../components/AdminPageShell';
-import ManagementHeader from '../components/ManagementHeader';
-import FilterBar from '../components/FilterBar';
+import AdminPageShell from '../components/layout/AdminPageShell';
+import ManagementHeader from '../components/layout/ManagementHeader';
+import FilterBar from '../components/shared/FilterBar';
 
 // Sub-components
 import StudentGradingTable from '../components/grading/StudentGradingTable';
