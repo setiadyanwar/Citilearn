@@ -7,7 +7,7 @@ import { DatePicker } from "@/components/ui/date-picker";
 const CourseAvailabilitySettings = ({ isLifetime, startDate, endDate, onChange }) => {
     return (
         <div className="p-0 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-200/60 pb-4 gap-4">
+            <div className="flex flex-row items-center justify-between border-b border-slate-200/60 pb-4 gap-4">
                 <div className="space-y-1">
                     <Label className="text-sm md:text-base font-bold text-foreground">Course Availability</Label>
                     <p className="text-xs md:text-sm text-muted-foreground">Set time limits or allow lifetime access</p>

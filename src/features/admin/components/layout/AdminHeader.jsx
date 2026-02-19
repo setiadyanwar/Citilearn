@@ -47,7 +47,7 @@ const AdminHeader = ({
             </div>
             <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
                 <Button
-                    variant="outline"
+                    variant="secondary"
                     className="font-bold h-10 px-4 rounded-xl flex-1 sm:flex-none text-sm md:text-base"
                     onClick={onSave}
                     disabled={saveLoading}
@@ -55,6 +55,7 @@ const AdminHeader = ({
                     Save Draft
                 </Button>
                 <Button
+                    variant="default"
                     className="font-bold h-10 px-5 rounded-xl flex items-center justify-center gap-2 flex-1 sm:flex-none text-sm md:text-base"
                     onClick={onPublish}
                     disabled={publishLoading}

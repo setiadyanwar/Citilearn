@@ -34,7 +34,7 @@ const LearningObjectivesManager = ({
 
     return (
         <div className={cn("space-y-4", className)}>
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200/60 pb-4">
+            <div className="flex flex-row items-center justify-between gap-4 border-b border-slate-200/60 pb-4">
                 <div className="space-y-1">
                     <Label className="text-sm md:text-base font-bold text-foreground">{label}</Label>
                     <p className="text-xs text-muted-foreground font-medium">{description}</p>
