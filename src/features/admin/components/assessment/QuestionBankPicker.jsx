@@ -132,7 +132,7 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={handleClose}
-                        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[9998]"
+                        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-9998"
                     />
 
                     {/* Drawer Panel */}
@@ -141,7 +141,7 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-                        className="fixed right-0 top-0 bottom-0 w-full max-w-xl bg-white shadow-2xl z-[9999] flex flex-col"
+                        className="fixed right-0 top-0 bottom-0 w-full max-w-xl bg-white shadow-2xl z-9999 flex flex-col"
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 shrink-0">

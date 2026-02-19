@@ -62,7 +62,7 @@ const UserMenu = ({ user, isDark }) => {
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        className={`absolute right-0 mt-2 w-56 rounded-xl border z-[150] overflow-hidden ${isDark ? 'bg-slate-900 border-slate-800 shadow-2xl shadow-black/20' : 'bg-white border-gray-100 shadow-xl shadow-gray-200/50'}`}
+                        className={`absolute right-0 mt-2 w-56 rounded-xl border z-150 overflow-hidden ${isDark ? 'bg-slate-900 border-slate-800 shadow-2xl shadow-black/20' : 'bg-white border-gray-100 shadow-xl shadow-gray-200/50'}`}
                     >
                         <div className="p-1.5 space-y-0.5">
                             <Link
