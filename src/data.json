@@ -1564,5 +1564,174 @@
             ],
             "category": "Safety"
         }
+    ],
+    "questionBank": [
+        {
+            "id": "qb1",
+            "question": "What is the primary objective of a Safety Management System (SMS)?",
+            "type": "multiple-choice",
+            "category": "Safety",
+            "tags": [
+                "SMS",
+                "Safety"
+            ],
+            "points": 1,
+            "options": [
+                "Maximizing quarterly flight revenue",
+                "Automating pilot communication",
+                "Identifying hazards and managing safety risks",
+                "Reducing ground handling time"
+            ],
+            "correctAnswer": 2,
+            "explanation": "The SMS is designed to proactively identify hazards and manage safety risks before they lead to accidents."
+        },
+        {
+            "id": "qb2",
+            "question": "Which of these is a key component of Safety Assurance?",
+            "type": "multiple-choice",
+            "category": "Safety",
+            "tags": [
+                "Safety Assurance",
+                "SMS"
+            ],
+            "points": 1,
+            "options": [
+                "Safety performance monitoring and measurement",
+                "In-flight catering standards",
+                "Staff uniform design",
+                "Ticket pricing strategy"
+            ],
+            "correctAnswer": 0,
+            "explanation": "Safety Assurance focuses on monitoring safety performance to ensure the SMS remains effective."
+        },
+        {
+            "id": "qb3",
+            "question": "Hazard identification should be proactive, predictive, and reactive.",
+            "type": "true-false",
+            "category": "Safety",
+            "tags": [
+                "Hazard",
+                "SMS"
+            ],
+            "points": 1,
+            "options": [
+                "True",
+                "False"
+            ],
+            "correctAnswer": 0,
+            "explanation": "Effective hazard identification uses all three approaches: reactive (after incidents), proactive (before incidents), and predictive (risk modeling)."
+        },
+        {
+            "id": "qb4",
+            "question": "What does HIRA stand for in aviation safety context?",
+            "type": "multiple-choice",
+            "category": "Safety",
+            "tags": [
+                "HIRA",
+                "Safety"
+            ],
+            "points": 2,
+            "options": [
+                "Hazard Identification and Risk Assessment",
+                "High Impact Risk Analysis",
+                "Human Incident Reporting Approach",
+                "Hierarchical Inspection and Review Audit"
+            ],
+            "correctAnswer": 0,
+            "explanation": "HIRA stands for Hazard Identification and Risk Assessment, a systematic process used to identify potential hazards in operations."
+        },
+        {
+            "id": "qb5",
+            "question": "Which document outlines Citilink's committed approach to safety?",
+            "type": "multiple-choice",
+            "category": "Safety",
+            "tags": [
+                "Policy",
+                "Safety"
+            ],
+            "points": 1,
+            "options": [
+                "Monthly Financial Report",
+                "Safety Policy and Objectives",
+                "Staff Vacation Policy",
+                "Catering Menu Guidelines"
+            ],
+            "correctAnswer": 1,
+            "explanation": "The Safety Policy and Objectives document defines the organization's commitment and goals toward maintaining a safe operating environment."
+        },
+        {
+            "id": "qb6",
+            "question": "Active listening is the most important skill in customer service.",
+            "type": "true-false",
+            "category": "Service",
+            "tags": [
+                "Communication",
+                "Service"
+            ],
+            "points": 1,
+            "options": [
+                "True",
+                "False"
+            ],
+            "correctAnswer": 0,
+            "explanation": "Active listening allows cabin crew to understand passenger needs accurately, leading to better service outcomes."
+        },
+        {
+            "id": "qb7",
+            "question": "What is the correct initial step when a passenger presents a complaint?",
+            "type": "multiple-choice",
+            "category": "Service",
+            "tags": [
+                "Complaint",
+                "Service Recovery"
+            ],
+            "points": 2,
+            "options": [
+                "Immediately escalate to the captain",
+                "Listen attentively and acknowledge their feelings",
+                "Offer a refund immediately",
+                "Ask them to wait until landing"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Acknowledging the passenger's feelings demonstrates empathy and de-escalates tension, which is the first step in effective complaint handling."
+        },
+        {
+            "id": "qb8",
+            "question": "What is the primary function of the ECAM system on the Airbus A320?",
+            "type": "multiple-choice",
+            "category": "Technical",
+            "tags": [
+                "A320",
+                "Avionics"
+            ],
+            "points": 2,
+            "options": [
+                "Manage fuel efficiency calculations",
+                "Monitor and display aircraft system status and warnings",
+                "Control autopilot engagement",
+                "Schedule maintenance routines"
+            ],
+            "correctAnswer": 1,
+            "explanation": "The Electronic Centralized Aircraft Monitor (ECAM) continuously monitors the aircraft's systems and displays information and warnings to the flight crew."
+        },
+        {
+            "id": "qb10",
+            "question": "Which IATA Dangerous Goods class covers flammable liquids?",
+            "type": "multiple-choice",
+            "category": "Safety",
+            "tags": [
+                "DGR",
+                "IATA"
+            ],
+            "points": 1,
+            "options": [
+                "Class 2 – Gases",
+                "Class 3 – Flammable Liquids",
+                "Class 5 – Oxidizers",
+                "Class 8 – Corrosives"
+            ],
+            "correctAnswer": 1,
+            "explanation": "IATA DGR Class 3 covers flammable liquids, which include fuels, paints, and many common household chemicals."
+        }
     ]
 }

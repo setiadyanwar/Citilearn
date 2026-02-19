@@ -1,12 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Reorder } from 'framer-motion';
-import { Plus, Trash2, CheckCircle, XCircle, Edit, GripVertical, Settings } from 'lucide-react';
+import {
+    Plus, Trash2, CheckCircle, XCircle, Edit,
+    GripVertical, Settings, BookOpen
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 const AssessmentQuestionsList = ({
     questions,
     onReorder,
+    onRemove,
     courseId,
     assessmentType,
     moduleId,
@@ -39,8 +44,17 @@ const AssessmentQuestionsList = ({
                                             {index + 1}. {question.question}
                                         </h4>
                                         <div className="flex items-center gap-2 shrink-0">
+                                            {question.fromBank && (
+                                                <span className={cn(
+                                                    "flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-md",
+                                                    "bg-violet-50 text-violet-600 border border-violet-100"
+                                                )}>
+                                                    <BookOpen size={10} />
+                                                    Bank
+                                                </span>
+                                            )}
                                             <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md">
-                                                {question.points} point
+                                                {question.points} point{question.points > 1 ? 's' : ''}
                                             </span>
                                             <span className="text-xs font-medium text-gray-500 bg-white px-2 py-1 rounded-md border border-gray-200 capitalize">
                                                 {question.type.replace('-', ' ')}
@@ -63,18 +77,37 @@ const AssessmentQuestionsList = ({
                                             ))}
                                         </div>
                                     )}
-                                    {question.type === 'essay' && (
-                                        <p className="text-xs text-secondary mt-2">Minimum {question.minWords} words required</p>
+                                    {question.type === 'true-false' && question.answers && (
+                                        <div className="mt-3 space-y-1.5">
+                                            {question.answers.map((answer, idx) => (
+                                                <div key={idx} className="flex items-center gap-2 text-xs">
+                                                    {idx === question.correctAnswer ? (
+                                                        <CheckCircle size={14} className="text-green-500" />
+                                                    ) : (
+                                                        <XCircle size={14} className="text-gray-300" />
+                                                    )}
+                                                    <span className={idx === question.correctAnswer ? 'text-green-700 font-medium' : 'text-gray-500'}>
+                                                        {answer}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
                                     )}
+
                                 </div>
                                 <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <Link
-                                        to={`/admin/course/${courseId}/test/${assessmentType}/question/${question.id}${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`}
-                                        className="p-2 text-secondary hover:text-primary hover:bg-white rounded-lg border border-transparent hover:border-gray-200 transition-all"
+                                    {!question.fromBank && (
+                                        <Link
+                                            to={`/admin/course/${courseId}/test/${assessmentType}/question/${question.id}${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`}
+                                            className="p-2 text-secondary hover:text-primary hover:bg-white rounded-lg border border-transparent hover:border-gray-200 transition-all"
+                                        >
+                                            <Edit size={16} />
+                                        </Link>
+                                    )}
+                                    <button
+                                        onClick={() => onRemove?.(question.id)}
+                                        className="p-2 text-red-400 hover:text-red-500 hover:bg-white rounded-lg border border-transparent hover:border-red-100 transition-all"
                                     >
-                                        <Edit size={16} />
-                                    </Link>
-                                    <button className="p-2 text-red-400 hover:text-red-500 hover:bg-white rounded-lg border border-transparent hover:border-red-100 transition-all">
                                         <Trash2 size={16} />
                                     </button>
                                 </div>
@@ -88,7 +121,7 @@ const AssessmentQuestionsList = ({
                         <Settings className="text-gray-300" size={32} />
                     </div>
                     <h4 className="text-main font-bold mb-1">No questions yet</h4>
-                    <p className="text-sm text-secondary mb-4">Start by adding your first question</p>
+                    <p className="text-sm text-secondary mb-4">Start by adding your first question or picking from the bank</p>
                     <Button
                         asChild
                         variant="secondary"

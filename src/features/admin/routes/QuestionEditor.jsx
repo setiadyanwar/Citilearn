@@ -10,6 +10,7 @@ import EditorHeader from '../components/course/question/EditorHeader';
 import QuestionContent from '../components/course/question/QuestionContent';
 import AnswerOptions from '../components/course/question/AnswerOptions';
 import EditorSidebar from '../components/course/question/EditorSidebar';
+import QuestionPreview from '../components/course/question/QuestionPreview';
 
 const QuestionEditor = () => {
     const { courseId, assessmentType, questionId } = useParams();
@@ -144,10 +145,11 @@ const QuestionEditor = () => {
                 onSave={handleSave}
             />
 
-            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2 space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full mt-8">
+                <div className="lg:col-span-8 space-y-6">
                     <QuestionContent
                         question={questionData.question}
+                        image={questionData.image}
                         onChange={handleUpdateData}
                     />
 
@@ -161,14 +163,18 @@ const QuestionEditor = () => {
                     />
                 </div>
 
-                <div className="lg:col-span-1">
+                <div className="lg:col-span-4 space-y-6">
                     <EditorSidebar
                         type={questionData.type}
                         points={questionData.points}
-                        explanation={questionData.explanation}
-                        minWords={questionData.minWords}
-                        maxWords={questionData.maxWords}
                         onChange={handleUpdateData}
+                    />
+
+                    <QuestionPreview
+                        question={questionData.question}
+                        image={questionData.image}
+                        answers={questionData.answers}
+                        type={questionData.type}
                     />
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus } from 'lucide-react';
+import { Plus, BookOpen } from 'lucide-react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import data from '@/data.json';
@@ -12,6 +12,7 @@ import ManagementHeader from '../components/layout/ManagementHeader';
 import AssessmentSettings from '../components/assessment/AssessmentSettings';
 import AssessmentQuestionsList from '../components/assessment/AssessmentQuestionsList';
 import AssessmentSummary from '../components/assessment/AssessmentSummary';
+import QuestionBankPicker from '../components/assessment/QuestionBankPicker';
 
 const AssessmentManager = () => {
     const { courseId, assessmentType } = useParams(); // assessmentType: pre-test, quiz, post-test
@@ -19,6 +20,8 @@ const AssessmentManager = () => {
     const [searchParams] = useSearchParams();
     const moduleId = searchParams.get('moduleId');
     const lessonId = searchParams.get('lessonId');
+
+    const [isBankOpen, setIsBankOpen] = useState(false);
 
     const [assessmentData, setAssessmentData] = useState({
         title: '',
@@ -118,6 +121,26 @@ const AssessmentManager = () => {
         setAssessmentData(prev => ({ ...prev, ...newSettings }));
     };
 
+    const handleAddFromBank = (selectedQuestions) => {
+        setQuestions(prev => {
+            const maxId = prev.reduce((max, q) => Math.max(max, typeof q.id === 'number' ? q.id : 0), 0);
+            const newQs = selectedQuestions.map((q, idx) => ({
+                ...q,
+                id: maxId + idx + 1,
+            }));
+            return [...prev, ...newQs];
+        });
+    };
+
+    const handleRemoveQuestion = (questionId) => {
+        setQuestions(prev => prev.filter(q => q.id !== questionId));
+    };
+
+    // IDs already in this assessment (bankId if from bank, or id if manual)
+    const alreadyAddedBankIds = questions
+        .filter(q => q.bankId)
+        .map(q => q.bankId);
+
     return (
         <AdminPageShell>
             <ManagementHeader
@@ -125,9 +148,19 @@ const AssessmentManager = () => {
                 description="Configure assessment rules and manage questions"
             >
                 <div className="flex items-center gap-3">
+                    {/* From Question Bank button */}
+                    <Button
+                        variant="secondary"
+                        className="rounded-xl font-bold h-11 px-5 shadow-none gap-2"
+                        onClick={() => setIsBankOpen(true)}
+                    >
+                        <BookOpen size={16} />
+                        Question Bank
+                    </Button>
+
                     <Button
                         asChild
-                        variant="secondary"
+                        variant="outline"
                         className="rounded-xl font-bold h-11 px-5 shadow-none"
                     >
                         <Link to={`/admin/course/${courseId}/test/${assessmentType}/question/new${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`}>
@@ -168,6 +201,7 @@ const AssessmentManager = () => {
                         <AssessmentQuestionsList
                             questions={questions}
                             onReorder={setQuestions}
+                            onRemove={handleRemoveQuestion}
                             courseId={courseId}
                             assessmentType={assessmentType}
                             moduleId={moduleId}
@@ -176,6 +210,14 @@ const AssessmentManager = () => {
                     )}
                 </div>
             </div>
+
+            {/* Question Bank Picker Modal */}
+            <QuestionBankPicker
+                isOpen={isBankOpen}
+                onClose={() => setIsBankOpen(false)}
+                onSelect={handleAddFromBank}
+                alreadyAddedIds={alreadyAddedBankIds}
+            />
         </AdminPageShell>
     );
 };
