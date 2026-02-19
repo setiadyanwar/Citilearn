@@ -9,14 +9,14 @@ const ProfileSidebarItem = ({ icon: Icon, label, collapsed, active, to }) => (
         to={to}
         className={`flex items-center gap-3 p-3 rounded-xl transition-all mb-1 group relative ${active
             ? 'bg-citilearn-green/10 text-citilearn-green font-bold'
-            : 'text-secondary hover:bg-gray-50 hover:text-primary'
+            : 'text-secondary hover:bg-gray-50 hover:text-primary font-medium'
             }`}
     >
         <div className="shrink-0 flex items-center justify-center w-6 h-6">
             <Icon size={20} className={active ? 'text-citilearn-green' : 'text-gray-400 group-hover:text-gray-600'} />
         </div>
         {!collapsed && (
-            <span className="whitespace-nowrap overflow-hidden transition-all duration-300 origin-left text-sm font-bold">
+            <span className="whitespace-nowrap overflow-hidden transition-all duration-300 origin-left text-sm">
                 {label}
             </span>
         )}

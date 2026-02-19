@@ -49,7 +49,7 @@ const StudentGradingRow = ({ group, isSelected, onSelect }) => {
                         size="sm"
                     />
                     <div className="min-w-0">
-                        <p className="text-xs md:text-sm font-bold text-main leading-tight group-hover:text-primary transition-colors truncate max-w-[120px] md:max-w-none">{student.name}</p>
+                        <p className="text-xs md:text-sm font-semibold text-main leading-tight group-hover:text-primary transition-colors truncate max-w-[120px] md:max-w-none">{student.name}</p>
                         <p className="text-3xs text-tertiary mt-0.5 font-medium">ID: {student.id}</p>
                     </div>
                 </div>
@@ -126,7 +126,7 @@ const CourseAccordionItem = ({ courseGroup, isExpanded, onToggle, onReview }) =>
                         <BookOpen size={16} />
                     </div>
                     <div className="min-w-0 flex-1">
-                        <h4 className="text-xs font-bold text-main truncate leading-tight">
+                        <h4 className="text-xs font-semibold text-main truncate leading-tight">
                             {courseGroup.course.title}
                         </h4>
                         <div className="flex items-center gap-1.5 mt-1 overflow-hidden">
@@ -172,7 +172,7 @@ const CourseAccordionItem = ({ courseGroup, isExpanded, onToggle, onReview }) =>
                                         className="group flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100"
                                     >
                                         <div className="flex-1 min-w-0 pr-2">
-                                            <p className="text-xs font-bold text-main group-hover:text-primary transition-colors truncate">{attempt.assessment.title}</p>
+                                            <p className="text-xs font-semibold text-main group-hover:text-primary transition-colors truncate">{attempt.assessment.title}</p>
                                             <div className="flex items-center gap-1.5 mt-1 overflow-hidden">
                                                 <TypeBadge type={attempt.assessment.type} />
                                                 <span className="text-3xs text-tertiary font-medium tabular-nums truncate">
