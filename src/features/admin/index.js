@@ -8,6 +8,7 @@ export { default as LessonEditor } from './routes/LessonEditor';
 export { default as AssessmentManager } from './routes/AssessmentManager';
 export { default as QuestionEditor } from './routes/QuestionEditor';
 export { default as UserAssignment } from './routes/UserAssignment';
+export { default as UserHub } from './routes/UserHub';
 export { default as GradingReview } from './routes/GradingReview';
 export { default as GradingDetail } from './routes/GradingDetail';
 
