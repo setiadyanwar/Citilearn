@@ -21,12 +21,12 @@ const GradingTable = ({ grades, onReview }) => {
             <Table>
                 <TableHeader className="bg-slate-50/50 border-b border-slate-200">
                     <TableRow className="hover:bg-transparent border-none">
-                        <TableHead className="px-6 h-12 text-xs font-bold text-slate-500 uppercase tracking-wider">Student info</TableHead>
-                        <TableHead className="px-6 h-12 text-xs font-bold text-slate-500 uppercase tracking-wider">Assessment</TableHead>
-                        <TableHead className="px-6 h-12 text-center text-xs font-bold text-slate-500 uppercase tracking-wider">Attempts</TableHead>
-                        <TableHead className="px-6 h-12 text-center text-xs font-bold text-slate-500 uppercase tracking-wider">Grade</TableHead>
-                        <TableHead className="px-6 h-12 text-center text-xs font-bold text-slate-500 uppercase tracking-wider">Status</TableHead>
-                        <TableHead className="px-6 h-12 text-right text-xs font-bold text-slate-500 uppercase tracking-wider pr-6">Actions</TableHead>
+                        <TableHead className="px-6 h-12 text-3xs font-bold text-slate-500 uppercase tracking-wider">Student info</TableHead>
+                        <TableHead className="px-6 h-12 text-3xs font-bold text-slate-500 uppercase tracking-wider">Assessment</TableHead>
+                        <TableHead className="px-6 h-12 text-center text-3xs font-bold text-slate-500 uppercase tracking-wider">Attempts</TableHead>
+                        <TableHead className="px-6 h-12 text-center text-3xs font-bold text-slate-500 uppercase tracking-wider">Grade</TableHead>
+                        <TableHead className="px-6 h-12 text-center text-3xs font-bold text-slate-500 uppercase tracking-wider">Status</TableHead>
+                        <TableHead className="px-6 h-12 text-right text-3xs font-bold text-slate-500 uppercase tracking-wider pr-6">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>

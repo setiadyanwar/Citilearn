@@ -185,7 +185,7 @@ const AdminLayout = () => {
                 </aside>
 
                 {/* Main Content Area */}
-                <main className={`flex-1 min-w-0 relative scroll-smooth z-0 p-4 lg:p-0 ${isFixedPage ? 'overflow-hidden flex flex-col' : 'overflow-y-auto'}`}>
+                <main className={`flex-1 min-w-0 relative scroll-smooth p-4 lg:p-0 ${isFixedPage ? 'overflow-hidden flex flex-col' : 'overflow-y-auto'}`}>
                     <div className={`min-h-full ${isFixedPage ? 'h-full flex flex-col' : 'pb-10'}`}>
                         <Outlet />
                     </div>

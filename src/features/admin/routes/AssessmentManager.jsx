@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Plus } from 'lucide-react';
-import { Link, useParams, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import data from '@/data.json';
+
+// Standard Admin Components
+import AdminPageShell from '../components/AdminPageShell';
+import ManagementHeader from '../components/ManagementHeader';
 
 // Sub-components
 import AssessmentSettings from '../components/assessment/AssessmentSettings';
@@ -11,7 +15,6 @@ import AssessmentSummary from '../components/assessment/AssessmentSummary';
 
 const AssessmentManager = () => {
     const { courseId, assessmentType } = useParams(); // assessmentType: pre-test, quiz, post-test
-    const navigate = useNavigate();
 
     const [searchParams] = useSearchParams();
     const moduleId = searchParams.get('moduleId');
@@ -115,39 +118,37 @@ const AssessmentManager = () => {
     };
 
     return (
-        <div className="space-y-6 pb-20 animate-fade-in px-4 md:px-0">
-            {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                    <Link to={`/admin/course/${courseId}/edit`} className="p-2 rounded-xl hover:bg-white text-secondary hover:text-primary transition-colors border border-transparent hover:border-gray-200">
+        <AdminPageShell>
+            <ManagementHeader
+                title={`${getAssessmentTitle()} Settings`}
+                description="Configure assessment rules and manage questions"
+            >
+                <Link to={`/admin/course/${courseId}/edit?tab=curriculum`}>
+                    <Button variant="ghost" size="icon" className="h-10 w-10 text-slate-400 hover:text-slate-900 rounded-xl shrink-0">
                         <ArrowLeft size={20} />
-                    </Link>
-                    <div>
-                        <h1 className="text-2xl font-bold text-main tracking-tight">{getAssessmentTitle()} Settings</h1>
-                        <p className="text-sm text-secondary font-medium">Configure assessment rules and manage questions</p>
-                    </div>
-                </div>
-                <div className="flex items-center gap-3">
+                    </Button>
+                </Link>
+                <div className="flex items-center gap-3 ml-auto">
                     <Button
                         asChild
                         variant="secondary"
-                        className="rounded-xl font-bold h-10 px-5 shadow-none"
+                        className="rounded-xl font-bold h-11 px-5 shadow-none"
                     >
                         <Link to={`/admin/course/${courseId}/assessment/${assessmentType}/question/new${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`}>
-                            <Plus size={16} />
+                            <Plus size={16} className="mr-2" />
                             Add Question
                         </Link>
                     </Button>
                     <Button
                         variant="default"
-                        className="rounded-xl font-bold h-10 px-5 shadow-none"
+                        className="rounded-xl font-bold h-11 px-6 shadow-none"
                     >
                         Save Settings
                     </Button>
                 </div>
-            </div>
+            </ManagementHeader>
 
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Settings Panel */}
                 <div className="lg:col-span-1 space-y-6">
                     <AssessmentSettings
@@ -164,8 +165,8 @@ const AssessmentManager = () => {
                 {/* Questions List */}
                 <div className="lg:col-span-2">
                     {isLoading ? (
-                        <div className="bg-white p-12 rounded-3xl border border-gray-100 flex items-center justify-center">
-                            <p className="text-secondary font-medium">Loading assessment...</p>
+                        <div className="bg-white p-12 rounded-3xl border border-slate-200 flex items-center justify-center h-64">
+                            <p className="text-slate-400 font-medium">Loading assessment...</p>
                         </div>
                     ) : (
                         <AssessmentQuestionsList
@@ -179,7 +180,7 @@ const AssessmentManager = () => {
                     )}
                 </div>
             </div>
-        </div>
+        </AdminPageShell>
     );
 };
 

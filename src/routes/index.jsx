@@ -35,7 +35,8 @@ import {
     AssessmentManager,
     QuestionEditor,
     UserAssignment,
-    GradingReview
+    GradingReview,
+    GradingDetail
 } from '@/features/admin';
 
 export const AppRoutes = () => {
@@ -81,6 +82,7 @@ export const AppRoutes = () => {
                 { path: 'course/:courseId/assessment/:assessmentType/question/:questionId', element: <QuestionEditor /> },
                 { path: 'course/:courseId/assign', element: <UserAssignment /> },
                 { path: 'assessment', element: <GradingReview /> },
+                { path: 'assessment/:gradeId', element: <GradingDetail /> },
                 { path: '*', element: <AdminDashboard /> }
             ]
         },

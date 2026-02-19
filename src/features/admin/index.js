@@ -9,6 +9,7 @@ export { default as AssessmentManager } from './routes/AssessmentManager';
 export { default as QuestionEditor } from './routes/QuestionEditor';
 export { default as UserAssignment } from './routes/UserAssignment';
 export { default as GradingReview } from './routes/GradingReview';
+export { default as GradingDetail } from './routes/GradingDetail';
 
 // Hooks (Future use)
 // export * from './hooks/useAdminMetrics';

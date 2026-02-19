@@ -9,6 +9,14 @@ import {
     ResponsiveContainer,
 } from 'recharts';
 
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+
 const weeklyData = [
     { name: 'Mon', value: 340 },
     { name: 'Tue', value: 450 },
@@ -75,25 +83,17 @@ const EngagementChart = () => {
                     <h3 className="text-lg font-bold text-main leading-none">Learning Engagement</h3>
                     <p className="text-2xs text-secondary mt-1.5 font-medium tracking-tight">Daily activity tracking across all modules</p>
                 </div>
-                <div className="flex bg-slate-100 p-1 rounded-xl">
-                    <button
-                        onClick={() => setChartView('weekly')}
-                        className={`px-4 py-1.5 text-2xs font-bold rounded-lg transition-all ${chartView === 'weekly' ? 'bg-white text-main shadow-sm' : 'text-tertiary hover:text-secondary'}`}
-                    >
-                        Weekly
-                    </button>
-                    <button
-                        onClick={() => setChartView('monthly')}
-                        className={`px-4 py-1.5 text-2xs font-bold rounded-lg transition-all ${chartView === 'monthly' ? 'bg-white text-main shadow-sm' : 'text-tertiary hover:text-secondary'}`}
-                    >
-                        Monthly
-                    </button>
-                    <button
-                        onClick={() => setChartView('yearly')}
-                        className={`px-4 py-1.5 text-2xs font-bold rounded-lg transition-all ${chartView === 'yearly' ? 'bg-white text-main shadow-sm' : 'text-tertiary hover:text-secondary'}`}
-                    >
-                        Yearly
-                    </button>
+                <div className="min-w-[120px]">
+                    <Select value={chartView} onValueChange={setChartView}>
+                        <SelectTrigger className="h-9 px-3 rounded-xl bg-slate-100 border-none text-2xs font-medium text-slate-600 shadow-none focus:ring-0">
+                            <SelectValue placeholder="Timeframe" />
+                        </SelectTrigger>
+                        <SelectContent className="rounded-xl border-slate-100 shadow-none">
+                            <SelectItem value="weekly" className="text-2xs font-medium">Weekly</SelectItem>
+                            <SelectItem value="monthly" className="text-2xs font-medium">Monthly</SelectItem>
+                            <SelectItem value="yearly" className="text-2xs font-medium">Yearly</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
             </div>
 

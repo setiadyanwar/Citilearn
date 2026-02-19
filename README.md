@@ -18,19 +18,20 @@ The platform focuses on operational efficiency, providing a sleek interface to m
 - **Culture Hub**: Dedicated sections for 'Agent of Culture', 'Activation', and 'Awards' to foster company values.
 - **Collaboration Space**: 'Supergreeners Talk' and 'Story' pages for internal communication and engagement.
 
-### 🛡️ Admin & Instructor Studio
-- **Course Management System**: Full granular control to create and edit Courses.
-- **Module & Lesson Editor**: Drag-and-drop capability (planned) and intuitive forms for structuring learning paths.
-- **Assessment Manager**: Robust tools to create quizzes (`QuestionEditor`), manage question banks, and assign tests to modules.
-- **User Assignment**: Tools to assign courses to specific user groups or individuals.
+### 🛡️ Admin & Instructor Studio (Refactored)
+- **Modular Studio Architecture**: Fully refactored into a feature-based structure with isolated components for `grading`, `assessment`, and `course` management.
+- **Grading & Review Center**: Advanced interface for instructors to review student attempts with detailed answer breakdowns and performance badges.
+- **Live Preview Course Editor**: Real-time "Student View" preview while building courses, featuring a dynamic Category Picker and Learning Objectives manager.
+- **Standardized Search Logic**: Global integration of `MainSearchBar` across management tables with support for custom placeholders and togglable action buttons.
+- **Assessment Engine**: Robust tools to configure passing grades, time limits, and question shuffle logic, now simplified through modular sub-components.
 
 ## 🛠️ Technical Excellence
 
 - **Core**: Built with [React 19](https://react.dev/) and [Vite](https://vitejs.dev/) for ultra-fast performance.
-- **Styling**: Leverages [Tailwind CSS v4](https://tailwindcss.com/) for a modern utility-first approach.
-- **UI Architecture**: Implements **shadcn/ui** patterns using [Radix UI](https://www.radix-ui.com/) primitives and `class-variance-authority` for accessible, robust components.
+- **Styling**: Powered by [Tailwind CSS v4](https://tailwindcss.com/) with a custom **Flat Design System** (no shadows, consistent borders, scale-based typography).
+- **Architecture**: **Feature-Driven Development (FDD)** organization, grouping logic and components by domain (Admin, Learning, Dashboard, etc.).
+- **UI Architecture**: Implements **shadcn/ui** patterns using [Radix UI](https://www.radix-ui.com/) primitives.
 - **Motion**: Fluid micro-interactions and page transitions powered by [Framer Motion](https://www.framer.com/motion/).
-- **State & Logic**: Clean component architecture with centralized constants for UI tokens and course metadata.
 - **Data Architecture**: Data-driven UI using a comprehensive `data.json` structure representing complex course modules and lessons.
 
 ## 🚀 Getting Started
@@ -38,7 +39,7 @@ The platform focuses on operational efficiency, providing a sleek interface to m
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [npm](https://www.npmjs.com/)
 
 ### Installation
 
@@ -68,40 +69,35 @@ To create an optimized production build:
 npm run build
 ```
 
-## 📁 Folder Structure
+## 📁 Folder Structure (Current State)
 
 ```
 src/
-├── admin/                        # Admin specific components (if any distinctive)
-├── api/                          # API integration layer
-│   ├── client.js                 # Axios configuration
-│   └── services/                 # Service modules
-├── assets/                       # Static assets (images, icons, logos)
-├── components/                   # Component Library
-│   ├── admin/                    # Admin-specific UI blocks
-│   ├── common/                   # Shared atoms (Badge, Button, Card)
-│   ├── course/                   # Course display components
-│   ├── dashboard/                # Dashboard widgets & charts
-│   ├── layout/                   # Layout shells (Sidebar, AdminLayout)
-│   ├── learning/                 # Lesson player & quiz interfaces
-│   └── ui/                       # shadcn/ui primitives (Tooltip, Label, etc.)
-├── config/                       # Application configuration
-├── constants/                    # Static data & UI tokens
-├── contexts/                     # Global state providers
-├── hooks/                        # Custom React hooks
-├── lib/                          # Utilities (cn, tw-merge)
-├── pages/                        # Route Pages
-│   ├── admin/                    # Admin Pages (CourseEditor, AssessmentManager)
-│   ├── CourseDetail.jsx          # Course overview
-│   ├── CourseLearning.jsx        # Learning player wrapper
-│   ├── Dashboard.jsx             # Main learner dashboard
-│   ├── ExploreCourses.jsx        # Course catalog
-│   ├── FocusTest.jsx             # Examination mode
-│   └── Login.jsx                 # Auth entry
-├── routes/                       # Routing configuration
-└── utils/                        # Helpers & formatters
+├── api/                          # Global API & Service layer
+├── assets/                       # Branding, vectors, and static images
+├── components/                   
+│   ├── common/                   # Shared UI atoms (Pagination, Tabs, ImageUploader)
+│   ├── layout/                   # Global shells (Sidebar, AdminHeader)
+│   └── ui/                       # shadcn/ui primitives (Radix-based)
+├── config/                       # App-wide configuration (env, providers)
+├── constants/                    # UI Tokens, Color Palettes, and Constants
+├── contexts/                     # React Contexts for global state (Auth, Theme)
+├── features/                     # Feature-Driven Modules (Logic + Components)
+│   ├── admin/                    # Studio routes & components (Grading, Course, Assessment)
+│   ├── auth/                     # Authentication logic & forms
+│   ├── courses/                  # Course catalog & grid system
+│   ├── dashboard/                # Learner widgets, cards & charts
+│   ├── learning/                 # Lesson player & focus test mode
+│   └── profile/                  # User profile & performance stats
+├── hooks/                        # Custom React hooks (useAuth, useProfile, etc.)
+├── layouts/                      # Page-level wrapper components
+├── lib/                          # Third-party library configs & utils (cn)
+├── routes/                       # App-wide React Router configuration
+├── utils/                        # Shared pure helpers & formatters
+├── data.json                     # Main mock data source for the LMS
+└── main.jsx                      # Application entry point
 ```
 
 ## 📄 License
 
-This project is created for **UI/UX Internship Portfolio** purposes for **Citilink Indonesia**.
+This project is created for **Citilink Indonesia** purposes.

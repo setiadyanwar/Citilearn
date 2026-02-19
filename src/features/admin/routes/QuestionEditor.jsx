@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import data from '@/data.json';
 
+// Standard Admin Components
+import AdminPageShell from '../components/AdminPageShell';
+
 // Modular Components
 import EditorHeader from '../components/QuestionEditor/EditorHeader';
 import QuestionContent from '../components/QuestionEditor/QuestionContent';
@@ -132,7 +135,7 @@ const QuestionEditor = () => {
     const backUrl = `/admin/course/${courseId}/assessment/${assessmentType}${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`;
 
     return (
-        <div className="space-y-6 pb-20 animate-fade-in px-4 md:px-0">
+        <AdminPageShell>
             <EditorHeader
                 isEditing={isEditing}
                 assessmentType={assessmentType}
@@ -141,7 +144,7 @@ const QuestionEditor = () => {
                 onSave={handleSave}
             />
 
-            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-2 space-y-6">
                     <QuestionContent
                         question={questionData.question}
@@ -158,16 +161,18 @@ const QuestionEditor = () => {
                     />
                 </div>
 
-                <EditorSidebar
-                    type={questionData.type}
-                    points={questionData.points}
-                    explanation={questionData.explanation}
-                    minWords={questionData.minWords}
-                    maxWords={questionData.maxWords}
-                    onChange={handleUpdateData}
-                />
+                <div className="lg:col-span-1">
+                    <EditorSidebar
+                        type={questionData.type}
+                        points={questionData.points}
+                        explanation={questionData.explanation}
+                        minWords={questionData.minWords}
+                        maxWords={questionData.maxWords}
+                        onChange={handleUpdateData}
+                    />
+                </div>
             </div>
-        </div>
+        </AdminPageShell>
     );
 };
 

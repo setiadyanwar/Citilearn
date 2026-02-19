@@ -13,6 +13,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
+// Standard Admin Components
+import AdminPageShell from '../components/AdminPageShell';
+
 // Sub-components
 import CourseAvailabilitySettings from '../components/course/CourseAvailabilitySettings';
 import CourseEditorPreview from '../components/course/CourseEditorPreview';
@@ -67,7 +70,7 @@ const CourseEditor = () => {
     };
 
     return (
-        <div className="pb-20 animate-fade-in max-w-7xl mx-auto px-4 md:px-0">
+        <AdminPageShell>
             <AdminHeader
                 title={isEditing ? 'Edit Course' : 'Create New Course'}
                 status={courseData.status}
@@ -192,7 +195,7 @@ const CourseEditor = () => {
                     <CourseEditorPreview previewCourse={previewCourse} />
                 )}
             </div>
-        </div>
+        </AdminPageShell>
     );
 };
 

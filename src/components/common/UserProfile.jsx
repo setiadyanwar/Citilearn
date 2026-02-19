@@ -10,6 +10,7 @@ const UserProfile = ({
     imageUrl,
     name,
     size = 'sm',
+    shape = 'square',
     showBadge = false,
     showBorder = false,
     showPoints = false,
@@ -20,6 +21,7 @@ const UserProfile = ({
             imageUrl={imageUrl}
             name={name}
             size={size}
+            shape={shape}
             showBadge={showBadge}
             showBorder={showBorder}
             showPoints={showPoints}

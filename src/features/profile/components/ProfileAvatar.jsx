@@ -13,6 +13,7 @@ const ProfileAvatar = ({
     size = 'md',
     showBadge = true,
     showBorder = true,
+    shape = 'circle', // 'circle' or 'square'
     className
 }) => {
     // Calculate level from points to ensure synchronization
@@ -66,7 +67,8 @@ const ProfileAvatar = ({
             {/* Avatar Section */}
             <div className="relative shrink-0">
                 <div className={cn(
-                    "rounded-full transition-all duration-300",
+                    "transition-all duration-300",
+                    shape === 'circle' ? 'rounded-full' : 'rounded-xl',
                     currentSize.container,
                     (showBorder && imageUrl) ? `bg-linear-to-b ${styles.gradient}` : "bg-transparent p-0"
                 )}>
@@ -74,11 +76,15 @@ const ProfileAvatar = ({
                         <img
                             src={imageUrl}
                             alt={name}
-                            className="w-full h-full object-cover rounded-full bg-white"
+                            className={cn(
+                                "w-full h-full object-cover bg-white",
+                                shape === 'circle' ? 'rounded-full' : 'rounded-xl'
+                            )}
                         />
                     ) : (
                         <div className={cn(
-                            "w-full h-full rounded-full flex items-center justify-center font-bold text-primary bg-primary-light",
+                            "w-full h-full flex items-center justify-center font-bold text-primary bg-primary-light",
+                            shape === 'circle' ? 'rounded-full' : 'rounded-xl',
                             currentSize.text
                         )}>
                             {getInitials(name)}

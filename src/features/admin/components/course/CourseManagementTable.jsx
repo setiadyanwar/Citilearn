@@ -23,12 +23,12 @@ const CourseManagementTable = ({ courses, getCategoryColor }) => {
             <Table>
                 <TableHeader className="bg-slate-50 border-b border-slate-200">
                     <TableRow className="hover:bg-transparent border-none">
-                        <TableHead className="w-[40%] font-bold text-slate-500 h-12 pl-6 uppercase text-3xs tracking-wider">Course info</TableHead>
-                        <TableHead className="w-[15%] font-bold text-slate-500 h-12 uppercase text-3xs tracking-wider">Category</TableHead>
-                        <TableHead className="w-[10%] font-bold text-slate-500 h-12 uppercase text-3xs tracking-wider">Modules</TableHead>
-                        <TableHead className="w-[10%] font-bold text-slate-500 h-12 uppercase text-3xs tracking-wider">Stats</TableHead>
-                        <TableHead className="w-[10%] font-bold text-slate-500 h-12 uppercase text-3xs tracking-wider">Status</TableHead>
-                        <TableHead className="w-[15%] text-right font-bold text-slate-500 h-12 pr-6 uppercase text-3xs tracking-wider">Actions</TableHead>
+                        <TableHead className="w-[40%] font-semibold text-tertiary h-12 pl-6 uppercase text-3xs tracking-wider">Course info</TableHead>
+                        <TableHead className="w-[15%] font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Category</TableHead>
+                        <TableHead className="w-[10%] font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Modules</TableHead>
+                        <TableHead className="w-[10%] font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Stats</TableHead>
+                        <TableHead className="w-[10%] font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Status</TableHead>
+                        <TableHead className="w-[15%] text-right font-semibold text-tertiary h-12 pr-6 uppercase text-3xs tracking-wider">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -44,10 +44,10 @@ const CourseManagementTable = ({ courses, getCategoryColor }) => {
                                         />
                                     </div>
                                     <div className="min-w-0 flex-1">
-                                        <h3 className="font-bold text-slate-900 truncate leading-tight mb-1 group-hover:text-primary transition-colors">{course.title}</h3>
-                                        <p className="text-2xs text-slate-500 line-clamp-1 mb-1.5 font-medium">{course.description}</p>
+                                        <h3 className="font-semibold text-main truncate leading-tight mb-1 group-hover:text-primary transition-colors">{course.title}</h3>
+                                        <p className="text-2xs text-secondary line-clamp-1 mb-1.5 font-medium">{course.description}</p>
                                         <div className="flex items-center gap-2">
-                                            <div className="text-3xs bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded font-bold border border-slate-200 flex items-center gap-1">
+                                            <div className="text-3xs bg-slate-50 text-secondary px-1.5 py-0.5 rounded font-semibold border border-slate-100 flex items-center gap-1">
                                                 <Clock size={10} />
                                                 Updated {course.lastUpdated}
                                             </div>
@@ -56,12 +56,12 @@ const CourseManagementTable = ({ courses, getCategoryColor }) => {
                                 </div>
                             </TableCell>
                             <TableCell>
-                                <span className={`inline-flex px-2.5 py-1 rounded-md text-3xs font-bold uppercase tracking-wide border ${getCategoryColor(course.category)}`}>
+                                <span className={`inline-flex px-2.5 py-1 rounded-md text-3xs font-semibold uppercase tracking-wide border ${getCategoryColor(course.category)}`}>
                                     {course.category}
                                 </span>
                             </TableCell>
                             <TableCell>
-                                <div className="flex items-center gap-2 text-sm font-bold text-slate-600">
+                                <div className="flex items-center gap-2 text-sm font-semibold text-secondary">
                                     <div className="p-1.5 bg-blue-50 text-blue-600 rounded-md">
                                         <LayoutGrid size={14} />
                                     </div>
@@ -70,22 +70,22 @@ const CourseManagementTable = ({ courses, getCategoryColor }) => {
                             </TableCell>
                             <TableCell>
                                 <div className="space-y-1">
-                                    <div className="flex items-center gap-1.5 text-xs text-slate-600 font-bold">
-                                        <Users size={12} className="text-slate-400" />
+                                    <div className="flex items-center gap-1.5 text-xs text-secondary font-semibold">
+                                        <Users size={12} className="text-tertiary" />
                                         <span>{course.enrolled}</span>
                                     </div>
-                                    <div className="flex items-center gap-1.5 text-xs text-slate-600 font-bold">
-                                        <Clock size={12} className="text-slate-400" />
+                                    <div className="flex items-center gap-1.5 text-xs text-secondary font-semibold">
+                                        <Clock size={12} className="text-tertiary" />
                                         <span>{course.duration}</span>
                                     </div>
                                 </div>
                             </TableCell>
                             <TableCell>
-                                <div className={`inline-flex items-center pl-1.5 pr-2.5 py-1 rounded-full text-3xs font-bold border transition-colors uppercase tracking-wider ${course.status === 'Published'
+                                <div className={`inline-flex items-center pl-1.5 pr-2.5 py-1 rounded-full text-3xs font-semibold border transition-colors uppercase tracking-wider ${course.status === 'Published'
                                     ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                                    : 'bg-slate-100 text-slate-600 border-slate-200'
+                                    : 'bg-slate-50 text-secondary border-slate-200'
                                     }`}>
-                                    <span className={`w-1.5 h-1.5 rounded-full mr-2 ${course.status === 'Published' ? 'bg-emerald-500' : 'bg-slate-500'
+                                    <span className={`w-1.5 h-1.5 rounded-full mr-2 ${course.status === 'Published' ? 'bg-emerald-500' : 'bg-tertiary'
                                         }`}></span>
                                     {course.status}
                                 </div>

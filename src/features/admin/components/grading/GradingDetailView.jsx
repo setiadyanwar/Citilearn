@@ -1,24 +1,24 @@
 import React from 'react';
 import {
-    ChevronRight,
     ArrowLeft,
     CheckCircle2,
     XCircle,
-    BookOpen,
     Calendar,
     Trophy,
     FileText,
-    User
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { GradeBadge } from './GradingBadges';
+import { GradeBadge, TypeBadge } from './GradingBadges';
+import UserProfile from '@/components/common/UserProfile';
+import CircularProgress from '@/components/common/CircularProgress';
+import StatCard from '@/features/dashboard/components/StatCard';
 
 const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
     const questions = attemptDetails?.questions || [];
 
     return (
-        <div className="space-y-6 animate-fade-in pb-20 max-w-7xl mx-auto px-4 md:px-0">
+        <div className="space-y-6">
             {/* Detail Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
@@ -31,13 +31,10 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
                         <ArrowLeft size={18} />
                     </Button>
                     <div>
-                        <div className="flex items-center gap-2 text-slate-400 mb-1">
-                            <BookOpen size={14} />
-                            <span className="text-xs font-medium">{selectedGrade.course.title}</span>
-                            <ChevronRight size={12} className="text-slate-300" />
-                            <span className="text-xs font-bold text-primary">{selectedGrade.assessment.title}</span>
+                        <h1 className="text-2xl font-bold text-slate-900 tracking-tight leading-none">Review Attempt</h1>
+                        <div className="mt-2">
+                            <TypeBadge type={selectedGrade.assessment.type} />
                         </div>
-                        <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Review Attempt Details</h1>
                     </div>
                 </div>
             </div>
@@ -46,59 +43,63 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
                 {/* Summary Info Card */}
                 <div className="lg:col-span-1 space-y-6">
                     <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-6 shadow-none">
-                        <div className="flex items-center gap-4 border-b border-slate-100 pb-6">
-                            <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 border border-slate-100 font-bold text-sm uppercase">
-                                {selectedGrade.student.name.charAt(0)}
-                            </div>
+                        <div className="flex items-center gap-4">
+                            <UserProfile
+                                imageUrl={null}
+                                name={selectedGrade.student.name}
+                                size="sm"
+                                shape="square"
+                            />
                             <div>
                                 <h3 className="font-bold text-slate-900 leading-none">{selectedGrade.student.name}</h3>
-                                <p className="text-2xs text-slate-500 mt-1.5 font-medium tracking-tight">CID-{selectedGrade.student.id.toUpperCase()}</p>
+                                <p className="text-2xs text-slate-500 mt-1.5 font-medium tracking-tight uppercase">CID-{selectedGrade.student.id.toUpperCase()}</p>
                             </div>
                         </div>
 
-                        <div className="space-y-4">
-                            <div className="flex items-center justify-between">
-                                <span className="text-xs font-medium text-slate-500">Final score</span>
-                                <span className={cn(
-                                    "text-xl font-bold tracking-tight",
-                                    selectedGrade.score >= selectedGrade.passingScore ? "text-emerald-600" : "text-red-500"
-                                )}>{selectedGrade.score}%</span>
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <span className="text-xs font-medium text-slate-500">Passing score</span>
-                                <span className="text-xs font-bold text-slate-700">{selectedGrade.passingScore}%</span>
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <span className="text-xs font-medium text-slate-500">Status</span>
-                                <GradeBadge status={selectedGrade.status} />
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <span className="text-xs font-medium text-slate-500">Attempt count</span>
-                                <span className="text-xs font-bold text-slate-700">{selectedGrade.attempts} / {selectedGrade.maxAttempts}</span>
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <span className="text-xs font-medium text-slate-500">Taken on</span>
-                                <div className="flex items-center gap-1.5 text-xs text-slate-700 font-bold text-right">
-                                    <Calendar size={14} className="text-slate-400" />
-                                    {new Date(selectedGrade.date).toLocaleDateString()}
+                        <div className="space-y-6 pt-2">
+                            {/* Visual Score Header */}
+                            <div className="flex flex-col items-center py-6 bg-slate-50/50 rounded-2xl border border-dashed border-slate-200">
+                                <CircularProgress
+                                    progress={selectedGrade.score}
+                                    size="w-24 h-24"
+                                    strokeWidth={8}
+                                    textSize="text-xl"
+                                    color={selectedGrade.score >= selectedGrade.passingScore ? 'text-emerald-500' : 'text-red-500'}
+                                />
+                                <div className="mt-4 text-center">
+                                    <p className="text-3xs font-bold text-slate-400 uppercase tracking-widest">Final Score</p>
+                                    <div className="mt-1">
+                                        <GradeBadge status={selectedGrade.status} />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="pt-4 border-t border-slate-100">
-                            <p className="text-2xs text-slate-400 font-medium leading-relaxed tracking-tight">
-                                Reviewing submission helps identifying knowledge gaps and areas for improvement.
-                            </p>
-                        </div>
-                    </div>
+                            <div className="space-y-3.5">
+                                <div className="flex items-center justify-between">
+                                    <span className="text-xs font-semibold text-slate-500 tracking-tight">Correct Answers</span>
+                                    <span className="text-xs font-bold text-slate-700">
+                                        {questions.filter(q => q.isCorrect).length} <span className="text-slate-300 mx-1">/</span> {questions.length}
+                                    </span>
+                                </div>
 
-                    <div className="bg-emerald-50/50 p-5 rounded-2xl border border-emerald-100 flex items-center gap-4 shadow-none">
-                        <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 border border-emerald-200">
-                            <Trophy size={18} />
-                        </div>
-                        <div>
-                            <p className="text-3xs font-bold text-emerald-600 tracking-wider uppercase">Performance</p>
-                            <p className="text-xs font-bold text-slate-700 mt-0.5">Above average class score</p>
+                                <div className="flex items-center justify-between">
+                                    <span className="text-xs font-semibold text-slate-500 tracking-tight">Passing score</span>
+                                    <span className="text-xs font-bold text-slate-700">{selectedGrade.passingScore}%</span>
+                                </div>
+
+                                <div className="flex items-center justify-between">
+                                    <span className="text-xs font-semibold text-slate-500 tracking-tight">Attempts used</span>
+                                    <span className="text-xs font-bold text-slate-700">{selectedGrade.attempts} / {selectedGrade.maxAttempts}</span>
+                                </div>
+
+                                <div className="flex items-center justify-between">
+                                    <span className="text-xs font-semibold text-slate-500 tracking-tight">Taken on</span>
+                                    <div className="flex items-center gap-1.5 text-xs text-slate-700 font-bold">
+                                        <Calendar size={13} className="text-slate-400" />
+                                        {new Date(selectedGrade.date).toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' })}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
