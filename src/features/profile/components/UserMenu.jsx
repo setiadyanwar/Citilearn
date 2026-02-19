@@ -62,14 +62,14 @@ const UserMenu = ({ user, isDark }) => {
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        className={`absolute right-0 mt-2 w-56 rounded-xl border z-100 overflow-hidden ${isDark ? 'bg-slate-900 border-slate-800 shadow-2xl shadow-black/20' : 'bg-white border-gray-100 shadow-xl shadow-gray-200/50'}`}
+                        className={`absolute right-0 mt-2 w-56 rounded-xl border z-[150] overflow-hidden ${isDark ? 'bg-slate-900 border-slate-800 shadow-2xl shadow-black/20' : 'bg-white border-gray-100 shadow-xl shadow-gray-200/50'}`}
                     >
                         <div className="p-1.5 space-y-0.5">
                             <Link
                                 to="/profile"
                                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-200 ${isActive('/profile')
-                                        ? (isDark ? 'bg-citilearn-green/20 text-citilearn-green font-bold' : 'bg-citilearn-green/10 text-citilearn-green font-bold')
-                                        : (isDark ? 'text-gray-300 hover:bg-slate-800 hover:text-white font-medium' : 'text-gray-600 hover:bg-gray-50 hover:text-primary font-medium')
+                                    ? (isDark ? 'bg-citilearn-green/20 text-citilearn-green font-bold' : 'bg-citilearn-green/10 text-citilearn-green font-bold')
+                                    : (isDark ? 'text-gray-300 hover:bg-slate-800 hover:text-white font-medium' : 'text-gray-600 hover:bg-gray-50 hover:text-primary font-medium')
                                     }`}
                             >
                                 <User size={18} className={isActive('/profile') ? 'text-citilearn-green' : isDark ? 'text-gray-400' : 'text-gray-400'} />
@@ -81,8 +81,8 @@ const UserMenu = ({ user, isDark }) => {
                             <Link
                                 to="/admin"
                                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-200 ${isActive('/admin')
-                                        ? (isDark ? 'bg-citilearn-green/20 text-citilearn-green font-bold' : 'bg-citilearn-green/10 text-citilearn-green font-bold')
-                                        : (isDark ? 'text-gray-300 hover:bg-slate-800 hover:text-white font-medium' : 'text-gray-600 hover:bg-gray-50 hover:text-primary font-medium')
+                                    ? (isDark ? 'bg-citilearn-green/20 text-citilearn-green font-bold' : 'bg-citilearn-green/10 text-citilearn-green font-bold')
+                                    : (isDark ? 'text-gray-300 hover:bg-slate-800 hover:text-white font-medium' : 'text-gray-600 hover:bg-gray-50 hover:text-primary font-medium')
                                     }`}
                             >
                                 <UserCog size={18} className={isActive('/admin') ? 'text-citilearn-green' : isDark ? 'text-gray-400' : 'text-gray-400'} />

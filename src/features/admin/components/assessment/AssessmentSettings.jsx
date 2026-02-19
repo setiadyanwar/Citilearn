@@ -21,11 +21,6 @@ const AssessmentSettings = ({ data, onChange }) => {
             description: 'Randomize answer choices for each question',
         },
         {
-            key: 'allowReview',
-            label: 'Allow Review After Submit',
-            description: 'Learners can revisit their answers after submitting',
-        },
-        {
             key: 'requireCamera',
             label: 'Require Camera (Proctoring)',
             description: 'Activate webcam during the test session',

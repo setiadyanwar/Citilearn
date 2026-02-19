@@ -34,7 +34,7 @@ const Header = ({
     };
 
     return (
-        <header className={`h-16 border-b flex items-center justify-between px-3 md:px-8 sticky top-0 z-90 transition-colors duration-300 ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-100'}`}>
+        <header className={`h-16 border-b flex items-center justify-between px-3 md:px-8 sticky top-0 z-[140] transition-colors duration-300 ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-100'}`}>
             <div className="flex items-center gap-6 flex-1 min-w-0">
                 {!hideSidebarToggle && (
                     <button

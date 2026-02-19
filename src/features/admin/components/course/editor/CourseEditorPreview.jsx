@@ -1,6 +1,7 @@
 import React from 'react';
 import { Eye, Info } from 'lucide-react';
 import CourseCard from '@/features/dashboard/components/CourseCard';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 
 const CourseEditorPreview = ({ previewCourse }) => {
     return (
@@ -21,29 +22,29 @@ const CourseEditorPreview = ({ previewCourse }) => {
                     <CourseCard course={previewCourse} disabled={true} />
                 </div>
 
-                {/* Helper / Tips - Custom Blue */}
-                <div className="bg-slate-50/80 border border-slate-100 p-6 rounded-3xl shadow-none">
-                    <div className="flex items-start gap-4">
-                        <div className="p-2 bg-white border border-slate-100 rounded-xl text-primary">
-                            <Info size={20} />
-                        </div>
-                        <div className="space-y-3">
-                            <h4 className="font-bold text-slate-900 text-sm leading-none">
-                                Course Editor Tips
-                            </h4>
-                            <ul className="text-xs text-slate-500 space-y-2.5 list-none leading-relaxed font-medium">
-                                <li className="flex gap-2">
-                                    <span className="text-primary">•</span>
-                                    <span><strong>Thumbnail:</strong> Use 16:9 high-resolution images for professional look.</span>
-                                </li>
-                                <li className="flex gap-2">
-                                    <span className="text-primary">•</span>
-                                    <span><strong>Title:</strong> Keep it concise and action-oriented for better engagement.</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                {/* Helper / Tips - Using shared Alert component with info variant */}
+                <Alert variant="info" className="p-6 rounded-3xl shadow-none">
+                    <Info className="h-5 w-5" />
+                    <AlertTitle className="font-bold text-blue-950 text-sm mb-3">
+                        Course Editor Tips
+                    </AlertTitle>
+                    <AlertDescription>
+                        <ul className="text-xs text-blue-900/70 space-y-2.5 list-none leading-relaxed">
+                            <li className="flex gap-2">
+                                <span className="text-blue-600 font-bold">•</span>
+                                <span className="font-medium">
+                                    <span className="text-blue-950 font-semibold">Thumbnail:</span> Use 16:9 high-resolution images for professional look.
+                                </span>
+                            </li>
+                            <li className="flex gap-2">
+                                <span className="text-blue-600 font-bold">•</span>
+                                <span className="font-medium">
+                                    <span className="text-blue-950 font-semibold">Title:</span> Keep it concise and action-oriented for better engagement.
+                                </span>
+                            </li>
+                        </ul>
+                    </AlertDescription>
+                </Alert>
             </div>
         </div>
     );

@@ -112,7 +112,7 @@ const AssessmentManager = () => {
         switch (assessmentType) {
             case 'pre-test': return 'Pre-Test';
             case 'post-test': return 'Post-Test';
-            case 'quiz': return 'Module Quiz';
+            case 'quiz': return 'Assessment Quiz';
             default: return 'Assessment';
         }
     };
@@ -144,7 +144,7 @@ const AssessmentManager = () => {
     return (
         <AdminPageShell>
             <ManagementHeader
-                title={`${getAssessmentTitle()} Settings`}
+                title={getAssessmentTitle()}
                 description="Configure assessment rules and manage questions"
             >
                 <div className="flex items-center gap-3">

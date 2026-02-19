@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 import UserProfile from '@/components/common/UserProfile';
+import Tabs from '@/components/common/Tabs';
 
 const LearnersTab = ({ courseId }) => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -98,36 +99,21 @@ const LearnersTab = ({ courseId }) => {
             <div className="lg:col-span-7 space-y-8">
                 <div>
                     <h3 className="text-xl font-bold text-foreground leading-none mb-2">Add Learners</h3>
-                    <p className="text-sm text-muted-foreground font-medium">Select multiple users, departments, or roles and assign them to this course at once.</p>
+                    <p className="text-sm text-muted-foreground">Select multiple users, departments, or roles and assign them to this course at once.</p>
                 </div>
 
                 <div className="space-y-6">
                     {/* Tabs Selection and Bulk Action */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div className="flex gap-1 p-1 bg-slate-100/50 dark:bg-slate-800/50 rounded-xl w-fit border border-slate-200/50 dark:border-slate-700/50">
-                            {[
+                        <Tabs
+                            tabs={[
                                 { id: 'individual', label: 'Users', icon: UserCheck },
                                 { id: 'department', label: 'Departments', icon: Building },
                                 { id: 'role', label: 'Roles', icon: Users }
-                            ].map(tab => (
-                                <button
-                                    key={tab.id}
-                                    onClick={() => {
-                                        setAssignmentType(tab.id);
-                                        setSelectedIds([]);
-                                    }}
-                                    className={cn(
-                                        "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all",
-                                        assignmentType === tab.id
-                                            ? "bg-white dark:bg-slate-900 text-foreground ring-1 ring-slate-200/50 dark:ring-white/10"
-                                            : "text-muted-foreground hover:text-foreground hover:bg-white/50 dark:hover:bg-slate-800"
-                                    )}
-                                >
-                                    <tab.icon size={16} />
-                                    {tab.label}
-                                </button>
-                            ))}
-                        </div>
+                            ]}
+                            activeTab={assignmentType}
+                            onTabChange={setAssignmentType}
+                        />
 
                         {selectedIds.length > 0 && (
                             <Button
@@ -183,8 +169,12 @@ const LearnersTab = ({ courseId }) => {
                                         className="shrink-0"
                                     />
                                     <div className="flex-1 min-w-0">
-                                        <h4 className="font-bold text-foreground text-base truncate">{user.name}</h4>
-                                        <p className="text-sm font-bold text-muted-foreground truncate">{user.role} {user.department}</p>
+                                        <h4 className="font-semibold text-foreground text-base truncate">{user.name}</h4>
+                                        <p className="text-sm truncate">
+                                            <span className="text-secondary font-medium">{user.role}</span>
+                                            <span className="mx-1.5 text-tertiary">•</span>
+                                            <span className="text-tertiary">{user.department}</span>
+                                        </p>
                                     </div>
                                     {isAssigned(user.id, 'individual') && (
                                         <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-lg text-3xs font-bold uppercase tracking-widest border border-emerald-100 dark:border-emerald-500/20">
@@ -222,8 +212,8 @@ const LearnersTab = ({ courseId }) => {
                                         <Building size={20} />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <h4 className="font-bold text-foreground text-base truncate">{dept.name}</h4>
-                                        <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground truncate">{dept.userCount} Users in this department</p>
+                                        <h4 className="font-semibold text-foreground text-base truncate">{dept.name}</h4>
+                                        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground truncate">{dept.userCount} Users in this department</p>
                                     </div>
                                     {isAssigned(dept.id, 'department') && (
                                         <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-lg text-3xs font-bold uppercase tracking-widest border border-emerald-100 dark:border-emerald-500/20">
@@ -262,8 +252,8 @@ const LearnersTab = ({ courseId }) => {
                                         <Users size={20} />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <h4 className="font-bold text-foreground text-base truncate">{role.name}</h4>
-                                        <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground truncate">{role.userCount} Users with this role</p>
+                                        <h4 className="font-semibold text-foreground text-base truncate">{role.name}</h4>
+                                        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground truncate">{role.userCount} Users with this role</p>
                                     </div>
                                     {isAssigned(role.id, 'role') && (
                                         <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-lg text-3xs font-bold uppercase tracking-widest border border-emerald-100 dark:border-emerald-500/20">
@@ -282,7 +272,7 @@ const LearnersTab = ({ courseId }) => {
             <div className="lg:col-span-5 space-y-8">
                 <div>
                     <h3 className="text-xl font-bold text-foreground leading-none mb-2">Current Access</h3>
-                    <p className="text-sm text-muted-foreground font-medium">Manage who currently has access to this course.</p>
+                    <p className="text-sm text-muted-foreground">Manage who currently has access to this course.</p>
                 </div>
 
                 <div className="space-y-6">
@@ -295,7 +285,7 @@ const LearnersTab = ({ courseId }) => {
                                 <div className="text-2xl font-bold text-foreground leading-none">
                                     {assignments.reduce((sum, a) => sum + a.userCount, 0)}
                                 </div>
-                                <div className="text-3xs font-bold uppercase tracking-widest text-muted-foreground mt-1.5">Total Learners</div>
+                                <div className="text-3xs font-medium uppercase tracking-widest text-muted-foreground mt-1.5">Total Learners</div>
                             </div>
                         </div>
                     </div>
@@ -316,8 +306,8 @@ const LearnersTab = ({ courseId }) => {
                                                 <Icon size={18} />
                                             </div>
                                             <div className="min-w-0">
-                                                <h4 className="font-bold text-foreground text-sm truncate">{assignment.name}</h4>
-                                                <p className="text-3xs text-muted-foreground font-bold uppercase tracking-wider truncate">{assignment.description}</p>
+                                                <h4 className="font-semibold text-foreground text-sm truncate">{assignment.name}</h4>
+                                                <p className="text-3xs text-muted-foreground font-medium uppercase tracking-wider truncate">{assignment.description}</p>
                                             </div>
                                         </div>
                                         <Button
@@ -334,7 +324,7 @@ const LearnersTab = ({ courseId }) => {
                         ) : (
                             <div className="text-center py-16 border-2 border-dashed border-slate-200 dark:border-slate-800/50 rounded-3xl bg-slate-50/50 dark:bg-slate-900/20">
                                 <Users className="h-10 w-10 text-slate-300 dark:text-slate-700 mx-auto mb-4" />
-                                <p className="text-sm text-muted-foreground font-bold uppercase tracking-widest">No learners assigned yet</p>
+                                <p className="text-sm text-muted-foreground font-medium uppercase tracking-widest">No learners assigned yet</p>
                             </div>
                         )}
                     </div>
@@ -342,7 +332,7 @@ const LearnersTab = ({ courseId }) => {
                     {assignments.length > 0 && (
                         <div className="p-4 bg-emerald-500/5 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl border border-emerald-500/10 flex items-center gap-3">
                             <CheckCircle2 size={18} />
-                            <span className="text-3xs font-bold uppercase tracking-wide">Course visibility active</span>
+                            <span className="text-3xs font-medium uppercase tracking-wide">Course visibility active</span>
                         </div>
                     )}
                 </div>
