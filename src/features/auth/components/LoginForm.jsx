@@ -58,7 +58,6 @@ const LoginForm = () => {
         // 5. Success State
         setSuccess("A secured login link has been sent to your email. Please check your inbox.");
         setIsLoading(false);
-        console.log("Login link sent to:", email);
     };
 
     return (

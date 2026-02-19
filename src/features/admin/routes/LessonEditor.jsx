@@ -53,7 +53,7 @@ const LessonEditor = () => {
     }, [courseId, moduleId, lessonId, isNew]);
 
     const handleSave = () => {
-        console.log('Saving lesson:', lessonData);
+        // TODO: Replace with API call when BE is ready
         navigate(`/admin/course/${courseId}/edit?tab=curriculum`);
     };
 

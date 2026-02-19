@@ -10,6 +10,7 @@ import LessonContent from '@/features/learning/components/LessonContent';
 import LessonTabs from '@/features/learning/components/LessonTabs';
 import LessonQuiz from '@/features/learning/components/LessonQuiz';
 import QuizLanding from '@/features/learning/components/QuizLanding';
+import { STORAGE_KEYS } from '@/constants/storageKeys';
 
 const CourseLearning = ({ setGlobalPip }) => {
     const { id } = useParams();
@@ -43,7 +44,7 @@ const CourseLearning = ({ setGlobalPip }) => {
             setCourse(found);
 
             // Load completed lessons from localStorage
-            const savedCompleted = localStorage.getItem(`course_progress_${id}`);
+            const savedCompleted = localStorage.getItem(STORAGE_KEYS.courseProgress(id));
             if (savedCompleted) {
                 setCompletedLessons(new Set(JSON.parse(savedCompleted)));
             } else if (found && found.progress > 0) {
@@ -76,7 +77,7 @@ const CourseLearning = ({ setGlobalPip }) => {
     // Save progress whenever completedLessons changes
     useEffect(() => {
         if (course && course.id) {
-            localStorage.setItem(`course_progress_${course.id}`, JSON.stringify([...completedLessons]));
+            localStorage.setItem(STORAGE_KEYS.courseProgress(course.id), JSON.stringify([...completedLessons]));
         }
     }, [completedLessons, course]);
 
@@ -135,32 +136,32 @@ const CourseLearning = ({ setGlobalPip }) => {
             setShowResult(false);
             setSelectedOption(null);
         } else {
-            // End of quiz
-            const finalScore = score + (isCorrect ? 0 : 0); // score is already updated in submit
+            // End of quiz — score state is async so we compute final score directly here
+            const finalScore = score + (isCorrect ? 1 : 0);
             const totalQuestions = quizList.length;
-            const percentage = Math.round((score / totalQuestions) * 100);
+            const percentage = Math.round((finalScore / totalQuestions) * 100);
 
             setQuizFinalResult({
-                score,
+                score: finalScore,
                 total: totalQuestions,
                 percentage
             });
 
-            // Save history
+            // Save history to localStorage using centralized key
             const passed = percentage >= (activeLesson.passingGrade || 80);
             const newHistoryItem = {
                 date: new Date().toISOString(),
                 score: percentage,
-                passed: passed
+                passed,
             };
-            const storageKey = `quiz_history_${activeLesson.id}`;
+            const storageKey = STORAGE_KEYS.quizHistory(activeLesson.id);
             const existing = localStorage.getItem(storageKey);
             const history = existing ? JSON.parse(existing) : [];
             history.push(newHistoryItem);
             localStorage.setItem(storageKey, JSON.stringify(history));
 
-            // If it's a regular lesson with one quiz, or if they finished final quiz
-            if (activeLesson.type !== 'quiz' || percentage >= 70) { // arbitrary pass mark for final
+            // Mark lesson as complete
+            if (activeLesson.type !== 'quiz' || percentage >= 70) {
                 setCompletedLessons(prev => {
                     const newSet = new Set(prev);
                     newSet.add(activeLesson.id);

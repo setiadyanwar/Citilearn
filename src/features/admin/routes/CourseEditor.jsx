@@ -89,8 +89,8 @@ const CourseEditor = () => {
                 status={courseData.status}
                 statusVariant={courseData.status === 'Published' ? 'published' : 'draft'}
                 backUrl="/admin/courses"
-                onSave={() => console.log("Saving draft...")}
-                onPublish={() => console.log("Publishing...")}
+                onSave={() => { /* TODO: wire to save draft API */ }}
+                onPublish={() => { /* TODO: wire to publish API */ }}
             />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start relative mt-8">

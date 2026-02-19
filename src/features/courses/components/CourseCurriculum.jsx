@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Play, FileText, CheckCircle2 } from 'lucide-react';
+import { STORAGE_KEYS } from '@/constants/storageKeys';
 
 const CourseCurriculum = ({ course }) => {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const CourseCurriculum = ({ course }) => {
             <div className="space-y-6">
                 {(() => {
                     // Load completed lessons from localStorage
-                    const savedCompleted = localStorage.getItem(`course_progress_${course.id}`);
+                    const savedCompleted = localStorage.getItem(STORAGE_KEYS.courseProgress(course.id));
                     const completedSet = savedCompleted ? new Set(JSON.parse(savedCompleted)) : new Set();
                     let lastIncompleteFound = false;
 

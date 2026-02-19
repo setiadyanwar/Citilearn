@@ -7,6 +7,7 @@ import Badge from '@/components/common/Badge';
 import ProgressBar from '@/components/common/ProgressBar';
 import BookmarkButton from '@/components/common/BookmarkButton';
 import { COURSE_STATUS } from '@/constants/course';
+import { STORAGE_KEYS } from '@/constants/storageKeys';
 import { cn } from '@/lib/utils';
 
 const CourseCard = ({ course, compact = false, variant = 'default', disabled = false }) => {
@@ -17,7 +18,7 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
 
     // Calculate dynamic progress from localStorage
     useEffect(() => {
-        const savedCompleted = localStorage.getItem(`course_progress_${course.id}`);
+        const savedCompleted = localStorage.getItem(STORAGE_KEYS.courseProgress(course.id));
         if (savedCompleted) {
             const completedIds = JSON.parse(savedCompleted);
             const totalLessons = course.modules?.reduce((acc, m) => acc + (m.lessons?.length || 0), 0) || course.modulesCount || 1;

@@ -26,14 +26,19 @@ const CourseManagement = () => {
             // Simulate network latency
             await new Promise(resolve => setTimeout(resolve, 800));
 
-            const loadedCourses = data.courses.map(course => ({
-                ...course,
-                modules: course.modules ? course.modules.length : 0,
-                enrolled: course.enrolled || Math.floor(Math.random() * 200) + 20,
-                assignedUsers: course.assignedUsers || Math.floor(Math.random() * 50),
-                lastUpdated: "2 days ago",
-                status: ['Published', 'Draft'][Math.floor(Math.random() * 2)]
-            }));
+            const loadedCourses = data.courses.map(course => {
+                // Use course index as a deterministic seed instead of Math.random()
+                // to prevent values from changing on every render/refresh
+                const idNum = parseInt(course.id) || course.id.charCodeAt(0);
+                return {
+                    ...course,
+                    modules: course.modules ? course.modules.length : 0,
+                    enrolled: course.enrolled ?? (50 + (idNum * 17) % 150),
+                    assignedUsers: course.assignedUsers ?? (idNum * 7) % 50,
+                    lastUpdated: "2 days ago",
+                    status: course.status ?? (idNum % 2 === 0 ? 'Published' : 'Draft'),
+                };
+            });
             setCourses(loadedCourses);
             setIsLoading(false);
         };

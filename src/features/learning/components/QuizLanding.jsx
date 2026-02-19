@@ -5,6 +5,7 @@ import { Play, RotateCcw } from 'lucide-react';
 import QuizStats from './quiz/QuizStats';
 import QuizRules from './quiz/QuizRules';
 import QuizHistory from './quiz/QuizHistory';
+import { STORAGE_KEYS } from '@/constants/storageKeys';
 
 const QuizLanding = ({ activeLesson, onNextLesson }) => {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ const QuizLanding = ({ activeLesson, onNextLesson }) => {
 
     useEffect(() => {
         // Load history from localStorage
-        const storageKey = `quiz_history_${activeLesson.id}`;
+        const storageKey = STORAGE_KEYS.quizHistory(activeLesson.id);
         const storedHistory = localStorage.getItem(storageKey);
 
         // Also check if we have some dummy history for demonstration if empty

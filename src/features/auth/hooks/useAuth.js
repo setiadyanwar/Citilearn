@@ -3,7 +3,7 @@
  * Manages authentication state and operations
  */
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import authService from '../api/authService';
 
 import budi_pratama from '@/assets/budi_pratama.png';
@@ -23,9 +23,7 @@ export const useAuth = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(authService.isAuthenticated() || true); // Default to true for dev
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        // Initial check already done in useState, but we can re-verify if needed
-    }, []);
+
 
     const login = async (credentials) => {
         try {

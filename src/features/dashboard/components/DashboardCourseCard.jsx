@@ -3,6 +3,7 @@ import BookmarkButton from '@/components/common/BookmarkButton';
 import Badge from '@/components/common/Badge';
 import { Clock, BookOpen } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { STORAGE_KEYS } from '@/constants/storageKeys';
 
 const DashboardCourseCard = ({ course, variant = 'resume' }) => {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ const DashboardCourseCard = ({ course, variant = 'resume' }) => {
 
     // Calculate dynamic progress from localStorage
     React.useEffect(() => {
-        const savedCompleted = localStorage.getItem(`course_progress_${course.id}`);
+        const savedCompleted = localStorage.getItem(STORAGE_KEYS.courseProgress(course.id));
         if (savedCompleted) {
             const completedIds = JSON.parse(savedCompleted);
             const totalLessons = course.modules?.reduce((acc, m) => acc + (m.lessons?.length || 0), 0) || course.modulesCount || 1;
