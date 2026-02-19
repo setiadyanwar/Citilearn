@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import data from '@/data.json';
@@ -29,7 +29,8 @@ const AssessmentManager = () => {
         showResults: true,
         shuffleQuestions: false,
         shuffleAnswers: true,
-        allowReview: true
+        allowReview: true,
+        requireCamera: false,
     });
 
     const [questions, setQuestions] = useState([]);
@@ -123,18 +124,13 @@ const AssessmentManager = () => {
                 title={`${getAssessmentTitle()} Settings`}
                 description="Configure assessment rules and manage questions"
             >
-                <Link to={`/admin/course/${courseId}/edit?tab=curriculum`}>
-                    <Button variant="ghost" size="icon" className="h-10 w-10 text-slate-400 hover:text-slate-900 rounded-xl shrink-0">
-                        <ArrowLeft size={20} />
-                    </Button>
-                </Link>
-                <div className="flex items-center gap-3 ml-auto">
+                <div className="flex items-center gap-3">
                     <Button
                         asChild
                         variant="secondary"
                         className="rounded-xl font-bold h-11 px-5 shadow-none"
                     >
-                        <Link to={`/admin/course/${courseId}/assessment/${assessmentType}/question/new${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`}>
+                        <Link to={`/admin/course/${courseId}/test/${assessmentType}/question/new${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`}>
                             <Plus size={16} className="mr-2" />
                             Add Question
                         </Link>
@@ -143,7 +139,7 @@ const AssessmentManager = () => {
                         variant="default"
                         className="rounded-xl font-bold h-11 px-6 shadow-none"
                     >
-                        Save Settings
+                        Save Test
                     </Button>
                 </div>
             </ManagementHeader>

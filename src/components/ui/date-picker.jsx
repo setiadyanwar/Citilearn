@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/popover"
 
 export function DatePicker({ date, setDate, placeholder = "Pick a date", className, disabled }) {
+    const parsedDate = date ? new Date(date) : undefined;
+
     return (
         <Popover>
             <PopoverTrigger asChild>
@@ -22,18 +24,19 @@ export function DatePicker({ date, setDate, placeholder = "Pick a date", classNa
                     disabled={disabled}
                     className={cn(
                         "w-full justify-start text-left font-normal h-12 rounded-xl border-slate-200",
-                        !date && "text-muted-foreground",
+                        !parsedDate && "text-muted-foreground",
                         className
                     )}
                 >
                     <CalendarIcon className="mr-2 h-4 w-4" />
-                    {date ? format(date, "PPP") : <span>{placeholder}</span>}
+                    {parsedDate ? format(parsedDate, "dd/MM/yyyy") : <span>{placeholder}</span>}
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0 border-slate-100 shadow-sm" align="start">
                 <Calendar
                     mode="single"
-                    selected={date}
+                    selected={parsedDate}
+                    defaultMonth={parsedDate}
                     onSelect={setDate}
                     initialFocus
                 />

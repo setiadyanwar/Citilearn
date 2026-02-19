@@ -4,11 +4,18 @@
             "id": "c1",
             "title": "Aviation Safety Management System",
             "description": "Comprehensive guide to safety protocols and hazard identification in aviation operations. Learn how to maintain the highest standards of safety for Citilink fleet.",
+            "category": "Safety",
+            "type": "Mandatory",
             "duration": "8h 45m",
-            "status": "Not Started",
+            "status": "Published",
             "availableAt": "2026-03-20T09:00:00",
             "progress": 0,
             "thumbnail": "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80&w=800",
+            "learningObjectives": [
+                "Implement hazard identification and risk assessment (HIRA) in airport operations.",
+                "Develop robust aviation safety policies aligned with Citilink standards.",
+                "Execute reactive and proactive safety monitoring methods and safety assurance."
+            ],
             "modules": [
                 {
                     "id": "m-pre",

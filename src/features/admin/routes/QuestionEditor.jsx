@@ -129,10 +129,10 @@ const QuestionEditor = () => {
     };
 
     const handleSave = () => {
-        navigate(`/admin/course/${courseId}/assessment/${assessmentType}${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`);
+        navigate(`/admin/course/${courseId}/test/${assessmentType}${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`);
     };
 
-    const backUrl = `/admin/course/${courseId}/assessment/${assessmentType}${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`;
+    const backUrl = `/admin/course/${courseId}/test/${assessmentType}${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`;
 
     return (
         <AdminPageShell>

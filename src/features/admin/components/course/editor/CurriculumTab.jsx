@@ -75,6 +75,7 @@ const CurriculumTab = ({ courseId }) => {
     const [expandedModules, setExpandedModules] = useState(new Set(courseId ? [1] : []));
     const [editingModule, setEditingModule] = useState(null);
     const [showModuleModal, setShowModuleModal] = useState(false);
+    const [testPickerModuleId, setTestPickerModuleId] = useState(null); // which module's Test picker is open
 
     // Sample data matching user request
     const [modules, setModules] = useState(courseId ? [
@@ -300,7 +301,7 @@ const CurriculumTab = ({ courseId }) => {
                                                     <div className="flex items-center gap-2 opacity-100 sm:opacity-0 group-hover/lesson:opacity-100 transition-opacity">
                                                         <Link
                                                             to={['quiz', 'pre-test', 'post-test'].includes(lesson.type)
-                                                                ? `/admin/course/${courseId}/assessment/${lesson.type}?moduleId=${module.id}&lessonId=${lesson.id}`
+                                                                ? `/admin/course/${courseId}/test/${lesson.type}?moduleId=${module.id}&lessonId=${lesson.id}`
                                                                 : `/admin/course/${courseId}/module/${module.id}/lesson/${lesson.id}`
                                                             }
                                                             className="text-3xs md:text-xs font-bold text-secondary hover:text-primary px-2 md:px-3 py-1 md:py-1.5 hover:bg-gray-50 rounded-lg transition-colors border border-transparent hover:border-gray-100"
@@ -326,17 +327,49 @@ const CurriculumTab = ({ courseId }) => {
                                                     <Plus size={12} /> Lesson
                                                 </Link>
                                                 <Link
-                                                    to={`/admin/course/${courseId}/assessment/quiz?moduleId=${module.id}`}
+                                                    to={`/admin/course/${courseId}/test/quiz?moduleId=${module.id}`}
                                                     className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-purple-600 bg-white border border-gray-200 hover:border-purple-200 px-3 py-1.5 rounded-lg transition-all"
                                                 >
                                                     <Plus size={12} /> Quiz
                                                 </Link>
-                                                <Link
-                                                    to={`/admin/course/${courseId}/assessment/post-test?moduleId=${module.id}`}
-                                                    className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-indigo-600 bg-white border border-gray-200 hover:border-indigo-200 px-3 py-1.5 rounded-lg transition-all"
-                                                >
-                                                    <Plus size={12} /> Test
-                                                </Link>
+                                                <div className="relative">
+                                                    <button
+                                                        onClick={(e) => { e.stopPropagation(); setTestPickerModuleId(testPickerModuleId === module.id ? null : module.id); }}
+                                                        className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-indigo-600 bg-white border border-gray-200 hover:border-indigo-200 px-3 py-1.5 rounded-lg transition-all"
+                                                    >
+                                                        <Plus size={12} /> Test
+                                                    </button>
+
+                                                    {/* Test type picker dropdown */}
+                                                    {testPickerModuleId === module.id && (
+                                                        <>
+                                                            {/* Backdrop to close on outside click */}
+                                                            <div
+                                                                className="fixed inset-0 z-10"
+                                                                onClick={() => setTestPickerModuleId(null)}
+                                                            />
+                                                            <div className="absolute bottom-full left-0 mb-1.5 z-20 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden min-w-[140px] animate-in fade-in slide-in-from-bottom-1 duration-150">
+                                                                <Link
+                                                                    to={`/admin/course/${courseId}/test/pre-test?moduleId=${module.id}`}
+                                                                    onClick={() => setTestPickerModuleId(null)}
+                                                                    className="flex items-center gap-2.5 px-4 py-2.5 text-xs font-bold text-secondary hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
+                                                                >
+                                                                    <BookOpen size={13} className="text-indigo-500" />
+                                                                    Pre-test
+                                                                </Link>
+                                                                <div className="h-px bg-gray-100 mx-2" />
+                                                                <Link
+                                                                    to={`/admin/course/${courseId}/test/post-test?moduleId=${module.id}`}
+                                                                    onClick={() => setTestPickerModuleId(null)}
+                                                                    className="flex items-center gap-2.5 px-4 py-2.5 text-xs font-bold text-secondary hover:text-green-600 hover:bg-green-50 transition-colors"
+                                                                >
+                                                                    <CheckSquare size={13} className="text-green-500" />
+                                                                    Post-test
+                                                                </Link>
+                                                            </div>
+                                                        </>
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

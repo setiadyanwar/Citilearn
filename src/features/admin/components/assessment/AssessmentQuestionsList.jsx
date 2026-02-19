@@ -69,7 +69,7 @@ const AssessmentQuestionsList = ({
                                 </div>
                                 <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <Link
-                                        to={`/admin/course/${courseId}/assessment/${assessmentType}/question/${question.id}${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`}
+                                        to={`/admin/course/${courseId}/test/${assessmentType}/question/${question.id}${moduleId ? `?moduleId=${moduleId}` : ''}${lessonId ? `${moduleId ? '&' : '?'}lessonId=${lessonId}` : ''}`}
                                         className="p-2 text-secondary hover:text-primary hover:bg-white rounded-lg border border-transparent hover:border-gray-200 transition-all"
                                     >
                                         <Edit size={16} />
@@ -93,7 +93,7 @@ const AssessmentQuestionsList = ({
                         asChild
                         variant="secondary"
                     >
-                        <Link to={`/admin/course/${courseId}/assessment/${assessmentType}/question/new`}>
+                        <Link to={`/admin/course/${courseId}/test/${assessmentType}/question/new`}>
                             <Plus size={16} />
                             Add Question
                         </Link>

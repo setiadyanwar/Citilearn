@@ -63,14 +63,44 @@ const AdminLayout = () => {
         const labels = {
             'admin': 'Admin',
             'courses': 'Course Management',
-            'assessment': 'Assessment',
+            'assessment': 'Assessment & Grading',
             'cms': 'CMS CompanyHub',
             'users': 'Users Hub',
             'create': 'Create New',
             'edit': 'Edit',
-            'module': 'Module',
-            'lesson': 'Lesson'
+            'test': 'Test',
+            'new': 'New',
         };
+
+        // Segments that are structural prefixes — no standalone page, skip from breadcrumb
+        const skipSegments = new Set(['course', 'module', 'lesson', 'question']);
+
+        const crumbs = [];
+        for (let i = 0; i < parts.length; i++) {
+            const part = parts[i];
+
+            // Skip IDs (numeric) and very long slugs (e.g. UUIDs)
+            if (!isNaN(part) || part.length > 20) continue;
+
+            // Skip structural-only segments (they have no routable page on their own)
+            if (skipSegments.has(part)) continue;
+
+            const label = labels[part] || part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' ');
+
+            // Context-aware: 'test' should go back to the Course Editor curriculum tab
+            let to;
+            if (part === 'test') {
+                const courseIdx = parts.indexOf('course');
+                const courseId = courseIdx !== -1 ? parts[courseIdx + 1] : null;
+                to = courseId ? `/admin/course/${courseId}/edit?tab=curriculum` : '/admin';
+            } else if (part === 'edit') {
+                to = '/' + parts.slice(0, i + 1).join('/') + '?tab=curriculum';
+            } else {
+                to = '/' + parts.slice(0, i + 1).join('/');
+            }
+
+            crumbs.push({ label, to });
+        }
 
         return (
             <div className={`flex items-center gap-2 text-sm overflow-hidden whitespace-nowrap ${isDark ? 'text-slate-400' : 'text-secondary'}`}>
@@ -78,21 +108,16 @@ const AdminLayout = () => {
                     <Home size={14} />
                     <span className="hidden sm:inline">Home</span>
                 </Link>
-                {parts.map((part, index) => {
-                    const isLast = index === parts.length - 1;
-                    const label = labels[part] || part.charAt(0).toUpperCase() + part.slice(1);
-                    const to = '/' + parts.slice(0, index + 1).join('/');
-
-                    if (part.length > 20 || !isNaN(part)) return null;
-
+                {crumbs.map((crumb, index) => {
+                    const isLast = index === crumbs.length - 1;
                     return (
                         <React.Fragment key={index}>
                             <ChevronRight size={14} className="text-gray-400 shrink-0" />
                             {isLast ? (
-                                <span className="font-bold text-citilearn-green truncate max-w-37.5">{label}</span>
+                                <span className="font-bold text-citilearn-green truncate max-w-37.5">{crumb.label}</span>
                             ) : (
-                                <Link to={to} className="hover:text-primary transition-colors truncate max-w-25">
-                                    {label}
+                                <Link to={crumb.to} className="hover:text-primary transition-colors truncate max-w-25">
+                                    {crumb.label}
                                 </Link>
                             )}
                         </React.Fragment>

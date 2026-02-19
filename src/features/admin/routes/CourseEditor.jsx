@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
+import data from '@/data.json';
 import { Settings, BookOpen, Users, Clock } from 'lucide-react';
 import AdminHeader from '@/features/admin/components/layout/AdminHeader';
 import CategoryPicker from '@/features/admin/components/course/editor/CategoryPicker';
@@ -22,27 +23,39 @@ import CourseEditorPreview from '../components/course/editor/CourseEditorPreview
 
 const CourseEditor = () => {
     const { id } = useParams();
+    const [searchParams] = useSearchParams();
     const isEditing = !!id;
-    const [activeTab, setActiveTab] = useState('basic');
+
+    // FIND EXISTING COURSE
+    const existingCourse = isEditing ? data.courses.find(c => c.id === id) : null;
+
+    const validTabs = ['basic', 'curriculum', 'learners'];
+    const tabFromUrl = searchParams.get('tab');
+    const [activeTab, setActiveTab] = useState(
+        validTabs.includes(tabFromUrl) ? tabFromUrl : 'basic'
+    );
     const [categories, setCategories] = useState(["Safety", "Technical", "Soft Skill", "Leadership", "Service"]);
 
+    // Handle tab change from URL manually if needed
+    useEffect(() => {
+        if (validTabs.includes(tabFromUrl)) {
+            setActiveTab(tabFromUrl);
+        }
+    }, [tabFromUrl]);
+
     const [courseData, setCourseData] = useState({
-        title: isEditing ? "Safety Procedures V2" : "",
-        description: isEditing ? "Comprehensive guide to workplace safety." : "",
-        category: isEditing ? "Safety" : "",
-        type: isEditing ? "Mandatory" : "",
-        thumbnail: isEditing ? "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" : "",
-        status: "Draft",
-        startDate: undefined,
+        title: existingCourse?.title || "",
+        description: existingCourse?.description || "",
+        category: existingCourse?.category || "",
+        type: existingCourse?.type || "Mandatory",
+        thumbnail: existingCourse?.thumbnail || "",
+        status: existingCourse?.status || "Draft",
+        startDate: existingCourse?.availableAt ? new Date(existingCourse.availableAt) : undefined,
         endDate: undefined,
         isLifetime: false,
-        duration: isEditing ? "2h 15m" : "0h 0m",
-        modulesCount: isEditing ? 5 : 0,
-        learningObjectives: isEditing ? [
-            "Implement hazard identification and risk assessment (HIRA) in airport operations.",
-            "Develop robust aviation safety policies aligned with Citilink standards.",
-            "Execute reactive and proactive safety monitoring methods and safety assurance."
-        ] : [],
+        duration: existingCourse?.duration || "0h 0m",
+        modulesCount: existingCourse?.modules?.length || 0,
+        learningObjectives: existingCourse?.learningObjectives || [],
     });
 
     // Preview Object (Reactive)
