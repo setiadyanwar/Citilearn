@@ -50,7 +50,7 @@ const StudentGradingRow = ({ group, isSelected, onSelect }) => {
                     />
                     <div className="min-w-0">
                         <p className="text-xs md:text-sm font-bold text-main leading-tight group-hover:text-primary transition-colors truncate max-w-[120px] md:max-w-none">{student.name}</p>
-                        <p className="text-[10px] text-tertiary mt-0.5 tracking-tight font-medium uppercase truncate">ID: {student.id}</p>
+                        <p className="text-3xs text-tertiary mt-0.5 font-medium">ID: {student.id}</p>
                     </div>
                 </div>
             </TableCell>
@@ -77,16 +77,16 @@ const StudentGradingRow = ({ group, isSelected, onSelect }) => {
                     )}>
                         {avgScore}%
                     </span>
-                    <span className="text-[10px] font-bold text-slate-300 mt-1 uppercase tracking-tighter">Avg</span>
+                    <span className="text-3xs font-bold text-slate-300 mt-1">Average</span>
                 </div>
             </TableCell>
 
             <TableCell className="py-4 text-center whitespace-nowrap">
                 <div className="flex items-center justify-center gap-2 md:gap-3">
-                    <div className="flex items-center gap-1 text-[10px] md:text-2xs font-bold text-citilearn-green">
+                    <div className="flex items-center gap-1 text-3xs md:text-2xs font-bold text-citilearn-green">
                         <CheckCircle2 size={13} strokeWidth={2.5} /> {passed}
                     </div>
-                    <div className="flex items-center gap-1 text-[10px] md:text-2xs font-bold text-red-500">
+                    <div className="flex items-center gap-1 text-3xs md:text-2xs font-bold text-red-500">
                         <XCircle size={13} strokeWidth={2.5} /> {failed}
                     </div>
                 </div>
@@ -96,7 +96,7 @@ const StudentGradingRow = ({ group, isSelected, onSelect }) => {
                 <Button
                     variant="link"
                     className={cn(
-                        "h-auto p-0 text-[11px] md:text-3xs font-bold",
+                        "h-auto p-0 text-3xs font-bold",
                         isSelected ? "text-primary" : "text-slate-400 group-hover:text-primary"
                     )}
                     onClick={() => onSelect(group)}
@@ -130,13 +130,13 @@ const CourseAccordionItem = ({ courseGroup, isExpanded, onToggle, onReview }) =>
                             {courseGroup.course.title}
                         </h4>
                         <div className="flex items-center gap-1.5 mt-1 overflow-hidden">
-                            <p className="text-[10px] text-tertiary font-medium shrink-0">
+                            <p className="text-3xs text-tertiary font-medium shrink-0">
                                 <span className="md:hidden">{courseGroup.items.length} Asm.</span>
                                 <span className="hidden md:inline">{courseGroup.items.length} Assessment{courseGroup.items.length > 1 ? 's' : ''}</span>
                             </p>
                             <span className="w-0.5 h-0.5 rounded-full bg-slate-300 shrink-0" />
-                            <p className="text-[10px] text-secondary font-semibold truncate uppercase tracking-tighter">
-                                {new Date(Math.max(...courseGroup.items.map(item => new Date(item.date)))).toLocaleDateString('id-ID', { day: '2-digit', month: 'short' })}
+                            <p className="text-3xs text-secondary font-semibold truncate">
+                                Finished: {new Date(Math.max(...courseGroup.items.map(item => new Date(item.date)))).toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' }).split('/').join(' ')}
                             </p>
                         </div>
                     </div>
@@ -175,8 +175,8 @@ const CourseAccordionItem = ({ courseGroup, isExpanded, onToggle, onReview }) =>
                                             <p className="text-xs font-bold text-main group-hover:text-primary transition-colors truncate">{attempt.assessment.title}</p>
                                             <div className="flex items-center gap-1.5 mt-1 overflow-hidden">
                                                 <TypeBadge type={attempt.assessment.type} />
-                                                <span className="text-[10px] text-tertiary font-medium tabular-nums truncate">
-                                                    {new Date(attempt.date).toLocaleDateString('id-ID', { day: '2-digit', month: 'short' })}
+                                                <span className="text-3xs text-tertiary font-medium tabular-nums truncate">
+                                                    {new Date(attempt.date).toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' }).split('/').join(' ')}
                                                 </span>
                                             </div>
                                         </div>
@@ -188,13 +188,13 @@ const CourseAccordionItem = ({ courseGroup, isExpanded, onToggle, onReview }) =>
                                                 )}>
                                                     {attempt.score}%
                                                 </p>
-                                                <p className="text-[10px] font-bold text-slate-300 mt-0.5 uppercase tracking-tighter">
-                                                    #{attempt.attempts}
+                                                <p className="text-3xs font-bold text-slate-300 mt-0.5">
+                                                    Attempt #{attempt.attempts}
                                                 </p>
                                             </div>
                                             <Button
                                                 variant="link"
-                                                className="h-auto p-0 text-[10px] font-bold text-primary hover:text-primary/80"
+                                                className="h-auto p-0 text-3xs font-bold text-primary hover:text-primary/80"
                                                 onClick={() => onReview(attempt)}
                                             >
                                                 Review
@@ -355,7 +355,7 @@ const StudentGradingTable = ({ studentGroups, onReview }) => {
                                     ))
                                 ) : (
                                     <div className="py-12 text-center">
-                                        <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">No programs found</p>
+                                        <p className="text-xs font-bold text-slate-400 tracking-wide">No programs found</p>
                                     </div>
                                 )}
                             </div>
@@ -365,15 +365,15 @@ const StudentGradingTable = ({ studentGroups, onReview }) => {
                                 <div className="grid grid-cols-3 gap-2">
                                     <div className="p-2.5 bg-white rounded-xl border border-slate-100 text-center">
                                         <p className="text-sm font-bold text-main leading-none">{selectedGroup.summary.totalAttempts}</p>
-                                        <p className="text-[10px] font-bold text-slate-400 mt-1.5 uppercase tracking-tighter">Total</p>
+                                        <p className="text-3xs font-bold text-slate-400 mt-1.5">Total</p>
                                     </div>
                                     <div className="p-2.5 bg-white rounded-xl border border-slate-100 text-center">
                                         <p className="text-sm font-bold text-citilearn-green leading-none">{selectedGroup.summary.passed}</p>
-                                        <p className="text-[10px] font-bold text-slate-400 mt-1.5 uppercase tracking-tighter">Pass</p>
+                                        <p className="text-3xs font-bold text-slate-400 mt-1.5">Passed</p>
                                     </div>
                                     <div className="p-2.5 bg-white rounded-xl border border-slate-100 text-center">
                                         <p className="text-sm font-bold text-red-500 leading-none">{selectedGroup.summary.failed}</p>
-                                        <p className="text-[10px] font-bold text-slate-400 mt-1.5 uppercase tracking-tighter">Fail</p>
+                                        <p className="text-3xs font-bold text-slate-400 mt-1.5">Failed</p>
                                     </div>
                                 </div>
                             </div>
