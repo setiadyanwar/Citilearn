@@ -43,7 +43,7 @@ const LessonListItem = ({
                 <div className="flex items-center justify-between gap-2">
                     <div className={`
                         font-bold leading-tight line-clamp-1 
-                        ${compact ? 'text-[11px]' : 'text-[12px]'}
+                        ${compact ? 'text-3xs' : 'text-2xs'}
                         ${isActive ? 'text-primary' : (isCompleted ? 'text-slate-700 dark:text-slate-300' : (isLocked ? 'text-gray-400 dark:text-slate-600' : 'text-gray-500 dark:text-slate-400'))}
                     `}>
                         {lesson.title}
@@ -53,7 +53,7 @@ const LessonListItem = ({
                     )}
                 </div>
                 {showDuration && (
-                    <div className="text-[9px] text-gray-400 dark:text-slate-500 font-medium mt-0.5">15 min</div>
+                    <div className="text-3xs text-gray-400 dark:text-slate-500 font-medium mt-0.5">15 min</div>
                 )}
             </div>
 

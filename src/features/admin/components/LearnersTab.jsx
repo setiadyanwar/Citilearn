@@ -10,7 +10,7 @@ const LearnersTab = ({ courseId }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [assignmentType, setAssignmentType] = useState('individual'); // individual, department, role
 
-    const [assignments, setAssignments] = useState([
+    const [assignments, setAssignments] = useState(courseId ? [
         {
             id: 1,
             type: 'department',
@@ -27,7 +27,7 @@ const LearnersTab = ({ courseId }) => {
             userCount: 28,
             icon: Users
         }
-    ]);
+    ] : []);
 
     const [availableUsers] = useState([
         { id: 101, name: 'Budi Pratama', email: 'budi@citilearn.com', role: 'Senior Instructor', department: 'Pilot' },

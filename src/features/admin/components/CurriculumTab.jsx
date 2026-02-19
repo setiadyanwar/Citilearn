@@ -72,12 +72,12 @@ const ModuleEditModal = ({ module, onSave, onClose }) => {
 };
 
 const CurriculumTab = ({ courseId }) => {
-    const [expandedModules, setExpandedModules] = useState(new Set([1]));
+    const [expandedModules, setExpandedModules] = useState(new Set(courseId ? [1] : []));
     const [editingModule, setEditingModule] = useState(null);
     const [showModuleModal, setShowModuleModal] = useState(false);
 
     // Sample data matching user request
-    const [modules, setModules] = useState([
+    const [modules, setModules] = useState(courseId ? [
         {
             id: 1,
             title: "Pre-Assessment",
@@ -139,7 +139,7 @@ const CurriculumTab = ({ courseId }) => {
                 }
             ]
         }
-    ]);
+    ] : []);
 
     const toggleModule = (moduleId) => {
         setExpandedModules(prev => {

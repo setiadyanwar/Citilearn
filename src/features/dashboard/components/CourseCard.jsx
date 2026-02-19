@@ -116,11 +116,18 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
             <div className={`flex flex-col h-full ${!isAvailable ? 'opacity-75' : ''}`}>
                 {/* Image Section */}
                 <div className={`relative ${compact ? 'h-40' : 'h-48'} bg-gray-100 dark:bg-slate-800 overflow-hidden`}>
-                    <img
-                        src={course.thumbnail}
-                        alt={course.title}
-                        className={`w-full h-full object-cover transition-transform duration-700 ${isAvailable ? 'group-hover:scale-105' : 'grayscale opacity-80'}`}
-                    />
+                    {course.thumbnail ? (
+                        <img
+                            src={course.thumbnail}
+                            alt={course.title}
+                            className={`w-full h-full object-cover transition-transform duration-700 ${isAvailable ? 'group-hover:scale-105' : 'grayscale opacity-80'}`}
+                        />
+                    ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center p-6 text-slate-300 bg-slate-50 dark:bg-slate-900/50">
+                            <BookOpen size={48} strokeWidth={1.5} />
+                            <p className="mt-2 text-xs font-bold uppercase tracking-widest text-slate-400">No Preview</p>
+                        </div>
+                    )}
 
                     {/* Status Badge (Top Left) */}
                     <div className="absolute top-4 left-4 z-10">
