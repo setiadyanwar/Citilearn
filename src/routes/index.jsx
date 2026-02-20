@@ -25,6 +25,10 @@ import CourseDetail from '@/features/courses/routes/CourseDetail';
 import CourseLearning from '@/features/learning/routes/CourseLearning';
 import FocusTest from '@/features/learning/routes/FocusTest';
 
+// Knowledge Features
+import KnowledgeHub from '@/features/knowledge/routes/KnowledgeHub';
+import KnowledgeDetail from '@/features/knowledge/routes/KnowledgeDetail';
+
 // Admin Features
 import {
     AdminDashboard,
@@ -97,6 +101,8 @@ export const AppRoutes = () => {
                 { path: '', element: <Dashboard /> },
                 { path: 'courses', element: <ExploreCourses /> },
                 { path: 'course/:id', element: <CourseDetail /> },
+                { path: 'knowledge', element: <KnowledgeHub /> },
+                { path: 'knowledge/:slug', element: <KnowledgeDetail /> },
                 { path: '*', element: <Dashboard /> }
             ]
         }
