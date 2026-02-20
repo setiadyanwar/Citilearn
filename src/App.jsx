@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { AppRoutes } from '@/routes';
 import { AuthProvider, NotificationProvider, LearningProvider } from '@/contexts';
 import ErrorBoundary from '@/components/common/ErrorBoundary';
+import { Toaster } from "@/components/ui/sonner";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <LearningProvider>
             <Router>
               <AppRoutes />
+              <Toaster />
             </Router>
           </LearningProvider>
         </NotificationProvider>

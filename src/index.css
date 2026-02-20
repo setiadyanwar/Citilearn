@@ -171,3 +171,164 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* ============================================
+   Sonner Toast — Alert-style customization
+   ============================================ */
+
+/* Base toast */
+[data-sonner-toaster] [data-sonner-toast] {
+  font-family: var(--font-lato, sans-serif);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* ERROR */
+[data-sonner-toaster] [data-sonner-toast][data-type="error"] {
+  background-color: #fef2f2 !important;
+  border-color: #fecaca !important;
+  color: #b91c1c !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="error"] [data-title] {
+  color: #b91c1c !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="error"] [data-description] {
+  color: #dc2626 !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="error"] [data-icon] svg {
+  color: #dc2626 !important;
+}
+
+/* SUCCESS */
+[data-sonner-toaster] [data-sonner-toast][data-type="success"] {
+  background-color: #f0fdf4 !important;
+  border-color: #bbf7d0 !important;
+  color: #15803d !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="success"] [data-title] {
+  color: #15803d !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="success"] [data-description] {
+  color: #16a34a !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="success"] [data-icon] svg {
+  color: #16a34a !important;
+}
+
+/* WARNING */
+[data-sonner-toaster] [data-sonner-toast][data-type="warning"] {
+  background-color: #fffbeb !important;
+  border-color: #fde68a !important;
+  color: #92400e !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="warning"] [data-title] {
+  color: #92400e !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="warning"] [data-description] {
+  color: #b45309 !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="warning"] [data-icon] svg {
+  color: #b45309 !important;
+}
+
+/* INFO */
+[data-sonner-toaster] [data-sonner-toast][data-type="info"] {
+  background-color: #eff6ff !important;
+  border-color: #bfdbfe !important;
+  color: #1d4ed8 !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="info"] [data-title] {
+  color: #1d4ed8 !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="info"] [data-description] {
+  color: #2563eb !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast][data-type="info"] [data-icon] svg {
+  color: #2563eb !important;
+}
+
+/* ---- DARK MODE ---- */
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="error"] {
+  background-color: rgba(127, 29, 29, 0.2) !important;
+  border-color: #7f1d1d !important;
+  color: #fca5a5 !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="error"] [data-title] {
+  color: #fca5a5 !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="error"] [data-description] {
+  color: #f87171 !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="error"] [data-icon] svg {
+  color: #f87171 !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="success"] {
+  background-color: rgba(20, 83, 45, 0.2) !important;
+  border-color: #14532d !important;
+  color: #86efac !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="success"] [data-title] {
+  color: #86efac !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="success"] [data-description] {
+  color: #4ade80 !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="success"] [data-icon] svg {
+  color: #4ade80 !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="warning"] {
+  background-color: rgba(78, 44, 0, 0.2) !important;
+  border-color: #713f12 !important;
+  color: #fde68a !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="warning"] [data-title] {
+  color: #fde68a !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="warning"] [data-description] {
+  color: #fcd34d !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="warning"] [data-icon] svg {
+  color: #fcd34d !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="info"] {
+  background-color: rgba(30, 58, 138, 0.2) !important;
+  border-color: #1e3a8a !important;
+  color: #93c5fd !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="info"] [data-title] {
+  color: #93c5fd !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="info"] [data-description] {
+  color: #60a5fa !important;
+}
+
+.dark [data-sonner-toaster] [data-sonner-toast][data-type="info"] [data-icon] svg {
+  color: #60a5fa !important;
+}

@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { Upload, X, Image as ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { toast } from "sonner";
+import { MAX_THUMBNAIL_SIZE_BYTES, MAX_THUMBNAIL_SIZE_MB } from '@/constants/fileUpload';
 
 /**
  * Reusable Image Uploader Component
@@ -19,15 +21,15 @@ const ImageUploader = ({
     label,
     className,
     aspectRatio = "h-48 md:h-56",
-    helperText = "PNG, JPG up to 5MB"
+    helperText = `PNG, JPG up to ${MAX_THUMBNAIL_SIZE_MB}MB`
 }) => {
     const fileInputRef = useRef(null);
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            if (file.size > 5 * 1024 * 1024) {
-                alert("File is too large. Max size is 5MB.");
+            if (file.size > MAX_THUMBNAIL_SIZE_BYTES) {
+                toast.error(`File is too large. Max size is ${MAX_THUMBNAIL_SIZE_MB}MB.`);
                 return;
             }
 

@@ -126,16 +126,63 @@ const LearnersTab = ({ courseId }) => {
                         )}
                     </div>
 
-                    {/* Search - Ultra clean style */}
-                    <div className="relative group">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-primary" size={20} />
-                        <Input
-                            type="text"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            placeholder={`Quick search ${assignmentType}...`}
-                            className="pl-12 h-13 bg-transparent border-slate-200 dark:border-slate-800 rounded-2xl font-medium focus:ring-4 focus:ring-primary/5 focus:border-primary transition-all text-base"
-                        />
+                    {/* Search & Select All */}
+                    <div className="space-y-4">
+                        <div className="relative group">
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-primary" size={20} />
+                            <Input
+                                type="text"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                placeholder={`Quick search ${assignmentType}...`}
+                                className="pl-12 h-13 bg-transparent border-slate-200 dark:border-slate-800 rounded-2xl font-medium focus:ring-4 focus:ring-primary/5 focus:border-primary transition-all text-base"
+                            />
+                        </div>
+
+                        <div className="flex items-center gap-2 px-1">
+                            <Checkbox
+                                disabled={
+                                    (assignmentType === 'individual' ? availableUsers :
+                                        assignmentType === 'department' ? availableDepartments :
+                                            availableRoles)
+                                        .filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                                        .length === 0
+                                }
+                                checked={
+                                    (assignmentType === 'individual' ? availableUsers :
+                                        assignmentType === 'department' ? availableDepartments :
+                                            availableRoles)
+                                        .filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                                        .length > 0 &&
+                                    (assignmentType === 'individual' ? availableUsers :
+                                        assignmentType === 'department' ? availableDepartments :
+                                            availableRoles)
+                                        .filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                                        .every(item => selectedIds.includes(item.id))
+                                }
+                                onCheckedChange={(checked) => {
+                                    const currentItems = (assignmentType === 'individual' ? availableUsers :
+                                        assignmentType === 'department' ? availableDepartments :
+                                            availableRoles)
+                                        .filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+
+                                    if (checked) {
+                                        const newSelected = [...selectedIds];
+                                        currentItems.forEach(item => {
+                                            if (!newSelected.includes(item.id)) {
+                                                newSelected.push(item.id);
+                                            }
+                                        });
+                                        setSelectedIds(newSelected);
+                                    } else {
+                                        const idsToRemove = currentItems.map(item => item.id);
+                                        setSelectedIds(selectedIds.filter(id => !idsToRemove.includes(id)));
+                                    }
+                                }}
+                                className="border-slate-300 dark:border-slate-700 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+                            />
+                            <span className="text-sm font-medium text-muted-foreground">Select All</span>
+                        </div>
                     </div>
 
                     {/* List Content - Clean vertical list */}

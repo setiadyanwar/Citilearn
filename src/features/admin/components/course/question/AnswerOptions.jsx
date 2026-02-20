@@ -3,6 +3,8 @@ import { Plus, Trash2, Circle, CheckCircle2, Image as ImageIcon, X } from 'lucid
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { toast } from "sonner";
+import { MAX_ANSWER_IMAGE_SIZE_BYTES, MAX_ANSWER_IMAGE_SIZE_MB } from '@/constants/fileUpload';
 
 const AnswerOptions = ({
     type,
@@ -24,8 +26,8 @@ const AnswerOptions = ({
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file && activeIndex !== null) {
-            if (file.size > 2 * 1024 * 1024) {
-                alert("Image too large (max 2MB)");
+            if (file.size > MAX_ANSWER_IMAGE_SIZE_BYTES) {
+                toast.error(`Image too large (max ${MAX_ANSWER_IMAGE_SIZE_MB}MB)`);
                 return;
             }
             const reader = new FileReader();

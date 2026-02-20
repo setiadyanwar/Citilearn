@@ -107,16 +107,26 @@ const QuestionEditor = () => {
     };
 
     const updateAnswer = (index, field, value) => {
-        const newAnswers = [...questionData.answers];
-        newAnswers[index][field] = value;
-
-        if (field === 'isCorrect' && value && questionData.type !== 'multiple-answer') {
-            newAnswers.forEach((ans, i) => {
-                if (i !== index) ans.isCorrect = false;
+        setQuestionData(prev => {
+            const newAnswers = prev.answers.map((ans, i) => {
+                if (i === index) {
+                    return { ...ans, [field]: value };
+                }
+                return ans;
             });
-        }
 
-        setQuestionData(prev => ({ ...prev, answers: newAnswers }));
+            if (field === 'isCorrect' && value && prev.type !== 'multiple-answer') {
+                return {
+                    ...prev,
+                    answers: newAnswers.map((ans, i) => ({
+                        ...ans,
+                        isCorrect: i === index // Only the current one is true
+                    }))
+                };
+            }
+
+            return { ...prev, answers: newAnswers };
+        });
     };
 
     const setTrueFalse = (isTrueCorrect) => {

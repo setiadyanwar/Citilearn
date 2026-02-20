@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Download } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import data from '@/data.json';
 
@@ -59,7 +60,9 @@ const AdminDashboard = () => {
                                 <h3 className="text-lg font-bold text-slate-900 leading-none">Recent Courses</h3>
                                 <p className="text-2xs text-slate-500 mt-1.5 font-medium tracking-tight whitespace-nowrap">Real-time completion and status overview</p>
                             </div>
-                            <Button variant="link" size="sm" className="h-auto p-0 text-2xs font-bold text-primary hover:no-underline">See all courses</Button>
+                            <Button variant="link" size="sm" asChild className="h-auto p-0 text-2xs font-bold text-primary hover:no-underline">
+                                <Link to="/admin/courses">See all courses</Link>
+                            </Button>
                         </div>
                         <div className="divide-y divide-slate-100 border-y border-slate-100">
                             {data.courses.slice(0, 4).map((course) => (

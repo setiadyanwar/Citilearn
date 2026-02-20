@@ -11,8 +11,8 @@ import budi_pratama from '@/assets/budi_pratama.png';
 export const useAuth = () => {
     // Mock user for development
     const mockUser = {
-        name: "Setiady Anwar",
-        email: "setiadyanwar@gmail.com",
+        name: "Admin Setiady",
+        email: "admin@citilearn.dev",
         role: "Senior Flight Instructor",
         points: 3000,
         avatar: budi_pratama,

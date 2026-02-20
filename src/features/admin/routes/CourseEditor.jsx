@@ -21,6 +21,8 @@ import AdminPageShell from '../components/layout/AdminPageShell';
 import CourseAvailabilitySettings from '../components/course/editor/CourseAvailabilitySettings';
 import CourseEditorPreview from '../components/course/editor/CourseEditorPreview';
 
+const VALID_TABS = ['basic', 'curriculum', 'learners'];
+
 const CourseEditor = () => {
     const { id } = useParams();
     const [searchParams] = useSearchParams();
@@ -29,16 +31,15 @@ const CourseEditor = () => {
     // FIND EXISTING COURSE
     const existingCourse = isEditing ? data.courses.find(c => c.id === id) : null;
 
-    const validTabs = ['basic', 'curriculum', 'learners'];
     const tabFromUrl = searchParams.get('tab');
     const [activeTab, setActiveTab] = useState(
-        validTabs.includes(tabFromUrl) ? tabFromUrl : 'basic'
+        VALID_TABS.includes(tabFromUrl) ? tabFromUrl : 'basic'
     );
     const [categories, setCategories] = useState(["Safety", "Technical", "Soft Skill", "Leadership", "Service"]);
 
     // Handle tab change from URL manually if needed
     useEffect(() => {
-        if (validTabs.includes(tabFromUrl)) {
+        if (VALID_TABS.includes(tabFromUrl)) {
             setActiveTab(tabFromUrl);
         }
     }, [tabFromUrl]);

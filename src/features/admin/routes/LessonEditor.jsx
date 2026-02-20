@@ -57,37 +57,6 @@ const LessonEditor = () => {
         navigate(`/admin/course/${courseId}/edit?tab=curriculum`);
     };
 
-    // Refined Content Type Card
-    const ContentTypeCard = ({ type, label, icon: Icon, description }) => (
-        <button
-            onClick={() => setLessonData({ ...lessonData, type })}
-            className={cn(
-                "flex items-center gap-4 p-4 rounded-xl border transition-all w-full text-left group",
-                lessonData.type === type
-                    ? 'border-primary bg-primary/5 ring-1 ring-primary/10'
-                    : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50/50'
-            )}
-        >
-            <div className={cn(
-                "w-10 h-10 rounded-lg flex items-center justify-center transition-colors shrink-0",
-                lessonData.type === type ? 'bg-primary text-white' : 'bg-slate-100 text-slate-400 group-hover:text-primary'
-            )}>
-                <Icon size={20} />
-            </div>
-            <div className="min-w-0">
-                <span className={cn(
-                    "block text-sm font-bold transition-colors",
-                    lessonData.type === type ? 'text-primary' : 'text-slate-700'
-                )}>
-                    {label}
-                </span>
-                <span className="text-3xs text-slate-500 font-medium truncate block">
-                    {description}
-                </span>
-            </div>
-        </button>
-    );
-
     const tabItems = [
         { id: 'config', label: 'Content Config', icon: Settings },
         { id: 'details', label: 'Overview & Metadata', icon: FileText },
@@ -166,12 +135,16 @@ const LessonEditor = () => {
                                             label="YouTube Video"
                                             icon={Video}
                                             description="Embed shared video content"
+                                            selectedType={lessonData.type}
+                                            onSelect={(t) => setLessonData({ ...lessonData, type: t })}
                                         />
                                         <ContentTypeCard
                                             type="pdf"
                                             label="PDF Document"
                                             icon={FileText}
                                             description="Materials for offline reading"
+                                            selectedType={lessonData.type}
+                                            onSelect={(t) => setLessonData({ ...lessonData, type: t })}
                                         />
                                     </div>
                                 </div>
@@ -424,5 +397,36 @@ const LessonEditor = () => {
         </div>
     );
 };
+
+// Extracted components
+const ContentTypeCard = ({ type, label, icon: Icon, description, selectedType, onSelect }) => (
+    <button
+        onClick={() => onSelect(type)}
+        className={cn(
+            "flex items-center gap-4 p-4 rounded-xl border transition-all w-full text-left group",
+            selectedType === type
+                ? 'border-primary bg-primary/5 ring-1 ring-primary/10'
+                : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50/50'
+        )}
+    >
+        <div className={cn(
+            "w-10 h-10 rounded-lg flex items-center justify-center transition-colors shrink-0",
+            selectedType === type ? 'bg-primary text-white' : 'bg-slate-100 text-slate-400 group-hover:text-primary'
+        )}>
+            <Icon size={20} />
+        </div>
+        <div className="min-w-0">
+            <span className={cn(
+                "block text-sm font-bold transition-colors",
+                selectedType === type ? 'text-primary' : 'text-slate-700'
+            )}>
+                {label}
+            </span>
+            <span className="text-3xs text-slate-500 font-medium truncate block">
+                {description}
+            </span>
+        </div>
+    </button>
+);
 
 export default LessonEditor;
