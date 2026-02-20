@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowLeft, ArrowRight, User, Calendar, BookOpen, Search, Menu, Filter, Share2, Tag, PlayCircle, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { Badge } from '@/components/common/Badge';
 import UserProfile from '@/components/common/UserProfile';
 
 const FeaturedPost = ({ post }) => {
@@ -18,6 +19,11 @@ const FeaturedPost = ({ post }) => {
 
             {/* Content Section */}
             <div className="space-y-2">
+                {/* Category Badge */}
+                <Badge variant="secondary" size="compact" className="px-2.5 py-1 font-medium w-fit">
+                    {post.category || 'General'}
+                </Badge>
+
                 {/* Meta: Author & Date */}
                 <div className="flex items-center gap-2.5 text-xs text-slate-500 dark:text-slate-400">
                     <UserProfile

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import PostCard from '@/features/knowledge/components/PostCard';
 import FeaturedPost from '@/features/knowledge/components/FeaturedPost';
-import Tabs from '@/components/common/Tabs';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 // Import data
 import { knowledgeData } from '@/data/knowledge';
@@ -31,25 +31,25 @@ const KnowledgeHub = () => {
 
     return (
         <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 pb-20 animate-fade-in transition-colors duration-300">
-            <div className="max-w-[1400px] mx-auto px-6 py-6 space-y-8">
+            <div className="max-w-[1400px] mx-auto px-4 space-y-8">
 
                 {/* Header Banner */}
                 <div className="relative overflow-hidden rounded-2xl bg-[#E3F5EB] dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-800/50 p-8 md:p-10 text-center">
                     <div className="relative z-10 max-w-2xl mx-auto space-y-2">
-                        <h1 className="text-2xl md:text-4xl font-bold text-emerald-950 dark:text-emerald-50 tracking-tight">
+                        <h1 className="text-2xl md:text-4xl font-bold text-primary dark:text-white tracking-tight">
                             Knowledge hub
                         </h1>
-                        <p className="text-sm md:text-lg text-emerald-800/70 dark:text-emerald-400/70 font-medium pb-2">
+                        <p className="text-xs md:text-sm text-primary dark:text-primary/80 font-medium pb-2">
                             Empowering Minds Through Insightful Articles
                         </p>
                     </div>
 
                     {/* Decorative Background Elements */}
                     <div className="absolute top-1/2 -left-10 md:left-18 -translate-y-1/2 opacity-20 rotate-12 transition-all duration-500">
-                        <Book className="w-24 h-24 md:w-32 lg:w-40 text-emerald-600 dark:text-emerald-500" />
+                        <Book className="w-24 h-24 md:w-32 lg:w-40 text-primary dark:text-white" />
                     </div>
                     <div className="absolute top-1/2 -right-12 md:-right-12 -translate-y-1/2 opacity-20 -rotate-12 transition-all duration-500">
-                        <BookOpen className="w-24 h-24 md:w-32 lg:w-40 text-emerald-600 dark:text-emerald-500" />
+                        <BookOpen className="w-24 h-24 md:w-32 lg:w-40 text-primary dark:text-white" />
                     </div>
 
                     {/* Abstract Circles */}
@@ -72,22 +72,49 @@ const KnowledgeHub = () => {
                         {/* Popular List (Right) */}
                         <div className="lg:col-span-5 xl:col-span-4 relative group">
                             <div
-                                className="max-h-[504px] overflow-y-auto pr-2 space-y-5 custom-scrollbar"
+                                className="lg:max-h-[504px] overflow-x-auto lg:overflow-y-auto lg:pr-2 custom-scrollbar -mx-4 px-4 lg:mx-0 lg:px-0"
                                 style={{
-                                    WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 40px, black calc(100% - 40px), transparent)',
-                                    maskImage: 'linear-gradient(to bottom, transparent, black 40px, black calc(100% - 40px), transparent)'
+                                    WebkitMaskImage: 'var(--mask-image)',
+                                    maskImage: 'var(--mask-image)',
                                 }}
                             >
-                                <div className="py-10"> {/* Padding to allow scrolling into full view despite mask */}
+                                <div className="flex flex-row lg:flex-col gap-3 py-4 lg:py-8 min-w-max lg:min-w-0 lg:space-y-3">
                                     {popularPosts.list.map((post) => (
-                                        <PostCard key={post.id} post={post} variant="horizontal" className="mb-5 last:mb-0" />
+                                        <PostCard
+                                            key={post.id}
+                                            post={post}
+                                            variant="horizontal"
+                                            size="compact"
+                                            disableHover={true}
+                                            className="w-[280px] md:w-[320px] lg:w-full bg-white dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 lg:bg-transparent lg:dark:bg-transparent lg:border-0 lg:p-0"
+                                        />
                                     ))}
                                     {/* Mock extra items to demonstrate scrolling if list is short */}
                                     {[...popularPosts.list, ...popularPosts.list].map((post, idx) => (
-                                        <PostCard key={`${post.id}-extra-${idx}`} post={post} variant="horizontal" className="mb-5 last:mb-0" />
+                                        <PostCard
+                                            key={`${post.id}-extra-${idx}`}
+                                            post={post}
+                                            variant="horizontal"
+                                            size="compact"
+                                            disableHover={true}
+                                            className="w-[280px] md:w-[320px] lg:w-full bg-white dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 lg:bg-transparent lg:dark:bg-transparent lg:border-0 lg:p-0"
+                                        />
                                     ))}
                                 </div>
                             </div>
+
+                            {/* Mask style via head/style */}
+                            <style dangerouslySetInnerHTML={{
+                                __html: `
+                                .custom-scrollbar {
+                                    --mask-image: none;
+                                }
+                                @media (min-width: 1024px) {
+                                    .custom-scrollbar {
+                                        --mask-image: linear-gradient(to bottom, transparent, black 40px, black calc(100% - 40px), transparent);
+                                    }
+                                }
+                            `}} />
                         </div>
                     </div>
                 </section>
@@ -98,17 +125,21 @@ const KnowledgeHub = () => {
                         <h2 className="text-2xl font-bold text-main dark:text-white">Latest Post</h2>
 
                         {/* Optional Filter Tags */}
-                        <div className="hidden md:flex">
-                            <Tabs
-                                activeTab={activeFilter}
-                                onTabChange={setActiveFilter}
-                                tabs={[
-                                    { id: 'All', label: 'All' },
-                                    { id: 'Design', label: 'Design' },
-                                    { id: 'Development', label: 'Development' },
-                                    { id: 'Product', label: 'Product' }
-                                ]}
-                            />
+                        {/* Filter Category */}
+                        {/* Filter Category */}
+                        <div className="w-[140px] md:w-[160px]">
+                            <Select value={activeFilter} onValueChange={setActiveFilter}>
+                                <SelectTrigger className="h-9 text-xs">
+                                    <SelectValue placeholder="Select" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="All" className="text-xs">All</SelectItem>
+                                    <SelectItem value="UI/UX" className="text-xs">UI/UX</SelectItem>
+                                    <SelectItem value="Design" className="text-xs">Design</SelectItem>
+                                    <SelectItem value="Development" className="text-xs">Development</SelectItem>
+                                    <SelectItem value="Product" className="text-xs">Product</SelectItem>
+                                </SelectContent>
+                            </Select>
                         </div>
                     </div>
 

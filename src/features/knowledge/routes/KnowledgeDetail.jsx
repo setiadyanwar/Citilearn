@@ -41,7 +41,7 @@ const KnowledgeDetail = () => {
     return (
         <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 pb-20 animate-fade-in transition-colors duration-300">
             {/* Breadcrumb Container */}
-            <div className="max-w-[1400px] mx-auto px-6 py-6 pb-0">
+            <div className="max-w-[1400px] mx-auto px-4">
                 <div className="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400 mb-8 overflow-x-auto whitespace-nowrap scrollbar-hide">
                     <Link to="/" className="hover:text-emerald-600 transition-colors flex items-center gap-1">
                         <Home size={14} />
@@ -59,7 +59,7 @@ const KnowledgeDetail = () => {
             </div>
 
             {/* Full Width Hero Image */}
-            <div className="-mx-3 md:-mx-8 w-[calc(100%+1.5rem)] md:w-[calc(100%+4rem)] aspect-21/9 md:aspect-3/1 lg:aspect-3.5/1 overflow-hidden mb-10 bg-slate-200 dark:bg-slate-900">
+            <div className="-mx-4 md:-mx-8 w-[calc(100%+2rem)] md:w-[calc(100%+4rem)] aspect-21/9 md:aspect-3/1 lg:aspect-3.5/1 overflow-hidden mb-10 bg-slate-200 dark:bg-slate-900">
                 <img
                     src={article.image}
                     alt={article.title}
@@ -67,7 +67,7 @@ const KnowledgeDetail = () => {
                 />
             </div>
 
-            <div className="max-w-[1400px] mx-auto px-6">
+            <div className="max-w-[1400px] mx-auto px-4">
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
@@ -79,7 +79,7 @@ const KnowledgeDetail = () => {
                             </h1>
 
                             <div className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-slate-200 dark:border-slate-800">
-                                <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-4">
                                     <UserProfile
                                         name={article.author.name}
                                         size="xs"
@@ -94,7 +94,7 @@ const KnowledgeDetail = () => {
                                     </div>
                                 </div>
 
-                                <button className="flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors group cursor-pointer">
+                                <button className="flex items-center gap-4 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors group cursor-pointer">
                                     <Upload size={18} className="stroke-[1.5px]" />
                                     <span className="text-sm font-bold border-b border-slate-200 dark:border-slate-800 group-hover:border-emerald-600 dark:group-hover:border-emerald-400 transition-colors pb-0.5 leading-none">Share</span>
                                 </button>

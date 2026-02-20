@@ -23,6 +23,7 @@ const badgeVariants = cva(
                 "points": "border-gray-200 text-gray-600 bg-gray-100 dark:border-slate-700 dark:text-slate-400 dark:bg-slate-800",
                 "mandatory": "border-red-100 bg-red-50 text-red-600 dark:border-red-500/20 dark:bg-red-500/10 dark:text-red-400",
                 "continue": "border-amber-100 bg-amber-50 text-amber-600 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-400",
+                "secondary": "border-transparent bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 hover:bg-slate-200/80",
 
                 // Default / Neutral
                 "outline": "border-gray-200 text-gray-600 dark:border-slate-700 dark:text-slate-400",
