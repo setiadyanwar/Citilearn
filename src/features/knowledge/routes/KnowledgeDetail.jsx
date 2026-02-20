@@ -5,125 +5,19 @@ import { Button } from '@/components/ui/button';
 import Breadcrumb from '@/components/common/Breadcrumb';
 import UserProfile from '@/components/common/UserProfile';
 import PostCard from '@/features/knowledge/components/PostCard';
+import { knowledgeData } from '@/data/knowledge';
 
 const KnowledgeDetail = () => {
     const { slug } = useParams();
-    const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
 
-    // Mock Article Data
-    const article = {
-        title: "Mengenal UI Design: Definisi Hingga Proses",
-        category: "UI/UX",
-        date: "20 April 2025",
-        author: {
-            name: "Capt Budiman",
-            initial: "B",
-            role: "Senior UI/UX Designer"
-        },
-        image: "https://www.lawencon.com/wp-content/uploads/2024/11/Mengenal-User-Interface-UI-Fungsi-Cara-Kerja-dan-Contohnya-1024x640.webp",
-        content: `
-            <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">
-                <strong>UI/UX</strong> - Dalam dunia desain digital yang terus berkembang, istilah UI/UX adalah sesuatu yang tidak asing lagi di telinga para desainer, developer, maupun pelaku bisnis online. Istilah ini sering muncul dalam diskusi tentang pengembangan website, aplikasi, atau produk digital lainnya. Namun, apa sebenarnya UI/UX adalah, dan mengapa begitu penting untuk kesuksesan produk digital? Artikel ini akan mengupas tuntas topik tersebut. Yuk, kita jelajahi bersama!
-            </p>
-            <p class="text-base leading-relaxed text-slate-600 dark:text-slate-400 mb-8">
-                Secara sederhana, UI/UX adalah dua elemen inti dalam desain produk digital yang saling melengkapi. UI (User Interface) berkaitan dengan tampilan visual, sedangkan UX (User Experience) berfokus pada pengalaman pengguna secara keseluruhan. Meski sering disebut bersamaan, keduanya memiliki peran yang berbeda namun sama-sama krusial.
-            </p>
+    // Find article based on slug, default to first one if not found or no slug
+    const currentArticle = (slug && knowledgeData.find(a => a.slug === slug)) || knowledgeData[0];
+    const otherArticles = knowledgeData.filter(item => item.id !== currentArticle.id);
 
-            <h2 class="text-2xl font-bold text-slate-800 dark:text-emerald-50 mb-6 font-lato">Challenges implements new safety protocol</h2>
+    // Use currentArticle instead of 'article' variable
+    const article = currentArticle;
 
-            <div class="overflow-x-auto mb-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <table class="w-full text-sm text-left">
-                    <thead class="bg-slate-900 text-white dark:bg-emerald-950/50">
-                        <tr>
-                            <th class="px-6 py-4 font-bold border-r border-white/10">Aspek</th>
-                            <th class="px-6 py-4 font-bold border-r border-white/10">UI (User Interface)</th>
-                            <th class="px-6 py-4 font-bold">UX (User Experience)</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                        <tr class="bg-white dark:bg-slate-900/50">
-                            <td class="px-6 py-4 font-bold text-slate-900 dark:text-white border-r border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">Fokus</td>
-                            <td class="px-6 py-4 text-slate-600 dark:text-slate-400 border-r border-slate-100 dark:border-slate-800">Tampilan visual dan estetika</td>
-                            <td class="px-6 py-4 text-slate-600 dark:text-slate-400">Pengalaman pengguna secara keseluruhan</td>
-                        </tr>
-                        <tr class="bg-slate-50/30 dark:bg-slate-900/20">
-                            <td class="px-6 py-4 font-bold text-slate-900 dark:text-white border-r border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">Tujuan Utama</td>
-                            <td class="px-6 py-4 text-slate-600 dark:text-slate-400 border-r border-slate-100 dark:border-slate-800">Merancang elemen visual yang menarik</td>
-                            <td class="px-6 py-4 text-slate-600 dark:text-slate-400">Memastikan alur pengguna efisien dan memuaskan</td>
-                        </tr>
-                        <tr class="bg-white dark:bg-slate-900/50">
-                            <td class="px-6 py-4 font-bold text-slate-900 dark:text-white border-r border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">Keterlibatan</td>
-                            <td class="px-6 py-4 text-slate-600 dark:text-slate-400 border-r border-slate-100 dark:border-slate-800">Desain grafis dan antarmuka</td>
-                            <td class="px-6 py-4 text-slate-600 dark:text-slate-400">Riset pengguna, pengujian, dan analisis</td>
-                        </tr>
-                        <tr class="bg-slate-50/30 dark:bg-slate-900/20">
-                            <td class="px-6 py-4 font-bold text-slate-900 dark:text-white border-r border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">Contoh</td>
-                            <td class="px-6 py-4 text-slate-600 dark:text-slate-400 border-r border-slate-100 dark:border-slate-800">Warna, ikon, tombol, tata letak</td>
-                            <td class="px-6 py-4 text-slate-600 dark:text-slate-400">Navigasi, kepuasan pengguna, alur pengguna</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p class="text-base leading-relaxed text-slate-600 dark:text-slate-400 mb-6">
-                When I walked into Allegiant Stadium in Las Vegas, I expected to be blown away by Swift and the 44 songs she performs live for the "Eras Tour." But I didn't expect to feel uncomfortable at her declaration of her unbridled ambition.
-            </p>
-            <p class="text-base leading-relaxed text-slate-600 dark:text-slate-400 mb-6">
-                The timing of her declaration was a little cheeky; it was part of her introduction to the song, "The Man," which calls attention to the sexist double standards that women face, including ones Swift has battled in the music industry.
-            </p>
-            <p class="text-base leading-relaxed text-slate-600 dark:text-slate-400 mb-6">
-                "What's it like to brag about raking in dollars and getting bitches and models," she sang. "If I was out flashing my dollars, I'd be a bitch, not a baller."
-            </p>
-            <p class="text-base leading-relaxed text-slate-600 dark:text-slate-400 mb-6">
-                When she shouted out her accomplishment in Las Vegas, alongside a matching victory dance, I'm sure it was meant to conjure masculinity and highlight the double standard surrounding success, since nothing Taylor Alison Swift does is unintentional. She's known for leaving an unending trail of Easter eggs for her fans to find and decipher, which reveal clues about things like album drops and the true meaning of a lyric.
-            </p>
-            <p class="text-base leading-relaxed text-slate-600 dark:text-slate-400 mb-6 font-medium italic border-l-4 border-emerald-500 pl-6 my-8">
-                She's a mastermind in everything she does, sings and shouts to a football stadium full of fans.
-            </p>
-            <p class="text-base leading-relaxed text-slate-600 dark:text-slate-400 mb-6">
-                That's why, even if the timing was part of her performance around "The Man," it was also no accident that Swift decided to belt out her success that night.
-            </p>
-            <p class="text-base leading-relaxed text-slate-600 dark:text-slate-400 mb-6">
-                And whether we were cringing in our seats, like me, or cheering her on, also like me, her words delivered a powerful message.
-            </p>
-        `
-    };
-
-    const otherArticles = [
-        {
-            id: 2,
-            title: "Panduan Lengkap Digital Marketing: Tips Belajar",
-            date: "20 April 2025",
-            author: { name: "Capt Budiman", initial: "B" },
-            image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=2074",
-            slug: "panduan-digital-marketing"
-        },
-        {
-            id: 3,
-            title: "Panduan Lengkap Digital Marketing: Tips Belajar",
-            date: "20 April 2025",
-            author: { name: "Capt Budiman", initial: "B" },
-            image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=2074",
-            slug: "panduan-digital-marketing-2"
-        },
-        {
-            id: 4,
-            title: "Panduan Lengkap Digital Marketing: Tips Belajar",
-            date: "20 April 2025",
-            author: { name: "Capt Budiman", initial: "B" },
-            image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=2074",
-            slug: "panduan-digital-marketing-3"
-        },
-        {
-            id: 5,
-            title: "Panduan Lengkap Digital Marketing: Tips Belajar",
-            date: "20 April 2025",
-            author: { name: "Capt Budiman", initial: "B" },
-            image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=2074",
-            slug: "panduan-digital-marketing-4"
-        }
-    ];
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -211,25 +105,42 @@ const KnowledgeDetail = () => {
                         </div>
 
                         <div
-                            className="prose prose-slate dark:prose-invert max-w-none"
+                            className="
+                                text-slate-600 dark:text-slate-400
+                                [&_p]:mb-6 [&_p]:leading-relaxed
+                                [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-slate-900 [&_h2]:dark:text-emerald-50 [&_h2]:mt-10 [&_h2]:mb-6 [&_h2]:font-lato
+                                [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-slate-800 [&_h3]:dark:text-emerald-100 [&_h3]:mt-8 [&_h3]:mb-4
+                                [&_h4]:font-bold [&_h4]:text-slate-800 [&_h4]:dark:text-white [&_h4]:mb-2
+                                [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-8 [&_ul]:space-y-2
+                                [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-8 [&_ol]:space-y-2
+                                [&_strong]:font-bold [&_strong]:text-slate-900 [&_strong]:dark:text-slate-200
+                                [&_blockquote]:border-l-4 [&_blockquote]:border-emerald-500 [&_blockquote]:pl-6 [&_blockquote]:my-8 [&_blockquote]:italic [&_blockquote]:bg-slate-50 [&_blockquote]:dark:bg-slate-900/50 [&_blockquote]:py-4 [&_blockquote]:rounded-r-lg
+                                
+                                [&_.grid-layout]:grid [&_.grid-layout]:grid-cols-1 [&_.grid-layout]:md:grid-cols-2 [&_.grid-layout]:gap-6 [&_.grid-layout]:mb-8
+                                [&_.card]:bg-white [&_.card]:dark:bg-slate-900 [&_.card]:p-6 [&_.card]:rounded-xl [&_.card]:border [&_.card]:border-slate-200 [&_.card]:dark:border-slate-800 [&_.card]:shadow-sm
+                                
+                                [&_.list-layout]:space-y-4 [&_.list-layout]:mb-8
+                                [&_.list-item]:p-4 [&_.list-item]:bg-slate-50 [&_.list-item]:dark:bg-slate-900/50 [&_.list-item]:rounded-lg [&_.list-item]:border-l-4
+                                
+                                [&_.border-emerald]:border-emerald-500
+                                [&_.border-blue]:border-blue-500
+                                [&_.border-purple]:border-purple-500
+                                [&_.border-orange]:border-orange-500
+
+                                [&_.table-container]:overflow-x-auto [&_.table-container]:mb-8 [&_.table-container]:rounded-xl [&_.table-container]:border [&_.table-container]:border-slate-200 [&_.table-container]:dark:border-slate-800
+                                [&_table]:w-full [&_table]:text-sm [&_table]:text-left
+                                [&_thead]:bg-slate-900 [&_thead]:text-white [&_thead]:dark:bg-emerald-950/50
+                                [&_th]:px-6 [&_th]:py-4 [&_th]:font-bold
+                                [&_td]:px-6 [&_td]:py-4 [&_td]:border-b [&_td]:border-slate-100 [&_td]:dark:border-slate-800
+                                [&_tr:last-child_td]:border-0
+
+                                [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-xl [&_iframe]:mb-8
+                            "
                             dangerouslySetInnerHTML={{ __html: article.content }}
                         />
 
-                        {/* Article Footer / Engagement */}
-                        <div className="pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
-                            <div className="flex items-center gap-6">
-                                <button className="flex items-center gap-2 text-slate-500 hover:text-emerald-600 transition-colors">
-                                    <ThumbsUp size={18} />
-                                    <span className="text-sm font-bold">Helpful</span>
-                                </button>
-                                <button className="flex items-center gap-2 text-slate-500 hover:text-emerald-600 transition-colors">
-                                    <MessageSquare size={18} />
-                                    <span className="text-sm font-bold">Comment</span>
-                                </button>
-                            </div>
-                            <button className="text-slate-500 hover:text-emerald-600 transition-colors">
-                                <Bookmark size={18} />
-                            </button>
+                        {/* Article Footer (engagement removed) */}
+                        <div className="pt-10 border-t border-slate-200 dark:border-slate-800">
                         </div>
                     </article>
 
@@ -238,7 +149,7 @@ const KnowledgeDetail = () => {
                         <div className="sticky top-28">
                             <h2 className="text-xl font-bold text-slate-900 dark:text-emerald-50 mb-6 flex items-center gap-2">
                                 Other Article
-                                <div className="h-1 flex-1 bg-linear-to-r from-emerald-500/20 to-transparent rounded-full ml-4" />
+                                <div className= " h-0.5 w-full flex-1 bg-slate-200 dark:bg-slate-800 rounded-full ml-4" />
                             </h2>
 
                             <div className="space-y-6">
@@ -251,20 +162,6 @@ const KnowledgeDetail = () => {
                                         className="hover:bg-white dark:hover:bg-slate-900 p-2.5 -m-2.5 rounded-2xl transition-all duration-300"
                                     />
                                 ))}
-                            </div>
-
-                            {/* Promotional / Related Section in Sidebar */}
-                            <div className="mt-12 p-6 rounded-3xl bg-linear-to-br from-emerald-600 to-teal-700 text-white relative overflow-hidden shadow-lg shadow-emerald-500/20 group">
-                                <div className="relative z-10 space-y-4">
-                                    <h3 className="font-bold text-lg leading-tight">Mastering UI/UX Design Series</h3>
-                                    <p className="text-emerald-50/80 text-xs leading-relaxed">Elevate your skills with our curated learning paths and expert insights.</p>
-                                    <Button className="w-full bg-white text-emerald-700 hover:bg-emerald-50 font-bold rounded-xl h-10 transition-transform group-hover:scale-[1.02]">
-                                        Explore Path
-                                    </Button>
-                                </div>
-                                <div className="absolute -bottom-6 -right-6 opacity-10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
-                                    <Book size={120} />
-                                </div>
                             </div>
                         </div>
                     </aside>

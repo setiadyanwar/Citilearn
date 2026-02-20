@@ -1,84 +1,33 @@
 import React, { useState } from 'react';
-import { ArrowLeft, ArrowRight, User, Calendar, BookOpen, Book, Search, Menu, Filter, Share2, Tag, PlayCircle, Clock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowDown, User, Calendar, BookOpen, Book, Search, Menu, Filter, Share2, Tag, PlayCircle, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import PostCard from '@/features/knowledge/components/PostCard';
 import FeaturedPost from '@/features/knowledge/components/FeaturedPost';
 import Tabs from '@/components/common/Tabs';
 
+// Import data
+import { knowledgeData } from '@/data/knowledge';
+
 const KnowledgeHub = () => {
     const [activeFilter, setActiveFilter] = useState('All');
+
+    // Derived from knowledgeData
     const popularPosts = {
         featured: {
-            id: 1,
-            title: "Mengenal UI Design: Definisi Hingga Proses",
-            description: "Di era di mana internet menjadi pusat informasi dan interaksi, digital marketing telah menjadi salah satu pilar utama kesuksesan bisnis. Dalam panduan ini, kita akan membahas secara detail berbagai aspek...",
-            date: "20 April 2025",
-            author: { name: "Capt Budiman", initial: "B" },
-            image: "https://www.lawencon.com/wp-content/uploads/2024/11/Mengenal-User-Interface-UI-Fungsi-Cara-Kerja-dan-Contohnya-1024x640.webp",
-            category: "Design",
-            slug: "mengenal-ui-design"
+            ...knowledgeData[0],
+            description: knowledgeData[0].excerpt // Map excerpt to description for FeaturedPost component
         },
-        list: [
-            {
-                id: 2,
-                title: "Panduan Lengkap Digital Marketing: Tips Belajar",
-                excerpt: "Strategi pemasaran digital yang efektif untuk pemula hingga mahir.",
-                date: "20 April 2025",
-                author: { name: "Capt Budiman", initial: "B" },
-                image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=2074",
-                slug: "panduan-digital-marketing"
-            },
-            {
-                id: 3,
-                title: "Software Engineering: Tips Belajar",
-                excerpt: "Langkah awal memulai karir sebagai software engineer profesional.",
-                date: "20 April 2025",
-                author: { name: "Capt Budiman", initial: "B" },
-                image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=2070",
-                slug: "software-engineering-tips"
-            },
-            {
-                id: 4,
-                title: "Product Management: Definisi, Skill & Gaji",
-                excerpt: "Apa itu Product Management dan skill apa saja yang dibutuhkan?",
-                date: "20 April 2025",
-                author: { name: "Capt Budiman", initial: "B" },
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=2070",
-                slug: "product-management-guide"
-            }
-        ]
+        list: knowledgeData.slice(1, 4)
     };
 
+    // Reuse some posts for "Latest" since we only have 5 mock items
     const latestPosts = [
-        {
-            id: 5,
-            title: "Data Analytics for Beginners: Path to Success",
-            excerpt: "Learn how to start your journey into data analytics with our comprehensive guide...",
-            date: "18 April 2025",
-            author: { name: "Capt Budiman", initial: "B" },
-            image: "https://tse4.mm.bing.net/th/id/OIP.WlcHl7AIPGzBTHyZ70CFRwHaEK?cb=defcachec2&rs=1&pid=ImgDetMain&o=7&rm=3",
-            slug: "data-analytics-guide"
-        },
-        {
-            id: 6,
-            title: "Mastering React: Tips for Modern Web Dev",
-            excerpt: "Advanced techniques for creating fast and responsive React applications...",
-            date: "15 April 2025",
-            author: { name: "Capt Budiman", initial: "B" },
-            image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=2070",
-            slug: "mastering-react"
-        },
-        {
-            id: 7,
-            title: "Cyber Security: Essential Practices for Teams",
-            excerpt: "Protecting your organization in an increasingly digital world requires vigilant staff...",
-            date: "12 April 2025",
-            author: { name: "Capt Budiman", initial: "B" },
-            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070",
-            slug: "cyber-security-essential"
-        }
+        knowledgeData[4],
+        knowledgeData[1],
+        knowledgeData[2]
     ];
+
 
     return (
         <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 pb-20 animate-fade-in transition-colors duration-300">
@@ -172,7 +121,7 @@ const KnowledgeHub = () => {
                     <div className="mt-8 text-center pb-12">
                         <Button variant="link" className="text-emerald-600 dark:text-emerald-400 font-bold hover:text-emerald-700 dark:hover:text-emerald-300 hover:no-underline flex items-center gap-2 mx-auto group transition-all">
                             Load More Articles
-                            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                            <ArrowDown size={16} className="transition-transform group-hover:translate-y-1" />
                         </Button>
                     </div>
                 </section>

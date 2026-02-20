@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PanelLeft, User, BookOpen, BarChart2, Bookmark, Award, Settings, Home, ChevronRight, X } from 'lucide-react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import Header from './Header';
+import data from '@/data.json';
 
 import {
     Tooltip,

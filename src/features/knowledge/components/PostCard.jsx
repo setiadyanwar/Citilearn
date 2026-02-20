@@ -16,18 +16,15 @@ const PostCard = ({ post, variant = 'vertical', className = '', size = 'default'
                 <img
                     src={post.image}
                     alt={post.title}
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=800&q=80'; }}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                {!isHorizontal && post.category && (
-                    <span className="absolute top-2.5 left-2.5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-3xs font-bold text-emerald-600">
-                        {post.category}
-                    </span>
-                )}
+
             </div>
 
             {/* Content */}
             <div className="flex-1 flex flex-col h-full min-w-0 py-0">
-                {/* Meta - Author (Top) */}
+                {/* Meta - Author & Date */}
                 <div className="flex items-center gap-2 mb-1">
                     <UserProfile
                         name={post.author.name}
@@ -36,20 +33,26 @@ const PostCard = ({ post, variant = 'vertical', className = '', size = 'default'
                         className="shrink-0 scale-90 origin-left"
                         showBorder={false}
                     />
-                    <span className={`font-medium text-slate-500 dark:text-slate-400 truncate ${isCompact ? 'text-[10px]' : 'text-xs'}`}>{post.author.name}</span>
+                    <span className={`font-medium text-slate-500 dark:text-slate-400 truncate ${isCompact ? 'text-3xs' : 'text-xs'}`}>
+                        {post.author.name}
+                    </span>
+                    <span className="text-slate-300 dark:text-slate-600">•</span>
+                    <span className={`font-normal text-slate-400 dark:text-slate-500 whitespace-nowrap ${isCompact ? 'text-3xs' : 'text-xs'}`}>
+                        {post.date}
+                    </span>
                 </div>
 
                 {/* Title */}
-                <Link to={`/knowledge/${post.slug}`} className="block group-hover:text-emerald-600 transition-colors mb-0.5">
-                    <h3 className={`font-bold text-slate-800 dark:text-emerald-50 leading-snug tracking-tight line-clamp-2 ${isCompact ? 'text-xs' : (isHorizontal ? 'text-sm md:text-base' : 'text-base md:text-lg')}`}>
+                <Link
+                    to={`/knowledge/${post.slug}`}
+                    className={`block group-hover:text-emerald-600 transition-colors mb-4 ${!isHorizontal ? 'min-h-12 md:min-h-14' : ''}`}
+                >
+                    <h3 className={`${isCompact ? 'font-semibold text-lg leading-tight' : 'font-bold'} text-slate-800 dark:text-emerald-50 tracking-tight line-clamp-2 ${isCompact ? '' : (isHorizontal ? 'text-sm md:text-base leading-snug' : 'text-base md:text-lg leading-snug')}`}>
                         {post.title}
                     </h3>
                 </Link>
 
-                {/* Date */}
-                <div className={`font-normal text-slate-400 ${isCompact ? 'text-[10px]' : 'text-xs'}`}>
-                    {post.date}
-                </div>
+
 
                 {/* Excerpt (Only Vertical) */}
                 {!isHorizontal && (
