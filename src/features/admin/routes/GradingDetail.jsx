@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Skeleton } from '@/components/ui/skeleton';
 import data from '@/data.json';
+import { generateMockGrades } from '@/utils/mockDataGenerators';
 
 // Standard Admin Components
 import AdminPageShell from '../components/layout/AdminPageShell';
@@ -13,10 +14,7 @@ import GradingDetailView from '../components/grading/GradingDetailView';
  * GradingDetail - Route: /admin/assessment/:gradeId
  *
  * Reads the grade from sessionStorage cache set by GradingReview.
- * On API integration, replace the useEffect body with:
- *   const response = await axios.get(`/api/admin/grading/${gradeId}`);
- *   setGrade(response.data);
- *   setAttemptDetails(response.data.attemptDetails);
+ * Fallback: Regenerates mock data if cache is missing (e.g. direct URL access).
  */
 const GradingDetail = () => {
     const { gradeId } = useParams();
@@ -33,22 +31,40 @@ const GradingDetail = () => {
             setError(null);
             try {
                 // Simulate network latency
-                // REPLACE with: const response = await axios.get(`/api/admin/grading/${gradeId}`);
                 await new Promise(resolve => setTimeout(resolve, 500));
 
-                // Read from sessionStorage cache populated by GradingReview
+                let foundGrade = null;
+
+                // 1. Try reading from sessionStorage cache
                 const cached = sessionStorage.getItem('admin_grades_cache');
-                if (!cached) throw new Error('Session expired. Please go back and try again.');
 
-                const allGrades = JSON.parse(cached);
-                const found = allGrades.find(g => String(g.id) === String(gradeId));
-                if (!found) throw new Error(`Attempt #${gradeId} not found.`);
+                if (cached) {
+                    const allGrades = JSON.parse(cached);
+                    foundGrade = allGrades.find(g => String(g.id) === String(gradeId));
+                }
 
-                setGrade(found);
+                // 2. Fallback: Regenerate mock data if not found in cache
+                if (!foundGrade) {
+                    const students = [
+                        { id: 'S-7721', name: 'Budi Setiadi' },
+                        { id: 'S-8832', name: 'Ani Wijaya' },
+                        { id: 'S-1293', name: 'Iwan Pratama' },
+                        { id: 'S-4482', name: 'Siti Aminah' },
+                        { id: 'S-9012', name: 'Rudi Hartono' },
+                        { id: 'S-2231', name: 'Dewi Lestari' },
+                        { id: 'S-5562', name: 'Bambang Subiakto' }
+                    ];
+                    const generatedGrades = generateMockGrades(students);
+                    foundGrade = generatedGrades.find(g => String(g.id) === String(gradeId));
+                }
+
+                if (!foundGrade) throw new Error(`Attempt #${gradeId} not found.`);
+
+                setGrade(foundGrade);
 
                 // Fetch the actual questions from data.json using _meta info
-                if (found._meta) {
-                    const { courseId, lessonId } = found._meta;
+                if (foundGrade._meta) {
+                    const { courseId, lessonId } = foundGrade._meta;
                     const course = data.courses.find(c => c.id === courseId);
                     let targetLesson = null;
 
@@ -61,10 +77,9 @@ const GradingDetail = () => {
 
                     let questionsData = targetLesson?.assignments;
 
-                    // FALLBACK: If no explicit assignments found (e.g. for mock/newly created assessments)
-                    // generate stable mock questions so the page isn't empty
+                    // FALLBACK: If no explicit assignments found
                     if (!questionsData || questionsData.length === 0) {
-                        const type = found.assessment.type;
+                        const type = foundGrade.assessment.type;
                         questionsData = [
                             {
                                 question: `Fundamental concept check for ${type}`,
@@ -72,7 +87,7 @@ const GradingDetail = () => {
                                 correctAnswer: 2
                             },
                             {
-                                question: `How would you handle a standard procedure in ${found.course.title}?`,
+                                question: `How would you handle a standard procedure in ${foundGrade.course.title}?`,
                                 options: ["Option A (Standard)", "Option B (Incorrect)", "Option C (Partial)", "Option D (Legacy)"],
                                 correctAnswer: 0
                             },
@@ -83,7 +98,6 @@ const GradingDetail = () => {
                             }
                         ];
 
-                        // For Post-tests, add more questions
                         if (type === 'Post-test') {
                             questionsData.push({
                                 question: "Select the most appropriate action for emergency scenarios.",
@@ -94,7 +108,7 @@ const GradingDetail = () => {
                     }
 
                     if (questionsData) {
-                        const targetCorrectCount = Math.round((found.score / 100) * questionsData.length);
+                        const targetCorrectCount = Math.round((foundGrade.score / 100) * questionsData.length);
                         let currentCorrect = 0;
 
                         setAttemptDetails({
@@ -108,7 +122,6 @@ const GradingDetail = () => {
                                     isCorrect = true;
                                     currentCorrect++;
                                 } else {
-                                    // Pick any incorrect answer
                                     studentAnswer = (q.correctAnswer + 1) % q.options.length;
                                     isCorrect = false;
                                 }
