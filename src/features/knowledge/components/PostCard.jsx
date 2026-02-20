@@ -19,7 +19,12 @@ const PostCard = ({ post, variant = 'vertical', className = '', size = 'default'
                     onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=800&q=80'; }}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-
+                {post.isFeatured && (
+                    <div className="absolute top-3 left-3 px-2 py-1 bg-emerald-600 text-3xs font-bold text-white rounded-lg shadow-lg flex items-center gap-1 animate-pulse">
+                        <Tag size={10} />
+                        FEATURED
+                    </div>
+                )}
             </div>
 
             {/* Content */}
@@ -47,7 +52,7 @@ const PostCard = ({ post, variant = 'vertical', className = '', size = 'default'
                     to={`/knowledge/${post.slug}`}
                     className={`block group-hover:text-emerald-600 transition-colors mb-4 ${!isHorizontal ? 'min-h-12 md:min-h-14' : ''}`}
                 >
-                    <h3 className={`${isCompact ? 'font-semibold text-lg leading-tight' : 'font-bold'} text-slate-800 dark:text-emerald-50 tracking-tight line-clamp-2 ${isCompact ? '' : (isHorizontal ? 'text-sm md:text-base leading-snug' : 'text-base md:text-lg leading-snug')}`}>
+                    <h3 className={`${isCompact ? 'font-semibold text-base leading-tight' : 'font-semibold'} text-main dark:text-white tracking-tight line-clamp-2 ${isCompact ? '' : (isHorizontal ? 'text-sm md:text-base leading-snug' : 'text-base md:text-lg leading-snug')}`}>
                         {post.title}
                     </h3>
                 </Link>

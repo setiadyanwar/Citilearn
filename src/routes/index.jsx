@@ -41,7 +41,11 @@ import {
     UserAssignment,
     UserHub,
     GradingReview,
-    GradingDetail
+    GradingDetail,
+    KnowledgeManagement,
+    KnowledgeEditor,
+    CompanyHubManagement,
+    CompanyHubEditor
 } from '@/features/admin';
 
 export const AppRoutes = () => {
@@ -75,6 +79,12 @@ export const AppRoutes = () => {
             element: <AdminLayout />,
             children: [
                 { path: '', element: <AdminDashboard /> },
+                { path: 'knowledge', element: <KnowledgeManagement /> },
+                { path: 'knowledge/create', element: <KnowledgeEditor /> },
+                { path: 'knowledge/:id/edit', element: <KnowledgeEditor /> },
+                { path: 'cms/:type', element: <CompanyHubManagement /> },
+                { path: 'cms/:type/create', element: <CompanyHubEditor /> },
+                { path: 'cms/:type/:id/edit', element: <CompanyHubEditor /> },
                 { path: 'courses', element: <CourseManagement /> },
                 { path: 'courses/create', element: <CourseEditor /> },
                 { path: 'course/:id/edit', element: <CourseEditor /> },

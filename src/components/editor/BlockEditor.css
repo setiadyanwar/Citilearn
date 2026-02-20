@@ -1,0 +1,70 @@
+/* BlockNote Customization for CitiLearn Emerald Theme */
+
+.blocknote-container {
+    width: 100%;
+}
+
+/* Ensure the editor container has a clean background */
+.bn-root {
+    background: transparent !important;
+    padding-left: 0 !important;
+}
+
+/* Style the placeholder */
+.bn-root [data-placeholder]:before {
+    color: #cbd5e1 !important;
+    /* slate-300 */
+    font-weight: 500;
+}
+
+/* Adjust heading styles to match our theme */
+.bn-root h1,
+.bn-root h2,
+.bn-root h3 {
+    color: #0f172a;
+    /* slate-900 icon */
+    font-weight: 800 !important;
+    letter-spacing: -0.025em;
+}
+
+/* Style the slash menu and other floating menus to look like our UI */
+.bn-menu,
+.bn-suggestion-menu {
+    border-radius: 12px !important;
+    border: 1px solid #e2e8f0 !important;
+    /* slate-200 */
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+}
+
+.bn-suggestion-menu-item[data-selected] {
+    background-color: #ecfdf5 !important;
+    /* emerald-50 */
+    color: #059669 !important;
+    /* emerald-600 */
+}
+
+/* Style the side handle (drag handle + plus button) */
+.bn-side-menu {
+    color: #94a3b8 !important;
+    /* slate-400 */
+}
+
+.bn-side-menu:hover {
+    color: #10b981 !important;
+    /* emerald-500 */
+}
+
+/* Match typography */
+.bn-editor {
+    font-family: inherit;
+    line-height: 1.625 !important;
+    color: #334155 !important;
+    /* slate-700 */
+    padding: 0 54px !important;
+}
+
+/* Adjust lists */
+.bn-root ul,
+.bn-root ol {
+    margin-left: 1rem !important;
+}

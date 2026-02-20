@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PanelLeft, LayoutDashboard, FolderOpen, ClipboardCheck, Database, Users, ChevronRight, Home, X } from 'lucide-react';
+import { PanelLeft, LayoutDashboard, FolderOpen, ClipboardCheck, Database, Users, ChevronRight, Home, X, Book } from 'lucide-react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import Header from './Header';
 
@@ -7,35 +7,93 @@ import Header from './Header';
 import {
     Tooltip,
     TooltipContent,
+    TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
 
 // eslint-disable-next-line no-unused-vars
-const AdminSidebarItem = ({ icon: Icon, label, collapsed, active, to }) => {
+const AdminSidebarItem = ({ icon: Icon, label, collapsed, active, to, subItems }) => {
+    const location = useLocation();
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    // Check if any sub-item is active
+    const isChildActive = subItems?.some(sub => location.pathname.startsWith(sub.path));
+
+    // Auto-expand if child is active
+    React.useEffect(() => {
+        if (isChildActive) setIsExpanded(true);
+    }, [isChildActive]);
+
+    const handleToggle = (e) => {
+        if (subItems && !collapsed) {
+            e.preventDefault();
+            setIsExpanded(!isExpanded);
+        }
+    };
+
     const content = (
-        <Link
-            to={to}
-            className={`flex items-center gap-3 p-3 rounded-xl transition-all mb-1 group relative ${active
-                ? 'bg-citilearn-green/10 text-citilearn-green font-bold'
-                : 'text-secondary hover:bg-gray-50 hover:text-primary font-medium'
-                }`}
-        >
-            <div className="shrink-0 flex items-center justify-center w-6 h-6">
-                <Icon size={20} className={active ? 'text-citilearn-green' : 'text-gray-400 group-hover:text-gray-600'} />
-            </div>
-            {!collapsed && (
-                <span className="whitespace-nowrap overflow-hidden transition-all duration-300 origin-left text-sm">
-                    {label}
-                </span>
+        <>
+            <Link
+                to={to}
+                onClick={handleToggle}
+                className={`flex items-center gap-3 p-3 rounded-xl transition-all mb-1 group relative ${active && !subItems // Only highlight parent if no subitems or if explicitly active (but usually subitems mean parent isn't "active" page itself)
+                    // Actually, if a child is active, we might want to style the parent differently or just let the child be highlighted.
+                    // Let's style parent if it's strictly active OR if it's open/child-active?
+                    // Typically: Parent active style if path matches exactly.
+                    // If child matches, parent might show open state.
+                    ? 'bg-citilearn-green/10 text-citilearn-green font-bold'
+                    : isChildActive
+                        ? 'text-citilearn-green font-bold'
+                        : 'text-secondary hover:bg-gray-50 hover:text-primary font-medium'
+                    }`}
+            >
+                <div className="shrink-0 flex items-center justify-center w-6 h-6">
+                    <Icon size={20} className={active || isChildActive ? 'text-citilearn-green' : 'text-gray-400 group-hover:text-gray-600'} />
+                </div>
+                {!collapsed && (
+                    <>
+                        <span className="whitespace-nowrap overflow-hidden transition-all duration-300 origin-left text-sm flex-1">
+                            {label}
+                        </span>
+                        {subItems && (
+                            <ChevronRight
+                                size={16}
+                                className={`transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`}
+                            />
+                        )}
+                    </>
+                )}
+            </Link>
+
+            {/* Sub Menu */}
+            {!collapsed && subItems && isExpanded && (
+                <div className="ml-9 space-y-1 mb-2 animate-in slide-in-from-top-2 duration-200">
+                    {subItems.map((sub, idx) => {
+                        const isSubActive = location.pathname.startsWith(sub.path);
+                        return (
+                            <Link
+                                key={idx}
+                                to={sub.path}
+                                className={`block py-2 px-3 text-sm rounded-lg transition-colors ${isSubActive
+                                    ? 'text-citilearn-green font-bold bg-citilearn-green/5'
+                                    : 'text-slate-500 hover:text-slate-800 hover:bg-gray-50'
+                                    }`}
+                            >
+                                {sub.label}
+                            </Link>
+                        );
+                    })}
+                </div>
             )}
-        </Link>
+        </>
     );
 
     if (collapsed) {
         return (
             <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
-                    {content}
+                    {/* Wrap in div because Link with onClick might be tricky with TooltipTrigger which expects a ref */}
+                    <div>{content}</div>
                 </TooltipTrigger>
                 <TooltipContent side="right">
                     {label}
@@ -44,7 +102,7 @@ const AdminSidebarItem = ({ icon: Icon, label, collapsed, active, to }) => {
         );
     }
 
-    return content;
+    return <div>{content}</div>;
 };
 
 const AdminLayout = () => {
@@ -148,7 +206,16 @@ const AdminLayout = () => {
         { icon: LayoutDashboard, label: 'Dashboard', path: '/admin' },
         { icon: FolderOpen, label: 'Course Management', path: '/admin/courses' },
         { icon: ClipboardCheck, label: 'Assessment & Grading', path: '/admin/assessment' },
-        { icon: Database, label: 'CMS CompanyHub', path: '/admin/cms' },
+        { icon: Book, label: 'CMS Knowledge Hub', path: '/admin/knowledge' },
+        {
+            icon: Database,
+            label: 'CMS CompanyHub',
+            path: '/admin/cms',
+            subItems: [
+                { label: 'Culture', path: '/admin/cms/culture' },
+                { label: 'Collaboration', path: '/admin/cms/collaboration' },
+            ]
+        },
         { icon: Users, label: 'Users Hub', path: '/admin/users' },
     ];
 
@@ -220,7 +287,8 @@ const AdminLayout = () => {
                                         label={item.label}
                                         to={item.path}
                                         collapsed={collapsed && window.innerWidth >= 1024}
-                                        active={location.pathname === item.path || (location.pathname.startsWith(item.path) && item.path !== '/admin')}
+                                        active={location.pathname === item.path || (location.pathname.startsWith(item.path) && item.path !== '/admin' && !item.subItems)}
+                                        subItems={item.subItems}
                                     />
                                 ))}
                             </nav>

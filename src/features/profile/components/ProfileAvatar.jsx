@@ -83,7 +83,7 @@ const ProfileAvatar = ({
                         />
                     ) : (
                         <div className={cn(
-                            "w-full h-full flex items-center justify-center font-bold text-primary bg-primary-light",
+                            "w-full h-full flex items-center justify-center font-medium text-primary bg-primary-light",
                             shape === 'circle' ? 'rounded-full' : 'rounded-xl',
                             currentSize.text
                         )}>

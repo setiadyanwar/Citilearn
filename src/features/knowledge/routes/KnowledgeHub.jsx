@@ -36,20 +36,20 @@ const KnowledgeHub = () => {
                 {/* Header Banner */}
                 <div className="relative overflow-hidden rounded-2xl bg-[#E3F5EB] dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-800/50 p-8 md:p-10 text-center">
                     <div className="relative z-10 max-w-2xl mx-auto space-y-2">
-                        <h1 className="text-3xl md:text-2xl font-bold text-emerald-950 dark:text-emerald-50 tracking-tight">
+                        <h1 className="text-2xl md:text-4xl font-bold text-emerald-950 dark:text-emerald-50 tracking-tight">
                             Knowledge hub
                         </h1>
-                        <p className="text-base md:text-base text-emerald-800/70 dark:text-emerald-400/70 font-medium pb-2">
+                        <p className="text-sm md:text-lg text-emerald-800/70 dark:text-emerald-400/70 font-medium pb-2">
                             Empowering Minds Through Insightful Articles
                         </p>
                     </div>
 
                     {/* Decorative Background Elements */}
-                    <div className="absolute top-28 left-18 -translate-y-1/2 opacity-20 rotate-12">
-                        <Book size={160} className="text-emerald-600 dark:text-emerald-500" />
+                    <div className="absolute top-1/2 -left-10 md:left-18 -translate-y-1/2 opacity-20 rotate-12 transition-all duration-500">
+                        <Book className="w-24 h-24 md:w-32 lg:w-40 text-emerald-600 dark:text-emerald-500" />
                     </div>
-                    <div className="absolute top-1/2 -right-12 -translate-y-1/2 opacity-20 -rotate-12">
-                        <BookOpen size={160} className="text-emerald-600 dark:text-emerald-500" />
+                    <div className="absolute top-1/2 -right-12 md:-right-12 -translate-y-1/2 opacity-20 -rotate-12 transition-all duration-500">
+                        <BookOpen className="w-24 h-24 md:w-32 lg:w-40 text-emerald-600 dark:text-emerald-500" />
                     </div>
 
                     {/* Abstract Circles */}

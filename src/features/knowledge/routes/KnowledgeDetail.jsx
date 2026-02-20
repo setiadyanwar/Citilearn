@@ -74,7 +74,7 @@ const KnowledgeDetail = () => {
                     {/* Main Content (Left) */}
                     <article className="lg:col-span-8 space-y-8">
                         <div>
-                            <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-emerald-50 leading-tight mb-6 font-lato tracking-tight">
+                            <h1 className="text-3xl md:text-4xl font-semibold text-main dark:text-white leading-tight mb-6 font-lato tracking-tight">
                                 {article.title}
                             </h1>
 
@@ -82,18 +82,15 @@ const KnowledgeDetail = () => {
                                 <div className="flex items-center gap-3">
                                     <UserProfile
                                         name={article.author.name}
-                                        size="sm"
+                                        size="xs"
                                         shape="circle"
                                         showBorder={false}
+                                        className="shrink-0"
                                     />
-                                    <div>
-                                        <div className="text-sm font-bold text-slate-800 dark:text-emerald-100">{article.author.name}</div>
-                                        <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 font-medium">
-                                            <span className="flex items-center gap-1.5">
-                                                <Calendar size={12} className="text-emerald-500" />
-                                                {article.date}
-                                            </span>
-                                        </div>
+                                    <div className="flex items-center gap-2 text-sm">
+                                        <span className="font-semibold text-slate-700 dark:text-emerald-50">{article.author.name}</span>
+                                        <span className="text-slate-300 dark:text-slate-700">•</span>
+                                        <span className="text-slate-500 dark:text-slate-400 font-medium">{article.date}</span>
                                     </div>
                                 </div>
 
@@ -116,16 +113,7 @@ const KnowledgeDetail = () => {
                                 [&_strong]:font-bold [&_strong]:text-slate-900 [&_strong]:dark:text-slate-200
                                 [&_blockquote]:border-l-4 [&_blockquote]:border-emerald-500 [&_blockquote]:pl-6 [&_blockquote]:my-8 [&_blockquote]:italic [&_blockquote]:bg-slate-50 [&_blockquote]:dark:bg-slate-900/50 [&_blockquote]:py-4 [&_blockquote]:rounded-r-lg
                                 
-                                [&_.grid-layout]:grid [&_.grid-layout]:grid-cols-1 [&_.grid-layout]:md:grid-cols-2 [&_.grid-layout]:gap-6 [&_.grid-layout]:mb-8
-                                [&_.card]:bg-white [&_.card]:dark:bg-slate-900 [&_.card]:p-6 [&_.card]:rounded-xl [&_.card]:border [&_.card]:border-slate-200 [&_.card]:dark:border-slate-800 [&_.card]:shadow-sm
                                 
-                                [&_.list-layout]:space-y-4 [&_.list-layout]:mb-8
-                                [&_.list-item]:p-4 [&_.list-item]:bg-slate-50 [&_.list-item]:dark:bg-slate-900/50 [&_.list-item]:rounded-lg [&_.list-item]:border-l-4
-                                
-                                [&_.border-emerald]:border-emerald-500
-                                [&_.border-blue]:border-blue-500
-                                [&_.border-purple]:border-purple-500
-                                [&_.border-orange]:border-orange-500
 
                                 [&_.table-container]:overflow-x-auto [&_.table-container]:mb-8 [&_.table-container]:rounded-xl [&_.table-container]:border [&_.table-container]:border-slate-200 [&_.table-container]:dark:border-slate-800
                                 [&_table]:w-full [&_table]:text-sm [&_table]:text-left
@@ -149,7 +137,7 @@ const KnowledgeDetail = () => {
                         <div className="sticky top-28">
                             <h2 className="text-xl font-bold text-slate-900 dark:text-emerald-50 mb-6 flex items-center gap-2">
                                 Other Article
-                                <div className= " h-0.5 w-full flex-1 bg-slate-200 dark:bg-slate-800 rounded-full ml-4" />
+                                <div className=" h-0.5 w-full flex-1 bg-slate-200 dark:bg-slate-800 rounded-full ml-4" />
                             </h2>
 
                             <div className="space-y-6">

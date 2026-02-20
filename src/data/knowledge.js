@@ -12,7 +12,6 @@ export const knowledgeData = [
         },
         image: "https://www.lawencon.com/wp-content/uploads/2024/11/Mengenal-User-Interface-UI-Fungsi-Cara-Kerja-dan-Contohnya-1024x640.webp",
         excerpt: "Artikel ini akan mengupas tuntas topik UI/UX dan mengapa begitu penting untuk kesuksesan produk digital.",
-        // Clean HTML content for easier CMS management
         content: `
             <p><strong>UI/UX</strong> - Dalam dunia desain digital yang terus berkembang, istilah UI/UX adalah sesuatu yang tidak asing lagi di telinga para desainer, developer, maupun pelaku bisnis online. Istilah ini sering muncul dalam diskusi tentang pengembangan website, aplikasi, atau produk digital lainnya. Namun, apa sebenarnya UI/UX adalah, dan mengapa begitu penting untuk kesuksesan produk digital? Artikel ini akan mengupas tuntas topik tersebut. Yuk, kita jelajahi bersama!</p>
             
@@ -56,26 +55,11 @@ export const knowledgeData = [
             <p>Proses desain UI/UX bukanlah linear, melainkan iteratif. Artinya, desainer akan terus melakukan perbaikan berdasarkan feedback. Berikut adalah tahapan umum dalam Design Thinking yang sering diterapkan:</p>
 
             <ul>
-                <li>
-                    <strong>1. Empathize (Empati)</strong>
-                    <p>Tahap pertama adalah memahami pengguna. Apa masalah mereka? Apa kebutuhan mereka? Desainer melakukan riset seperti wawancara atau survei untuk mendapatkan insight mendalam.</p>
-                </li>
-                <li>
-                    <strong>2. Define (Definisi)</strong>
-                    <p>Berdasarkan data riset, desainer mendefinisikan masalah inti yang akan diselesaikan. Di sini biasanya dibuat <em>User Persona</em> dan <em>User Journey Map</em>.</p>
-                </li>
-                <li>
-                    <strong>3. Ideate (Ideasi)</strong>
-                    <p>Tahap brainstorming ide solusi. Desainer membuat sketsa kasar, diagram alur, dan konsep awal tanpa memikirkan detail visual terlebih dahulu.</p>
-                </li>
-                <li>
-                    <strong>4. Prototype (Purwarupa)</strong>
-                    <p>Membuat model interaktif dari solusi. Mulai dari <em>Low-Fidelity</em> (kerangka kasar) hingga <em>High-Fidelity</em> (desain final yang mirip aplikasi asli).</p>
-                </li>
-                <li>
-                    <strong>5. Test (Pengujian)</strong>
-                    <p>Menguji prototype kepada pengguna asli (Usability Testing). Tujuannya untuk melihat apakah solusi yang dibuat benar-benar mudah digunakan dan menyelesaikan masalah.</p>
-                </li>
+                <li><strong>1. Empathize (Empati)</strong>: Tahap pertama adalah memahami pengguna. Apa masalah mereka? Apa kebutuhan mereka? Desainer melakukan riset seperti wawancara atau survei untuk mendapatkan insight mendalam.</li>
+                <li><strong>2. Define (Definisi)</strong>: Berdasarkan data riset, desainer mendefinisikan masalah inti yang akan diselesaikan. Di sini biasanya dibuat <em>User Persona</em> dan <em>User Journey Map</em>.</li>
+                <li><strong>3. Ideate (Ideasi)</strong>: Tahap brainstorming ide solusi. Desainer membuat sketsa kasar, diagram alur, dan konsep awal tanpa memikirkan detail visual terlebih dahulu.</li>
+                <li><strong>4. Prototype (Purwarupa)</strong>: Membuat model interaktif dari solusi. Mulai dari <em>Low-Fidelity</em> (kerangka kasar) hingga <em>High-Fidelity</em> (desain final yang mirip aplikasi asli).</li>
+                <li><strong>5. Test (Pengujian)</strong>: Menguji prototype kepada pengguna asli (Usability Testing). Tujuannya untuk melihat apakah solusi yang dibuat benar-benar mudah digunakan dan menyelesaikan masalah.</li>
             </ul>
 
             <h2>Pentingnya UI/UX bagi Bisnis</h2>
@@ -88,16 +72,11 @@ export const knowledgeData = [
             <h2>Tools Populer Designer</h2>
             <p>Untuk menjadi UI/UX Designer yang handal, penguasaan tools adalah hal wajib. Saat ini, industri didominasi oleh beberapa tools utama:</p>
             
-            <div class="grid-layout">
-                <div class="card">
-                    <h4>Figma</h4>
-                    <p>Standar industri saat ini. Berbasis web, memungkinkan kolaborasi real-time, dan sangat powerful untuk UI maupun Prototyping.</p>
-                </div>
-                <div class="card">
-                    <h4>Adobe XD</h4>
-                    <p>Bagian dari ekosistem Adobe Creative Cloud. Sangat baik jika Anda sudah terbiasa dengan Photoshop atau Illustrator.</p>
-                </div>
-            </div>
+            <h3>Figma</h3>
+            <p>Standar industri saat ini. Berbasis web, memungkinkan kolaborasi real-time, dan sangat powerful untuk UI maupun Prototyping.</p>
+            
+            <h3>Adobe XD</h3>
+            <p>Bagian dari ekosistem Adobe Creative Cloud. Sangat baik jika Anda sudah terbiasa dengan Photoshop atau Illustrator.</p>
 
             <p>Kesimpulannya, UI Design dan UX Design adalah dua sisi mata uang yang tidak bisa dipisahkan. Keduanya harus berjalan beriringan untuk menciptakan produk digital yang sukses. Mulailah belajar dari memahami pengguna, dan biarkan empati memandu setiap keputusan desain Anda.</p>
         `
@@ -119,28 +98,12 @@ export const knowledgeData = [
             <h2>4 Komponen Utama Microinteractions</h2>
             <p>Menurut Dan Saffer, penulis buku "Microinteractions", terdapat empat bagian penting dalam sebuah interaksi mikro:</p>
             
-            <div class="grid-layout">
-                <div class="card">
-                    <span class="badge">1</span>
-                    <h3>Trigger (Pemicu)</h3>
-                    <p>Apa yang memulai interaksi? Bisa berupa tindakan pengguna (klik tombol) atau sistem (notifikasi masuk).</p>
-                </div>
-                <div class="card">
-                    <span class="badge">2</span>
-                    <h3>Rules (Aturan)</h3>
-                    <p>Apa yang terjadi setelah pemicu diaktifkan? Aturan ini menentukan logika interaksi tersebut.</p>
-                </div>
-                <div class="card">
-                    <span class="badge">3</span>
-                    <h3>Feedback (Umpan Balik)</h3>
-                    <p>Bagaimana pengguna tahu bahwa interaksi sedang terjadi? Contoh: loading spinner, perubahan warna tombol.</p>
-                </div>
-                <div class="card">
-                    <span class="badge">4</span>
-                    <h3>Loops & Modes</h3>
-                    <p>Apa yang terjadi jika interaksi berulang? Apakah ada kondisi khusus (meta-rules)?</p>
-                </div>
-            </div>
+            <ul>
+                <li><strong>Trigger (Pemicu):</strong> Apa yang memulai interaksi? Bisa berupa tindakan pengguna (klik tombol) atau sistem (notifikasi masuk).</li>
+                <li><strong>Rules (Aturan):</strong> Apa yang terjadi setelah pemicu diaktifkan? Aturan ini menentukan logika interaksi tersebut.</li>
+                <li><strong>Feedback (Umpan Balik):</strong> Bagaimana pengguna tahu bahwa interaksi sedang terjadi? Contoh: loading spinner, perubahan warna tombol.</li>
+                <li><strong>Loops & Modes:</strong> Apa yang terjadi jika interaksi berulang? Apakah ada kondisi khusus (meta-rules)?</li>
+            </ul>
 
             <h2>Contoh Penerapan yang Efektif</h2>
             <ul>
@@ -159,7 +122,7 @@ export const knowledgeData = [
         category: "Design Operations",
         date: "12 Maret 2025",
         author: { name: "A. Suryanto", initial: "A", role: "Product Designer" },
-        image: "https://images.unsplash.com/photo-1526378721568-5f0d8f4b8f0f?auto=format&fit=crop&q=80&w=1200",
+        image: "https://th.bing.com/th/id/OIP.5lS_AlG5JNazCZuvtg41BgHaEK?o=7&cb=defcachec2rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
         excerpt: "Design System bukan sekadar Style Guide. Ia adalah 'single source of truth' yang menjembatani desain dan pengembangan code.",
         content: `
             <p>Setiap tim produk yang sedang berkembang pasti akan menghadapi masalah ini: inkonsistensi desain. Tombol di halaman A berbeda warnanya dengan halaman B. Font size tidak seragam. Developer bingung harus pakai kode yang mana. Solusinya? <strong>Design System</strong>.</p>
@@ -168,20 +131,11 @@ export const knowledgeData = [
 
             <h2>Mengapa Butuh Design System?</h2>
             
-            <div class="list-layout">
-                <div class="list-item border-emerald">
-                    <h4>Efisiensi</h4>
-                    <p>Desainer tidak perlu membuat ulang komponen dasar (seperti button, form) setiap kali mendesain fitur baru. Tinggal <em>drag-and-drop</em>.</p>
-                </div>
-                <div class="list-item border-blue">
-                    <h4>Konsistensi</h4>
-                    <p>Menjaga tampilan dan rasa (look and feel) brand tetap seragam di seluruh platform (Web, iOS, Android).</p>
-                </div>
-                <div class="list-item border-purple">
-                    <h4>Skalabilitas</h4>
-                    <p>Memudahkan onboarding anggota tim baru karena aturan main sudah terdokumentasi dengan jelas.</p>
-                </div>
-            </div>
+            <ul>
+                <li><strong>Efisiensi:</strong> Desainer tidak perlu membuat ulang komponen dasar (seperti button, form) setiap kali mendesain fitur baru. Tinggal <em>drag-and-drop</em>.</li>
+                <li><strong>Konsistensi:</strong> Menjaga tampilan dan rasa (look and feel) brand tetap seragam di seluruh platform (Web, iOS, Android).</li>
+                <li><strong>Skalabilitas:</strong> Memudahkan onboarding anggota tim baru karena aturan main sudah terdokumentasi dengan jelas.</li>
+            </ul>
 
             <h2>Langkah Memulai (Atomic Design)</h2>
             <p>Metodologi yang paling sering dipakai adalah <strong>Atomic Design</strong> oleh Brad Frost. Bayangkan membangun sistem seperti menyusun LEGO:</p>
@@ -220,20 +174,14 @@ export const knowledgeData = [
 
             <h2>Metode "Quick Win"</h2>
             
-            <div class="list-layout">
-                <div class="list-item border-purple">
-                    <h3>1. Internal Stakeholder Interview</h3>
-                    <p>Sebelum keluar, tanya orang dalam dulu. Tim Sales dan Customer Support (CS) adalah tambang emas informasi. Mereka bicara dengan klien setiap hari. Tanyakan: "Apa keluhan yang paling sering didengar dari klien?"</p>
-                </div>
-                <div class="list-item border-orange">
-                    <h3>2. Competitor Audit</h3>
-                    <p>Tidak perlu reinvent the wheel. Coba produk kompetitor. Apa yang mereka lakukan dengan baik? Di mana kekurangannya? Baca review user mereka di situs seperti G2 atau Capterra.</p>
-                </div>
-                <div class="list-item border-emerald">
-                    <h3>3. Contextual Inquiry (Remote)</h3>
-                    <p>Minta pengguna untuk share screen via Zoom saat mereka bekerja menggunakan aplikasi Anda (atau cara lama mereka). Observasi perilaku mereka. Di mana mereka ragu? Di mana mereka melakukan kesalahan?</p>
-                </div>
-            </div>
+            <h3>1. Internal Stakeholder Interview</h3>
+            <p>Sebelum keluar, tanya orang dalam dulu. Tim Sales dan Customer Support (CS) adalah tambang emas informasi. Mereka bicara dengan klien setiap hari. Tanyakan: "Apa keluhan yang paling sering didengar dari klien?"</p>
+            
+            <h3>2. Competitor Audit</h3>
+            <p>Tidak perlu reinvent the wheel. Coba produk kompetitor. Apa yang mereka lakukan dengan baik? Di mana kekurangannya? Baca review user mereka di situs seperti G2 atau Capterra.</p>
+            
+            <h3>3. Contextual Inquiry (Remote)</h3>
+            <p>Minta pengguna untuk share screen via Zoom saat mereka bekerja menggunakan aplikasi Anda (atau cara lama mereka). Observasi perilaku mereka. Di mana mereka ragu? Di mana mereka melakukan kesalahan?</p>
 
             <p>Kunci riset B2B adalah menghormati waktu mereka. Persiapkan pertanyaan dengan matang, dan fokus pada <em>Pain Points</em> serta <em>Workflow</em> kerja mereka sehari-hari.</p>
         `
@@ -245,7 +193,7 @@ export const knowledgeData = [
         category: "Prototyping",
         date: "09 Januari 2025",
         author: { name: "R. Hadi", initial: "R", role: "UX Engineer" },
-        image: "https://images.unsplash.com/photo-1588894060409-5d7d3b36b2a0?auto=format&fit=crop&q=80&w=1200",
+        image: "https://image.slidesharecdn.com/prototyping-memaksimalkan-ide-melalui-eksperimentasi-241101113942-2e4fe312/75/Prototyping-Memaksimalkan-Ide-Melalui-Eksperimentasi-pptx-8-2048.jpg",
         excerpt: "Prototyping adalah jembatan antara ide abstrak dan produk nyata. Temukan tips membuat prototype dengan cepat untuk kolaborasi tim.",
         content: `
             <p>Prototyping adalah jembatan antara ide abstrak dan produk nyata. Namun, seringkali desainer terjebak membuat prototype yang terlalu rumit (High-Fidelity) terlalu dini, sehingga membuang waktu saat ada revisi.</p>
@@ -254,24 +202,12 @@ export const knowledgeData = [
 
             <h2>Top 5 Tips Prototyping Efisien</h2>
             
-            <div class="grid-layout">
-                <div class="card">
-                    <h4>1. Gunakan 'Master Component'</h4>
-                    <p>Di Figma, jangan kopi-paste manual. Buat komponen induk. Jika ada revisi (misal ganti warna tombol), cukup ubah satu kali, semua halaman berubah.</p>
-                </div>
-                <div class="card">
-                    <h4>2. Pakai Data Real (atau mendekati)</h4>
-                    <p>Jangan pakai "Lorem Ipsum" terus. Gunakan plugin 'Content Reel' atau data dummy yang realistis. Ini membantu melihat apakah desain pecah saat nama user terlalu panjang.</p>
-                </div>
-                <div class="card">
-                    <h4>3. Fokus pada 'Happy Path' Dulu</h4>
-                    <p>Jangan pusingkan error state atau edge cases di awal. Buat alur utama (misal: Checkout sukses) agar stakeholder paham konsep besarnya.</p>
-                </div>
-                <div class="card">
-                    <h4>4. Test di Device Asli</h4>
-                    <p>Gunakan Figma Mirror. Klik di HP langsung. Seringkali tombol terlihat oke di layar laptop, tapi ternyata kekecilan saat dipencet jempol.</p>
-                </div>
-            </div>
+            <ul>
+                <li><strong>Gunakan 'Master Component':</strong> Di Figma, jangan kopi-paste manual. Buat komponen induk. Jika ada revisi (misal ganti warna tombol), cukup ubah satu kali, semua halaman berubah.</li>
+                <li><strong>Pakai Data Real (atau mendekati):</strong> Jangan pakai "Lorem Ipsum" terus. Gunakan plugin 'Content Reel' atau data dummy yang realistis. Ini membantu melihat apakah desain pecah saat nama user terlalu panjang.</li>
+                <li><strong>Fokus pada 'Happy Path' Dulu:</strong> Jangan pusingkan error state atau edge cases di awal. Buat alur utama (misal: Checkout sukses) agar stakeholder paham konsep besarnya.</li>
+                <li><strong>Test di Device Asli:</strong> Gunakan Figma Mirror. Klik di HP langsung. Seringkali tombol terlihat oke di layar laptop, tapi ternyata kekecilan saat dipencet jempol.</li>
+            </ul>
 
             <p>Prototype tidak harus perfect pixel. Prototype harus <strong>menjawab pertanyaan</strong>. Apakah flow ini masuk akal? Apakah user bingung di halaman ini? Itulah tujuannya.</p>
         `
