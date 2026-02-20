@@ -25,6 +25,10 @@ import CourseDetail from '@/features/courses/routes/CourseDetail';
 import CourseLearning from '@/features/learning/routes/CourseLearning';
 import FocusTest from '@/features/learning/routes/FocusTest';
 
+// Knowledge Features
+import KnowledgeHub from '@/features/knowledge/routes/KnowledgeHub';
+import KnowledgeDetail from '@/features/knowledge/routes/KnowledgeDetail';
+
 // Admin Features
 import {
     AdminDashboard,
@@ -37,7 +41,11 @@ import {
     UserAssignment,
     UserHub,
     GradingReview,
-    GradingDetail
+    GradingDetail,
+    KnowledgeManagement,
+    KnowledgeEditor,
+    CompanyHubManagement,
+    CompanyHubEditor
 } from '@/features/admin';
 
 export const AppRoutes = () => {
@@ -71,6 +79,12 @@ export const AppRoutes = () => {
             element: <AdminLayout />,
             children: [
                 { path: '', element: <AdminDashboard /> },
+                { path: 'knowledge', element: <KnowledgeManagement /> },
+                { path: 'knowledge/create', element: <KnowledgeEditor /> },
+                { path: 'knowledge/:id/edit', element: <KnowledgeEditor /> },
+                { path: 'cms/:type', element: <CompanyHubManagement /> },
+                { path: 'cms/:type/create', element: <CompanyHubEditor /> },
+                { path: 'cms/:type/:id/edit', element: <CompanyHubEditor /> },
                 { path: 'courses', element: <CourseManagement /> },
                 { path: 'courses/create', element: <CourseEditor /> },
                 { path: 'course/:id/edit', element: <CourseEditor /> },
@@ -97,6 +111,8 @@ export const AppRoutes = () => {
                 { path: '', element: <Dashboard /> },
                 { path: 'courses', element: <ExploreCourses /> },
                 { path: 'course/:id', element: <CourseDetail /> },
+                { path: 'knowledge', element: <KnowledgeHub /> },
+                { path: 'knowledge/:slug', element: <KnowledgeDetail /> },
                 { path: '*', element: <Dashboard /> }
             ]
         }

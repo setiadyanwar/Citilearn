@@ -38,25 +38,25 @@ const ProfileAvatar = ({
     // Size-based configurations
     const sizes = {
         xs: {
-            container: 'w-8 h-8 p-0.5',
+            container: 'w-7 h-7 p-0.5',
             badge: 'text-3xs px-1 py-0.5 -bottom-1 border',
             hat: 'w-3 -top-1 -right-0.5',
             gap: 'gap-2',
-            text: 'text-3xs'
+            text: 'text-xs'
         },
         sm: {
-            container: 'w-10 h-10 md:w-12 md:h-12 p-0.5',
+            container: 'w-8 h-8 md:w-9 md:h-9 p-0.5',
             badge: 'text-[9px] px-1.5 py-0.5 -bottom-1.5 border',
             hat: 'w-4 -top-1.5 -right-1',
             gap: 'gap-3',
-            text: 'text-xs'
+            text: 'text-sm'
         },
         md: {
             container: 'w-16 h-16 md:w-24 md:h-24 p-1',
             badge: 'text-[10px] md:text-xs px-2 md:px-3 py-1 md:py-1.5 -bottom-2.5 border-2',
             hat: 'w-6 md:w-8 -top-3.5 -right-2',
             gap: 'gap-6',
-            text: 'text-base'
+            text: 'text-xl md:text-2xl'
         }
     };
 
@@ -83,7 +83,7 @@ const ProfileAvatar = ({
                         />
                     ) : (
                         <div className={cn(
-                            "w-full h-full flex items-center justify-center font-bold text-primary bg-primary-light",
+                            "w-full h-full flex items-center justify-center font-medium text-primary bg-primary-light",
                             shape === 'circle' ? 'rounded-full' : 'rounded-xl',
                             currentSize.text
                         )}>

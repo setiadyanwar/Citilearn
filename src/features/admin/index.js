@@ -11,6 +11,10 @@ export { default as UserAssignment } from './routes/UserAssignment';
 export { default as UserHub } from './routes/UserHub';
 export { default as GradingReview } from './routes/GradingReview';
 export { default as GradingDetail } from './routes/GradingDetail';
+export { default as KnowledgeManagement } from './routes/KnowledgeManagement';
+export { default as KnowledgeEditor } from './routes/KnowledgeEditor';
+export { default as CompanyHubManagement } from './routes/CompanyHubManagement';
+export { default as CompanyHubEditor } from './routes/CompanyHubEditor';
 
 // Hooks (Future use)
 // export * from './hooks/useAdminMetrics';

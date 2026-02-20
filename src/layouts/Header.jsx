@@ -27,6 +27,7 @@ const Header = ({
         if (path === '/courses') return 'Explore Courses';
         if (path.includes('/course')) return 'Course Details';
         if (path.includes('/learn')) return 'My Learning';
+        if (path.includes('/knowledge')) return 'Knowledge Hub';
         if (path.includes('/achievements')) return 'Achievements';
         if (path.includes('/settings')) return 'Settings';
         if (path.includes('/profile')) return 'Dashboard Profile';

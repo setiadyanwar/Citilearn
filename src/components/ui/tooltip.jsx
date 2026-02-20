@@ -15,9 +15,10 @@ const TooltipContent = React.forwardRef(({ className, sideOffset = 4, ...props }
     <TooltipPrimitive.Content
         ref={ref}
         sideOffset={sideOffset}
+        style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}
         className={cn(
-            "z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-            "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900", // Custom styling for clear visibility
+            "z-50 overflow-hidden rounded-lg px-3 py-1.5 text-xs font-bold text-white shadow-xl animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+            "bg-black/40 border border-white/10",
             className
         )}
         {...props}
