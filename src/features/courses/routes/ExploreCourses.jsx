@@ -37,6 +37,7 @@ const ExploreCourses = () => {
     const [activeTab, setActiveTab] = useState('mandatory'); // 'mandatory' | 'skills-up'
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [selectedStatus, setSelectedStatus] = useState('All');
+    const [selectedTopic, setSelectedTopic] = useState(null);
     const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
     const [viewMode, setViewMode] = useState('grid');
 
@@ -61,24 +62,50 @@ const ExploreCourses = () => {
         }, 500);
     }, []);
 
+    // Smart Topic Mapping
+    const TOPIC_KEYWORDS = {
+        'Risk Management': ['risk', 'hazard', 'hira', 'safety management', 'sms', 'dangerous goods'],
+        'Safety Assurance': ['safety', 'assurance', 'audit', 'compliance', 'regulation', 'sms'],
+        'Safety Promotion': ['culture', 'promotion', 'training', 'communication'],
+        'React': ['react', 'frontend', 'javascript', 'ui', 'web'],
+        'Golang': ['golang', 'backend', 'api', 'systems'],
+        'Leadership': ['leadership', 'management', 'team', 'leading'],
+        'Conflict Resolution': ['conflict', 'de-escalation', 'resolution', 'difficult passengers'],
+        'Meteorology': ['weather', 'meteorology', 'climate', 'atmospheric'],
+        'Cloud Computing': ['cloud', 'aws', 'azure', 'docker', 'infrastructure']
+    };
+
+    const matchesTopic = (course, topic) => {
+        if (!topic) return true;
+
+        const keywords = TOPIC_KEYWORDS[topic] || [topic.toLowerCase()];
+        const searchPool = `${course.title} ${course.description} ${course.category} ${course.tags?.join(' ') || ''}`.toLowerCase();
+
+        return keywords.some(keyword => searchPool.includes(keyword.toLowerCase()));
+    };
+
     // Filter Logic
     const resumeCourses = courses.filter(c => c.status === 'On Progress' && c.progress > 0);
 
-    // Mandatory: Category Safety or Technical
-    const mandatoryCourses = courses.filter(c =>
-        (c.category === 'Safety' || c.category === 'Technical') &&
-        c.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
-        (selectedCategory === 'All' || c.category === selectedCategory) &&
-        (selectedStatus === 'All' || c.status === selectedStatus)
-    );
+    // Mandatory Filter
+    const mandatoryCourses = courses.filter(c => {
+        const matchesSearch = c.title.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesCat = selectedCategory === 'All' || c.category === selectedCategory;
+        const matchesStat = selectedStatus === 'All' || c.status === selectedStatus;
+        const matchesTop = matchesTopic(c, selectedTopic);
 
-    // Skills-Up: Everything else
-    const skillsUpCourses = courses.filter(c =>
-        c.category !== 'Safety' && c.category !== 'Technical' &&
-        c.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
-        (selectedCategory === 'All' || c.category === selectedCategory) &&
-        (selectedStatus === 'All' || c.status === selectedStatus)
-    );
+        return (c.category === 'Safety' || c.category === 'Technical') && matchesSearch && matchesCat && matchesStat && matchesTop;
+    });
+
+    // Skills-Up Filter
+    const skillsUpCourses = courses.filter(c => {
+        const matchesSearch = c.title.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesCat = selectedCategory === 'All' || c.category === selectedCategory;
+        const matchesStat = selectedStatus === 'All' || c.status === selectedStatus;
+        const matchesTop = matchesTopic(c, selectedTopic);
+
+        return c.category !== 'Safety' && c.category !== 'Technical' && matchesSearch && matchesCat && matchesStat && matchesTop;
+    });
 
     const displayedCourses = activeTab === 'mandatory' ? mandatoryCourses : skillsUpCourses;
 
@@ -105,12 +132,18 @@ const ExploreCourses = () => {
                     <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 w-full px-4 md:px-0">
                         {/* Desktop Only Inline Topic Dropdown */}
                         <div className="hidden md:flex w-full md:w-auto justify-center">
-                            <TopicDropdown />
+                            <TopicDropdown
+                                selectedTopic={selectedTopic}
+                                onSelect={setSelectedTopic}
+                            />
                         </div>
 
                         {/* Mobile FAB Topic Dropdown (Doesn't take space in flow) */}
                         <div className="md:hidden h-0 overflow-visible">
-                            <TopicDropdown />
+                            <TopicDropdown
+                                selectedTopic={selectedTopic}
+                                onSelect={setSelectedTopic}
+                            />
                         </div>
 
                         <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">

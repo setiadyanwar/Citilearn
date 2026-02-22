@@ -10,10 +10,10 @@ const CourseAvailabilitySettings = ({ isLifetime, startDate, endDate, onChange }
             <div className="flex flex-row items-center justify-between border-b border-slate-200/60 pb-4 gap-4">
                 <div className="space-y-1">
                     <Label className="text-sm md:text-base font-bold text-foreground">Course Availability</Label>
-                    <p className="text-xs md:text-sm text-muted-foreground">Set time limits or allow lifetime access</p>
+                    <p className="text-xs md:text-sm text-secondary">Set time limits or allow lifetime access</p>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
-                    <Label htmlFor="lifetime-mode" className="text-xs md:text-sm font-bold text-muted-foreground cursor-pointer">Lifetime Access</Label>
+                    <Label htmlFor="lifetime-mode" className="text-xs md:text-sm font-bold text-secondary cursor-pointer">Lifetime Access</Label>
                     <Switch
                         id="lifetime-mode"
                         checked={isLifetime}

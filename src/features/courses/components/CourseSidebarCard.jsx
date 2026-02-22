@@ -16,7 +16,7 @@ const CourseSidebarCard = ({ course }) => {
                 <div className="bg-white dark:bg-slate-900 rounded-3xl border border-gray-100 dark:border-slate-800 p-8">
                     <h4 className="font-bold text-base text-main dark:text-white mb-6">Learning Objectives</h4>
                     <ul className="space-y-5">
-                        {(course.learningOutcomes || [
+                        {(course.learningObjectives || [
                             "Industry-standard aviation courseware",
                             "Flexible 24/7 multi-device access",
                             "Internal training completion record"

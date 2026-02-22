@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import TagInput from '@/features/admin/components/course/editor/TagInput';
 
 // Standard Admin Components
 import AdminPageShell from '../components/layout/AdminPageShell';
@@ -48,6 +49,7 @@ const CourseEditor = () => {
         title: existingCourse?.title || "",
         description: existingCourse?.description || "",
         category: existingCourse?.category || "",
+        tags: existingCourse?.tags || [],
         type: existingCourse?.type || "Mandatory",
         thumbnail: existingCourse?.thumbnail || "",
         status: existingCourse?.status || "Draft",
@@ -171,6 +173,12 @@ const CourseEditor = () => {
                                         placeholder="Write a compelling description for your learners..."
                                     />
                                 </div>
+
+                                {/* Course Tags */}
+                                <TagInput
+                                    tags={courseData.tags}
+                                    onChange={(newTags) => handleUpdateData({ tags: newTags })}
+                                />
 
                                 {/* Course Availability */}
                                 <CourseAvailabilitySettings

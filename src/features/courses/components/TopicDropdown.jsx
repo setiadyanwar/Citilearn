@@ -15,11 +15,18 @@ const TOPIC_DATA = [
     { id: 'marketing', label: 'Creative & Marketing', children: ['Digital Marketing', 'Content Strategy', 'SEO/SEM'] },
 ];
 
-const TopicDropdown = () => {
+const TopicDropdown = ({ onSelect, selectedTopic }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeTopic, setActiveTopic] = useState('it');
+    const [statusActiveTopic, setStatusActiveTopic] = useState('it');
     const [mobileStage, setMobileStage] = useState('topics'); // 'topics' | 'category'
     const dropdownRef = useRef(null);
+
+    const activeTopic = statusActiveTopic;
+
+    const handleSelect = (subTopic) => {
+        onSelect(subTopic);
+        setIsOpen(false);
+    };
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -30,7 +37,7 @@ const TopicDropdown = () => {
 
         if (isOpen && window.innerWidth < 768) {
             document.body.style.overflow = 'hidden';
-            document.body.style.paddingRight = '0px'; // Prevent scrollbar shift if any
+            document.body.style.paddingRight = '0px';
         } else {
             document.body.style.overflow = 'unset';
             document.body.style.paddingRight = '0px';
@@ -65,7 +72,7 @@ const TopicDropdown = () => {
                 className={`flex items-center gap-2 transition-all cursor-pointer font-bold
                     ${window.innerWidth < 768
                         ? 'fixed bottom-6 right-6 z-990 bg-primary text-white p-4 rounded-2xl shadow-xl shadow-primary/20 scale-100 active:scale-90 flex items-center gap-2 transition-all'
-                        : `px-4 py-2.5 rounded-full text-sm flex items-center gap-2 transition-all ${isOpen ? 'text-primary' : 'text-secondary hover:text-primary'}`
+                        : `px-4 py-2.5 rounded-full text-sm flex items-center gap-2 transition-all ${isOpen || selectedTopic ? 'text-primary' : 'text-secondary hover:text-primary'}`
                     }`}
             >
                 {window.innerWidth < 768 ? (
@@ -75,7 +82,13 @@ const TopicDropdown = () => {
                     </>
                 ) : (
                     <>
-                        View Topic <ChevronDown size={14} className={`transition-transform duration-200 ${(isOpen && window.innerWidth >= 768) ? 'rotate-180' : ''}`} />
+                        {selectedTopic ? (
+                            <span className="flex items-center gap-2">
+                                Topic: <span className="text-primary font-bold">{selectedTopic}</span>
+                                <X size={14} className="hover:text-red-500" onClick={(e) => { e.stopPropagation(); onSelect(null); }} />
+                            </span>
+                        ) : 'View Topic'}
+                        <ChevronDown size={14} className={`transition-transform duration-200 ${(isOpen && window.innerWidth >= 768) ? 'rotate-180' : ''}`} />
                     </>
                 )}
             </button>
@@ -97,7 +110,7 @@ const TopicDropdown = () => {
                                     {TOPIC_DATA.map(topic => (
                                         <button
                                             key={topic.id}
-                                            onMouseEnter={() => setActiveTopic(topic.id)}
+                                            onMouseEnter={() => setStatusActiveTopic(topic.id)}
                                             className={`w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-bold text-left transition-all cursor-pointer
                                             ${activeTopic === topic.id
                                                     ? 'bg-emerald-50 text-citilearn-green dark:bg-emerald-900/20'
@@ -118,6 +131,7 @@ const TopicDropdown = () => {
                                         activeChildren.map((child, idx) => (
                                             <button
                                                 key={idx}
+                                                onClick={() => handleSelect(child)}
                                                 className="text-left text-sm font-medium text-main dark:text-slate-300 hover:text-primary transition-colors py-1 cursor-pointer"
                                             >
                                                 {child}
@@ -182,7 +196,7 @@ const TopicDropdown = () => {
                                             <button
                                                 key={topic.id}
                                                 onClick={() => {
-                                                    setActiveTopic(topic.id);
+                                                    setStatusActiveTopic(topic.id);
                                                     setMobileStage('category');
                                                 }}
                                                 className="w-full flex items-center justify-between p-4 rounded-2xl bg-gray-50 dark:bg-slate-800/50 hover:bg-emerald-50 dark:hover:bg-emerald-900/10 text-left transition-all"
@@ -198,7 +212,7 @@ const TopicDropdown = () => {
                                             <button
                                                 key={idx}
                                                 className="w-full text-left p-4 rounded-2xl border border-gray-100 dark:border-slate-800 text-sm font-bold text-main dark:text-slate-300 hover:border-primary hover:text-primary transition-all"
-                                                onClick={() => setIsOpen(false)}
+                                                onClick={() => handleSelect(child)}
                                             >
                                                 {child}
                                             </button>

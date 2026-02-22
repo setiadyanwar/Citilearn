@@ -167,9 +167,11 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
                         <h3 className={`text-base font-bold text-main dark:text-white mb-1 transition-colors overflow-hidden whitespace-nowrap overflow-ellipsis block w-full ${isAvailable && !disabled ? 'group-hover:text-primary' : ''}`}>
                             {course.title}
                         </h3>
-                        <div className="flex items-center gap-2 mb-2">
-                            {renderStatusBadge()}
-                        </div>
+                        {!isMandatory && (
+                            <div className="flex items-center gap-2 mb-2">
+                                {renderStatusBadge()}
+                            </div>
+                        )}
                         {course.description && (
                             <p className="text-xs text-secondary dark:text-slate-400 mb-3 block w-full overflow-hidden whitespace-nowrap overflow-ellipsis">
                                 {course.description}
