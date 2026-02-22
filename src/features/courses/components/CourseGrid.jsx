@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import CourseCard from '@/features/dashboard/components/CourseCard';
-import DashboardCourseCard from '@/features/dashboard/components/DashboardCourseCard';
 import EmptyState from '@/components/common/EmptyState';
 
 const CourseGrid = ({ loading, courses, emptyTitle, emptyMessage, onClearFilter, showClearFilter, viewMode = 'grid' }) => {
@@ -49,7 +48,7 @@ const CourseGrid = ({ loading, courses, emptyTitle, emptyMessage, onClearFilter,
                         {isGrid ? (
                             <CourseCard course={course} />
                         ) : (
-                            <DashboardCourseCard course={course} variant="list" />
+                            <CourseCard course={course} variant="horizontal" />
                         )}
                     </motion.div>
                 ))

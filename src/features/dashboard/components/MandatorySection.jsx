@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight, AlertCircle, Calendar } from 'lucide-react';
-import DashboardCourseCard from './DashboardCourseCard';
 import MandatoryIllustration from './MandatoryIllustration';
 import Badge from '@/components/common/Badge';
+import CourseCard from './CourseCard';
 
 const MandatorySection = ({ courses = [] }) => {
     const isEmpty = !courses || courses.length === 0;
@@ -88,7 +88,7 @@ const MandatorySection = ({ courses = [] }) => {
                     >
                         {courses.map(course => (
                             <div key={course.id} className="w-[330px] sm:w-[360px] md:w-[400px] snap-center shrink-0">
-                                <DashboardCourseCard course={course} variant="mandatory" />
+                                <CourseCard course={course} variant="mandatory" />
                             </div>
                         ))}
                     </div>

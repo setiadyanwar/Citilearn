@@ -1,5 +1,5 @@
 import MandatoryIllustration from './MandatoryIllustration';
-import DashboardCourseCard from './DashboardCourseCard';
+import CourseCard from './CourseCard';
 
 const ResumeSection = ({ courses = [] }) => {
     const isEmpty = courses.length === 0;
@@ -30,7 +30,7 @@ const ResumeSection = ({ courses = [] }) => {
                     <div className="h-full overflow-x-auto xl:overflow-y-auto no-scrollbar -mx-4 px-4 xl:mx-0 xl:px-0 pr-1 pb-4 flex flex-row xl:flex-col gap-4">
                         {courses.map(course => (
                             <div key={course.id} className="min-w-[280px] sm:min-w-[320px] xl:min-w-0 xl:w-full">
-                                <DashboardCourseCard course={course} variant="resume" />
+                                <CourseCard course={course} variant="resume" />
                             </div>
                         ))}
                     </div>

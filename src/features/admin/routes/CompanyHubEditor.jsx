@@ -61,6 +61,7 @@ const CompanyHubEditor = () => {
         navigate(`/admin/cms/${type}`);
     };
 
+   
     return (
         <AdminPageShell>
             {/* Header */}
@@ -151,6 +152,7 @@ const CompanyHubEditor = () => {
                             )}
                         </div>
                     </div>
+
 
                     <Drawer
                         isOpen={isDrawerOpen}

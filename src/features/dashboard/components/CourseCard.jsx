@@ -16,6 +16,9 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
     const [timeLeft, setTimeLeft] = useState('');
     const [displayProgress, setDisplayProgress] = useState(course.progress || 0);
 
+    const isHorizontal = variant === 'horizontal' || variant === 'mandatory' || variant === 'resume';
+    const isMandatory = variant === 'mandatory';
+
     // Calculate dynamic progress from localStorage
     useEffect(() => {
         const savedCompleted = localStorage.getItem(STORAGE_KEYS.courseProgress(course.id));
@@ -73,7 +76,7 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
 
     const handleCardClick = () => {
         if (isAvailable && !disabled) {
-            if (inProgress) {
+            if (inProgress || isHorizontal) {
                 navigate(`/profile/learning/${course.id}`);
             } else {
                 navigate(`/course/${course.id}`);
@@ -86,7 +89,7 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
         e.stopPropagation();
 
         // If not enrolled/not started AND in dashboard grid, go to course landing page
-        if (notStarted && !compact) {
+        if (notStarted && !compact && !isHorizontal) {
             navigate(`/course/${course.id}`);
         } else {
             // Already on landing page or already enrolled, go to learning interface
@@ -96,17 +99,120 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
 
     // Determine Status Badge
     const renderStatusBadge = () => {
-        if (isCompleted) {
-            return <Badge variant="completed" size="sm">Completed</Badge>;
-        }
-        if (inProgress) {
-            return <Badge variant="in-progress" size="sm">In Progress</Badge>;
-        }
-        if (course.status === COURSE_STATUS.FAILED) {
-            return <Badge variant="failed" size="sm">Failed</Badge>;
-        }
-        return <Badge variant="not-started" size="sm">Not Started</Badge>;
+        const size = isHorizontal ? "compact" : "sm";
+        if (isCompleted) return <Badge variant="completed" size={size}>Completed</Badge>;
+        if (inProgress) return <Badge variant="in-progress" size={size}>In Progress</Badge>;
+        if (course.status === COURSE_STATUS.FAILED) return <Badge variant="failed" size={size}>Failed</Badge>;
+        return <Badge variant="not-started" size={size}>Not Started</Badge>;
     };
+
+    // Unified Countdown Component for consistency
+    const renderCountdown = () => {
+        if (isAvailable) return null;
+
+        return (
+            <div className="w-full bg-gray-100 dark:bg-slate-800 text-secondary dark:text-slate-400 font-semibold rounded-xl h-11 border border-gray-200 dark:border-slate-700 flex items-center justify-center gap-2 text-sm px-3 whitespace-nowrap overflow-hidden" title={`Available in ${timeLeft}`}>
+                <Clock size={16} className="shrink-0 text-primary/60" />
+                <span className="truncate">Available in {timeLeft || 'Loading...'}</span>
+            </div>
+        );
+    };
+
+    if (isHorizontal) {
+        return (
+            <div
+                onClick={handleCardClick}
+                className={`flex flex-row gap-4 p-4 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl cursor-pointer group overflow-hidden transition-all duration-300 ${!isAvailable || disabled ? 'opacity-75 grayscale cursor-not-allowed' : ''}`}
+            >
+                {/* Thumbnail */}
+                <div className="relative shrink-0 rounded-xl overflow-hidden w-28 h-auto bg-gray-100 dark:bg-slate-800">
+                    {course.thumbnail ? (
+                        <img
+                            src={course.thumbnail}
+                            alt={course.title}
+                            className={`w-full h-full object-cover transition-transform duration-500 ${isAvailable && !disabled ? 'group-hover:scale-105' : ''}`}
+                        />
+                    ) : (
+                        <div className="w-full h-full flex items-center justify-center p-2 text-slate-300">
+                            <BookOpen size={24} />
+                        </div>
+                    )}
+                    {isAvailable && !isCompleted && !disabled && (
+                        <div className="absolute top-1.5 left-1.5 z-10">
+                            <BookmarkButton isBookmarked={isBookmarked} size={12} className="p-1" />
+                        </div>
+                    )}
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0 flex flex-col justify-between">
+                    <div className="min-w-0">
+                        <div className="flex items-center justify-between font-medium mb-2 gap-2">
+                            <div className="flex items-center gap-2 min-w-0">
+                                {isMandatory && (
+                                    <div className="shrink-0">
+                                        <Badge variant="mandatory" size="compact">Mandatory</Badge>
+                                    </div>
+                                )}
+                                <span className="text-xs text-tertiary truncate min-w-0">{course.category || 'General'}</span>
+                            </div>
+                            {isAvailable && !disabled && (
+                                <span className="text-xs text-secondary dark:text-slate-500 flex items-center gap-1 whitespace-nowrap shrink-0">
+                                    <Clock size={12} />
+                                    {course.timeLeft || 'Start now'}
+                                </span>
+                            )}
+                        </div>
+
+                        <h3 className={`text-base font-bold text-main dark:text-white mb-1 transition-colors overflow-hidden whitespace-nowrap overflow-ellipsis block w-full ${isAvailable && !disabled ? 'group-hover:text-primary' : ''}`}>
+                            {course.title}
+                        </h3>
+                        <div className="flex items-center gap-2 mb-2">
+                            {renderStatusBadge()}
+                        </div>
+                        {course.description && (
+                            <p className="text-xs text-secondary dark:text-slate-400 mb-3 block w-full overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                {course.description}
+                            </p>
+                        )}
+
+                        <div className="flex items-center gap-4 mb-3 overflow-hidden">
+                            <div className="flex items-center gap-1.5 text-xs font-medium text-tertiary whitespace-nowrap shrink-0">
+                                <Clock size={14} className="text-primary" />
+                                {course.duration}
+                            </div>
+                            {(course.modulesCount > 0 || course.modules?.length > 0) && (
+                                <div className="flex items-center gap-1.5 text-xs font-medium text-tertiary whitespace-nowrap shrink-0">
+                                    <BookOpen size={14} className="text-primary" />
+                                    {course.modulesCount || course.modules?.length} Modules
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="mt-auto">
+                        {!isAvailable ? (
+                            renderCountdown()
+                        ) : (
+                            <div>
+                                <div className="flex justify-between items-center mb-1.5">
+                                    <span className="text-xs font-medium text-tertiary">Progress</span>
+                                    <span className="text-xs font-bold text-primary">{displayProgress}%</span>
+                                </div>
+                                <ProgressBar
+                                    progress={displayProgress}
+                                    height="h-1.5"
+                                    color="bg-primary"
+                                    trackColor="bg-gray-100 dark:bg-slate-800"
+                                    rounded="rounded-full"
+                                />
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <Card
@@ -114,14 +220,14 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
             className={`group flex flex-col h-full overflow-hidden transition-all duration-300 border border-gray-100 dark:border-slate-800 rounded-2xl ${isAvailable && !disabled ? 'cursor-pointer' : 'cursor-not-allowed'}`}
             onClick={handleCardClick}
         >
-            <div className={`flex flex-col h-full ${!isAvailable ? 'opacity-75' : ''}`}>
+            <div className={`flex flex-col h-full ${!isAvailable || disabled ? 'opacity-75 grayscale' : ''}`}>
                 {/* Image Section */}
                 <div className={`relative ${compact ? 'h-40' : 'h-48'} bg-gray-100 dark:bg-slate-800 overflow-hidden`}>
                     {course.thumbnail ? (
                         <img
                             src={course.thumbnail}
                             alt={course.title}
-                            className={`w-full h-full object-cover transition-transform duration-700 ${isAvailable ? 'group-hover:scale-105' : 'grayscale opacity-80'}`}
+                            className={`w-full h-full object-cover transition-transform duration-700 ${isAvailable && !disabled ? 'group-hover:scale-105' : 'grayscale opacity-80'}`}
                         />
                     ) : (
                         <div className="w-full h-full flex flex-col items-center justify-center p-6 text-slate-300 bg-slate-50 dark:bg-slate-900/50">
@@ -135,8 +241,8 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
                         {renderStatusBadge()}
                     </div>
 
-                    {/* Bookmark Toggle (Top Right) - Only if NOT completed/certificate */}
-                    {!isCompleted && (
+                    {/* Bookmark Toggle (Top Right) */}
+                    {!isCompleted && isAvailable && !disabled && (
                         <div className="absolute top-4 right-4 z-10">
                             <BookmarkButton isBookmarked={isBookmarked} size={18} />
                         </div>
@@ -163,7 +269,7 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
                     </div>
 
                     {/* Title */}
-                    <h3 className={`${compact ? 'text-base' : 'text-xl'} font-bold text-main dark:text-white mb-2 line-clamp-2 leading-tight group-hover:text-primary transition-colors`} title={course.title}>
+                    <h3 className={`${compact ? 'text-sm font-semibold' : 'text-xl font-bold'} text-main dark:text-white mb-2 line-clamp-2 leading-tight group-hover:text-primary transition-colors`} title={course.title}>
                         {course.title}
                     </h3>
 
@@ -176,24 +282,20 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
 
                     <div className="mt-auto pt-4">
                         {/* 1. NOT AVAILABLE (Coming Soon) */}
-                        {!isAvailable && (
-                            <div className="w-full bg-gray-50 text-gray-400 font-bold rounded-xl h-11 border border-gray-100 flex items-center justify-center text-sm">
-                                Available in {timeLeft || 'Loading...'}
-                            </div>
-                        )}
+                        {!isAvailable && renderCountdown()}
 
                         {/* 2. COMPLETED or IN PROGRESS */}
                         {isAvailable && (isCompleted || inProgress) && (
                             <div className="space-y-2">
                                 <div className="flex justify-between items-end mb-1">
                                     <span className="text-3xs font-bold text-tertiary uppercase tracking-wider">Progress</span>
-                                    <span className="text-sm font-bold text-primary">{isCompleted ? '100' : displayProgress}%</span>
+                                    <span className="text-sm font-bold text-primary">{displayProgress}%</span>
                                 </div>
                                 <ProgressBar
-                                    progress={isCompleted ? 100 : displayProgress}
+                                    progress={displayProgress}
                                     height="h-2"
                                     color="bg-primary"
-                                    trackColor="bg-gray-100"
+                                    trackColor="bg-gray-100 dark:bg-slate-800/40"
                                     rounded="rounded-full"
                                 />
                                 {isCompleted && course.finishedAt && (

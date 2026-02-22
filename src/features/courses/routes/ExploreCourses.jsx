@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import data from '@/data.json';
-import DashboardCourseCard from '@/features/dashboard/components/DashboardCourseCard';
+import CourseCard from '@/features/dashboard/components/CourseCard';
 import MainSearchBar from '@/features/dashboard/components/MainSearchBar';
 import CourseGrid from '@/features/courses/components/CourseGrid';
 import TopicDropdown from '@/features/courses/components/TopicDropdown';
@@ -183,7 +183,7 @@ const ExploreCourses = () => {
                             ) : (
                                 resumeCourses.map(course => (
                                     <div key={course.id} className="snap-start min-w-[280px] sm:min-w-[320px] md:min-w-[360px]">
-                                        <DashboardCourseCard course={course} variant="resume" />
+                                        <CourseCard course={course} variant="resume" />
                                     </div>
                                 ))
                             )}

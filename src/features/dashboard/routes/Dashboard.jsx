@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import data from '@/data.json';
 import { useDashboardFilter } from '@/hooks/useDashboardFilter';
 import DashboardHero from '@/features/dashboard/components/DashboardHero';
@@ -9,6 +10,7 @@ import DashboardSkeleton from '@/features/dashboard/components/DashboardSkeleton
 import RecommendationHeader from '@/features/dashboard/components/RecommendationHeader';
 
 const Dashboard = () => {
+    const { isCollapsed } = useOutletContext();
     const {
         searchQuery,
         handleSearch,
@@ -108,6 +110,7 @@ const Dashboard = () => {
                 setSelectedStatus={setSelectedStatus}
                 isStatusDropdownOpen={isStatusDropdownOpen}
                 setIsStatusDropdownOpen={setIsStatusDropdownOpen}
+                isCollapsed={isCollapsed}
             />
 
             <div className="space-y-4 md:space-y-8 pt-4" ref={coursesRef}>

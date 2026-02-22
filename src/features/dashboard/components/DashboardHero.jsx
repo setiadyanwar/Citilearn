@@ -16,7 +16,8 @@ const DashboardHero = ({
     selectedStatus,
     setSelectedStatus,
     isStatusDropdownOpen,
-    setIsStatusDropdownOpen
+    setIsStatusDropdownOpen,
+    isCollapsed
 }) => {
     const statusDropdownRef = useRef(null);
 
@@ -40,7 +41,7 @@ const DashboardHero = ({
                     <img
                         src={illustrasi}
                         alt="Hero Illustration"
-                        className="absolute top-0 right-0 h-[20%] md:h-[40%] w-auto object-contain translate-x-1 -translate-y-2 md:-translate-y-2 opacity-90 dark:opacity-30 transition-all duration-700 hover:scale-105"
+                        className={`absolute top-0 right-0 ${isCollapsed ? 'h-[20%] md:h-[42%]' : 'h-[16%] md:h-[32%]'} w-auto object-contain translate-x-1 -translate-y-2 md:-translate-y-4 opacity-90 dark:opacity-30 transition-all duration-700 hover:scale-110`}
                     />
                 </div>
 

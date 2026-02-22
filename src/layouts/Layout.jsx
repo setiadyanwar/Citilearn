@@ -43,7 +43,7 @@ export const Layout = () => {
                 setIsCollapsed(true);
             }
         });
-        
+
         return () => cancelAnimationFrame(timerId);
     }, [location.pathname]);
 
@@ -65,7 +65,7 @@ export const Layout = () => {
                     />
 
                     <div className="p-3 md:p-8 flex-1">
-                        <Outlet />
+                        <Outlet context={{ isCollapsed }} />
                     </div>
                 </main>
             </div>
