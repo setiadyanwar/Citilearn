@@ -23,13 +23,14 @@ export function DatePicker({ date, setDate, placeholder = "Pick a date", classNa
                     variant={"outline"}
                     disabled={disabled}
                     className={cn(
-                        "w-full justify-start text-left font-normal h-12 rounded-xl border-slate-200",
-                        !parsedDate && "text-muted-foreground",
+                        "w-full justify-start text-left font-medium h-12 rounded-xl border-slate-200 bg-white hover:bg-slate-50 transition-all shadow-none",
+                        !parsedDate && "text-tertiary",
+                        parsedDate && "text-main",
                         className
                     )}
                 >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {parsedDate ? format(parsedDate, "dd/MM/yyyy") : <span>{placeholder}</span>}
+                    <CalendarIcon className={cn("mr-2.5 h-4 w-4", !parsedDate ? "text-tertiary" : "text-primary/60")} />
+                    {parsedDate ? format(parsedDate, "dd/MM/yyyy") : <span className="text-tertiary">{placeholder}</span>}
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0 border-slate-100 shadow-sm" align="start">

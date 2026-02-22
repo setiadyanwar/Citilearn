@@ -163,6 +163,12 @@
   h6 {
     @apply text-main;
   }
+
+  ::placeholder {
+    color: var(--color-tertiary);
+    opacity: 0.6;
+    font-weight: 500;
+  }
 }
 
 @layer components {

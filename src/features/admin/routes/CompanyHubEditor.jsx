@@ -61,7 +61,7 @@ const CompanyHubEditor = () => {
         navigate(`/admin/cms/${type}`);
     };
 
-   
+
     return (
         <AdminPageShell>
             {/* Header */}
@@ -71,15 +71,15 @@ const CompanyHubEditor = () => {
                         variant="ghost"
                         size="icon"
                         onClick={() => navigate(`/admin/cms/${type}`)}
-                        className="rounded-xl hover:bg-slate-100 text-slate-500"
+                        className="rounded-xl hover:bg-slate-100 text-secondary"
                     >
                         <ArrowLeft size={20} />
                     </Button>
                     <div>
-                        <h1 className="text-2xl font-bold text-main tracking-tight capitalize">
+                        <h1 className="text-2xl font-bold text-main tracking-tight">
                             {isEditing ? `Edit ${type} Item` : `Create ${type} Item`}
                         </h1>
-                        <p className="text-sm text-slate-500 font-medium">
+                        <p className="text-sm text-secondary font-medium">
                             {type === 'culture' ? 'Shape the company culture' : 'Empower your teams with resources'}
                         </p>
                     </div>
@@ -122,7 +122,7 @@ const CompanyHubEditor = () => {
                                 </div>
                                 <div>
                                     <Label className="text-main font-bold text-lg block leading-none mb-1">Content</Label>
-                                    <p className="text-xs text-slate-500 font-medium">Write and structure your post below</p>
+                                    <p className="text-xs text-secondary font-medium">Write and structure your post below</p>
                                 </div>
                             </div>
                             <Button
@@ -146,7 +146,7 @@ const CompanyHubEditor = () => {
                                 <div className="flex items-center justify-center h-96">
                                     <div className="flex flex-col items-center gap-3">
                                         <div className="w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-                                        <p className="text-sm font-bold text-slate-400">Loading editor...</p>
+                                        <p className="text-sm font-bold text-tertiary">Loading editor...</p>
                                     </div>
                                 </div>
                             )}
@@ -178,7 +178,7 @@ const CompanyHubEditor = () => {
 
                         <div className="space-y-4">
                             <div className="space-y-1">
-                                <Label className="text-xs font-bold text-slate-500">Category</Label>
+                                <Label className="text-xs font-bold text-secondary">Category</Label>
                                 <Input
                                     value={formData.category}
                                     onChange={(e) => handleChange('category', e.target.value)}
@@ -187,7 +187,7 @@ const CompanyHubEditor = () => {
                             </div>
 
                             <div className="space-y-1">
-                                <Label className="text-xs font-bold text-slate-500">Publish Date</Label>
+                                <Label className="text-xs font-bold text-secondary">Publish Date</Label>
                                 <DatePicker
                                     date={formData.date}
                                     setDate={(newDate) => handleChange('date', newDate.toISOString().split('T')[0])}
@@ -196,7 +196,7 @@ const CompanyHubEditor = () => {
                             </div>
 
                             <div className="pt-2">
-                                <Label className="text-xs font-bold text-slate-500 block mb-2">Status</Label>
+                                <Label className="text-xs font-bold text-secondary block mb-2">Status</Label>
                                 <Select
                                     value={formData.status}
                                     onValueChange={(value) => handleChange('status', value)}
@@ -227,8 +227,8 @@ const CompanyHubEditor = () => {
                             </div>
                         ) : (
                             <div className="border-2 border-dashed border-slate-100 rounded-xl p-8 flex flex-col items-center justify-center text-center hover:bg-slate-50 transition-colors cursor-pointer">
-                                <Upload className="text-slate-300 mb-2" size={24} />
-                                <span className="text-xs font-bold text-slate-500">Upload cover image</span>
+                                <Upload className="text-tertiary mb-2" size={24} />
+                                <span className="text-xs font-bold text-secondary">Upload cover image</span>
                             </div>
                         )}
                         <Input

@@ -17,7 +17,7 @@ const ManagementHeader = ({
                     {title}
                 </h1>
                 {description && (
-                    <p className="text-slate-500 text-sm font-medium">
+                    <p className="text-secondary text-sm font-medium">
                         {description}
                     </p>
                 )}

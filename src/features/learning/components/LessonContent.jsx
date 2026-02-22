@@ -62,11 +62,11 @@ const LessonContent = ({ activeLesson, course, isPip, videoContainerRef, videoRe
                             </div>
                             <div className="flex items-center justify-center gap-3">
                                 <div className="px-4 py-2 bg-white/5 rounded-xl border border-white/10">
-                                    <div className="text-[10px] uppercase font-bold text-slate-500 mb-1">Pass Score</div>
+                                    <div className="text-[10px]  font-bold text-slate-500 mb-1">Pass Score</div>
                                     <div className="text-sm font-bold text-white">100%</div>
                                 </div>
                                 <div className="px-4 py-2 bg-white/5 rounded-xl border border-white/10">
-                                    <div className="text-[10px] uppercase font-bold text-slate-500 mb-1">Time Limit</div>
+                                    <div className="text-[10px]  font-bold text-slate-500 mb-1">Time Limit</div>
                                     <div className="text-sm font-bold text-white">No Limit</div>
                                 </div>
                             </div>

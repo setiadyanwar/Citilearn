@@ -23,12 +23,12 @@ const CourseManagementTable = ({ courses, getCategoryColor }) => {
             <Table>
                 <TableHeader className="bg-slate-50 border-b border-slate-200">
                     <TableRow className="hover:bg-transparent border-none">
-                        <TableHead className="w-[40%] font-semibold text-tertiary h-12 pl-6 uppercase text-3xs tracking-wider">Course info</TableHead>
-                        <TableHead className="w-[15%] font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Category</TableHead>
-                        <TableHead className="w-[10%] font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Modules</TableHead>
-                        <TableHead className="w-[10%] font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Stats</TableHead>
-                        <TableHead className="w-[10%] font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Status</TableHead>
-                        <TableHead className="w-[15%] text-right font-semibold text-tertiary h-12 pr-6 uppercase text-3xs tracking-wider">Actions</TableHead>
+                        <TableHead className="w-[40%] font-semibold text-tertiary h-12 pl-6  text-xs ">Course info</TableHead>
+                        <TableHead className="w-[15%] font-semibold text-tertiary h-12  text-xs ">Category</TableHead>
+                        <TableHead className="w-[10%] font-semibold text-tertiary h-12  text-xs ">Modules</TableHead>
+                        <TableHead className="w-[10%] font-semibold text-tertiary h-12  text-xs ">Stats</TableHead>
+                        <TableHead className="w-[10%] font-semibold text-tertiary h-12  text-xs ">Status</TableHead>
+                        <TableHead className="w-[15%] text-right font-semibold text-tertiary h-12 pr-6  text-xs ">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -56,7 +56,7 @@ const CourseManagementTable = ({ courses, getCategoryColor }) => {
                                 </div>
                             </TableCell>
                             <TableCell>
-                                <span className={`inline-flex px-2.5 py-1 rounded-md text-3xs font-semibold uppercase tracking-wide border ${getCategoryColor(course.category)}`}>
+                                <span className={`inline-flex px-2.5 py-1 rounded-md text-3xs font-semibold  border ${getCategoryColor(course.category)}`}>
                                     {course.category}
                                 </span>
                             </TableCell>
@@ -81,7 +81,7 @@ const CourseManagementTable = ({ courses, getCategoryColor }) => {
                                 </div>
                             </TableCell>
                             <TableCell>
-                                <div className={`inline-flex items-center pl-1.5 pr-2.5 py-1 rounded-full text-3xs font-semibold border transition-colors uppercase tracking-wider ${course.status === 'Published'
+                                <div className={`inline-flex items-center pl-1.5 pr-2.5 py-1 rounded-full text-3xs font-semibold border transition-colors  ${course.status === 'Published'
                                     ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                                     : 'bg-slate-50 text-secondary border-slate-200'
                                     }`}>
@@ -93,17 +93,17 @@ const CourseManagementTable = ({ courses, getCategoryColor }) => {
                             <TableCell className="text-right pr-6">
                                 <div className="flex items-center justify-end gap-1">
                                     <Link to={`/admin/course/${course.id}/assign`}>
-                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-primary hover:bg-slate-50 rounded-lg shadow-none">
+                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-tertiary hover:text-primary hover:bg-slate-50 rounded-lg shadow-none">
                                             <Users size={16} />
                                         </Button>
                                     </Link>
                                     <Link to={`/admin/course/${course.id}/edit?tab=curriculum`}>
-                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-primary hover:bg-slate-50 rounded-lg shadow-none">
+                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-tertiary hover:text-primary hover:bg-slate-50 rounded-lg shadow-none">
                                             <List size={16} />
                                         </Button>
                                     </Link>
                                     <Link to={`/admin/course/${course.id}/edit`}>
-                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-primary hover:bg-slate-50 rounded-lg shadow-none">
+                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-tertiary hover:text-primary hover:bg-slate-50 rounded-lg shadow-none">
                                             <Edit size={16} />
                                         </Button>
                                     </Link>

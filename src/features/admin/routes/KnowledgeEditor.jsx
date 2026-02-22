@@ -86,7 +86,7 @@ const KnowledgeEditor = () => {
                         variant="ghost"
                         size="icon"
                         onClick={() => navigate('/admin/knowledge')}
-                        className="rounded-xl hover:bg-slate-100 text-slate-500"
+                        className="rounded-xl hover:bg-slate-100 text-secondary"
                     >
                         <ArrowLeft size={20} />
                     </Button>
@@ -94,7 +94,7 @@ const KnowledgeEditor = () => {
                         <h1 className="text-2xl font-bold text-main tracking-tight">
                             {isEditing ? 'Edit Article' : 'Create New Article'}
                         </h1>
-                        <p className="text-sm text-slate-500 font-medium">
+                        <p className="text-sm text-secondary font-medium">
                             {isEditing ? 'Update existing content' : 'Add a new article to the Knowledge Hub'}
                         </p>
                     </div>
@@ -139,7 +139,7 @@ const KnowledgeEditor = () => {
                             placeholder="Short summary for preview cards..."
                             className="min-h-20 border-slate-200 focus-visible:ring-emerald-100 resize-none"
                         />
-                        <p className="text-xs text-slate-400 text-right">{formData.excerpt.length}/150 characters</p>
+                        <p className="text-xs text-tertiary text-right">{formData.excerpt.length}/150 characters</p>
                     </div>
 
                     {/* Content Section */}
@@ -151,7 +151,7 @@ const KnowledgeEditor = () => {
                                 </div>
                                 <div>
                                     <Label className="text-main font-bold text-lg block leading-none mb-1">Content</Label>
-                                    <p className="text-xs text-slate-500 font-medium">Write and structure your article below</p>
+                                    <p className="text-xs text-secondary font-medium">Write and structure your article below</p>
                                 </div>
                             </div>
                             <Button
@@ -175,7 +175,7 @@ const KnowledgeEditor = () => {
                                 <div className="flex items-center justify-center h-96">
                                     <div className="flex flex-col items-center gap-3">
                                         <div className="w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-                                        <p className="text-sm font-bold text-slate-400">Loading editor...</p>
+                                        <p className="text-sm font-bold text-tertiary">Loading editor...</p>
                                     </div>
                                 </div>
                             )}
@@ -208,7 +208,7 @@ const KnowledgeEditor = () => {
 
                         <div className="space-y-3">
                             <div className="space-y-1">
-                                <Label className="text-xs font-bold text-slate-500">Status</Label>
+                                <Label className="text-xs font-bold text-secondary">Status</Label>
                                 <Select
                                     value={formData.status}
                                     onValueChange={(value) => handleChange('status', value)}
@@ -224,7 +224,7 @@ const KnowledgeEditor = () => {
                             </div>
 
                             <div className="space-y-1">
-                                <Label className="text-xs font-bold text-slate-500">Category</Label>
+                                <Label className="text-xs font-bold text-secondary">Category</Label>
                                 <Select
                                     value={formData.category}
                                     onValueChange={(value) => handleChange('category', value)}
@@ -243,7 +243,7 @@ const KnowledgeEditor = () => {
                             </div>
 
                             <div className="space-y-1">
-                                <Label className="text-xs font-bold text-slate-500">Publish Date</Label>
+                                <Label className="text-xs font-bold text-secondary">Publish Date</Label>
                                 <DatePicker
                                     date={formData.publishDate}
                                     setDate={(newDate) => handleChange('publishDate', newDate.toISOString().split('T')[0])}
@@ -273,12 +273,12 @@ const KnowledgeEditor = () => {
                                     <Upload size={20} className="text-emerald-600" />
                                 </div>
                                 <span className="text-sm font-bold text-emerald-600 mb-1">Click to upload</span>
-                                <span className="text-xs text-slate-400">SVG, PNG, JPG or GIF (max. 2MB)</span>
+                                <span className="text-xs text-tertiary">SVG, PNG, JPG or GIF (max. 2MB)</span>
                             </div>
                         )}
 
                         <div className="space-y-2">
-                            <Label className="text-xs font-bold text-slate-500">Or Image URL</Label>
+                            <Label className="text-xs font-bold text-secondary">Or Image URL</Label>
                             <Input
                                 value={formData.image}
                                 onChange={(e) => handleChange('image', e.target.value)}
@@ -311,9 +311,9 @@ const KnowledgeEditor = () => {
                             {formData.authorName && (
                                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 animate-in fade-in slide-in-from-top-1 duration-300">
                                     <div className="flex flex-col">
-                                        <span className="text-xs font-bold text-slate-400 leading-none mb-1 uppercase tracking-wider">Current Selection</span>
-                                        <span className="text-sm font-bold text-slate-700">{formData.authorName}</span>
-                                        <span className="text-xs text-slate-500 font-medium">{formData.authorRole}</span>
+                                        <span className="text-xs font-bold text-tertiary leading-none mb-1 ">Current Selection</span>
+                                        <span className="text-sm font-bold text-main">{formData.authorName}</span>
+                                        <span className="text-xs text-secondary font-medium">{formData.authorRole}</span>
                                     </div>
                                 </div>
                             )}

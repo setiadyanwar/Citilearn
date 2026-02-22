@@ -33,23 +33,29 @@ const CourseAvailabilitySettings = ({ isLifetime, startDate, endDate, onChange }
                     </div>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
-                    <div className="flex flex-col gap-3">
-                        <Label className="text-sm font-bold text-muted-foreground">Start Date</Label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
+                    <div className="flex flex-col gap-2.5">
+                        <div className="space-y-0.5">
+                            <Label className="text-sm font-bold text-main">Start Date</Label>
+                            <p className="text-xs text-tertiary font-medium">When course begins</p>
+                        </div>
                         <DatePicker
                             date={startDate}
                             setDate={(date) => onChange({ startDate: date })}
                             placeholder="Pick a start date"
-                            className="bg-white border-slate-200 shadow-none h-11 rounded-xl"
+                            className="bg-white border-slate-200 shadow-none h-12 rounded-xl"
                         />
                     </div>
-                    <div className="flex flex-col gap-3">
-                        <Label className="text-sm font-bold text-muted-foreground">End Date</Label>
+                    <div className="flex flex-col gap-2.5">
+                        <div className="space-y-0.5">
+                            <Label className="text-sm font-bold text-main">End Date</Label>
+                            <p className="text-xs text-tertiary font-medium">Enrollment deadline</p>
+                        </div>
                         <DatePicker
                             date={endDate}
                             setDate={(date) => onChange({ endDate: date })}
                             placeholder="Pick an end date"
-                            className="bg-white border-slate-200 shadow-none h-11 rounded-xl"
+                            className="bg-white border-slate-200 shadow-none h-12 rounded-xl"
                         />
                     </div>
                 </div>

@@ -174,7 +174,7 @@ const Grades = () => {
                 <div className="bg-white/95 backdrop-blur-md border-t border-gray-200 px-6 py-6 sm:px-10 flex items-center justify-between rounded-t-4xl">
                     <span className="text-xl font-bold text-main">Average</span>
                     <Badge variant="points" size="md" className="bg-sky-50 text-sky-500 border-sky-100 px-6 py-2 font-bold text-sm">
-                        Grade: <span className="ml-1 text-base font-black uppercase">AB</span>
+                        Grade: <span className="ml-1 text-base font-black ">AB</span>
                     </Badge>
                 </div>
             </div>

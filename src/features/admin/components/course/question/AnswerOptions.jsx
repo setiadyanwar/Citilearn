@@ -103,7 +103,7 @@ const AnswerOptions = ({
                                             {answer.isCorrect ? (
                                                 <CheckCircle2 className="h-5 w-5 text-primary fill-current" />
                                             ) : (
-                                                <Circle className="h-5 w-5 text-slate-300 hover:text-slate-400" />
+                                                <Circle className="h-5 w-5 text-tertiary hover:text-tertiary" />
                                             )}
                                         </div>
                                     )}
@@ -116,7 +116,7 @@ const AnswerOptions = ({
                                             onChange={(e) => onUpdateAnswer(index, 'text', e.target.value)}
                                             onKeyDown={(e) => handleKeyDown(e, index)}
                                             placeholder={`Option ${index + 1}`}
-                                            className="bg-slate-50 border-none focus:bg-white focus:ring-1 focus:ring-primary/30 h-11 shadow-none text-slate-700 font-medium pr-24"
+                                            className="bg-slate-50 border-none focus:bg-white focus:ring-1 focus:ring-primary/30 h-11 shadow-none text-main font-medium pr-24"
                                         />
 
                                         <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
@@ -125,7 +125,7 @@ const AnswerOptions = ({
                                                 variant="ghost"
                                                 size="icon"
                                                 onClick={() => handleUploadClick(index)}
-                                                className="h-8 w-8 text-slate-400 hover:text-primary hover:bg-primary/10 rounded"
+                                                className="h-8 w-8 text-tertiary hover:text-primary hover:bg-primary/10 rounded"
                                                 title="Add Image"
                                             >
                                                 <ImageIcon size={16} />
@@ -137,7 +137,7 @@ const AnswerOptions = ({
                                                     variant="ghost"
                                                     size="icon"
                                                     onClick={() => onRemoveAnswer(index)}
-                                                    className="h-8 w-8 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded"
+                                                    className="h-8 w-8 text-tertiary hover:text-red-500 hover:bg-red-50 rounded"
                                                 >
                                                     <Trash2 size={16} />
                                                 </Button>
@@ -155,7 +155,7 @@ const AnswerOptions = ({
                                             />
                                             <button
                                                 onClick={() => onUpdateAnswer(index, 'image', null)}
-                                                className="absolute -top-2 -right-2 bg-white rounded-full p-1 shadow-sm border border-slate-200 text-slate-400 hover:text-red-500 opacity-0 group-hover/image:opacity-100 transition-all"
+                                                className="absolute -top-2 -right-2 bg-white rounded-full p-1 shadow-sm border border-slate-200 text-tertiary hover:text-red-500 opacity-0 group-hover/image:opacity-100 transition-all"
                                                 title="Remove Image"
                                             >
                                                 <X size={12} />
@@ -193,7 +193,7 @@ const AnswerOptions = ({
                             relative flex items-center justify-center gap-3 p-5 rounded-xl border-2 cursor-pointer transition-all
                             ${answers[0]?.isCorrect
                                 ? 'border-primary bg-primary/5 text-primary'
-                                : 'border-slate-100 bg-slate-50 text-slate-500 hover:border-slate-200 hover:bg-white'
+                                : 'border-slate-100 bg-slate-50 text-secondary hover:border-slate-200 hover:bg-white'
                             }
                         `}
                     >
@@ -211,7 +211,7 @@ const AnswerOptions = ({
                             relative flex items-center justify-center gap-3 p-5 rounded-xl border-2 cursor-pointer transition-all
                             ${answers[1]?.isCorrect
                                 ? 'border-primary bg-primary/5 text-primary'
-                                : 'border-slate-100 bg-slate-50 text-slate-500 hover:border-slate-200 hover:bg-white'
+                                : 'border-slate-100 bg-slate-50 text-secondary hover:border-slate-200 hover:bg-white'
                             }
                         `}
                     >

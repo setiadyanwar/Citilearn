@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 
 export const GradeBadge = ({ status }) => (
     <span className={cn(
-        "px-2.5 py-1 rounded-full text-3xs font-bold border uppercase tracking-wider",
+        "px-2.5 py-1 rounded-full text-3xs font-bold border ",
         status === 'Passed'
             ? "bg-emerald-50 text-emerald-700 border-emerald-100"
             : "bg-red-50 text-red-700 border-red-100"
@@ -19,7 +19,7 @@ export const TypeBadge = ({ type }) => {
         'Post-test': 'bg-purple-50 text-purple-700 border-purple-100'
     };
     return (
-        <span className={cn("px-2.5 py-1 rounded-full text-3xs font-bold border uppercase tracking-wider", colors[type] || "bg-gray-50 text-gray-700")}>
+        <span className={cn("px-2.5 py-1 rounded-full text-3xs font-bold border ", colors[type] || "bg-gray-50 text-main")}>
             {type}
         </span>
     );

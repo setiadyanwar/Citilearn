@@ -13,7 +13,7 @@ const CourseStatsGrid = ({ course }) => {
                 <div key={idx} className={`flex-1 flex flex-col items-center justify-center gap-2 ${idx < 3 ? 'border-r border-gray-100 dark:border-slate-800' : ''}`}>
                     <stat.icon size={24} className="text-citilearn-green" />
                     <div className="text-center mt-2">
-                        <p className="text-2xs font-bold text-tertiary dark:text-slate-500 tracking-wider mb-3.5 leading-none">{stat.label}</p>
+                        <p className="text-2xs font-bold text-tertiary dark:text-slate-500  mb-3.5 leading-none">{stat.label}</p>
                         <p className="text-sm font-bold text-main dark:text-white leading-none">{stat.value}</p>
                     </div>
                 </div>

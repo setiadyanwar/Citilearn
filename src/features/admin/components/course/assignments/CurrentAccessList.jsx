@@ -66,7 +66,7 @@ const CurrentAccessList = ({ assignments, onRemove }) => {
                 ) : (
                     <div className="text-center py-12">
                         <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-100">
-                            <Users className="text-gray-300" size={32} />
+                            <Users className="text-tertiary" size={32} />
                         </div>
                         <h4 className="text-main font-bold mb-1">No assignments yet</h4>
                         <p className="text-sm text-secondary mb-4">Start by assigning users or groups to this course</p>

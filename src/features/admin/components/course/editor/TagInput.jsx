@@ -25,12 +25,15 @@ const TagInput = ({ tags = [], onChange, label = "Course Tags", placeholder = "A
     };
 
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
-                <Label className="text-sm md:text-base font-bold text-main tracking-tight">{label}</Label>
-                <span className="text-3xs text-slate-400 font-bold uppercase tracking-widest bg-slate-50 px-2 py-1 rounded-lg border border-slate-100">
+                <div className="space-y-0.5">
+                    <Label className="text-sm font-bold text-main tracking-tight">{label}</Label>
+                    <p className="text-xs text-secondary font-medium">Add topics to make your course searchable.</p>
+                </div>
+                <div className="text-3xs bg-slate-50 text-tertiary px-2.5 py-1 rounded-lg font-bold border border-slate-100 h-fit">
                     {tags.length} Tags
-                </span>
+                </div>
             </div>
 
             <div className={cn(
@@ -59,11 +62,11 @@ const TagInput = ({ tags = [], onChange, label = "Course Tags", placeholder = "A
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder={tags.length === 0 ? placeholder : "Add more..."}
-                    className="flex-1 min-w-[120px] bg-transparent border-none outline-none text-sm md:text-base font-medium placeholder:text-slate-400 h-8"
+                    className="flex-1 min-w-[120px] bg-transparent border-none outline-none text-sm md:text-base font-medium placeholder:text-tertiary h-8"
                 />
             </div>
-            <p className="text-xs text-slate-400 font-medium ml-1">
-                Tags help learners find this course through topic filters. Press <kbd className="font-sans px-1.5 py-0.5 rounded border border-slate-200 bg-slate-50 text-slate-500 font-bold">Enter</kbd> to add.
+            <p className="text-xs text-tertiary font-medium ml-1">
+                Tags help learners find this course through topic filters. Press <kbd className="font-sans px-1.5 py-0.5 rounded border border-slate-200 bg-slate-50 text-secondary font-bold">Enter</kbd> to add.
             </p>
         </div>
     );

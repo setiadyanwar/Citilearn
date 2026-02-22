@@ -50,8 +50,13 @@ const ImageUploader = ({
     };
 
     return (
-        <div className={cn("flex flex-col gap-3", className)}>
-            {label && <label className="text-sm md:text-base font-bold text-main">{label}</label>}
+        <div className={cn("flex flex-col gap-2", className)}>
+            {label && (
+                <div className="space-y-0.5">
+                    <label className="text-sm font-bold text-main tracking-tight">{label}</label>
+                    <p className="text-xs text-secondary font-medium">{helperText}</p>
+                </div>
+            )}
 
             <div
                 onClick={() => fileInputRef.current?.click()}
@@ -98,7 +103,6 @@ const ImageUploader = ({
                             <Upload className="text-primary" size={24} />
                         </div>
                         <p className="text-sm font-bold text-primary">Click to upload image</p>
-                        {helperText && <p className="text-xs text-primary/60 mt-1">{helperText}</p>}
                     </>
                 )}
             </div>

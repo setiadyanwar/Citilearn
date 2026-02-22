@@ -94,7 +94,7 @@ const MyProfile = () => {
             {/* Biografi */}
             <ProfileInfoCard title="Biografi">
                 <textarea
-                    className="w-full h-32 p-4 rounded-xl border border-gray-200 focus:border-citilearn-green focus:ring-2 focus:ring-citilearn-green/20 outline-none resize-none text-gray-600 placeholder:text-gray-400 transition-all font-medium"
+                    className="w-full h-32 p-4 rounded-xl border border-gray-200 focus:border-citilearn-green focus:ring-2 focus:ring-citilearn-green/20 outline-none resize-none text-gray-600 placeholder:text-tertiary transition-all font-medium"
                     placeholder="Write here..."
                 ></textarea>
             </ProfileInfoCard>

@@ -7,7 +7,7 @@ const ActionMenu = ({ actions }) => (
     <Popover>
         <PopoverTrigger asChild>
             <button
-                className="p-2 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors"
+                className="p-2 rounded-lg hover:bg-slate-100 text-tertiary hover:text-main transition-colors"
                 onClick={e => e.stopPropagation()}
             >
                 <MoreHorizontal size={16} />
@@ -20,7 +20,7 @@ const ActionMenu = ({ actions }) => (
                     onClick={action.onClick}
                     className={cn(
                         'w-full flex items-center gap-2.5 px-3 py-2 text-sm font-medium rounded-lg transition-colors',
-                        action.danger ? 'text-red-500 hover:bg-red-50' : 'text-slate-700 hover:bg-slate-50'
+                        action.danger ? 'text-red-500 hover:bg-red-50' : 'text-main hover:bg-slate-50'
                     )}
                 >
                     {action.icon && <action.icon size={14} />}

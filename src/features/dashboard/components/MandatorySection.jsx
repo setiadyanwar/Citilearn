@@ -41,7 +41,7 @@ const MandatorySection = ({ courses = [] }) => {
                         <div className="text-xs text-secondary dark:text-slate-400 font-medium">before</div>
                     </div>
                     <div className="border border-primary rounded-lg overflow-hidden w-12 text-center shadow-sm">
-                        <div className="bg-primary/5 dark:bg-slate-900 py-0.5 text-3xs font-bold text-primary uppercase border-b border-primary/20">
+                        <div className="bg-primary/5 dark:bg-slate-900 py-0.5 text-3xs font-bold text-primary  border-b border-primary/20">
                             Jan
                         </div>
                         <div className="bg-white dark:bg-slate-900 py-0.5 text-base font-bold text-main dark:text-white">

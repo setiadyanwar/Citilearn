@@ -86,7 +86,7 @@ const AssignmentModal = ({
                     </div>
                     <button
                         onClick={handleClose}
-                        className="p-2 text-gray-400 hover:text-main hover:bg-gray-100 rounded-lg transition-colors"
+                        className="p-2 text-tertiary hover:text-main hover:bg-gray-100 rounded-lg transition-colors"
                     >
                         <X size={20} />
                     </button>
@@ -134,7 +134,7 @@ const AssignmentModal = ({
                             disabled={filteredItems.length === 0}
                             className="border-slate-300 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
                         />
-                        <span className="text-sm font-medium text-slate-600">Select All</span>
+                        <span className="text-sm font-medium text-secondary">Select All</span>
                     </div>
                 </div>
 
@@ -183,13 +183,13 @@ const AssignmentModal = ({
                                     "truncate",
                                     assignmentType === 'individual'
                                         ? "text-sm"
-                                        : "text-xs font-medium uppercase tracking-wider text-slate-500"
+                                        : "text-xs font-medium  text-secondary"
                                 )}>
                                     {assignmentType === 'individual' ? (
                                         <>
-                                            <span className="text-slate-500 font-medium">{item.role}</span>
-                                            <span className="mx-1.5 text-slate-300">•</span>
-                                            <span className="text-slate-400">{item.department}</span>
+                                            <span className="text-secondary font-medium">{item.role}</span>
+                                            <span className="mx-1.5 text-tertiary">•</span>
+                                            <span className="text-tertiary">{item.department}</span>
                                         </>
                                     ) : (
                                         `${item.userCount} Users ${assignmentType === 'department' ? 'in this department' : 'with this role'}`
@@ -200,7 +200,7 @@ const AssignmentModal = ({
                     ))}
 
                     {filteredItems.length === 0 && (
-                        <div className="text-center py-8 text-slate-400 text-sm">
+                        <div className="text-center py-8 text-tertiary text-sm">
                             No {assignmentType} found matching "{searchQuery}"
                         </div>
                     )}

@@ -15,12 +15,12 @@ const ITEMS_PER_PAGE = 5;
 
 const SortableHead = ({ field, label, sortField, onSort }) => (
     <TableHead
-        className="cursor-pointer hover:text-slate-700 transition-colors select-none"
+        className="cursor-pointer hover:text-main transition-colors select-none"
         onClick={() => onSort(field)}
     >
         <div className="flex items-center gap-1.5">
             {label}
-            <ArrowUpDown size={12} className={sortField === field ? 'text-primary' : 'text-slate-300'} />
+            <ArrowUpDown size={12} className={sortField === field ? 'text-primary' : 'text-tertiary'} />
         </div>
     </TableHead>
 );
@@ -81,13 +81,13 @@ const UsersTab = ({ search, filterRole, sortField, onSort, currentPage, onPageCh
                                             <UserProfile name={user.name} size="sm" shape="circle" />
                                             <div className="min-w-0">
                                                 <p className="text-sm font-bold text-main truncate">{user.name}</p>
-                                                <p className="text-xs text-slate-400 font-medium truncate">{user.email}</p>
+                                                <p className="text-xs text-tertiary font-medium truncate">{user.email}</p>
                                             </div>
                                         </div>
                                     </TableCell>
                                     {/* No. Peg */}
                                     <TableCell>
-                                        <span className="text-xs font-mono font-medium text-slate-400">{user.nopeg}</span>
+                                        <span className="text-xs font-mono font-medium text-tertiary">{user.nopeg}</span>
                                     </TableCell>
                                     {/* Role */}
                                     <TableCell>
@@ -99,11 +99,11 @@ const UsersTab = ({ search, filterRole, sortField, onSort, currentPage, onPageCh
                                     </TableCell>
                                     {/* Department */}
                                     <TableCell>
-                                        <span className="text-sm font-medium text-slate-600">{user.department}</span>
+                                        <span className="text-sm font-medium text-secondary">{user.department}</span>
                                     </TableCell>
                                     {/* Last Active */}
                                     <TableCell>
-                                        <span className="text-xs text-slate-400 font-medium">{user.lastActive}</span>
+                                        <span className="text-xs text-tertiary font-medium">{user.lastActive}</span>
                                     </TableCell>
                                     {/* Actions */}
                                     <TableCell className="text-right">
@@ -127,7 +127,7 @@ const UsersTab = ({ search, filterRole, sortField, onSort, currentPage, onPageCh
 
             {/* Footer: count + pagination */}
             <div className="flex items-center justify-between mt-4">
-                <p className="text-xs text-slate-400 font-medium">
+                <p className="text-xs text-tertiary font-medium">
                     Showing {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, filtered.length)}–{Math.min(currentPage * ITEMS_PER_PAGE, filtered.length)} of {filtered.length} users
                 </p>
                 <Pagination

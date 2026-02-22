@@ -185,8 +185,8 @@ const GradingDetail = () => {
                 </div>
             ) : error ? (
                 <div className="flex flex-col items-center justify-center h-96 gap-4 text-center">
-                    <p className="text-slate-500 font-bold text-lg tracking-tight">Something went wrong</p>
-                    <p className="text-slate-400 text-sm font-medium">{error}</p>
+                    <p className="text-secondary font-bold text-lg tracking-tight">Something went wrong</p>
+                    <p className="text-tertiary text-sm font-medium">{error}</p>
                     <button
                         onClick={() => navigate('/admin/assessment')}
                         className="text-sm font-bold text-primary underline mt-2"

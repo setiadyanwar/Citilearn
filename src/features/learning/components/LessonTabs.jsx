@@ -48,7 +48,7 @@ const LessonTabs = ({ activeTab, setActiveTab, activeLesson, course, setActiveLe
                             {course.modules.map((module, mIdx) => (
                                 <Card key={module.id} padding="p-0" className="overflow-hidden">
                                     <div className="px-4 py-3 bg-gray-50/30 dark:bg-slate-800/30 border-b border-gray-50 dark:border-slate-800 flex items-center justify-between">
-                                        <span className="text-3xs font-bold text-tertiary dark:text-slate-500 uppercase">Module {mIdx + 1}</span>
+                                        <span className="text-3xs font-bold text-tertiary dark:text-slate-500 ">Module {mIdx + 1}</span>
                                         <span className="text-3xs font-bold text-tertiary dark:text-slate-600">{module.lessons.length} Item</span>
                                     </div>
                                     <div className="divide-y divide-gray-50 dark:divide-slate-800">

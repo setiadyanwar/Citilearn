@@ -21,7 +21,7 @@ const ProfileSidebarItem = ({ icon: Icon, label, collapsed, active, to }) => {
                 }`}
         >
             <div className="shrink-0 flex items-center justify-center w-6 h-6">
-                <Icon size={20} className={active ? 'text-citilearn-green' : 'text-gray-400 group-hover:text-gray-600'} />
+                <Icon size={20} className={active ? 'text-citilearn-green' : 'text-tertiary group-hover:text-secondary'} />
             </div>
             {!collapsed && (
                 <span className="whitespace-nowrap overflow-hidden transition-all duration-300 origin-left text-sm">
@@ -88,7 +88,7 @@ const ProfileLayout = () => {
         };
 
         return (
-            <div className={`flex items-center gap-2 text-sm overflow-hidden whitespace-nowrap ${isDark ? 'text-slate-400' : 'text-secondary'}`}>
+            <div className={`flex items-center gap-2 text-sm overflow-hidden whitespace-nowrap ${isDark ? 'text-tertiary' : 'text-secondary'}`}>
                 <Link to="/" className="hover:text-primary flex items-center gap-1.5 transition-colors">
                     <Home size={14} />
                     <span className="hidden sm:inline">Dashboard</span>
@@ -114,7 +114,7 @@ const ProfileLayout = () => {
 
                     return (
                         <React.Fragment key={index}>
-                            <ChevronRight size={14} className="text-gray-400 shrink-0" />
+                            <ChevronRight size={14} className="text-tertiary shrink-0" />
                             {isLast ? (
                                 <span className="font-bold text-citilearn-green truncate max-w-64">{label}</span>
                             ) : (
@@ -156,7 +156,7 @@ const ProfileLayout = () => {
                             e.stopPropagation();
                             setCollapsed(!collapsed);
                         }}
-                        className={`p-2 rounded-xl border transition-all ${isDark ? 'bg-slate-900 border-slate-800 text-slate-400' : 'bg-white border-gray-200 text-secondary hover:bg-gray-50'}`}
+                        className={`p-2 rounded-xl border transition-all ${isDark ? 'bg-slate-900 border-slate-800 text-tertiary' : 'bg-white border-gray-200 text-secondary hover:bg-gray-50'}`}
                         title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}
                     >
                         <PanelLeft
@@ -190,7 +190,7 @@ const ProfileLayout = () => {
                                 <span className={`font-bold ${isDark ? 'text-white' : 'text-main'}`}>Dashboard Profile</span>
                                 <button
                                     onClick={() => setCollapsed(true)}
-                                    className={`p-2 -mr-2 transition-colors ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-400 hover:text-primary'}`}
+                                    className={`p-2 -mr-2 transition-colors ${isDark ? 'text-tertiary hover:text-white' : 'text-tertiary hover:text-primary'}`}
                                 >
                                     <X size={20} />
                                 </button>

@@ -5,7 +5,7 @@ import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-semibold ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer active:scale-[0.98]",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-semibold ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
     {
         variants: {
             variant: {
@@ -14,8 +14,9 @@ const buttonVariants = cva(
                     "bg-destructive text-destructive-foreground hover:bg-destructive/90",
                 secondary:
                     "border border-primary bg-white text-primary hover:bg-slate-100",
-                link: "text-primary underline underline-offset-2 hover:bg-slate-50 rounded-lg px-2",
+                link: "text-primary text-xs font-bold hover:underline h-auto p-0 decoration-primary/30 underline-offset-4",
                 white: "bg-white text-primary border border-slate-100 hover:bg-slate-50",
+                outline: "border border-slate-200 bg-white text-main hover:bg-slate-50",
             },
             size: {
                 default: "h-11 px-5 py-2",
@@ -23,8 +24,15 @@ const buttonVariants = cva(
                 lg: "h-12 rounded-xl px-8",
                 xl: "h-14 px-8 py-4 text-base",
                 icon: "h-10 w-10",
+                link: "h-auto p-0",
             },
         },
+        compoundVariants: [
+            {
+                variant: "link",
+                className: "h-auto p-0",
+            },
+        ],
         defaultVariants: {
             variant: "default",
             size: "default",

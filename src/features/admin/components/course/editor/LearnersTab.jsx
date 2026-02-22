@@ -224,7 +224,7 @@ const LearnersTab = ({ courseId }) => {
                                         </p>
                                     </div>
                                     {isAssigned(user.id, 'individual') && (
-                                        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-lg text-3xs font-bold uppercase tracking-widest border border-emerald-100 dark:border-emerald-500/20">
+                                        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-lg text-3xs font-bold  border border-emerald-100 dark:border-emerald-500/20">
                                             <CheckCircle2 size={13} />
                                             Assigned
                                         </div>
@@ -260,10 +260,10 @@ const LearnersTab = ({ courseId }) => {
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <h4 className="font-semibold text-main text-base truncate">{dept.name}</h4>
-                                        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground truncate">{dept.userCount} Users in this department</p>
+                                        <p className="text-xs font-medium  text-muted-foreground truncate">{dept.userCount} Users in this department</p>
                                     </div>
                                     {isAssigned(dept.id, 'department') && (
-                                        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-lg text-3xs font-bold uppercase tracking-widest border border-emerald-100 dark:border-emerald-500/20">
+                                        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-lg text-3xs font-bold  border border-emerald-100 dark:border-emerald-500/20">
                                             <CheckCircle2 size={13} />
                                             Assigned
                                         </div>
@@ -300,10 +300,10 @@ const LearnersTab = ({ courseId }) => {
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <h4 className="font-semibold text-main text-base truncate">{role.name}</h4>
-                                        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground truncate">{role.userCount} Users with this role</p>
+                                        <p className="text-xs font-medium  text-muted-foreground truncate">{role.userCount} Users with this role</p>
                                     </div>
                                     {isAssigned(role.id, 'role') && (
-                                        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-lg text-3xs font-bold uppercase tracking-widest border border-emerald-100 dark:border-emerald-500/20">
+                                        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-lg text-3xs font-bold  border border-emerald-100 dark:border-emerald-500/20">
                                             <CheckCircle2 size={13} />
                                             Assigned
                                         </div>
@@ -332,7 +332,7 @@ const LearnersTab = ({ courseId }) => {
                                 <div className="text-2xl font-bold text-main leading-none">
                                     {assignments.reduce((sum, a) => sum + a.userCount, 0)}
                                 </div>
-                                <div className="text-3xs font-medium uppercase tracking-widest text-muted-foreground mt-1.5">Total Learners</div>
+                                <div className="text-3xs font-medium  text-muted-foreground mt-1.5">Total Learners</div>
                             </div>
                         </div>
                     </div>
@@ -354,7 +354,7 @@ const LearnersTab = ({ courseId }) => {
                                             </div>
                                             <div className="min-w-0">
                                                 <h4 className="font-semibold text-main text-sm truncate">{assignment.name}</h4>
-                                                <p className="text-3xs text-muted-foreground font-medium uppercase tracking-wider truncate">{assignment.description}</p>
+                                                <p className="text-3xs text-muted-foreground font-medium  truncate">{assignment.description}</p>
                                             </div>
                                         </div>
                                         <Button
@@ -370,8 +370,8 @@ const LearnersTab = ({ courseId }) => {
                             })
                         ) : (
                             <div className="text-center py-16 border-2 border-dashed border-slate-200 dark:border-slate-800/50 rounded-3xl bg-slate-50/50 dark:bg-slate-900/20">
-                                <Users className="h-10 w-10 text-slate-300 dark:text-slate-700 mx-auto mb-4" />
-                                <p className="text-sm text-muted-foreground font-medium uppercase tracking-widest">No learners assigned yet</p>
+                                <Users className="h-10 w-10 text-tertiary dark:text-main mx-auto mb-4" />
+                                <p className="text-sm text-muted-foreground font-medium ">No learners assigned yet</p>
                             </div>
                         )}
                     </div>
@@ -379,7 +379,7 @@ const LearnersTab = ({ courseId }) => {
                     {assignments.length > 0 && (
                         <div className="p-4 bg-emerald-500/5 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl border border-emerald-500/10 flex items-center gap-3">
                             <CheckCircle2 size={18} />
-                            <span className="text-3xs font-medium uppercase tracking-wide">Course visibility active</span>
+                            <span className="text-3xs font-medium ">Course visibility active</span>
                         </div>
                     )}
                 </div>

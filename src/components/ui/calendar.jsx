@@ -38,27 +38,26 @@ function Calendar({
 
                 /* Buttons: Pointer events auto to be clickable */
                 button_previous: cn(
-                    "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 pointer-events-auto",
-                    "border border-slate-200 rounded-md hover:bg-slate-100 flex items-center justify-center transition-all",
+                    "h-8 w-8 bg-transparent p-0 opacity-50 hover:opacity-100 pointer-events-auto",
+                    "border border-slate-100 rounded-lg hover:bg-slate-50 flex items-center justify-center transition-all",
                     "relative"
                 ),
 
                 button_next: cn(
-                    "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 pointer-events-auto",
-                    "border border-slate-200 rounded-md hover:bg-slate-100 flex items-center justify-center transition-all",
+                    "h-8 w-8 bg-transparent p-0 opacity-50 hover:opacity-100 pointer-events-auto",
+                    "border border-slate-100 rounded-lg hover:bg-slate-50 flex items-center justify-center transition-all",
                     "relative"
                 ),
 
                 /* Override to use Center + Gap strategy for Nav with TOP ajustment */
                 nav: "absolute top-3 inset-x-0 h-10 flex items-center justify-center gap-[190px] z-20 pointer-events-none",
-                // GAP 190px: Adjust this to fit [Button] [ ...~140px Content... ] [Button]
 
                 /* Dropdown Styling */
                 dropdown: cn(
                     "appearance-none bg-transparent cursor-pointer p-1 rounded-md",
-                    "hover:bg-slate-100 transition-colors",
+                    "hover:bg-slate-50 transition-colors",
                     "focus-visible:outline-none",
-                    "font-bold text-slate-700 text-sm"
+                    "font-bold text-main text-sm"
                 ),
                 dropdown_month: "mr-1",
                 dropdown_year: "",
@@ -66,25 +65,25 @@ function Calendar({
                 /* Table Layout */
                 month_grid: "w-full border-collapse space-y-1",
                 weekdays: "flex mb-2",
-                weekday: "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem] flex justify-center items-center h-9",
+                weekday: "text-tertiary rounded-md w-9 font-bold text-3xs flex justify-center items-center h-9",
 
-                week: "flex w-full mt-2",
+                week: "flex w-full mt-1.5",
 
-                day: "h-9 w-9 text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-slate-100/50 [&:has([aria-selected])]:bg-slate-100 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+                day: "h-9 w-9 text-center text-sm p-0 relative focus-within:relative focus-within:z-20",
 
                 day_button: cn(
-                    "h-9 w-9 p-0 font-normal rounded-md flex items-center justify-center transition-all cursor-pointer",
-                    "text-slate-700 hover:bg-slate-100 hover:text-main"
+                    "h-9 w-9 p-0 font-medium rounded-xl flex items-center justify-center transition-all cursor-pointer",
+                    "text-main hover:bg-slate-50 hover:text-primary"
                 ),
 
                 selected:
-                    "[&>button]:bg-primary [&>button]:!text-white [&>button]:rounded-md [&>button]:hover:bg-primary/90 [&>button]:hover:!text-white",
+                    "[&>button]:bg-primary [&>button]:!text-white [&>button]:rounded-xl [&>button]:hover:bg-primary/90 [&>button]:hover:!text-white [&>button]:font-bold",
 
-                today: "bg-slate-100 text-primary font-bold",
+                today: "bg-primary/5 text-primary font-bold rounded-xl",
                 outside:
-                    "text-muted-foreground opacity-40 aria-selected:bg-slate-100/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
-                disabled: "text-muted-foreground opacity-30 cursor-not-allowed text-xs",
-                range_middle: "aria-selected:bg-slate-100 aria-selected:text-main",
+                    "text-tertiary opacity-40 aria-selected:bg-slate-50 aria-selected:text-tertiary aria-selected:opacity-30",
+                disabled: "text-tertiary opacity-20 cursor-not-allowed text-xs",
+                range_middle: "aria-selected:bg-slate-50 aria-selected:text-main",
                 hidden: "invisible",
 
                 ...classNames,
@@ -92,8 +91,8 @@ function Calendar({
             components={{
                 Chevron: ({ orientation }) =>
                     orientation === "left"
-                        ? <ChevronLeft className="h-4 w-4 text-slate-600" />
-                        : <ChevronRight className="h-4 w-4 text-slate-600" />,
+                        ? <ChevronLeft className="h-4 w-4 text-secondary" />
+                        : <ChevronRight className="h-4 w-4 text-secondary" />,
             }}
             {...props}
         />

@@ -81,7 +81,7 @@ const CourseManagement = () => {
     }, [searchQuery, activeTab]);
 
     const getCategoryColor = (category) => {
-        return 'bg-slate-50 text-slate-600 border-slate-200';
+        return 'bg-slate-50 text-secondary border-slate-200';
     };
 
     return (
@@ -166,7 +166,7 @@ const CourseManagement = () => {
 
                     {/* Footer / Pagination */}
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-8">
-                        <div className="text-2xs text-slate-400 font-medium whitespace-nowrap">
+                        <div className="text-2xs text-tertiary font-medium whitespace-nowrap">
                             Showing {paginatedCourses.length} of {filteredCourses.length} courses
                         </div>
                         <Pagination
@@ -180,10 +180,10 @@ const CourseManagement = () => {
             ) : (
                 <div className="border border-slate-200 bg-white rounded-2xl h-80 flex flex-col items-center justify-center text-center shadow-none">
                     <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-5 border border-slate-100">
-                        <Plus size={40} className="text-slate-300 rotate-45" />
+                        <Plus size={40} className="text-tertiary rotate-45" />
                     </div>
                     <h4 className="font-bold text-xl text-main tracking-tight">No courses found</h4>
-                    <p className="text-sm text-slate-500 mt-2 max-w-xs mx-auto font-medium">
+                    <p className="text-sm text-secondary mt-2 max-w-xs mx-auto font-medium">
                         We couldn't find any courses matching "{searchQuery}".
                     </p>
                     <Button

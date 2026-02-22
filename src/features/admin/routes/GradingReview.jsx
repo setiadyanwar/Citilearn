@@ -145,12 +145,12 @@ const GradingReview = () => {
                 filterSlot={
                     <>
                         <Select value={selectedCourse} onValueChange={setSelectedCourse}>
-                            <SelectTrigger className="w-full lg:w-64 font-medium text-slate-700 border-slate-200 bg-white">
+                            <SelectTrigger className="w-fit text-secondary border-slate-200 bg-white">
                                 <SelectValue placeholder="All Courses" />
                             </SelectTrigger>
                             <SelectContent>
                                 {courseOptions.map(c => (
-                                    <SelectItem key={c} value={c} className="font-medium text-slate-600 focus:bg-slate-50">
+                                    <SelectItem key={c} value={c} className="text-xs font-normal text-secondary focus:bg-slate-50">
                                         {c}
                                     </SelectItem>
                                 ))}
@@ -158,12 +158,12 @@ const GradingReview = () => {
                         </Select>
 
                         <Select value={selectedType} onValueChange={setSelectedType}>
-                            <SelectTrigger className="w-full lg:w-40 font-medium text-slate-700 border-slate-200 bg-white">
+                            <SelectTrigger className="w-fit h-10 rounded-xl text-xs font-normal text-secondary border-slate-200 bg-white">
                                 <SelectValue placeholder="All Types" />
                             </SelectTrigger>
                             <SelectContent>
                                 {typeOptions.map(t => (
-                                    <SelectItem key={t} value={t} className="font-medium text-slate-600 focus:bg-slate-50">
+                                    <SelectItem key={t} value={t} className="text-xs font-normal text-secondary focus:bg-slate-50">
                                         {t}
                                     </SelectItem>
                                 ))}
@@ -214,7 +214,7 @@ const GradingReview = () => {
 
                     {/* Footer / Pagination */}
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-8">
-                        <div className="text-2xs text-slate-400 font-medium whitespace-nowrap">
+                        <div className="text-2xs text-tertiary font-medium whitespace-nowrap">
                             Showing {paginatedGroups.length} of {groupedData.length} students · {filteredGrades.length} filtered results
                         </div>
                         <Pagination
@@ -227,12 +227,12 @@ const GradingReview = () => {
                 </>
             ) : (
                 <div className="border border-slate-200 bg-white rounded-2xl h-64 flex flex-col items-center justify-center gap-4">
-                    <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 border border-slate-100">
+                    <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center text-tertiary border border-slate-100">
                         <AlertCircle size={32} />
                     </div>
                     <div className="text-center">
-                        <h4 className="text-lg font-bold text-slate-700 leading-none">No results found</h4>
-                        <p className="text-sm text-slate-400 mt-1.5 font-medium leading-relaxed">
+                        <h4 className="text-lg font-bold text-main leading-none">No results found</h4>
+                        <p className="text-sm text-tertiary mt-1.5 font-medium leading-relaxed">
                             Adjust your filters or search terms to find students.
                         </p>
                     </div>

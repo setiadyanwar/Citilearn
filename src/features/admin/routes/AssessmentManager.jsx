@@ -195,7 +195,7 @@ const AssessmentManager = () => {
                 <div className="lg:col-span-2">
                     {isLoading ? (
                         <div className="bg-white p-12 rounded-3xl border border-slate-200 flex items-center justify-center h-64">
-                            <p className="text-slate-400 font-medium">Loading assessment...</p>
+                            <p className="text-tertiary font-medium">Loading assessment...</p>
                         </div>
                     ) : (
                         <AssessmentQuestionsList

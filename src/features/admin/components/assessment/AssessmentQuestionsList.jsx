@@ -35,7 +35,7 @@ const AssessmentQuestionsList = ({
                             className="group p-4 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors border border-transparent hover:border-gray-200"
                         >
                             <div className="flex items-start gap-4">
-                                <div className="mt-1 text-gray-300 group-hover:text-main cursor-grab active:cursor-grabbing">
+                                <div className="mt-1 text-tertiary group-hover:text-main cursor-grab active:cursor-grabbing">
                                     <GripVertical size={20} />
                                 </div>
                                 <div className="flex-1 min-w-0">
@@ -56,7 +56,7 @@ const AssessmentQuestionsList = ({
                                             <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md">
                                                 {question.points} point{question.points > 1 ? 's' : ''}
                                             </span>
-                                            <span className="text-xs font-medium text-gray-500 bg-white px-2 py-1 rounded-md border border-gray-200 capitalize">
+                                            <span className="text-xs font-medium text-secondary bg-white px-2 py-1 rounded-md border border-gray-200 capitalize">
                                                 {question.type.replace('-', ' ')}
                                             </span>
                                         </div>
@@ -68,9 +68,9 @@ const AssessmentQuestionsList = ({
                                                     {idx === question.correctAnswer ? (
                                                         <CheckCircle size={14} className="text-green-500" />
                                                     ) : (
-                                                        <XCircle size={14} className="text-gray-300" />
+                                                        <XCircle size={14} className="text-tertiary" />
                                                     )}
-                                                    <span className={idx === question.correctAnswer ? 'text-green-700 font-medium' : 'text-gray-500'}>
+                                                    <span className={idx === question.correctAnswer ? 'text-green-700 font-medium' : 'text-secondary'}>
                                                         {answer}
                                                     </span>
                                                 </div>
@@ -84,9 +84,9 @@ const AssessmentQuestionsList = ({
                                                     {idx === question.correctAnswer ? (
                                                         <CheckCircle size={14} className="text-green-500" />
                                                     ) : (
-                                                        <XCircle size={14} className="text-gray-300" />
+                                                        <XCircle size={14} className="text-tertiary" />
                                                     )}
-                                                    <span className={idx === question.correctAnswer ? 'text-green-700 font-medium' : 'text-gray-500'}>
+                                                    <span className={idx === question.correctAnswer ? 'text-green-700 font-medium' : 'text-secondary'}>
                                                         {answer}
                                                     </span>
                                                 </div>
@@ -118,7 +118,7 @@ const AssessmentQuestionsList = ({
             ) : (
                 <div className="text-center py-12">
                     <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-100">
-                        <Settings className="text-gray-300" size={32} />
+                        <Settings className="text-tertiary" size={32} />
                     </div>
                     <h4 className="text-main font-bold mb-1">No questions yet</h4>
                     <p className="text-sm text-secondary mb-4">Start by adding your first question or picking from the bank</p>

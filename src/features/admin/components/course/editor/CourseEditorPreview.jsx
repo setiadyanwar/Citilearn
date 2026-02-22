@@ -8,10 +8,10 @@ const CourseEditorPreview = ({ previewCourse }) => {
         <div className="lg:col-span-4 hidden lg:block relative h-full animate-in fade-in slide-in-from-right-4 duration-500">
             <div className="sticky top-24 space-y-8 scale-95 origin-top-right transition-all duration-300">
                 <div className="flex items-center justify-between px-2">
-                    <h3 className="text-sm font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                    <h3 className="text-sm font-bold text-secondary flex items-center gap-2">
                         <Eye size={16} /> Live Preview
                     </h3>
-                    <div className="flex items-center gap-2 text-3xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 uppercase tracking-widest">
+                    <div className="flex items-center gap-2 text-3xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                         Student View
                     </div>

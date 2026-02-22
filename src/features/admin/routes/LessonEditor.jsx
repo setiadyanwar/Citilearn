@@ -68,7 +68,7 @@ const LessonEditor = () => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12 pt-6">
                 <div className="flex items-center gap-4">
                     <Link to={`/admin/course/${courseId}/edit?tab=curriculum`}>
-                        <Button variant="ghost" size="icon" className="h-10 w-10 text-slate-400 hover:text-slate-600 rounded-xl bg-slate-50 border border-slate-100">
+                        <Button variant="ghost" size="icon" className="h-10 w-10 text-tertiary hover:text-secondary rounded-xl bg-slate-50 border border-slate-100">
                             <ArrowLeft size={20} />
                         </Button>
                     </Link>
@@ -78,14 +78,14 @@ const LessonEditor = () => {
                                 {isNew ? 'New Lesson' : 'Edit Lesson'}
                             </h1>
                         </div>
-                        <p className="text-xs text-slate-400 font-medium mt-0.5">Course Administration &bull; Lesson Editor</p>
+                        <p className="text-xs text-tertiary font-medium mt-0.5">Course Administration &bull; Lesson Editor</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-2">
                     <Button
                         variant="ghost"
                         onClick={() => navigate(`/admin/course/${courseId}/edit?tab=curriculum`)}
-                        className="font-bold text-slate-500 hover:text-main h-11 px-6 rounded-xl"
+                        className="font-bold text-secondary hover:text-main h-11 px-6 rounded-xl"
                     >
                         Discard
                     </Button>
@@ -107,7 +107,7 @@ const LessonEditor = () => {
                     className="bg-transparent border-b border-slate-100 rounded-none mb-0"
                     itemClassName="px-0 mr-10 py-4 rounded-none border-b-2 bg-transparent shadow-none"
                     activeItemClassName="border-primary text-primary"
-                    inactiveItemClassName="border-transparent text-slate-400 hover:text-slate-600"
+                    inactiveItemClassName="border-transparent text-tertiary hover:text-secondary"
                 />
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-10">
@@ -117,7 +117,7 @@ const LessonEditor = () => {
                             <div className="space-y-12 animate-fade-in outline-none">
                                 {/* Title Section - Clean Focus */}
                                 <div className="space-y-3">
-                                    <Label className="text-3xs font-bold text-slate-400 uppercase tracking-widest pl-1">Lesson Title</Label>
+                                    <Label className="text-3xs font-bold text-tertiary  pl-1">Lesson Title</Label>
                                     <Input
                                         value={lessonData.title}
                                         onChange={(e) => setLessonData({ ...lessonData, title: e.target.value })}
@@ -128,7 +128,7 @@ const LessonEditor = () => {
 
                                 {/* Content Type Section */}
                                 <div className="space-y-4">
-                                    <Label className="text-3xs font-bold text-slate-400 uppercase tracking-widest pl-1">Selection Type</Label>
+                                    <Label className="text-3xs font-bold text-tertiary  pl-1">Selection Type</Label>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <ContentTypeCard
                                             type="youtube"
@@ -166,7 +166,7 @@ const LessonEditor = () => {
                                     {lessonData.type === 'youtube' && (
                                         <div className="space-y-6">
                                             <div className="group">
-                                                <Label className="text-xs font-bold text-slate-500 mb-2 block group-focus-within:text-primary transition-colors">Video Source URL</Label>
+                                                <Label className="text-xs font-bold text-secondary mb-2 block group-focus-within:text-primary transition-colors">Video Source URL</Label>
                                                 <Input
                                                     value={lessonData.content}
                                                     onChange={(e) => setLessonData({ ...lessonData, content: e.target.value })}
@@ -185,10 +185,10 @@ const LessonEditor = () => {
                                                     />
                                                 ) : (
                                                     <div className="text-center space-y-4">
-                                                        <div className="w-16 h-16 bg-slate-200 rounded-3xl flex items-center justify-center mx-auto text-slate-400 scale-90 opacity-50 group-hover:scale-100 group-hover:opacity-100 transition-all">
+                                                        <div className="w-16 h-16 bg-slate-200 rounded-3xl flex items-center justify-center mx-auto text-tertiary scale-90 opacity-50 group-hover:scale-100 group-hover:opacity-100 transition-all">
                                                             <Video size={32} />
                                                         </div>
-                                                        <p className="text-slate-400 text-xs font-bold uppercase tracking-widest opacity-80">Waiting for source...</p>
+                                                        <p className="text-tertiary text-xs font-bold  opacity-80">Waiting for source...</p>
                                                     </div>
                                                 )}
                                             </div>
@@ -198,18 +198,18 @@ const LessonEditor = () => {
                                     {lessonData.type === 'pdf' && (
                                         <div className="space-y-8 animate-fade-in">
                                             <div className="border border-dashed border-slate-200 bg-slate-50/50 rounded-3xl p-12 text-center group hover:bg-slate-50 hover:border-primary/20 transition-all">
-                                                <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform text-slate-300 group-hover:text-primary">
+                                                <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform text-tertiary group-hover:text-primary">
                                                     <Upload size={28} />
                                                 </div>
                                                 <h4 className="text-lg font-bold text-main mb-2">Library Upload</h4>
-                                                <p className="text-xs text-slate-400 mb-8 max-w-[240px] mx-auto leading-relaxed">Select PDF materials to be processed for this learning session.</p>
+                                                <p className="text-xs text-tertiary mb-8 max-w-[240px] mx-auto leading-relaxed">Select PDF materials to be processed for this learning session.</p>
                                                 <Button variant="outline" className="h-10 px-6 rounded-xl font-bold border-slate-200 bg-white hover:bg-slate-100 shadow-sm">
                                                     Browse Local Files
                                                 </Button>
                                             </div>
 
                                             <div className="space-y-2">
-                                                <Label className="text-xs font-bold text-slate-500">Asset Path (Legacy)</Label>
+                                                <Label className="text-xs font-bold text-secondary">Asset Path (Legacy)</Label>
                                                 <Input
                                                     value={lessonData.content}
                                                     onChange={(e) => setLessonData({ ...lessonData, content: e.target.value })}
@@ -234,7 +234,7 @@ const LessonEditor = () => {
                                         <h3 className="font-bold text-main tracking-tight">Educational Overview</h3>
                                     </div>
                                     <div className="space-y-4">
-                                        <Label className="text-3xs font-bold text-slate-400 uppercase tracking-widest pl-1">Description & Context</Label>
+                                        <Label className="text-3xs font-bold text-tertiary  pl-1">Description & Context</Label>
                                         <Textarea
                                             value={lessonData.overview}
                                             onChange={(e) => setLessonData({ ...lessonData, overview: e.target.value })}
@@ -275,12 +275,12 @@ const LessonEditor = () => {
                                                         const newR = lessonData.resources.filter((_, i) => i !== idx);
                                                         setLessonData({ ...lessonData, resources: newR });
                                                     }}
-                                                    className="absolute -top-3 -right-3 h-8 w-8 bg-white border border-slate-100 text-slate-300 hover:text-destructive hover:border-destructive/20 opacity-0 group-hover/res:opacity-100 transition-all rounded-full flex items-center justify-center shadow-sm"
+                                                    className="absolute -top-3 -right-3 h-8 w-8 bg-white border border-slate-100 text-tertiary hover:text-destructive hover:border-destructive/20 opacity-0 group-hover/res:opacity-100 transition-all rounded-full flex items-center justify-center shadow-sm"
                                                 >
                                                     <Trash2 size={14} />
                                                 </button>
                                                 <div className="flex-1 space-y-2 text-left">
-                                                    <Label className="text-3xs font-bold text-slate-400 uppercase tracking-widest pl-1">Display Title</Label>
+                                                    <Label className="text-3xs font-bold text-tertiary  pl-1">Display Title</Label>
                                                     <Input
                                                         value={res.title}
                                                         onChange={(e) => {
@@ -293,9 +293,9 @@ const LessonEditor = () => {
                                                     />
                                                 </div>
                                                 <div className="flex-1 space-y-2 text-left">
-                                                    <Label className="text-3xs font-bold text-slate-400 uppercase tracking-widest pl-1">External Link/Path</Label>
+                                                    <Label className="text-3xs font-bold text-tertiary  pl-1">External Link/Path</Label>
                                                     <div className="relative">
-                                                        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-300">
+                                                        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-tertiary">
                                                             <LinkIcon size={14} />
                                                         </div>
                                                         <Input
@@ -313,11 +313,11 @@ const LessonEditor = () => {
                                             </div>
                                         ))}
                                         {lessonData.resources.length === 0 && (
-                                            <div className="py-12 text-center border-2 border-dashed border-slate-100 rounded-3xl text-slate-300 hover:border-slate-200 hover:text-slate-400 transition-all cursor-pointer bg-slate-50/20 group">
+                                            <div className="py-12 text-center border-2 border-dashed border-slate-100 rounded-3xl text-tertiary hover:border-slate-200 hover:text-tertiary transition-all cursor-pointer bg-slate-50/20 group">
                                                 <div className="w-12 h-12 rounded-full bg-white border border-slate-100 flex items-center justify-center mx-auto mb-3 shadow-sm group-hover:scale-110 transition-all">
                                                     <Plus size={20} />
                                                 </div>
-                                                <p className="text-xs font-bold uppercase tracking-widest">Add First Attachment</p>
+                                                <p className="text-xs font-bold ">Add First Attachment</p>
                                             </div>
                                         )}
                                     </div>
@@ -337,9 +337,9 @@ const LessonEditor = () => {
                             </div>
 
                             <div className="space-y-6">
-                                <Label className="text-3xs font-bold text-slate-400 uppercase tracking-widest block pl-1">Assign Instructors</Label>
+                                <Label className="text-3xs font-bold text-tertiary  block pl-1">Assign Instructors</Label>
                                 <div className="relative group">
-                                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">
+                                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-tertiary group-focus-within:text-primary transition-colors">
                                         <Search size={18} />
                                     </div>
                                     <Input
@@ -347,7 +347,7 @@ const LessonEditor = () => {
                                         className="pl-12 h-12 border-slate-200 rounded-2xl bg-slate-50/50 focus:bg-white transition-all shadow-none"
                                     />
                                 </div>
-                                <p className="text-3xs text-slate-400 italic font-medium px-1">
+                                <p className="text-3xs text-tertiary italic font-medium px-1">
                                     Add multiple subject matter experts to this lesson.
                                 </p>
                             </div>
@@ -373,7 +373,7 @@ const LessonEditor = () => {
                                                     const newIn = lessonData.instructors.filter((_, i) => i !== idx);
                                                     setLessonData({ ...lessonData, instructors: newIn });
                                                 }}
-                                                className="h-8 w-8 text-slate-300 hover:text-destructive hover:bg-destructive/5 rounded-lg transition-all"
+                                                className="h-8 w-8 text-tertiary hover:text-destructive hover:bg-destructive/5 rounded-lg transition-all"
                                             >
                                                 <X size={16} />
                                             </Button>
@@ -384,7 +384,7 @@ const LessonEditor = () => {
                                         <div className="w-14 h-14 rounded-full bg-white border border-slate-100 flex items-center justify-center mx-auto mb-4 text-slate-200 shadow-sm">
                                             <User size={24} />
                                         </div>
-                                        <p className="text-sm font-bold text-slate-300">Unassigned</p>
+                                        <p className="text-sm font-bold text-tertiary">Unassigned</p>
                                     </div>
                                 )}
                             </div>
@@ -411,18 +411,18 @@ const ContentTypeCard = ({ type, label, icon: Icon, description, selectedType, o
     >
         <div className={cn(
             "w-10 h-10 rounded-lg flex items-center justify-center transition-colors shrink-0",
-            selectedType === type ? 'bg-primary text-white' : 'bg-slate-100 text-slate-400 group-hover:text-primary'
+            selectedType === type ? 'bg-primary text-white' : 'bg-slate-100 text-tertiary group-hover:text-primary'
         )}>
             <Icon size={20} />
         </div>
         <div className="min-w-0">
             <span className={cn(
                 "block text-sm font-bold transition-colors",
-                selectedType === type ? 'text-primary' : 'text-slate-700'
+                selectedType === type ? 'text-primary' : 'text-main'
             )}>
                 {label}
             </span>
-            <span className="text-3xs text-slate-500 font-medium truncate block">
+            <span className="text-3xs text-secondary font-medium truncate block">
                 {description}
             </span>
         </div>

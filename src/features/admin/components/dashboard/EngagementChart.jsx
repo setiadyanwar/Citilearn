@@ -54,7 +54,7 @@ const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
         return (
             <div className="bg-white dark:bg-slate-900 p-3 border border-slate-200 dark:border-slate-800 rounded-xl shadow-none animate-in fade-in zoom-in duration-200">
-                <p className="text-3xs font-bold text-tertiary uppercase tracking-wider mb-0.5">{payload[0].payload.name}</p>
+                <p className="text-3xs font-bold text-tertiary  mb-0.5">{payload[0].payload.name}</p>
                 <div className="flex items-center gap-1.5">
                     <div className="h-1.5 w-1.5 rounded-full bg-primary" />
                     <p className="text-sm font-bold text-main dark:text-white leading-none">
@@ -85,7 +85,7 @@ const EngagementChart = () => {
                 </div>
                 <div className="min-w-[120px]">
                     <Select value={chartView} onValueChange={setChartView}>
-                        <SelectTrigger className="h-9 px-3 rounded-xl bg-slate-100 border-none text-2xs font-medium text-slate-600 shadow-none focus:ring-0">
+                        <SelectTrigger className="h-9 px-3 rounded-xl bg-slate-100 border-none text-2xs font-medium text-secondary shadow-none focus:ring-0">
                             <SelectValue placeholder="Timeframe" />
                         </SelectTrigger>
                         <SelectContent className="rounded-xl border-slate-100 shadow-none">

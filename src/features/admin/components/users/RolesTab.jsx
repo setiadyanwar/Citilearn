@@ -47,17 +47,17 @@ const RolesTab = () => {
                                         {role.name === 'Learner' && <Users size={11} />}
                                         {role.name}
                                     </Badge>
-                                    <span className="text-xs font-medium text-slate-400">
+                                    <span className="text-xs font-medium text-tertiary">
                                         {role.userCount} users
                                     </span>
                                 </div>
-                                <p className="text-sm font-medium text-slate-500 mb-4">{role.description}</p>
+                                <p className="text-sm font-medium text-secondary mb-4">{role.description}</p>
 
                                 {/* Permissions display */}
                                 <div className="space-y-4">
                                     {Object.entries(groupedPermissions).map(([group, perms]) => (
                                         <div key={group}>
-                                            <p className="text-2xs font-bold text-slate-400 uppercase tracking-widest mb-2">
+                                            <p className="text-2xs font-bold text-tertiary  mb-2">
                                                 {group}
                                             </p>
                                             <div className="flex flex-wrap gap-2">
@@ -70,7 +70,7 @@ const RolesTab = () => {
                                                                 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold border',
                                                                 isOn
                                                                     ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                                                                    : 'bg-slate-50 text-slate-300 border-slate-100'
+                                                                    : 'bg-slate-50 text-tertiary border-slate-100'
                                                             )}
                                                         >
                                                             {isOn
@@ -103,7 +103,7 @@ const RolesTab = () => {
                                     <Button
                                         variant="ghost"
                                         size="sm"
-                                        className="rounded-xl h-9 px-4 gap-2 font-bold text-xs text-slate-400 hover:text-red-500 hover:bg-red-50"
+                                        className="rounded-xl h-9 px-4 gap-2 font-bold text-xs text-tertiary hover:text-red-500 hover:bg-red-50"
                                     >
                                         <Trash2 size={13} />
                                         Delete
@@ -119,8 +119,8 @@ const RolesTab = () => {
                     id="add-role-btn"
                     className="group w-full border-2 border-dashed border-slate-200 rounded-2xl p-5 flex items-center justify-center gap-3 hover:border-primary/40 hover:bg-primary/5 transition-all"
                 >
-                    <Plus size={18} className="text-slate-300 group-hover:text-primary transition-colors" />
-                    <span className="text-sm font-bold text-slate-400 group-hover:text-primary transition-colors">
+                    <Plus size={18} className="text-tertiary group-hover:text-primary transition-colors" />
+                    <span className="text-sm font-bold text-tertiary group-hover:text-primary transition-colors">
                         Create Custom Role
                     </span>
                 </button>

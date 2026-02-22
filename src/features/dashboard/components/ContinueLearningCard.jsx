@@ -45,7 +45,7 @@ const ContinueLearningCard = ({ course }) => {
 
                 <div className="space-y-1.5">
                     <div className="flex justify-between items-center font-bold">
-                        <span className="text-xs text-tertiary dark:text-slate-500 uppercase tracking-tight">Progress</span>
+                        <span className="text-xs text-tertiary dark:text-slate-500  tracking-tight">Progress</span>
                         <span className="text-sm text-primary">{course.progress}%</span>
                     </div>
                     <ProgressBar progress={course.progress} height="h-1.5" />

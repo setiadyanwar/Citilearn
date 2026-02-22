@@ -26,7 +26,7 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
                         variant="ghost"
                         size="icon"
                         onClick={onBack}
-                        className="rounded-xl border border-slate-200 h-10 w-10 text-slate-500 hover:bg-slate-50 transition-all shadow-none"
+                        className="rounded-xl border border-slate-200 h-10 w-10 text-secondary hover:bg-slate-50 transition-all shadow-none"
                     >
                         <ArrowLeft size={18} />
                     </Button>
@@ -52,7 +52,7 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
                             />
                             <div>
                                 <h3 className="font-bold text-main leading-none">{selectedGrade.student.name}</h3>
-                                <p className="text-2xs text-slate-500 mt-1.5 font-medium tracking-tight uppercase">CID-{selectedGrade.student.id.toUpperCase()}</p>
+                                <p className="text-2xs text-secondary mt-1.5 font-medium tracking-tight ">CID-{selectedGrade.student.id.toUpperCase()}</p>
                             </div>
                         </div>
 
@@ -67,7 +67,7 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
                                     color={selectedGrade.score >= selectedGrade.passingScore ? 'text-emerald-500' : 'text-red-500'}
                                 />
                                 <div className="mt-4 text-center">
-                                    <p className="text-3xs font-bold text-slate-400 uppercase tracking-widest">Final Score</p>
+                                    <p className="text-3xs font-bold text-tertiary ">Final Score</p>
                                     <div className="mt-1">
                                         <GradeBadge status={selectedGrade.status} />
                                     </div>
@@ -76,26 +76,26 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
 
                             <div className="space-y-3.5">
                                 <div className="flex items-center justify-between">
-                                    <span className="text-xs font-semibold text-slate-500 tracking-tight">Correct Answers</span>
-                                    <span className="text-xs font-bold text-slate-700">
-                                        {questions.filter(q => q.isCorrect).length} <span className="text-slate-300 mx-1">/</span> {questions.length}
+                                    <span className="text-xs font-semibold text-secondary tracking-tight">Correct Answers</span>
+                                    <span className="text-xs font-bold text-main">
+                                        {questions.filter(q => q.isCorrect).length} <span className="text-tertiary mx-1">/</span> {questions.length}
                                     </span>
                                 </div>
 
                                 <div className="flex items-center justify-between">
-                                    <span className="text-xs font-semibold text-slate-500 tracking-tight">Passing score</span>
-                                    <span className="text-xs font-bold text-slate-700">{selectedGrade.passingScore}%</span>
+                                    <span className="text-xs font-semibold text-secondary tracking-tight">Passing score</span>
+                                    <span className="text-xs font-bold text-main">{selectedGrade.passingScore}%</span>
                                 </div>
 
                                 <div className="flex items-center justify-between">
-                                    <span className="text-xs font-semibold text-slate-500 tracking-tight">Attempts used</span>
-                                    <span className="text-xs font-bold text-slate-700">{selectedGrade.attempts} / {selectedGrade.maxAttempts}</span>
+                                    <span className="text-xs font-semibold text-secondary tracking-tight">Attempts used</span>
+                                    <span className="text-xs font-bold text-main">{selectedGrade.attempts} / {selectedGrade.maxAttempts}</span>
                                 </div>
 
                                 <div className="flex items-center justify-between">
-                                    <span className="text-xs font-semibold text-slate-500 tracking-tight">Taken on</span>
-                                    <div className="flex items-center gap-1.5 text-xs text-slate-700 font-bold">
-                                        <Calendar size={13} className="text-slate-400" />
+                                    <span className="text-xs font-semibold text-secondary tracking-tight">Taken on</span>
+                                    <div className="flex items-center gap-1.5 text-xs text-main font-bold">
+                                        <Calendar size={13} className="text-tertiary" />
                                         {new Date(selectedGrade.date).toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' })}
                                     </div>
                                 </div>
@@ -108,10 +108,10 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
                 <div className="lg:col-span-3 space-y-4">
                     <div className="bg-white p-6 rounded-2xl border border-slate-200 flex items-center justify-between shadow-none">
                         <h3 className="text-base font-bold text-main flex items-center gap-2">
-                            <FileText size={18} className="text-slate-400" />
+                            <FileText size={18} className="text-tertiary" />
                             Submission review
                         </h3>
-                        <div className="text-3xs font-bold text-slate-500 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100 uppercase tracking-wider">
+                        <div className="text-3xs font-bold text-secondary bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100 ">
                             {questions.filter(q => q.isCorrect).length} of {questions.length} correct
                         </div>
                     </div>
@@ -138,11 +138,11 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
                                         <h4 className="text-sm font-bold text-main leading-snug">{q.text}</h4>
                                         <div className="flex items-center gap-2 mt-2">
                                             {q.isCorrect ? (
-                                                <span className="flex items-center gap-1.5 text-3xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md tracking-tight uppercase border border-emerald-100">
+                                                <span className="flex items-center gap-1.5 text-3xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md tracking-tight  border border-emerald-100">
                                                     <CheckCircle2 size={10} /> Correct answer
                                                 </span>
                                             ) : (
-                                                <span className="flex items-center gap-1.5 text-3xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-md tracking-tight uppercase border border-red-100">
+                                                <span className="flex items-center gap-1.5 text-3xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-md tracking-tight  border border-red-100">
                                                     <XCircle size={10} /> Incorrect answer
                                                 </span>
                                             )}
@@ -164,7 +164,7 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
                                                         ? "bg-emerald-50 border-emerald-200 text-emerald-900 font-bold"
                                                         : isStudentChoice && !q.isCorrect
                                                             ? "bg-red-50 border-red-200 text-red-900 font-bold"
-                                                            : "bg-slate-50/50 border-slate-100 text-slate-500"
+                                                            : "bg-slate-50/50 border-slate-100 text-secondary"
                                                 )}
                                             >
                                                 <div className={cn(

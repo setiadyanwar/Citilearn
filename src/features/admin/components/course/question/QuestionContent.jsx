@@ -13,7 +13,7 @@ const QuestionContent = ({ question, image, onChange }) => {
             <div className="space-y-5">
                 {/* Optional Image - Moved to Top */}
                 <div className="space-y-2">
-                    <Label className="text-sm font-semibold text-slate-700">Attachment (Optional)</Label>
+                    <Label className="text-sm font-semibold text-main">Attachment (Optional)</Label>
                     <ImageUploader
                         value={image}
                         onChange={(val) => onChange({ image: val })}
@@ -23,7 +23,7 @@ const QuestionContent = ({ question, image, onChange }) => {
                 </div>
 
                 <div className="space-y-2">
-                    <Label className="text-sm font-semibold text-slate-700">Question Text</Label>
+                    <Label className="text-sm font-semibold text-main">Question Text</Label>
                     <TextEditor
                         rows={5}
                         value={question}

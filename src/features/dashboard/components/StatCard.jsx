@@ -14,7 +14,7 @@ const StatCard = ({ icon, label, value, trend, trendType = 'neutral', progress, 
     if (variant === 'admin') {
         return (
             <div className="p-6 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl transition-all hover:border-slate-200 dark:hover:border-slate-700 group shadow-none">
-                <p className="text-xs font-bold text-tertiary leading-none uppercase tracking-wider">{label}</p>
+                <p className="text-xs font-bold text-tertiary leading-none ">{label}</p>
                 <div className="flex items-baseline gap-2 mt-3">
                     <h4 className="text-2xl font-bold text-main dark:text-white tracking-tight leading-none">{value}</h4>
                 </div>

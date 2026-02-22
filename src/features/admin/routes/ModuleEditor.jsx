@@ -126,7 +126,7 @@ const ModuleEditor = () => {
                                     <Video className="text-secondary group-hover:text-primary" size={28} />
                                 </div>
                                 <span className="text-sm font-bold text-secondary group-hover:text-primary">Click to upload video or drag and drop</span>
-                                <span className="text-xs text-gray-400 mt-1">MP4, WebM up to 500MB</span>
+                                <span className="text-xs text-tertiary mt-1">MP4, WebM up to 500MB</span>
                             </div>
                             <div className="text-center text-sm text-secondary font-medium">OR</div>
                             <div className="space-y-2">
@@ -148,7 +148,7 @@ const ModuleEditor = () => {
                                 <FileText className="text-secondary group-hover:text-primary" size={28} />
                             </div>
                             <span className="text-sm font-bold text-secondary group-hover:text-primary">Click to upload document</span>
-                            <span className="text-xs text-gray-400 mt-1">PDF, DOC, DOCX up to 50MB</span>
+                            <span className="text-xs text-tertiary mt-1">PDF, DOC, DOCX up to 50MB</span>
                         </div>
                     )}
 
@@ -179,7 +179,7 @@ const ModuleEditor = () => {
                         <div className="space-y-2">
                             {lessons.map((lesson, index) => (
                                 <div key={lesson.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
-                                    <button className="text-gray-300 hover:text-main cursor-move">
+                                    <button className="text-tertiary hover:text-main cursor-move">
                                         <GripVertical size={18} />
                                     </button>
                                     <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-secondary border border-gray-100">

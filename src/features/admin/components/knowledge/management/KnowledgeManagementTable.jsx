@@ -25,12 +25,12 @@ const KnowledgeManagementTable = ({ articles, onDelete }) => {
             <Table>
                 <TableHeader className="bg-slate-50 border-b border-slate-200">
                     <TableRow className="hover:bg-transparent border-none">
-                        <TableHead className="w-[45%] font-semibold text-tertiary h-12 pl-6 uppercase text-3xs tracking-wider">Article Info</TableHead>
-                        <TableHead className="w-[20%] font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Author</TableHead>
-                        <TableHead className="w-[10%] font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Category</TableHead>
-                        <TableHead className="w-[10%] font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Date</TableHead>
-                        <TableHead className="w-[10%] font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Status</TableHead>
-                        <TableHead className="w-[5%] text-right font-semibold text-tertiary h-12 pr-6 uppercase text-3xs tracking-wider">Actions</TableHead>
+                        <TableHead className="w-[45%] font-semibold text-tertiary h-12 pl-6  text-3xs ">Article Info</TableHead>
+                        <TableHead className="w-[20%] font-semibold text-tertiary h-12  text-3xs ">Author</TableHead>
+                        <TableHead className="w-[10%] font-semibold text-tertiary h-12  text-3xs ">Category</TableHead>
+                        <TableHead className="w-[10%] font-semibold text-tertiary h-12  text-3xs ">Date</TableHead>
+                        <TableHead className="w-[10%] font-semibold text-tertiary h-12  text-3xs ">Status</TableHead>
+                        <TableHead className="w-[5%] text-right font-semibold text-tertiary h-12 pr-6  text-3xs ">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -50,7 +50,7 @@ const KnowledgeManagementTable = ({ articles, onDelete }) => {
                                         <Link to={`/admin/knowledge/${article.id}/edit`} className="block">
                                             <h3 className="font-semibold text-main truncate leading-tight mb-1 group-hover:text-emerald-600 transition-colors">{article.title}</h3>
                                         </Link>
-                                        <p className="text-2xs text-slate-500 line-clamp-1 mb-1.5 font-medium">{article.excerpt || "No excerpt avaliable."}</p>
+                                        <p className="text-2xs text-secondary line-clamp-1 mb-1.5 font-medium">{article.excerpt || "No excerpt avaliable."}</p>
                                     </div>
                                 </div>
                             </TableCell>
@@ -64,25 +64,25 @@ const KnowledgeManagementTable = ({ articles, onDelete }) => {
                                         className="shrink-0"
                                     />
                                     <div className="flex flex-col">
-                                        <span className="text-xs font-semibold text-slate-700">{article.author.name}</span>
-                                        <span className="text-3xs text-slate-400">{article.author.role || 'Writer'}</span>
+                                        <span className="text-xs font-semibold text-main">{article.author.name}</span>
+                                        <span className="text-3xs text-tertiary">{article.author.role || 'Writer'}</span>
                                     </div>
                                 </div>
                             </TableCell>
                             <TableCell>
-                                <span className="inline-flex px-2.5 py-1 rounded-md text-3xs font-semibold uppercase tracking-wide border bg-slate-50 text-slate-600 border-slate-200">
+                                <span className="inline-flex px-2.5 py-1 rounded-md text-3xs font-semibold  border bg-slate-50 text-secondary border-slate-200">
                                     {article.category}
                                 </span>
                             </TableCell>
                             <TableCell>
-                                <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
-                                    <Calendar size={12} className="text-slate-400" />
+                                <div className="flex items-center gap-1.5 text-xs text-secondary font-medium">
+                                    <Calendar size={12} className="text-tertiary" />
                                     <span>{article.date}</span>
                                 </div>
                             </TableCell>
                             <TableCell>
-                                <div className={`inline-flex items-center pl-1.5 pr-2.5 py-1 rounded-full text-3xs font-semibold border transition-colors uppercase tracking-wider ${article.status === 'Draft'
-                                    ? 'bg-slate-50 text-slate-500 border-slate-200'
+                                <div className={`inline-flex items-center pl-1.5 pr-2.5 py-1 rounded-full text-3xs font-semibold border transition-colors  ${article.status === 'Draft'
+                                    ? 'bg-slate-50 text-secondary border-slate-200'
                                     : 'bg-emerald-50 text-emerald-700 border-emerald-200'
                                     }`}>
                                     <span className={`w-1.5 h-1.5 rounded-full mr-2 ${article.status === 'Draft' ? 'bg-slate-400' : 'bg-emerald-500'
@@ -93,19 +93,19 @@ const KnowledgeManagementTable = ({ articles, onDelete }) => {
                             <TableCell className="text-right pr-6">
                                 <div className="flex items-center justify-end gap-1">
                                     <Link to={`/knowledge/${article.slug}`} target="_blank">
-                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg shadow-none">
+                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-tertiary hover:text-emerald-600 hover:bg-emerald-50 rounded-lg shadow-none">
                                             <Eye size={16} />
                                         </Button>
                                     </Link>
                                     <Link to={`/admin/knowledge/${article.id}/edit`}>
-                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg shadow-none">
+                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-tertiary hover:text-blue-600 hover:bg-blue-50 rounded-lg shadow-none">
                                             <Edit size={16} />
                                         </Button>
                                     </Link>
                                     <Button
                                         variant="ghost"
                                         size="icon"
-                                        className="h-8 w-8 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg shadow-none"
+                                        className="h-8 w-8 text-tertiary hover:text-red-600 hover:bg-red-50 rounded-lg shadow-none"
                                         onClick={() => onDelete(article.id)}
                                     >
                                         <Trash2 size={16} />

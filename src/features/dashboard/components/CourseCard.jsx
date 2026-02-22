@@ -234,7 +234,7 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
                     ) : (
                         <div className="w-full h-full flex flex-col items-center justify-center p-6 text-slate-300 bg-slate-50 dark:bg-slate-900/50">
                             <BookOpen size={48} strokeWidth={1.5} />
-                            <p className="mt-2 text-xs font-bold uppercase tracking-widest text-slate-400">No Preview</p>
+                            <p className="mt-2 text-3xs font-bold text-tertiary">No Preview</p>
                         </div>
                     )}
 
@@ -254,7 +254,7 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
                 {/* Content Section */}
                 <div className={`${compact ? 'p-4' : 'p-4 sm:p-5'} flex-1 flex flex-col`}>
                     {/* Meta Info */}
-                    <div className="flex items-center gap-4 text-xs font-bold text-tertiary mb-3 tracking-wide flex-nowrap overflow-x-auto no-scrollbar">
+                    <div className="flex items-center gap-4 text-xs font-bold flex-nowrap overflow-x-auto no-scrollbar">
                         <span className="text-secondary whitespace-nowrap">{course.category || 'General'}</span>
                         {course.duration && (
                             <span className="flex items-center gap-1.5 text-tertiary whitespace-nowrap">
@@ -290,7 +290,7 @@ const CourseCard = ({ course, compact = false, variant = 'default', disabled = f
                         {isAvailable && (isCompleted || inProgress) && (
                             <div className="space-y-2">
                                 <div className="flex justify-between items-end mb-1">
-                                    <span className="text-3xs font-bold text-tertiary uppercase tracking-wider">Progress</span>
+                                    <span className="text-3xs font-bold text-tertiary ">Progress</span>
                                     <span className="text-sm font-bold text-primary">{displayProgress}%</span>
                                 </div>
                                 <ProgressBar

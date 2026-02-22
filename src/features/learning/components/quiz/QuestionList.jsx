@@ -9,7 +9,7 @@ const QuestionList = ({ questions, answers, handleOptionSelect, handleSubmit }) 
             {questions.map((q, idx) => (
                 <div key={idx} id={`question-${idx}`} className="scroll-mt-32">
                     <div className="flex justify-between items-center mb-4">
-                        <span className="text-sm font-bold text-slate-400 uppercase tracking-wider">
+                        <span className="text-sm font-bold text-slate-400 ">
                             Question {idx + 1}
                         </span>
                         <Badge variant="secondary" className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">

@@ -119,11 +119,11 @@ const CompanyHubManagement = () => {
                         <Table>
                             <TableHeader className="bg-slate-50 border-b border-slate-200">
                                 <TableRow className="hover:bg-transparent border-none">
-                                    <TableHead className="font-semibold text-tertiary h-12 pl-6 uppercase text-3xs tracking-wider">Title</TableHead>
-                                    <TableHead className="font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Category</TableHead>
-                                    <TableHead className="font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Author</TableHead>
-                                    <TableHead className="font-semibold text-tertiary h-12 uppercase text-3xs tracking-wider">Status</TableHead>
-                                    <TableHead className="text-right font-semibold text-tertiary h-12 pr-6 uppercase text-3xs tracking-wider">Actions</TableHead>
+                                    <TableHead className="font-semibold text-tertiary h-12 pl-6  text-3xs ">Title</TableHead>
+                                    <TableHead className="font-semibold text-tertiary h-12  text-3xs ">Category</TableHead>
+                                    <TableHead className="font-semibold text-tertiary h-12  text-3xs ">Author</TableHead>
+                                    <TableHead className="font-semibold text-tertiary h-12  text-3xs ">Status</TableHead>
+                                    <TableHead className="text-right font-semibold text-tertiary h-12 pr-6  text-3xs ">Actions</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -133,20 +133,20 @@ const CompanyHubManagement = () => {
                                             <div className="font-semibold text-main group-hover:text-emerald-600 transition-colors">
                                                 {item.title}
                                             </div>
-                                            <div className="text-3xs text-slate-400 font-medium flex items-center gap-1 mt-1">
+                                            <div className="text-3xs text-tertiary font-medium flex items-center gap-1 mt-1">
                                                 <Calendar size={10} /> {item.date}
                                             </div>
                                         </TableCell>
                                         <TableCell>
-                                            <span className="inline-flex px-2 py-0.5 rounded-md text-3xs font-bold uppercase tracking-wider bg-slate-100 text-slate-600 border border-slate-200">
+                                            <span className="inline-flex px-2 py-0.5 rounded-md text-3xs font-bold  bg-slate-100 text-secondary border border-slate-200">
                                                 {item.category}
                                             </span>
                                         </TableCell>
-                                        <TableCell className="text-xs font-medium text-slate-600">
+                                        <TableCell className="text-xs font-medium text-secondary">
                                             {item.author}
                                         </TableCell>
                                         <TableCell>
-                                            <div className={`inline-flex items-center px-2 py-0.5 rounded-full text-3xs font-bold uppercase border ${item.status === 'Published'
+                                            <div className={`inline-flex items-center px-2 py-0.5 rounded-full text-3xs font-bold  border ${item.status === 'Published'
                                                 ? 'bg-emerald-50 text-emerald-700 border-emerald-100'
                                                 : 'bg-amber-50 text-amber-700 border-amber-100'
                                                 }`}>
@@ -155,18 +155,18 @@ const CompanyHubManagement = () => {
                                         </TableCell>
                                         <TableCell className="text-right pr-6">
                                             <div className="flex items-center justify-end gap-1">
-                                                <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-emerald-600">
+                                                <Button variant="ghost" size="icon" className="h-8 w-8 text-tertiary hover:text-emerald-600">
                                                     <Eye size={16} />
                                                 </Button>
                                                 <Link to={`/admin/cms/${type}/${item.id}/edit`}>
-                                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-blue-600">
+                                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-tertiary hover:text-blue-600">
                                                         <Edit size={16} />
                                                     </Button>
                                                 </Link>
                                                 <Button
                                                     variant="ghost"
                                                     size="icon"
-                                                    className="h-8 w-8 text-slate-400 hover:text-red-600"
+                                                    className="h-8 w-8 text-tertiary hover:text-red-600"
                                                     onClick={() => handleDelete(item.id)}
                                                 >
                                                     <Trash2 size={16} />
@@ -182,7 +182,7 @@ const CompanyHubManagement = () => {
                     <div className="text-center py-20 bg-white border border-slate-200 rounded-2xl">
                         <Database className="mx-auto text-slate-200 mb-4" size={48} />
                         <h3 className="text-lg font-bold text-main">No records found</h3>
-                        <p className="text-sm text-slate-500">Try adjusting your search or filters.</p>
+                        <p className="text-sm text-secondary">Try adjusting your search or filters.</p>
                     </div>
                 )}
             </div>

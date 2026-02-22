@@ -39,7 +39,7 @@ const ProfileBanner = ({ user, onEditPhoto }) => {
                 />
 
                 <div className="text-center md:text-left space-y-0 flex-1">
-                    <h1 className="text-lg md:text-[20px] font-bold uppercase tracking-wide">
+                    <h1 className="text-white text-lg md:text-2xl font-bold ">
                         {user.name}
                     </h1>
                     <p className="text-white/90 text-sm md:text-base font-medium">

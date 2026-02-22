@@ -20,32 +20,38 @@ const ModuleEditModal = ({ module, onSave, onClose }) => {
                         <h3 className="text-xl font-bold text-main">
                             {module ? 'Edit Module' : 'New Module'}
                         </h3>
-                        <button onClick={onClose} className="text-gray-400 hover:text-main transition-colors">
+                        <button onClick={onClose} className="text-tertiary hover:text-main transition-colors">
                             <X size={24} />
                         </button>
                     </div>
 
-                    <div className="space-y-6">
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold text-secondary uppercase tracking-wide">Title</label>
+                    <div className="space-y-8">
+                        <div className="space-y-2.5">
+                            <div className="space-y-0.5">
+                                <label className="text-sm font-bold text-main tracking-tight">Module Title</label>
+                                <p className="text-xs text-secondary font-medium">Use a clear title for this learning section.</p>
+                            </div>
                             <input
                                 type="text"
                                 value={editData.title}
                                 onChange={(e) => setEditData({ ...editData, title: e.target.value })}
                                 placeholder="e.g., Module 1: Introduction"
-                                className="w-full px-0 py-2 border-b-2 border-gray-100 focus:border-citilearn-green focus:outline-none text-lg font-bold transition-colors placeholder-gray-300 bg-transparent"
+                                className="w-full px-0 py-2 border-b-2 border-slate-100 focus:border-primary focus:outline-none text-lg font-bold transition-all placeholder-slate-200 bg-transparent text-main"
                                 autoFocus
                             />
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold text-secondary uppercase tracking-wide">Description</label>
+                        <div className="space-y-2.5">
+                            <div className="space-y-0.5">
+                                <label className="text-sm font-bold text-main tracking-tight">Module Description</label>
+                                <p className="text-xs text-secondary font-medium">Explain the objectives and what learners will achieve.</p>
+                            </div>
                             <textarea
                                 value={editData.description}
                                 onChange={(e) => setEditData({ ...editData, description: e.target.value })}
-                                placeholder="Module objectives..."
+                                placeholder="Write 1-2 sentences about this module..."
                                 rows={3}
-                                className="w-full px-4 py-3 bg-gray-50 border border-transparent focus:bg-white focus:border-gray-200 rounded-xl focus:outline-none transition-all resize-none text-sm placeholder-gray-400"
+                                className="w-full px-5 py-4 bg-slate-50/50 border border-slate-100 focus:bg-white focus:border-slate-200 rounded-2xl focus:outline-none transition-all resize-none text-sm placeholder-slate-300 font-medium text-main"
                             />
                         </div>
 
@@ -189,7 +195,7 @@ const CurriculumTab = ({ courseId }) => {
             case 'quiz': return <HelpCircle size={16} className="text-purple-600" />;
             case 'pre-test': return <BookOpen size={16} className="text-indigo-600" />;
             case 'post-test': return <CheckSquare size={16} className="text-green-600" />;
-            default: return <FileText size={16} className="text-gray-600" />;
+            default: return <FileText size={16} className="text-secondary" />;
         }
     };
 
@@ -201,7 +207,7 @@ const CurriculumTab = ({ courseId }) => {
             case 'quiz': return 'bg-purple-50/50 text-purple-600';
             case 'pre-test': return 'bg-indigo-50/50 text-indigo-600';
             case 'post-test': return 'bg-green-50/50 text-green-600';
-            default: return 'bg-gray-100/50 text-gray-600';
+            default: return 'bg-gray-100/50 text-secondary';
         }
     };
 
@@ -236,7 +242,7 @@ const CurriculumTab = ({ courseId }) => {
                             <Reorder.Item key={module.id} value={module} className="group">
                                 {/* Module Header - Transparent */}
                                 <div className="flex items-start gap-4 py-2 hover:bg-gray-50 px-2 rounded-xl transition-colors cursor-pointer" onClick={() => toggleModule(module.id)}>
-                                    <div className="mt-1 text-gray-300 hover:text-main cursor-grab active:cursor-grabbing" onClick={(e) => e.stopPropagation()}>
+                                    <div className="mt-1 text-tertiary hover:text-main cursor-grab active:cursor-grabbing" onClick={(e) => e.stopPropagation()}>
                                         <GripVertical size={20} />
                                     </div>
 
@@ -289,7 +295,7 @@ const CurriculumTab = ({ courseId }) => {
                                                             {lesson.title}
                                                         </h5>
                                                         <div className="flex items-center gap-3 mt-1">
-                                                            <span className="text-3xs uppercase font-bold text-secondary opacity-60">
+                                                            <span className="text-3xs  font-bold text-secondary opacity-60">
                                                                 {lesson.type.replace('-', ' ')}
                                                             </span>
                                                             <span className="flex items-center gap-1 text-3xs font-bold text-secondary opacity-60">
@@ -381,7 +387,7 @@ const CurriculumTab = ({ courseId }) => {
             ) : (
                 <div className="py-12 text-center">
                     <div className="w-16 h-16 bg-gray-100/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Video className="text-gray-300" size={32} />
+                        <Video className="text-tertiary" size={32} />
                     </div>
                     <h4 className="text-main font-bold mb-1">Start building curriculum</h4>
                     <p className="text-sm text-secondary mb-4">No modules added yet.</p>

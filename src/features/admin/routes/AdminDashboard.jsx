@@ -58,9 +58,9 @@ const AdminDashboard = () => {
                         <div className="flex justify-between items-center">
                             <div>
                                 <h3 className="text-lg font-bold text-main leading-none">Recent Courses</h3>
-                                <p className="text-2xs text-slate-500 mt-1.5 font-medium tracking-tight whitespace-nowrap">Real-time completion and status overview</p>
+                                <p className="text-2xs text-secondary mt-1.5 font-medium tracking-tight whitespace-nowrap">Real-time completion and status overview</p>
                             </div>
-                            <Button variant="link" size="sm" asChild className="h-auto p-0 text-2xs font-bold text-primary hover:no-underline">
+                            <Button variant="link" size="sm" asChild>
                                 <Link to="/admin/courses">See all courses</Link>
                             </Button>
                         </div>

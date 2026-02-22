@@ -51,7 +51,7 @@ const CourseProgressSidebar = ({
 
                             return course.modules.map((module, mIdx) => (
                                 <div key={module.id} className="py-4 first:pt-2 last:pb-2 px-2">
-                                    <div className="px-2 flex items-center justify-between mb-3 text-tertiary dark:text-slate-500 font-bold uppercase tracking-wider">
+                                    <div className="px-2 flex items-center justify-between mb-3 text-tertiary dark:text-slate-500 font-bold ">
                                         <span className="text-[10px]">Module {mIdx + 1}</span>
                                         <span className="text-[10px]">{module.lessons.length} item</span>
                                     </div>

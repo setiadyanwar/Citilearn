@@ -28,8 +28,8 @@ const QuizHeader = ({ isFinalQuiz, currentQuestionIndex, totalQuestions }) => {
                     </div>
                     <div>
                         <div className="flex items-center gap-2 mb-0.5">
-                            <span className="px-2 py-0.5 rounded bg-primary text-white text-smxs font-bold uppercase tracking-wider">Final Test</span>
-                            <span className="text-smxs font-bold text-tertiary uppercase tracking-wider">Question {currentQuestionIndex + 1} of {totalQuestions}</span>
+                            <span className="px-2 py-0.5 rounded bg-primary text-white text-smxs font-bold ">Final Test</span>
+                            <span className="text-smxs font-bold text-tertiary ">Question {currentQuestionIndex + 1} of {totalQuestions}</span>
                         </div>
                         <h3 className="text-base font-bold text-main dark:text-white">Module Certification</h3>
                     </div>
@@ -38,7 +38,7 @@ const QuizHeader = ({ isFinalQuiz, currentQuestionIndex, totalQuestions }) => {
                     <div className="text-sml font-bold text-main dark:text-white leading-none">
                         {progress}%
                     </div>
-                    <div className="text-smxs font-bold text-tertiary uppercase tracking-wider mt-1">Progress</div>
+                    <div className="text-smxs font-bold text-tertiary  mt-1">Progress</div>
                 </div>
             </div>
 

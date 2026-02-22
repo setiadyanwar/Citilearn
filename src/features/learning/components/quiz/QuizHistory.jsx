@@ -63,7 +63,7 @@ const QuizHistory = ({ history }) => {
                                             <Badge
                                                 variant={item.passed ? "passed" : "failed"}
                                                 size="xs"
-                                                className="uppercase tracking-wide font-bold"
+                                                className=" font-bold"
                                             >
                                                 {item.passed ? 'PASSED' : 'FAILED'}
                                             </Badge>

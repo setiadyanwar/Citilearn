@@ -41,15 +41,18 @@ const CategoryPicker = ({
     };
 
     return (
-        <div className={cn("flex flex-col gap-3", className)}>
-            <Label className="text-sm font-bold text-muted-foreground">{label}</Label>
+        <div className={cn("flex flex-col gap-2", className)}>
+            <div className="space-y-0.5">
+                <Label className="text-sm font-bold text-main tracking-tight">{label}</Label>
+                <p className="text-xs text-secondary font-medium">Classify your course for better discovery.</p>
+            </div>
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
                     <Button
                         variant="outline"
                         role="combobox"
                         aria-expanded={open}
-                        className="w-full h-12 justify-between rounded-xl bg-white border-slate-200 font-medium text-slate-700 hover:bg-slate-50 focus:ring-0 focus-visible:ring-0"
+                        className="w-full h-12 justify-between rounded-xl bg-white border-slate-200 font-medium text-main hover:bg-slate-50 focus:ring-0 focus-visible:ring-0"
                     >
                         {value ? value : placeholder}
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -57,10 +60,10 @@ const CategoryPicker = ({
                 </PopoverTrigger>
                 <PopoverContent className="w-[300px] p-0 rounded-xl shadow-sm border-slate-200" align="start">
                     <div className="flex items-center border-b border-slate-100 p-3 bg-slate-50/50">
-                        <Search className="mr-2 h-4 w-4 shrink-0 opacity-40 text-slate-400" />
+                        <Search className="mr-2 h-4 w-4 shrink-0 opacity-40 text-tertiary" />
                         <input
                             placeholder="Search or add category..."
-                            className="flex h-8 w-full rounded-md bg-transparent text-sm outline-none border-none focus:ring-0 placeholder:text-slate-400"
+                            className="flex h-8 w-full rounded-md bg-transparent text-sm outline-none border-none focus:ring-0 placeholder:text-tertiary"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             onKeyDown={(e) => {
@@ -74,7 +77,7 @@ const CategoryPicker = ({
                                 key={cat}
                                 className={cn(
                                     "relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2.5 text-sm font-medium outline-none transition-colors",
-                                    value === cat ? "bg-primary/10 text-primary" : "text-slate-600 hover:bg-slate-100/80 hover:text-main"
+                                    value === cat ? "bg-primary/10 text-primary" : "text-secondary hover:bg-slate-100/80 hover:text-main"
                                 )}
                                 onClick={() => handleSelect(cat)}
                             >

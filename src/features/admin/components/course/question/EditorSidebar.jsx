@@ -22,12 +22,12 @@ const EditorSidebar = ({
 
                 <div className="space-y-4">
                     <div className="space-y-2">
-                        <Label className="text-sm font-semibold text-slate-700">Question Type</Label>
+                        <Label className="text-sm font-semibold text-main">Question Type</Label>
                         <Select
                             value={type}
                             onValueChange={(value) => onChange({ type: value })}
                         >
-                            <SelectTrigger className="w-full bg-slate-50 border-none shadow-none focus:ring-1 focus:ring-primary/30 h-10 font-medium text-slate-700">
+                            <SelectTrigger className="w-full bg-slate-50 border-none shadow-none focus:ring-1 focus:ring-primary/30 h-10 font-medium text-main">
                                 <SelectValue placeholder="Select type" />
                             </SelectTrigger>
                             <SelectContent className="border-slate-100 shadow-lg rounded-xl">
@@ -39,13 +39,13 @@ const EditorSidebar = ({
                     </div>
 
                     <div className="space-y-2">
-                        <Label className="text-sm font-semibold text-slate-700">Points</Label>
+                        <Label className="text-sm font-semibold text-main">Points</Label>
                         <Input
                             type="number"
                             min="1"
                             value={points}
                             onChange={(e) => onChange({ points: parseInt(e.target.value) || 0 })}
-                            className="bg-slate-50 border-none shadow-none focus-visible:ring-1 focus-visible:ring-primary/30 h-10 font-medium text-slate-700"
+                            className="bg-slate-50 border-none shadow-none focus-visible:ring-1 focus-visible:ring-primary/30 h-10 font-medium text-main"
                         />
                     </div>
                 </div>

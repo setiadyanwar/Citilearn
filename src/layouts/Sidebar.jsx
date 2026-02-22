@@ -40,7 +40,7 @@ const NavItem = ({ to, icon, label, isCollapsed, end, activePatterns, isDark, on
       ${isCollapsed ? 'justify-center px-0' : 'px-4 gap-3'}
       ${isActive
             ? 'bg-primary-light text-primary font-bold'
-            : isDark ? 'text-gray-400 hover:bg-slate-800 hover:text-white font-medium' : 'text-gray-500 hover:bg-gray-50 hover:text-main font-medium'}
+            : isDark ? 'text-tertiary hover:bg-slate-800 hover:text-white font-medium' : 'text-secondary hover:bg-gray-50 hover:text-main font-medium'}
     `;
 
     const element = to ? (
@@ -78,7 +78,7 @@ const NavGroup = ({ icon, label, children, isCollapsed, isDark, isOpen, onToggle
                 ${isCollapsed ? 'justify-center px-0' : 'px-4 gap-3 justify-between'}
                 ${isOpen && !isCollapsed
                     ? 'bg-primary-light text-primary font-bold'
-                    : isDark ? 'text-gray-400 hover:bg-slate-800 hover:text-white font-medium' : 'text-gray-500 hover:bg-gray-50 hover:text-main font-medium'}
+                    : isDark ? 'text-tertiary hover:bg-slate-800 hover:text-white font-medium' : 'text-secondary hover:bg-gray-50 hover:text-main font-medium'}
             `}
         >
             <div className="flex items-center gap-3">
@@ -187,7 +187,7 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                     {/* General Section */}
                     <div className="flex flex-col gap-1.5">
                         {!isCollapsed && (
-                            <div className="px-4 text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-wider mb-1">
+                            <div className="px-4 text-xs font-bold text-tertiary dark:text-secondary  mb-1">
                                 General
                             </div>
                         )}
@@ -206,7 +206,7 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                     {/* Company Hub Section */}
                     <div className="flex flex-col gap-1.5">
                         {!isCollapsed && (
-                            <div className="px-4 text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-wider mb-1 mt-2">
+                            <div className="px-4 text-xs font-bold text-tertiary dark:text-secondary  mb-1 mt-2">
                                 Company Hub
                             </div>
                         )}
@@ -225,7 +225,7 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                                     to={`/culture/${item.toLowerCase().replace(/\s+/g, '-')}`}
                                     className={({ isActive }) => `
                                         block py-3.5 px-4 text-sm transition-colors
-                                        ${isActive ? 'text-primary font-bold' : isDark ? 'text-gray-500 hover:text-white' : 'text-gray-500 hover:text-main'}
+                                        ${isActive ? 'text-primary font-bold' : isDark ? 'text-secondary hover:text-white' : 'text-secondary hover:text-main'}
                                     `}
                                 >
                                     {item}
@@ -247,7 +247,7 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                                     to={`/collaboration/${item.toLowerCase().replace(/\s+/g, '-')}`}
                                     className={({ isActive }) => `
                                         block py-3.5 px-4 text-sm transition-colors
-                                        ${isActive ? 'text-primary font-bold' : isDark ? 'text-gray-500 hover:text-white' : 'text-gray-500 hover:text-main'}
+                                        ${isActive ? 'text-primary font-bold' : isDark ? 'text-secondary hover:text-white' : 'text-secondary hover:text-main'}
                                     `}
                                 >
                                     {item}
@@ -268,7 +268,7 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                                             className={({ isActive }) => `flex items-center py-3.5 rounded-lg transition-all duration-200 flex-1 justify-center px-0
                                     ${isActive
                                                     ? 'bg-primary-light text-primary font-bold'
-                                                    : isDark ? 'text-gray-400 hover:bg-slate-700 hover:text-white font-medium' : 'text-gray-500 hover:bg-gray-100 hover:text-main font-medium'}`}
+                                                    : isDark ? 'text-tertiary hover:bg-slate-700 hover:text-white font-medium' : 'text-secondary hover:bg-gray-100 hover:text-main font-medium'}`}
                                         >
                                             <Settings size={20} className="shrink-0" />
                                         </NavLink>
@@ -282,7 +282,7 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                                         <button
                                             onClick={() => setIsDark(!isDark)}
                                             className={`flex items-center justify-center py-3.5 px-0 rounded-lg transition-all duration-200 flex-1
-                                        ${isDark ? 'text-gray-400 hover:bg-slate-700 hover:text-white font-medium' : 'text-gray-400 hover:bg-gray-100 hover:text-main font-medium'}`}
+                                        ${isDark ? 'text-tertiary hover:bg-slate-700 hover:text-white font-medium' : 'text-tertiary hover:bg-gray-100 hover:text-main font-medium'}`}
                                         >
                                             {isDark ? <Moon size={20} /> : <Sun size={20} />}
                                         </button>
@@ -299,7 +299,7 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                                     className={({ isActive }) => `flex items-center gap-3 py-3.5 rounded-lg transition-all duration-200 flex-1 px-4
                             ${isActive
                                         ? 'bg-primary-light text-primary font-bold'
-                                        : isDark ? 'text-gray-400 hover:bg-slate-700 hover:text-white font-medium' : 'text-gray-500 hover:bg-gray-100 hover:text-main font-medium'}`}
+                                        : isDark ? 'text-tertiary hover:bg-slate-700 hover:text-white font-medium' : 'text-secondary hover:bg-gray-100 hover:text-main font-medium'}`}
                                 >
                                     <Settings size={20} className="shrink-0" />
                                     <span className="text-sm">Settings</span>
@@ -308,7 +308,7 @@ export const Sidebar = ({ isCollapsed, toggleSidebar, isDark, setIsDark }) => {
                                 <button
                                     onClick={() => setIsDark(!isDark)}
                                     className={`p-2 rounded-lg transition-all duration-200 shrink-0
-                                    ${isDark ? 'text-gray-400 hover:bg-slate-700 hover:text-white' : 'text-gray-400 hover:bg-gray-100 hover:text-main'}`}
+                                    ${isDark ? 'text-tertiary hover:bg-slate-700 hover:text-white' : 'text-tertiary hover:bg-gray-100 hover:text-main'}`}
                                 >
                                     {isDark ? <Moon size={20} /> : <Sun size={20} />}
                                 </button>

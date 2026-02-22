@@ -151,12 +151,12 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                                 </div>
                                 <div>
                                     <h2 className="text-base font-bold text-main">Question Bank</h2>
-                                    <p className="text-xs text-slate-400 font-medium">{bankQuestions.length} questions available</p>
+                                    <p className="text-xs text-tertiary font-medium">{bankQuestions.length} questions available</p>
                                 </div>
                             </div>
                             <button
                                 onClick={handleClose}
-                                className="p-2 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
+                                className="p-2 rounded-xl hover:bg-slate-100 text-tertiary hover:text-secondary transition-colors"
                             >
                                 <X size={20} />
                             </button>
@@ -165,7 +165,7 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                         {/* Search and Filters */}
                         <div className="px-6 py-4 border-b border-slate-100 space-y-3 shrink-0">
                             <div className="relative">
-                                <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                                <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-tertiary" />
                                 <Input
                                     value={search}
                                     onChange={e => setSearch(e.target.value)}
@@ -178,7 +178,7 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                             <div className="flex gap-2 flex-wrap">
                                 {/* Type filter */}
                                 <div className="flex items-center gap-1.5 flex-wrap">
-                                    <Filter size={13} className="text-slate-400 shrink-0" />
+                                    <Filter size={13} className="text-tertiary shrink-0" />
                                     {types.map(type => (
                                         <button
                                             key={type}
@@ -187,7 +187,7 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                                                 "px-2.5 py-1 rounded-lg text-xs font-bold border transition-all",
                                                 filterType === type
                                                     ? "bg-primary text-white border-primary"
-                                                    : "bg-white text-slate-500 border-slate-200 hover:border-slate-300"
+                                                    : "bg-white text-secondary border-slate-200 hover:border-slate-300"
                                             )}
                                         >
                                             {type === 'all' ? 'All Types' : TYPE_LABELS[type] || type}
@@ -206,7 +206,7 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                                             "px-2.5 py-1 rounded-lg text-xs font-bold border transition-all",
                                             filterCategory === cat
                                                 ? "bg-slate-800 text-white border-slate-800"
-                                                : "bg-white text-slate-500 border-slate-200 hover:border-slate-300"
+                                                : "bg-white text-secondary border-slate-200 hover:border-slate-300"
                                         )}
                                     >
                                         {cat === 'all' ? 'All Categories' : cat}
@@ -220,7 +220,7 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                             <div className="px-6 py-2.5 border-b border-slate-100 flex items-center justify-between shrink-0 bg-slate-50/60">
                                 <button
                                     onClick={handleSelectAll}
-                                    className="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-primary transition-colors"
+                                    className="flex items-center gap-2 text-xs font-bold text-secondary hover:text-primary transition-colors"
                                 >
                                     {allFilteredSelected ? (
                                         <CheckCircle2 size={15} className="text-primary" />
@@ -229,14 +229,14 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                                     )}
                                     {allFilteredSelected ? 'Deselect All' : 'Select All'} ({selectableCount})
                                 </button>
-                                <span className="text-xs text-slate-400 font-medium">{filtered.length} results</span>
+                                <span className="text-xs text-tertiary font-medium">{filtered.length} results</span>
                             </div>
                         )}
 
                         {/* Questions List */}
                         <div className="flex-1 overflow-y-auto px-4 py-3 space-y-2">
                             {filtered.length === 0 ? (
-                                <div className="flex flex-col items-center justify-center h-48 text-slate-400">
+                                <div className="flex flex-col items-center justify-center h-48 text-tertiary">
                                     <Search size={32} className="mb-3 opacity-30" />
                                     <p className="text-sm font-medium">No questions found</p>
                                     <p className="text-xs mt-1">Try adjusting your search or filters</p>
@@ -267,12 +267,12 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                                                 <div className="mt-0.5 shrink-0">
                                                     {isAdded ? (
                                                         <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center">
-                                                            <CheckCircle2 size={14} className="text-slate-400" />
+                                                            <CheckCircle2 size={14} className="text-tertiary" />
                                                         </div>
                                                     ) : isSelected ? (
                                                         <CheckCircle2 size={20} className="text-primary" />
                                                     ) : (
-                                                        <Circle size={20} className="text-slate-300 group-hover:text-slate-400" />
+                                                        <Circle size={20} className="text-tertiary group-hover:text-tertiary" />
                                                     )}
                                                 </div>
 
@@ -282,14 +282,14 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                                                         {/* Type badge */}
                                                         <span className={cn(
                                                             "inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-bold border shrink-0",
-                                                            TYPE_COLORS[q.type] || 'bg-slate-50 text-slate-600 border-slate-100'
+                                                            TYPE_COLORS[q.type] || 'bg-slate-50 text-secondary border-slate-100'
                                                         )}>
                                                             <TypeIcon size={11} />
                                                             {TYPE_LABELS[q.type] || q.type}
                                                         </span>
                                                         {/* Category */}
                                                         {q.category && (
-                                                            <span className="px-2 py-0.5 rounded-md text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200 shrink-0">
+                                                            <span className="px-2 py-0.5 rounded-md text-xs font-bold bg-slate-100 text-secondary border border-slate-200 shrink-0">
                                                                 {q.category}
                                                             </span>
                                                         )}
@@ -317,15 +317,15 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                                                                     {idx === q.correctAnswer ? (
                                                                         <CheckCircle2 size={12} className="text-green-500 shrink-0" />
                                                                     ) : (
-                                                                        <Circle size={12} className="text-slate-300 shrink-0" />
+                                                                        <Circle size={12} className="text-tertiary shrink-0" />
                                                                     )}
-                                                                    <span className={idx === q.correctAnswer ? 'text-green-700 font-medium' : 'text-slate-400'}>
+                                                                    <span className={idx === q.correctAnswer ? 'text-green-700 font-medium' : 'text-tertiary'}>
                                                                         {opt}
                                                                     </span>
                                                                 </div>
                                                             ))}
                                                             {q.options.length > 2 && (
-                                                                <p className="text-xs text-slate-400 pl-[18px]">
+                                                                <p className="text-xs text-tertiary pl-[18px]">
                                                                     +{q.options.length - 2} more options...
                                                                 </p>
                                                             )}
@@ -342,7 +342,7 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                         {/* Footer Action */}
                         <div className="px-6 py-4 border-t border-slate-100 bg-white shrink-0">
                             {selectedIds.size === 0 ? (
-                                <p className="text-center text-sm text-slate-400 font-medium py-1">
+                                <p className="text-center text-sm text-tertiary font-medium py-1">
                                     Select questions above to add them to the assessment
                                 </p>
                             ) : (

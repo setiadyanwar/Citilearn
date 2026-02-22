@@ -125,13 +125,16 @@ const CourseEditor = () => {
 
                                 {/* Title & Category */}
                                 <div className="space-y-8">
-                                    <div className="flex flex-col gap-3">
-                                        <Label className="text-sm md:text-base font-bold text-main tracking-tight">Course Title</Label>
+                                    <div className="flex flex-col gap-2">
+                                        <div className="space-y-0.5">
+                                            <Label className="text-sm font-bold text-main tracking-tight">Course Title</Label>
+                                            <p className="text-xs text-secondary font-medium">Be specific and descriptive to help students find your course.</p>
+                                        </div>
                                         <Input
                                             value={courseData.title}
                                             onChange={(e) => handleUpdateData({ title: e.target.value })}
                                             placeholder="e.g., Aviation Safety Fundamentals"
-                                            className="text-lg md:text-xl font-bold h-14 px-6 rounded-2xl bg-white focus-visible:ring-primary/10 transition-all border-slate-200 shadow-none"
+                                            className="text-lg md:text-xl font-bold h-14 px-6 rounded-2xl bg-white focus-visible:ring-primary/10 transition-all border-slate-200 shadow-none text-main placeholder:text-tertiary"
                                         />
                                     </div>
 
@@ -142,21 +145,24 @@ const CourseEditor = () => {
                                             onChange={(val) => handleUpdateData({ category: val })}
                                             onAddCategory={(newCat) => setCategories([...categories, newCat])}
                                         />
-                                        <div className="flex flex-col gap-3">
+                                        <div className="flex flex-col gap-2">
                                             <div className="flex items-center justify-between">
-                                                <Label className="text-sm font-bold text-slate-500">Estimated Duration</Label>
-                                                <div className="text-3xs bg-slate-50 text-slate-400 px-2 py-1 rounded-lg font-bold border border-slate-100 uppercase tracking-widest">
-                                                    Auto-calculated
+                                                <div className="space-y-0.5">
+                                                    <Label className="text-sm font-bold text-main tracking-tight">Estimated Duration</Label>
+                                                    <p className="text-xs text-tertiary font-medium">Course length</p>
+                                                </div>
+                                                <div className="text-xs bg-slate-50 text-tertiary px-2.5 py-1 rounded-lg font-bold border border-slate-100">
+                                                    Auto
                                                 </div>
                                             </div>
                                             <div className="relative">
-                                                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+                                                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-tertiary">
                                                     <Clock size={18} />
                                                 </div>
                                                 <Input
                                                     value={courseData.duration}
                                                     disabled
-                                                    className="h-12 rounded-xl pl-11 bg-slate-50/50 text-slate-400 font-bold border-slate-200 cursor-not-allowed"
+                                                    className="h-12 rounded-xl pl-11 bg-slate-50/50 text-tertiary font-bold border-slate-200 cursor-not-allowed"
                                                 />
                                             </div>
                                         </div>
@@ -164,12 +170,15 @@ const CourseEditor = () => {
                                 </div>
 
                                 {/* Description */}
-                                <div className="flex flex-col gap-3">
-                                    <Label className="text-sm md:text-base font-bold text-main tracking-tight">Description</Label>
+                                <div className="flex flex-col gap-2">
+                                    <div className="space-y-0.5">
+                                        <Label className="text-sm font-bold text-main tracking-tight">Description</Label>
+                                        <p className="text-xs text-secondary font-medium">Provide a brief overview of what this course covers.</p>
+                                    </div>
                                     <Textarea
                                         value={courseData.description}
                                         onChange={(e) => handleUpdateData({ description: e.target.value })}
-                                        className="min-h-[160px] rounded-2xl text-sm md:text-base leading-relaxed p-6 bg-white focus-visible:ring-primary/10 border-slate-200 shadow-none font-medium"
+                                        className="min-h-[160px] rounded-2xl text-sm md:text-base leading-relaxed p-6 bg-white focus-visible:ring-primary/10 border-slate-200 shadow-none font-medium text-main"
                                         placeholder="Write a compelling description for your learners..."
                                     />
                                 </div>

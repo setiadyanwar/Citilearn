@@ -37,11 +37,11 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                         <h2 className="text-lg font-bold text-main">
                             Edit Permissions — {role.name}
                         </h2>
-                        <p className="text-sm text-slate-500 mt-0.5">Toggle capabilities for this role.</p>
+                        <p className="text-sm text-secondary mt-0.5">Toggle capabilities for this role.</p>
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-2 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
+                        className="p-2 rounded-xl hover:bg-slate-100 text-tertiary hover:text-secondary transition-colors"
                     >
                         <X size={18} />
                     </button>
@@ -51,7 +51,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                 <div className="px-6 pb-4 space-y-5 max-h-[60vh] overflow-y-auto">
                     {Object.entries(grouped).map(([group, perms]) => (
                         <div key={group}>
-                            <p className="text-2xs font-bold text-slate-400 uppercase tracking-widest mb-3">
+                            <p className="text-2xs font-bold text-tertiary  mb-3">
                                 {group}
                             </p>
                             <div className="space-y-2">
@@ -65,7 +65,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                                             checked={permissions.includes(p.key)}
                                             onCheckedChange={() => toggle(p.key)}
                                         />
-                                        <span className="text-sm font-semibold text-slate-700">{p.label}</span>
+                                        <span className="text-sm font-semibold text-main">{p.label}</span>
                                     </label>
                                 ))}
                             </div>

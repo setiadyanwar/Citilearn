@@ -21,11 +21,11 @@ const InviteUserModal = ({ isOpen, onClose }) => {
                 <div className="flex items-center justify-between p-6 pb-0">
                     <div>
                         <h2 className="text-lg font-bold text-main">Invite User</h2>
-                        <p className="text-sm text-slate-500 mt-0.5">Send an invitation to join CitiLearn.</p>
+                        <p className="text-sm text-secondary mt-0.5">Send an invitation to join CitiLearn.</p>
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-2 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
+                        className="p-2 rounded-xl hover:bg-slate-100 text-tertiary hover:text-secondary transition-colors"
                     >
                         <X size={18} />
                     </button>
@@ -34,7 +34,7 @@ const InviteUserModal = ({ isOpen, onClose }) => {
                 {/* Body */}
                 <div className="p-6 space-y-4">
                     <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-slate-600 uppercase tracking-wide">Full Name</label>
+                        <label className="text-xs font-bold text-secondary ">Full Name</label>
                         <Input
                             id="invite-name"
                             placeholder="e.g. Budi Pratama"
@@ -44,7 +44,7 @@ const InviteUserModal = ({ isOpen, onClose }) => {
                         />
                     </div>
                     <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-slate-600 uppercase tracking-wide">Email Address</label>
+                        <label className="text-xs font-bold text-secondary ">Email Address</label>
                         <Input
                             id="invite-email"
                             placeholder="name@citilink.co.id"
@@ -55,7 +55,7 @@ const InviteUserModal = ({ isOpen, onClose }) => {
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-1.5">
-                            <label className="text-xs font-bold text-slate-600 uppercase tracking-wide">Role</label>
+                            <label className="text-xs font-bold text-secondary ">Role</label>
                             <Select value={form.role} onValueChange={v => setForm({ ...form, role: v })}>
                                 <SelectTrigger id="invite-role" className="rounded-xl h-10">
                                     <SelectValue />
@@ -68,7 +68,7 @@ const InviteUserModal = ({ isOpen, onClose }) => {
                             </Select>
                         </div>
                         <div className="space-y-1.5">
-                            <label className="text-xs font-bold text-slate-600 uppercase tracking-wide">Department</label>
+                            <label className="text-xs font-bold text-secondary ">Department</label>
                             <Select value={form.department} onValueChange={v => setForm({ ...form, department: v })}>
                                 <SelectTrigger id="invite-dept" className="rounded-xl h-10">
                                     <SelectValue placeholder="Select..." />

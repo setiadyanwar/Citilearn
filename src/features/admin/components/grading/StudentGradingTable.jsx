@@ -77,7 +77,7 @@ const StudentGradingRow = ({ group, isSelected, onSelect }) => {
                     )}>
                         {avgScore}%
                     </span>
-                    <span className="text-3xs font-bold text-slate-300 mt-1">Average</span>
+                    <span className="text-3xs font-bold text-tertiary mt-1">Average</span>
                 </div>
             </TableCell>
 
@@ -96,8 +96,7 @@ const StudentGradingRow = ({ group, isSelected, onSelect }) => {
                 <Button
                     variant="link"
                     className={cn(
-                        "h-auto p-0 text-3xs font-bold",
-                        isSelected ? "text-primary" : "text-slate-400 group-hover:text-primary"
+                        isSelected ? "text-primary" : "text-tertiary group-hover:text-primary"
                     )}
                     onClick={() => onSelect(group)}
                 >
@@ -142,7 +141,7 @@ const CourseAccordionItem = ({ courseGroup, isExpanded, onToggle, onReview }) =>
                     </div>
                 </div>
                 <div className={cn(
-                    "p-1 rounded-md transition-transform duration-200 text-slate-400",
+                    "p-1 rounded-md transition-transform duration-200 text-tertiary",
                     isExpanded ? "rotate-180 text-primary" : "rotate-0"
                 )}>
                     <ChevronDown size={16} />
@@ -188,13 +187,12 @@ const CourseAccordionItem = ({ courseGroup, isExpanded, onToggle, onReview }) =>
                                                 )}>
                                                     {attempt.score}%
                                                 </p>
-                                                <p className="text-3xs font-bold text-slate-300 mt-0.5">
+                                                <p className="text-3xs font-bold text-tertiary mt-0.5">
                                                     Attempt #{attempt.attempts}
                                                 </p>
                                             </div>
                                             <Button
                                                 variant="link"
-                                                className="h-auto p-0 text-3xs font-bold text-primary hover:text-primary/80"
                                                 onClick={() => onReview(attempt)}
                                             >
                                                 Review
@@ -265,11 +263,11 @@ const StudentGradingTable = ({ studentGroups, onReview }) => {
                 <Table className="min-w-[600px] md:min-w-0">
                     <TableHeader className="bg-slate-50 border-b border-slate-200">
                         <TableRow className="hover:bg-transparent border-none">
-                            <TableHead className="pl-6 h-12 text-3xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">Student</TableHead>
-                            <TableHead className="h-12 text-center text-3xs font-bold text-slate-400 uppercase tracking-wider hidden md:table-cell whitespace-nowrap">Programs</TableHead>
-                            <TableHead className="h-12 text-center text-3xs font-bold text-slate-400 uppercase tracking-wider hidden md:table-cell whitespace-nowrap">Assessments</TableHead>
-                            <TableHead className="h-12 text-center text-3xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">GPA</TableHead>
-                            <TableHead className="h-12 text-center text-3xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">Outcomes</TableHead>
+                            <TableHead className="pl-6 h-12 text-xs font-semibold text-tertiary  whitespace-nowrap">Student</TableHead>
+                            <TableHead className="h-12 text-center text-xs font-semibold text-tertiary  hidden md:table-cell whitespace-nowrap">Programs</TableHead>
+                            <TableHead className="h-12 text-center text-xs font-semibold text-tertiary  hidden md:table-cell whitespace-nowrap">Assessments</TableHead>
+                            <TableHead className="h-12 text-center text-xs font-semibold text-tertiary  whitespace-nowrap">GPA</TableHead>
+                            <TableHead className="h-12 text-center text-xs font-semibold text-tertiary  whitespace-nowrap">Outcomes</TableHead>
                             <TableHead className="h-12 pr-6" />
                         </TableRow>
                     </TableHeader>
@@ -324,7 +322,7 @@ const StudentGradingTable = ({ studentGroups, onReview }) => {
                                     variant="ghost"
                                     size="icon"
                                     onClick={() => setSelectedStudentId(null)}
-                                    className="h-9 w-9 text-slate-400 hover:text-red-500 hover:bg-slate-50 rounded-xl"
+                                    className="h-9 w-9 text-tertiary hover:text-red-500 hover:bg-slate-50 rounded-xl"
                                 >
                                     <X size={18} />
                                 </Button>
@@ -355,7 +353,7 @@ const StudentGradingTable = ({ studentGroups, onReview }) => {
                                     ))
                                 ) : (
                                     <div className="py-12 text-center">
-                                        <p className="text-xs font-bold text-slate-400 tracking-wide">No programs found</p>
+                                        <p className="text-xs font-bold text-tertiary ">No programs found</p>
                                     </div>
                                 )}
                             </div>
@@ -365,15 +363,15 @@ const StudentGradingTable = ({ studentGroups, onReview }) => {
                                 <div className="grid grid-cols-3 gap-2">
                                     <div className="p-2.5 bg-white rounded-xl border border-slate-100 text-center">
                                         <p className="text-sm font-bold text-main leading-none">{selectedGroup.summary.totalAttempts}</p>
-                                        <p className="text-3xs font-bold text-slate-400 mt-1.5">Total</p>
+                                        <p className="text-3xs font-bold text-tertiary mt-1.5">Total</p>
                                     </div>
                                     <div className="p-2.5 bg-white rounded-xl border border-slate-100 text-center">
                                         <p className="text-sm font-bold text-citilearn-green leading-none">{selectedGroup.summary.passed}</p>
-                                        <p className="text-3xs font-bold text-slate-400 mt-1.5">Passed</p>
+                                        <p className="text-3xs font-bold text-tertiary mt-1.5">Passed</p>
                                     </div>
                                     <div className="p-2.5 bg-white rounded-xl border border-slate-100 text-center">
                                         <p className="text-sm font-bold text-red-500 leading-none">{selectedGroup.summary.failed}</p>
-                                        <p className="text-3xs font-bold text-slate-400 mt-1.5">Failed</p>
+                                        <p className="text-3xs font-bold text-tertiary mt-1.5">Failed</p>
                                     </div>
                                 </div>
                             </div>

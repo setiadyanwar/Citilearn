@@ -37,7 +37,7 @@ const AdminHeader = ({
                                 "px-2.5 py-0.5 text-3xs md:text-xs font-bold rounded-full border shrink-0",
                                 statusVariant === 'published'
                                     ? 'bg-emerald-50 text-emerald-600 border-emerald-200'
-                                    : 'bg-slate-100 text-muted-foreground border-border'
+                                    : 'bg-slate-50 text-secondary border-slate-100'
                             )}>
                                 {status}
                             </span>

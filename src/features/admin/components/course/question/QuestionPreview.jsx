@@ -22,11 +22,11 @@ const MarkdownText = ({ content }) => {
             const inlineParts = part.split(/(`[^`]+`|\*\*[^*]+\*\*|_[^_]+_|\[[^\]]+\]\([^)]+\)|<https?:\/\/[^>]+>)/g);
 
             return (
-                <span key={index} className="whitespace-pre-wrap text-slate-700 leading-relaxed">
+                <span key={index} className="whitespace-pre-wrap text-main leading-relaxed">
                     {inlineParts.map((subPart, subIndex) => {
                         if (subPart.startsWith('`') && subPart.endsWith('`') && subPart.length > 2) {
                             return (
-                                <code key={subIndex} className="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded text-sm font-mono border border-slate-200">
+                                <code key={subIndex} className="bg-slate-100 text-main px-1.5 py-0.5 rounded text-sm font-mono border border-slate-200">
                                     {subPart.slice(1, -1)}
                                 </code>
                             );
@@ -86,7 +86,7 @@ const QuestionPreview = ({ question, image, answers, type }) => {
         <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-none sticky top-6">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
                 <h3 className="text-lg font-bold text-main">Preview</h3>
-                <span className="text-xs font-semibold bg-primary/10 text-primary px-2 py-1 rounded-full uppercase tracking-wide">
+                <span className="text-xs font-semibold bg-primary/10 text-primary px-2 py-1 rounded-full ">
                     {type === 'multiple-choice' ? 'Single Choice' : type === 'true-false' ? 'True/False' : 'Multiple Select'}
                 </span>
             </div>
@@ -97,7 +97,7 @@ const QuestionPreview = ({ question, image, answers, type }) => {
                         {question ? (
                             <MarkdownText content={question} />
                         ) : (
-                            <p className="text-slate-400 italic">Start typing your question...</p>
+                            <p className="text-tertiary italic">Start typing your question...</p>
                         )}
                     </div>
 
@@ -113,7 +113,7 @@ const QuestionPreview = ({ question, image, answers, type }) => {
                 </div>
 
                 <div className="space-y-3 pt-2 border-t border-slate-100/50">
-                    <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Answer Choices</p>
+                    <p className="text-xs font-bold text-tertiary  mb-2">Answer Choices</p>
 
                     {answers && answers.map((answer, index) => {
                         if (!answer.text && !answer.image && type !== 'true-false') return null;
@@ -124,8 +124,8 @@ const QuestionPreview = ({ question, image, answers, type }) => {
                                 <div key={index} className={`flex items-center p-3 rounded-lg border cursor-not-allowed opacity-80 ${answer.isCorrect ? 'bg-green-50 border-green-200' : 'bg-white border-slate-200'}`}>
                                     {answer.isCorrect
                                         ? <CheckCircle2 className="text-green-600 mr-3" size={18} />
-                                        : <Circle className="text-slate-300 mr-3" size={18} />}
-                                    <span className={`font-medium ${answer.isCorrect ? 'text-green-700' : 'text-slate-600'}`}>{label}</span>
+                                        : <Circle className="text-tertiary mr-3" size={18} />}
+                                    <span className={`font-medium ${answer.isCorrect ? 'text-green-700' : 'text-secondary'}`}>{label}</span>
                                 </div>
                             );
                         }
@@ -135,15 +135,15 @@ const QuestionPreview = ({ question, image, answers, type }) => {
                                 <div className="mt-0.5 mr-3 shrink-0">
                                     {answer.isCorrect
                                         ? <CheckCircle2 className="text-green-600" size={18} />
-                                        : <Circle className="text-slate-300" size={18} />}
+                                        : <Circle className="text-tertiary" size={18} />}
                                 </div>
                                 <div className="flex-1 w-full overflow-hidden">
                                     {answer.text && (
-                                        <span className={`text-sm block mb-1 ${answer.isCorrect ? 'font-medium text-green-700' : 'text-slate-600'}`}>
+                                        <span className={`text-sm block mb-1 ${answer.isCorrect ? 'font-medium text-green-700' : 'text-secondary'}`}>
                                             {answer.text}
                                         </span>
                                     )}
-                                    {!answer.text && !answer.image && <span className="text-slate-300 italic text-sm">Option {index + 1}</span>}
+                                    {!answer.text && !answer.image && <span className="text-tertiary italic text-sm">Option {index + 1}</span>}
 
                                     {answer.image && (
                                         <img

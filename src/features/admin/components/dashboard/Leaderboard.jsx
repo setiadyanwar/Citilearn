@@ -3,6 +3,7 @@ import { Trophy, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import MilesIcon from '@/components/icons/MilesIcon';
 import UserProfile from '@/components/common/UserProfile';
+import { Link } from 'react-router-dom';
 
 const topPerformers = {
     miles: [
@@ -52,7 +53,9 @@ const Leaderboard = () => (
                 <div>
                     <div className="flex justify-between items-center mb-3 px-1">
                         <p className="text-3xs font-bold text-secondary">Test Score</p>
-                        <Button variant="link" size="sm" className="h-auto p-0 text-3xs font-bold text-primary">See all</Button>
+                        <Button variant="link" asChild>
+                            <Link to="/admin/assessment">See all</Link>
+                        </Button>
                     </div>
                     <div className="space-y-3">
                         {topPerformers.scores.map((user, i) => (

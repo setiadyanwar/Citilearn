@@ -19,12 +19,12 @@ const QuizResultSummary = ({ score, total, percentage, onReturn, isFinalQuiz }) 
 
             <div className="flex items-center justify-center gap-6 mb-10">
                 <div className="text-center">
-                    <div className="text-3xs font-bold text-tertiary uppercase tracking-widest mb-1">Score</div>
+                    <div className="text-3xs font-bold text-tertiary  mb-1">Score</div>
                     <div className="text-3xl font-bold text-main dark:text-white leading-none">{score}/{total}</div>
                 </div>
                 <div className="w-px h-10 bg-slate-200 dark:bg-slate-800" />
                 <div className="text-center">
-                    <div className="text-3xs font-bold text-tertiary uppercase tracking-widest mb-1">Grade</div>
+                    <div className="text-3xs font-bold text-tertiary  mb-1">Grade</div>
                     <div className="text-3xl font-bold text-citilearn-green leading-none">{percentage}%</div>
                 </div>
             </div>
