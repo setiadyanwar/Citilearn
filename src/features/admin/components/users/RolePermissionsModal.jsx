@@ -34,7 +34,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                 {/* Header */}
                 <div className="flex items-center justify-between p-6 pb-4">
                     <div>
-                        <h2 className="text-lg font-bold text-slate-900">
+                        <h2 className="text-lg font-bold text-main">
                             Edit Permissions — {role.name}
                         </h2>
                         <p className="text-sm text-slate-500 mt-0.5">Toggle capabilities for this role.</p>

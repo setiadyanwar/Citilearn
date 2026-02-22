@@ -38,14 +38,14 @@ const GradingTable = ({ grades, onReview }) => {
                                         {grade.student.name.charAt(0)}
                                     </div>
                                     <div className="min-w-0">
-                                        <p className="text-sm font-bold text-slate-900 leading-tight truncate">{grade.student.name}</p>
+                                        <p className="text-sm font-bold text-main leading-tight truncate">{grade.student.name}</p>
                                         <p className="text-2xs text-slate-500 mt-0.5 font-medium tracking-tight">CID-{grade.student.id.toUpperCase()}</p>
                                     </div>
                                 </div>
                             </TableCell>
                             <TableCell className="px-6 py-4">
                                 <div>
-                                    <p className="text-sm font-bold text-slate-800 leading-tight">{grade.assessment.title}</p>
+                                    <p className="text-sm font-bold text-main leading-tight">{grade.assessment.title}</p>
                                     <div className="flex items-center gap-2 mt-1.5 flex-wrap">
                                         <TypeBadge type={grade.assessment.type} />
                                         <span className="text-3xs font-bold text-slate-400 flex items-center gap-1 leading-none tracking-tight">

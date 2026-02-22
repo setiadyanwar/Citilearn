@@ -72,7 +72,7 @@ const AnswerOptions = ({
                 />
 
                 <div className="flex justify-between items-center border-b border-slate-100 pb-4">
-                    <h3 className="text-lg font-bold text-slate-800">Answer Options</h3>
+                    <h3 className="text-lg font-bold text-main">Answer Options</h3>
                     <Button
                         size="sm"
                         variant="ghost"
@@ -184,7 +184,7 @@ const AnswerOptions = ({
     if (type === 'true-false') {
         return (
             <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-none space-y-6">
-                <h3 className="text-lg font-bold text-slate-800 border-b border-slate-100 pb-4">Correct Answer</h3>
+                <h3 className="text-lg font-bold text-main border-b border-slate-100 pb-4">Correct Answer</h3>
 
                 <div className="grid grid-cols-2 gap-6">
                     <div

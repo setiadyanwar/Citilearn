@@ -31,7 +31,7 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
                         <ArrowLeft size={18} />
                     </Button>
                     <div>
-                        <h1 className="text-2xl font-bold text-slate-900 tracking-tight leading-none">Review Attempt</h1>
+                        <h1 className="text-2xl font-bold text-main tracking-tight leading-none">Review Attempt</h1>
                         <div className="mt-2">
                             <TypeBadge type={selectedGrade.assessment.type} />
                         </div>
@@ -51,7 +51,7 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
                                 shape="square"
                             />
                             <div>
-                                <h3 className="font-bold text-slate-900 leading-none">{selectedGrade.student.name}</h3>
+                                <h3 className="font-bold text-main leading-none">{selectedGrade.student.name}</h3>
                                 <p className="text-2xs text-slate-500 mt-1.5 font-medium tracking-tight uppercase">CID-{selectedGrade.student.id.toUpperCase()}</p>
                             </div>
                         </div>
@@ -107,7 +107,7 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
                 {/* Questions & Answers Detail */}
                 <div className="lg:col-span-3 space-y-4">
                     <div className="bg-white p-6 rounded-2xl border border-slate-200 flex items-center justify-between shadow-none">
-                        <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <h3 className="text-base font-bold text-main flex items-center gap-2">
                             <FileText size={18} className="text-slate-400" />
                             Submission review
                         </h3>
@@ -135,7 +135,7 @@ const GradingDetailView = ({ selectedGrade, attemptDetails, onBack }) => {
                                         {idx + 1}
                                     </div>
                                     <div className="flex-1">
-                                        <h4 className="text-sm font-bold text-slate-800 leading-snug">{q.text}</h4>
+                                        <h4 className="text-sm font-bold text-main leading-snug">{q.text}</h4>
                                         <div className="flex items-center gap-2 mt-2">
                                             {q.isCorrect ? (
                                                 <span className="flex items-center gap-1.5 text-3xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md tracking-tight uppercase border border-emerald-100">

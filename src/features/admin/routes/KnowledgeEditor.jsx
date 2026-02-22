@@ -91,7 +91,7 @@ const KnowledgeEditor = () => {
                         <ArrowLeft size={20} />
                     </Button>
                     <div>
-                        <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
+                        <h1 className="text-2xl font-bold text-main tracking-tight">
                             {isEditing ? 'Edit Article' : 'Create New Article'}
                         </h1>
                         <p className="text-sm text-slate-500 font-medium">
@@ -121,7 +121,7 @@ const KnowledgeEditor = () => {
                 <div className="lg:col-span-8 flex flex-col gap-6">
                     {/* Title */}
                     <div className="space-y-2 bg-white p-6 rounded-2xl border border-slate-200">
-                        <Label className="text-slate-900 font-bold">Article Title</Label>
+                        <Label className="text-main font-bold">Article Title</Label>
                         <Input
                             value={formData.title}
                             onChange={(e) => handleChange('title', e.target.value)}
@@ -132,7 +132,7 @@ const KnowledgeEditor = () => {
 
                     {/* Excerpt */}
                     <div className="space-y-2 bg-white p-6 rounded-2xl border border-slate-200">
-                        <Label className="text-slate-900 font-bold">Excerpt (Preview)</Label>
+                        <Label className="text-main font-bold">Excerpt (Preview)</Label>
                         <Textarea
                             value={formData.excerpt}
                             onChange={(e) => handleChange('excerpt', e.target.value)}
@@ -150,7 +150,7 @@ const KnowledgeEditor = () => {
                                     <FileText size={20} />
                                 </div>
                                 <div>
-                                    <Label className="text-slate-900 font-bold text-lg block leading-none mb-1">Content</Label>
+                                    <Label className="text-main font-bold text-lg block leading-none mb-1">Content</Label>
                                     <p className="text-xs text-slate-500 font-medium">Write and structure your article below</p>
                                 </div>
                             </div>
@@ -204,7 +204,7 @@ const KnowledgeEditor = () => {
                 <div className="lg:col-span-4 flex flex-col gap-6">
                     {/* Publishing */}
                     <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
-                        <h3 className="font-bold text-slate-900">Publishing</h3>
+                        <h3 className="font-bold text-main">Publishing</h3>
 
                         <div className="space-y-3">
                             <div className="space-y-1">
@@ -255,7 +255,7 @@ const KnowledgeEditor = () => {
 
                     {/* Featured Image */}
                     <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
-                        <h3 className="font-bold text-slate-900">Featured Image</h3>
+                        <h3 className="font-bold text-main">Featured Image</h3>
 
                         {formData.image ? (
                             <div className="relative group rounded-xl overflow-hidden border border-slate-200">
@@ -294,7 +294,7 @@ const KnowledgeEditor = () => {
                             <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
                                 <UserIcon size={16} />
                             </div>
-                            <h3 className="font-bold text-slate-900">Author Info</h3>
+                            <h3 className="font-bold text-main">Author Info</h3>
                         </div>
 
                         <div className="space-y-4">

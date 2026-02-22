@@ -13,7 +13,7 @@ const ManagementHeader = ({
     return (
         <div className={cn("flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8", className)}>
             <div className="space-y-1">
-                <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
+                <h1 className="text-2xl md:text-3xl font-bold text-main tracking-tight">
                     {title}
                 </h1>
                 {description && (

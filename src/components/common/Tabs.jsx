@@ -13,7 +13,7 @@ const Tabs = ({ tabs, activeTab, onTabChange, className = "", variant = "default
                         onClick={() => onTabChange(tab.id)}
                         className={`px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap shrink-0 ${isActive
                             ? 'bg-citilearn-green text-white'
-                            : 'text-secondary hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-700'
+                            : 'text-secondary hover:text-main dark:text-gray-400 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-700'
                             }`}
                     >
                         {Icon && <Icon size={18} className={isActive ? "text-white" : "text-slate-400 group-hover:text-slate-600"} />}

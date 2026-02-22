@@ -74,7 +74,7 @@ function Calendar({
 
                 day_button: cn(
                     "h-9 w-9 p-0 font-normal rounded-md flex items-center justify-center transition-all cursor-pointer",
-                    "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                    "text-slate-700 hover:bg-slate-100 hover:text-main"
                 ),
 
                 selected:
@@ -84,7 +84,7 @@ function Calendar({
                 outside:
                     "text-muted-foreground opacity-40 aria-selected:bg-slate-100/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
                 disabled: "text-muted-foreground opacity-30 cursor-not-allowed text-xs",
-                range_middle: "aria-selected:bg-slate-100 aria-selected:text-slate-900",
+                range_middle: "aria-selected:bg-slate-100 aria-selected:text-main",
                 hidden: "invisible",
 
                 ...classNames,

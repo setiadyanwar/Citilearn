@@ -51,7 +51,7 @@ const QuestionNavigation = ({
             <div className="hidden lg:block">
                 <Card className="bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-800">
                     <div className="mb-4">
-                        <h3 className="font-bold text-gray-900 dark:text-white text-sm">Navigation Question</h3>
+                        <h3 className="font-bold text-main dark:text-white text-sm">Navigation Question</h3>
                     </div>
                     <NavigationGrid />
                 </Card>
@@ -70,7 +70,7 @@ const QuestionNavigation = ({
                 showMobileNav ? "translate-x-0" : "translate-x-full"
             )}>
                 <div className="mb-6 flex justify-between items-center">
-                    <h3 className="font-bold text-gray-900 dark:text-white text-lg">Navigation Question</h3>
+                    <h3 className="font-bold text-main dark:text-white text-lg">Navigation Question</h3>
                     <button
                         onClick={() => setShowMobileNav(false)}
                         className="p-2 text-gray-500 hover:bg-gray-100 rounded-full dark:text-gray-400 dark:hover:bg-slate-800"

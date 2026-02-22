@@ -13,8 +13,8 @@ const ToolbarButton = ({ icon: Icon, onClick, active }) => (
         variant="ghost"
         size="icon"
         className={cn(
-            "h-7 w-7 text-slate-500 hover:text-slate-900 hover:bg-slate-200/60 rounded",
-            active && "bg-slate-200 text-slate-900"
+            "h-7 w-7 text-slate-500 hover:text-main hover:bg-slate-200/60 rounded",
+            active && "bg-slate-200 text-main"
         )}
         onClick={onClick}
     >

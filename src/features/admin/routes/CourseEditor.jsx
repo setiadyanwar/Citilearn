@@ -126,7 +126,7 @@ const CourseEditor = () => {
                                 {/* Title & Category */}
                                 <div className="space-y-8">
                                     <div className="flex flex-col gap-3">
-                                        <Label className="text-sm md:text-base font-bold text-slate-900 tracking-tight">Course Title</Label>
+                                        <Label className="text-sm md:text-base font-bold text-main tracking-tight">Course Title</Label>
                                         <Input
                                             value={courseData.title}
                                             onChange={(e) => handleUpdateData({ title: e.target.value })}
@@ -165,7 +165,7 @@ const CourseEditor = () => {
 
                                 {/* Description */}
                                 <div className="flex flex-col gap-3">
-                                    <Label className="text-sm md:text-base font-bold text-slate-900 tracking-tight">Description</Label>
+                                    <Label className="text-sm md:text-base font-bold text-main tracking-tight">Description</Label>
                                     <Textarea
                                         value={courseData.description}
                                         onChange={(e) => handleUpdateData({ description: e.target.value })}

@@ -178,7 +178,7 @@ const AssignmentModal = ({
                             )}
 
                             <div className="flex-1 min-w-0">
-                                <h4 className="font-semibold text-slate-900 text-base truncate">{item.name}</h4>
+                                <h4 className="font-semibold text-main text-base truncate">{item.name}</h4>
                                 <p className={cn(
                                     "truncate",
                                     assignmentType === 'individual'

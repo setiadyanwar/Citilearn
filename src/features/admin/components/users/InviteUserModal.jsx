@@ -20,7 +20,7 @@ const InviteUserModal = ({ isOpen, onClose }) => {
                 {/* Header */}
                 <div className="flex items-center justify-between p-6 pb-0">
                     <div>
-                        <h2 className="text-lg font-bold text-slate-900">Invite User</h2>
+                        <h2 className="text-lg font-bold text-main">Invite User</h2>
                         <p className="text-sm text-slate-500 mt-0.5">Send an invitation to join CitiLearn.</p>
                     </div>
                     <button

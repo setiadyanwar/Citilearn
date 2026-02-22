@@ -59,7 +59,7 @@ const LessonListItem = ({
 
 
             {isLocked && (
-                <div className="text-gray-200 dark:text-slate-800">
+                <div className="text-gray-200 dark:text-main">
                     <Lock size={12} />
                 </div>
             )}

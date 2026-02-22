@@ -98,7 +98,7 @@ const LearnersTab = ({ courseId }) => {
             {/* Left: Selection Area */}
             <div className="lg:col-span-7 space-y-8">
                 <div>
-                    <h3 className="text-xl font-bold text-foreground leading-none mb-2">Add Learners</h3>
+                    <h3 className="text-xl font-bold text-main leading-none mb-2">Add Learners</h3>
                     <p className="text-sm text-muted-foreground">Select multiple users, departments, or roles and assign them to this course at once.</p>
                 </div>
 
@@ -216,7 +216,7 @@ const LearnersTab = ({ courseId }) => {
                                         className="shrink-0"
                                     />
                                     <div className="flex-1 min-w-0">
-                                        <h4 className="font-semibold text-foreground text-base truncate">{user.name}</h4>
+                                        <h4 className="font-semibold text-main text-base truncate">{user.name}</h4>
                                         <p className="text-sm truncate">
                                             <span className="text-secondary font-medium">{user.role}</span>
                                             <span className="mx-1.5 text-tertiary">•</span>
@@ -259,7 +259,7 @@ const LearnersTab = ({ courseId }) => {
                                         <Building size={20} />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <h4 className="font-semibold text-foreground text-base truncate">{dept.name}</h4>
+                                        <h4 className="font-semibold text-main text-base truncate">{dept.name}</h4>
                                         <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground truncate">{dept.userCount} Users in this department</p>
                                     </div>
                                     {isAssigned(dept.id, 'department') && (
@@ -299,7 +299,7 @@ const LearnersTab = ({ courseId }) => {
                                         <Users size={20} />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <h4 className="font-semibold text-foreground text-base truncate">{role.name}</h4>
+                                        <h4 className="font-semibold text-main text-base truncate">{role.name}</h4>
                                         <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground truncate">{role.userCount} Users with this role</p>
                                     </div>
                                     {isAssigned(role.id, 'role') && (
@@ -318,7 +318,7 @@ const LearnersTab = ({ courseId }) => {
             {/* Right: Current Assignments Area - Also clean and flat */}
             <div className="lg:col-span-5 space-y-8">
                 <div>
-                    <h3 className="text-xl font-bold text-foreground leading-none mb-2">Current Access</h3>
+                    <h3 className="text-xl font-bold text-main leading-none mb-2">Current Access</h3>
                     <p className="text-sm text-muted-foreground">Manage who currently has access to this course.</p>
                 </div>
 
@@ -329,7 +329,7 @@ const LearnersTab = ({ courseId }) => {
                                 <Users size={24} />
                             </div>
                             <div>
-                                <div className="text-2xl font-bold text-foreground leading-none">
+                                <div className="text-2xl font-bold text-main leading-none">
                                     {assignments.reduce((sum, a) => sum + a.userCount, 0)}
                                 </div>
                                 <div className="text-3xs font-medium uppercase tracking-widest text-muted-foreground mt-1.5">Total Learners</div>
@@ -353,7 +353,7 @@ const LearnersTab = ({ courseId }) => {
                                                 <Icon size={18} />
                                             </div>
                                             <div className="min-w-0">
-                                                <h4 className="font-semibold text-foreground text-sm truncate">{assignment.name}</h4>
+                                                <h4 className="font-semibold text-main text-sm truncate">{assignment.name}</h4>
                                                 <p className="text-3xs text-muted-foreground font-medium uppercase tracking-wider truncate">{assignment.description}</p>
                                             </div>
                                         </div>

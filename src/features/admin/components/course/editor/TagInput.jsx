@@ -27,7 +27,7 @@ const TagInput = ({ tags = [], onChange, label = "Course Tags", placeholder = "A
     return (
         <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
-                <Label className="text-sm md:text-base font-bold text-slate-900 tracking-tight">{label}</Label>
+                <Label className="text-sm md:text-base font-bold text-main tracking-tight">{label}</Label>
                 <span className="text-3xs text-slate-400 font-bold uppercase tracking-widest bg-slate-50 px-2 py-1 rounded-lg border border-slate-100">
                     {tags.length} Tags
                 </span>

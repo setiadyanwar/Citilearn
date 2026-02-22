@@ -76,7 +76,7 @@ const AdminSidebarItem = ({ icon: Icon, label, collapsed, active, to, subItems }
                                 to={sub.path}
                                 className={`block py-2 px-3 text-sm rounded-lg transition-colors ${isSubActive
                                     ? 'text-citilearn-green font-bold bg-citilearn-green/5'
-                                    : 'text-slate-500 hover:text-slate-800 hover:bg-gray-50'
+                                    : 'text-slate-500 hover:text-main hover:bg-gray-50'
                                     }`}
                             >
                                 {sub.label}

@@ -40,7 +40,7 @@ const Drawer = ({ isOpen, onClose, title, subtitle, children }) => {
                         {/* Header */}
                         <div className="flex items-center justify-between px-8 py-6 border-b border-slate-100 shrink-0">
                             <div>
-                                <h2 className="text-xl font-bold text-slate-900">{title}</h2>
+                                <h2 className="text-xl font-bold text-main">{title}</h2>
                                 {subtitle && <p className="text-sm text-slate-500 font-medium">{subtitle}</p>}
                             </div>
                             <Button

@@ -18,6 +18,7 @@
   --color-citilearn-green-light: #EBF7F2;
 
   --color-main: #424242;
+  --color-black: #424242;
   --color-secondary: #7A7A7A;
   --color-tertiary: #9C9C9C;
   --color-destructive: #ef4444;
@@ -87,10 +88,49 @@
 
 @layer base {
   :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 26%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 26%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 26%;
+    --primary: 152 98% 25%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 60 100% 48%;
+    --secondary-foreground: 0 0% 26%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 48%;
+    --accent: 60 100% 48%;
+    --accent-foreground: 0 0% 26%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 92%;
+    --input: 0 0% 92%;
+    --ring: 152 98% 25%;
+    --radius: 0.75rem;
     color-scheme: light;
   }
 
   .dark {
+    --background: 222 47% 11%;
+    --foreground: 213 31% 91%;
+    --card: 222 47% 11%;
+    --card-foreground: 213 31% 91%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 152 98% 25%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 213 31% 91%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 18%;
+    --accent-foreground: 213 31% 91%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 152 98% 25%;
     color-scheme: dark;
   }
 }
@@ -113,6 +153,15 @@
 
   body {
     @apply font-lato bg-background text-main antialiased leading-relaxed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-main;
   }
 }
 

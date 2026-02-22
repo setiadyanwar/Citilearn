@@ -76,7 +76,7 @@ const CompanyHubEditor = () => {
                         <ArrowLeft size={20} />
                     </Button>
                     <div>
-                        <h1 className="text-2xl font-bold text-slate-900 tracking-tight capitalize">
+                        <h1 className="text-2xl font-bold text-main tracking-tight capitalize">
                             {isEditing ? `Edit ${type} Item` : `Create ${type} Item`}
                         </h1>
                         <p className="text-sm text-slate-500 font-medium">
@@ -103,7 +103,7 @@ const CompanyHubEditor = () => {
                 <div className="lg:col-span-8 flex flex-col gap-6">
                     <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
                         <div className="space-y-2">
-                            <Label className="font-bold text-slate-900">Title</Label>
+                            <Label className="font-bold text-main">Title</Label>
                             <Input
                                 value={formData.title}
                                 onChange={(e) => handleChange('title', e.target.value)}
@@ -121,7 +121,7 @@ const CompanyHubEditor = () => {
                                     <FileText size={20} />
                                 </div>
                                 <div>
-                                    <Label className="text-slate-900 font-bold text-lg block leading-none mb-1">Content</Label>
+                                    <Label className="text-main font-bold text-lg block leading-none mb-1">Content</Label>
                                     <p className="text-xs text-slate-500 font-medium">Write and structure your post below</p>
                                 </div>
                             </div>
@@ -174,7 +174,7 @@ const CompanyHubEditor = () => {
                 {/* Sidebar */}
                 <div className="lg:col-span-4 flex flex-col gap-6">
                     <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-6">
-                        <h3 className="font-bold text-slate-900">Settings</h3>
+                        <h3 className="font-bold text-main">Settings</h3>
 
                         <div className="space-y-4">
                             <div className="space-y-1">
@@ -214,7 +214,7 @@ const CompanyHubEditor = () => {
                     </div>
 
                     <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
-                        <h3 className="font-bold text-slate-900">Cover Image</h3>
+                        <h3 className="font-bold text-main">Cover Image</h3>
                         {formData.image ? (
                             <div className="relative rounded-xl overflow-hidden group">
                                 <img src={formData.image} className="w-full aspect-video object-cover" alt="Cover" />

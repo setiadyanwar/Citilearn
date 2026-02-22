@@ -74,7 +74,7 @@ const CategoryPicker = ({
                                 key={cat}
                                 className={cn(
                                     "relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2.5 text-sm font-medium outline-none transition-colors",
-                                    value === cat ? "bg-primary/10 text-primary" : "text-slate-600 hover:bg-slate-100/80 hover:text-slate-900"
+                                    value === cat ? "bg-primary/10 text-primary" : "text-slate-600 hover:bg-slate-100/80 hover:text-main"
                                 )}
                                 onClick={() => handleSelect(cat)}
                             >

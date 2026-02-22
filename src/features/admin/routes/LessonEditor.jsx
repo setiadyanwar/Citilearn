@@ -74,7 +74,7 @@ const LessonEditor = () => {
                     </Link>
                     <div>
                         <div className="flex items-center gap-3">
-                            <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
+                            <h1 className="text-2xl font-bold text-main tracking-tight">
                                 {isNew ? 'New Lesson' : 'Edit Lesson'}
                             </h1>
                         </div>
@@ -85,7 +85,7 @@ const LessonEditor = () => {
                     <Button
                         variant="ghost"
                         onClick={() => navigate(`/admin/course/${courseId}/edit?tab=curriculum`)}
-                        className="font-bold text-slate-500 hover:text-slate-900 h-11 px-6 rounded-xl"
+                        className="font-bold text-slate-500 hover:text-main h-11 px-6 rounded-xl"
                     >
                         Discard
                     </Button>
@@ -158,7 +158,7 @@ const LessonEditor = () => {
                                         )}>
                                             {lessonData.type === 'youtube' ? <Video size={18} /> : <FileText size={18} />}
                                         </div>
-                                        <h3 className="font-bold text-slate-900">
+                                        <h3 className="font-bold text-main">
                                             {lessonData.type === 'youtube' ? 'Video Integration' : 'Document Setup'}
                                         </h3>
                                     </div>
@@ -201,7 +201,7 @@ const LessonEditor = () => {
                                                 <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform text-slate-300 group-hover:text-primary">
                                                     <Upload size={28} />
                                                 </div>
-                                                <h4 className="text-lg font-bold text-slate-900 mb-2">Library Upload</h4>
+                                                <h4 className="text-lg font-bold text-main mb-2">Library Upload</h4>
                                                 <p className="text-xs text-slate-400 mb-8 max-w-[240px] mx-auto leading-relaxed">Select PDF materials to be processed for this learning session.</p>
                                                 <Button variant="outline" className="h-10 px-6 rounded-xl font-bold border-slate-200 bg-white hover:bg-slate-100 shadow-sm">
                                                     Browse Local Files
@@ -231,7 +231,7 @@ const LessonEditor = () => {
                                         <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-500 flex items-center justify-center">
                                             <BookOpen size={18} />
                                         </div>
-                                        <h3 className="font-bold text-slate-900 tracking-tight">Educational Overview</h3>
+                                        <h3 className="font-bold text-main tracking-tight">Educational Overview</h3>
                                     </div>
                                     <div className="space-y-4">
                                         <Label className="text-3xs font-bold text-slate-400 uppercase tracking-widest pl-1">Description & Context</Label>
@@ -251,7 +251,7 @@ const LessonEditor = () => {
                                             <div className="w-8 h-8 rounded-lg bg-orange-50 text-orange-500 flex items-center justify-center">
                                                 <Download size={18} />
                                             </div>
-                                            <h3 className="font-bold text-slate-900 tracking-tight">Supplemental Assets</h3>
+                                            <h3 className="font-bold text-main tracking-tight">Supplemental Assets</h3>
                                         </div>
                                         <Button
                                             size="sm"
@@ -333,7 +333,7 @@ const LessonEditor = () => {
                                 <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-500 flex items-center justify-center">
                                     <User size={18} />
                                 </div>
-                                <h3 className="font-bold text-slate-900 tracking-tight">Assignment</h3>
+                                <h3 className="font-bold text-main tracking-tight">Assignment</h3>
                             </div>
 
                             <div className="space-y-6">
@@ -364,7 +364,7 @@ const LessonEditor = () => {
                                                 className="shrink-0"
                                             />
                                             <div className="flex-1 min-w-0">
-                                                <h4 className="font-bold text-slate-900 truncate text-sm">{ins.name}</h4>
+                                                <h4 className="font-bold text-main truncate text-sm">{ins.name}</h4>
                                             </div>
                                             <Button
                                                 variant="ghost"

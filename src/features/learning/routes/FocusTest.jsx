@@ -172,7 +172,7 @@ const FocusTest = () => {
             {/* Header */}
             <header className="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
                 <div>
-                    <h1 className="text-lg font-bold text-gray-900 dark:text-white">
+                    <h1 className="text-lg font-bold text-main dark:text-white">
                         {lesson.title}
                     </h1>
                     <span className="text-sm text-gray-500 dark:text-slate-400">
@@ -182,8 +182,8 @@ const FocusTest = () => {
 
                 <div className="flex items-center gap-4">
                     <div className="px-4 py-2 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg flex items-center gap-2">
-                        <Clock className="w-5 h-5 text-gray-900 dark:text-gray-100" />
-                        <span className="text-lg font-mono font-bold text-gray-900 dark:text-white">
+                        <Clock className="w-5 h-5 text-main dark:text-gray-100" />
+                        <span className="text-lg font-mono font-bold text-main dark:text-white">
                             {formatTime(timeLeft)}
                         </span>
                     </div>

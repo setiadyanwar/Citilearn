@@ -18,7 +18,7 @@ const EditorSidebar = ({
         <div className="space-y-6">
             {/* Configuration */}
             <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-none space-y-5">
-                <h3 className="text-lg font-bold text-slate-800 border-b border-slate-100 pb-3">Configuration</h3>
+                <h3 className="text-lg font-bold text-main border-b border-slate-100 pb-3">Configuration</h3>
 
                 <div className="space-y-4">
                     <div className="space-y-2">

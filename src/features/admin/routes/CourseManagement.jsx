@@ -182,7 +182,7 @@ const CourseManagement = () => {
                     <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-5 border border-slate-100">
                         <Plus size={40} className="text-slate-300 rotate-45" />
                     </div>
-                    <h4 className="font-bold text-xl text-slate-900 tracking-tight">No courses found</h4>
+                    <h4 className="font-bold text-xl text-main tracking-tight">No courses found</h4>
                     <p className="text-sm text-slate-500 mt-2 max-w-xs mx-auto font-medium">
                         We couldn't find any courses matching "{searchQuery}".
                     </p>

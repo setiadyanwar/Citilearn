@@ -48,7 +48,7 @@ const KnowledgeManagementTable = ({ articles, onDelete }) => {
                                     </div>
                                     <div className="min-w-0 flex-1">
                                         <Link to={`/admin/knowledge/${article.id}/edit`} className="block">
-                                            <h3 className="font-semibold text-slate-800 truncate leading-tight mb-1 group-hover:text-emerald-600 transition-colors">{article.title}</h3>
+                                            <h3 className="font-semibold text-main truncate leading-tight mb-1 group-hover:text-emerald-600 transition-colors">{article.title}</h3>
                                         </Link>
                                         <p className="text-2xs text-slate-500 line-clamp-1 mb-1.5 font-medium">{article.excerpt || "No excerpt avaliable."}</p>
                                     </div>

@@ -80,7 +80,7 @@ const UsersTab = ({ search, filterRole, sortField, onSort, currentPage, onPageCh
                                         <div className="flex items-center gap-3 min-w-0">
                                             <UserProfile name={user.name} size="sm" shape="circle" />
                                             <div className="min-w-0">
-                                                <p className="text-sm font-bold text-slate-800 truncate">{user.name}</p>
+                                                <p className="text-sm font-bold text-main truncate">{user.name}</p>
                                                 <p className="text-xs text-slate-400 font-medium truncate">{user.email}</p>
                                             </div>
                                         </div>

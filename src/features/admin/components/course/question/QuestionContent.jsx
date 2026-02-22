@@ -6,7 +6,7 @@ import ImageUploader from '@/components/common/ImageUploader';
 const QuestionContent = ({ question, image, onChange }) => {
     return (
         <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-none space-y-6">
-            <h3 className="text-lg font-bold text-slate-800 border-b border-slate-100 pb-4">
+            <h3 className="text-lg font-bold text-main border-b border-slate-100 pb-4">
                 Question Details
             </h3>
 

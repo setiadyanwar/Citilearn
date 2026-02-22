@@ -23,13 +23,13 @@ const AdminHeader = ({
         <div className={cn("flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-8", className)}>
             <div className="flex items-center gap-3 md:gap-4">
                 <Link to={backUrl}>
-                    <Button variant="ghost" size="icon" className="h-9 w-9 md:h-10 md:w-10 text-muted-foreground hover:text-foreground rounded-xl shrink-0">
+                    <Button variant="ghost" size="icon" className="h-9 w-9 md:h-10 md:w-10 text-muted-foreground hover:text-main rounded-xl shrink-0">
                         <ArrowLeft size={20} />
                     </Button>
                 </Link>
                 <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2 md:gap-3">
-                        <h1 className="text-xl md:text-2xl font-bold text-foreground tracking-tight truncate">
+                        <h1 className="text-xl md:text-2xl font-bold text-main tracking-tight truncate">
                             {title}
                         </h1>
                         {status && (

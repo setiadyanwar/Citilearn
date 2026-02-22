@@ -105,12 +105,12 @@ const KnowledgeDetail = () => {
                             className="
                                 text-slate-600 dark:text-slate-400
                                 [&_p]:mb-6 [&_p]:leading-relaxed
-                                [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-slate-900 [&_h2]:dark:text-emerald-50 [&_h2]:mt-10 [&_h2]:mb-6 [&_h2]:font-lato
-                                [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-slate-800 [&_h3]:dark:text-emerald-100 [&_h3]:mt-8 [&_h3]:mb-4
-                                [&_h4]:font-bold [&_h4]:text-slate-800 [&_h4]:dark:text-white [&_h4]:mb-2
+                                [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-main [&_h2]:dark:text-emerald-50 [&_h2]:mt-10 [&_h2]:mb-6 [&_h2]:font-lato
+                                [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-main [&_h3]:dark:text-emerald-100 [&_h3]:mt-8 [&_h3]:mb-4
+                                [&_h4]:font-bold [&_h4]:text-main [&_h4]:dark:text-white [&_h4]:mb-2
                                 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-8 [&_ul]:space-y-2
                                 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-8 [&_ol]:space-y-2
-                                [&_strong]:font-bold [&_strong]:text-slate-900 [&_strong]:dark:text-slate-200
+                                [&_strong]:font-bold [&_strong]:text-main [&_strong]:dark:text-slate-200
                                 [&_blockquote]:border-l-4 [&_blockquote]:border-emerald-500 [&_blockquote]:pl-6 [&_blockquote]:my-8 [&_blockquote]:italic [&_blockquote]:bg-slate-50 [&_blockquote]:dark:bg-slate-900/50 [&_blockquote]:py-4 [&_blockquote]:rounded-r-lg
                                 
                                 
@@ -135,7 +135,7 @@ const KnowledgeDetail = () => {
                     {/* Sidebar (Right) */}
                     <aside className="lg:col-span-4 space-y-8">
                         <div className="sticky top-28">
-                            <h2 className="text-xl font-bold text-slate-900 dark:text-emerald-50 mb-6 flex items-center gap-2">
+                            <h2 className="text-xl font-bold text-main dark:text-emerald-50 mb-6 flex items-center gap-2">
                                 Other Article
                                 <div className=" h-0.5 w-full flex-1 bg-slate-200 dark:bg-slate-800 rounded-full ml-4" />
                             </h2>

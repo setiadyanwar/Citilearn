@@ -130,7 +130,7 @@ const CompanyHubManagement = () => {
                                 {paginatedItems.map((item) => (
                                     <TableRow key={item.id} className="group hover:bg-slate-50/50 border-slate-100 transition-all">
                                         <TableCell className="py-4 pl-6">
-                                            <div className="font-semibold text-slate-800 group-hover:text-emerald-600 transition-colors">
+                                            <div className="font-semibold text-main group-hover:text-emerald-600 transition-colors">
                                                 {item.title}
                                             </div>
                                             <div className="text-3xs text-slate-400 font-medium flex items-center gap-1 mt-1">
@@ -181,7 +181,7 @@ const CompanyHubManagement = () => {
                 ) : (
                     <div className="text-center py-20 bg-white border border-slate-200 rounded-2xl">
                         <Database className="mx-auto text-slate-200 mb-4" size={48} />
-                        <h3 className="text-lg font-bold text-slate-900">No records found</h3>
+                        <h3 className="text-lg font-bold text-main">No records found</h3>
                         <p className="text-sm text-slate-500">Try adjusting your search or filters.</p>
                     </div>
                 )}

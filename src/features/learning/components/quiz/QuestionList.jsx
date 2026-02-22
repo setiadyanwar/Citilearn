@@ -17,7 +17,7 @@ const QuestionList = ({ questions, answers, handleOptionSelect, handleSubmit }) 
                         </Badge>
                     </div>
 
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6 leading-relaxed">
+                    <h3 className="text-lg font-semibold text-main dark:text-white mb-6 leading-relaxed">
                         {q.question}
                     </h3>
 

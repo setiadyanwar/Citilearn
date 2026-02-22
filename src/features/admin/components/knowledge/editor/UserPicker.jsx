@@ -69,7 +69,7 @@ const UserPicker = ({
                                 key={user.id}
                                 className={cn(
                                     "relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2 text-sm transition-colors",
-                                    selectedName === user.name ? "bg-emerald-50 text-emerald-700" : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                                    selectedName === user.name ? "bg-emerald-50 text-emerald-700" : "text-slate-600 hover:bg-slate-50 hover:text-main"
                                 )}
                                 onClick={() => handleSelect(user)}
                             >

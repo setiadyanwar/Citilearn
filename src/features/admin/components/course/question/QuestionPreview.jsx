@@ -12,7 +12,7 @@ const MarkdownText = ({ content }) => {
                 const codeContent = part.replace(/^```|```$/g, '').trim();
                 return (
                     <div key={index} className="my-3 rounded-md overflow-hidden border border-slate-200 bg-slate-50">
-                        <pre className="p-4 text-sm font-mono text-slate-800 overflow-x-auto leading-relaxed">
+                        <pre className="p-4 text-sm font-mono text-main overflow-x-auto leading-relaxed">
                             <code>{codeContent}</code>
                         </pre>
                     </div>
@@ -32,7 +32,7 @@ const MarkdownText = ({ content }) => {
                             );
                         }
                         if (subPart.startsWith('**') && subPart.endsWith('**')) {
-                            return <strong key={subIndex} className="font-bold text-slate-900">{subPart.slice(2, -2)}</strong>;
+                            return <strong key={subIndex} className="font-bold text-main">{subPart.slice(2, -2)}</strong>;
                         }
                         if (subPart.startsWith('_') && subPart.endsWith('_')) {
                             return <em key={subIndex} className="italic">{subPart.slice(1, -1)}</em>;
@@ -85,7 +85,7 @@ const QuestionPreview = ({ question, image, answers, type }) => {
     return (
         <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-none sticky top-6">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-                <h3 className="text-lg font-bold text-slate-800">Preview</h3>
+                <h3 className="text-lg font-bold text-main">Preview</h3>
                 <span className="text-xs font-semibold bg-primary/10 text-primary px-2 py-1 rounded-full uppercase tracking-wide">
                     {type === 'multiple-choice' ? 'Single Choice' : type === 'true-false' ? 'True/False' : 'Multiple Select'}
                 </span>

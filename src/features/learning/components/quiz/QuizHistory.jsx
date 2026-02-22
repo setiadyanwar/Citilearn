@@ -18,7 +18,7 @@ const QuizHistory = ({ history }) => {
 
     return (
         <div className="lg:col-span-1">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-bold text-main dark:text-white mb-4 flex items-center gap-2">
                 History
                 <Badge variant="outline" size="xs" className="text-gray-500 rounded-full px-2 py-0.5 font-normal bg-gray-100 dark:bg-slate-800 border-none">
                     {history.length}
@@ -55,7 +55,7 @@ const QuizHistory = ({ history }) => {
                                             </div>
                                         </TableCell>
                                         <TableCell>
-                                            <span className="font-bold text-gray-900 dark:text-white">
+                                            <span className="font-bold text-main dark:text-white">
                                                 {item.score}
                                             </span>
                                         </TableCell>

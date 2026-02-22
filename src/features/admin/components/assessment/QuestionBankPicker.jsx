@@ -150,7 +150,7 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                                     <BookOpen size={18} className="text-primary" />
                                 </div>
                                 <div>
-                                    <h2 className="text-base font-bold text-slate-900">Question Bank</h2>
+                                    <h2 className="text-base font-bold text-main">Question Bank</h2>
                                     <p className="text-xs text-slate-400 font-medium">{bankQuestions.length} questions available</p>
                                 </div>
                             </div>
@@ -305,7 +305,7 @@ const QuestionBankPicker = ({ isOpen, onClose, onSelect, alreadyAddedIds = [] })
                                                     </div>
 
                                                     {/* Question text */}
-                                                    <p className="text-sm font-semibold text-slate-800 leading-snug mb-2 line-clamp-2">
+                                                    <p className="text-sm font-semibold text-main leading-snug mb-2 line-clamp-2">
                                                         {q.question}
                                                     </p>
 

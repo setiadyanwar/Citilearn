@@ -51,7 +51,7 @@ const ImageUploader = ({
 
     return (
         <div className={cn("flex flex-col gap-3", className)}>
-            {label && <label className="text-sm md:text-base font-bold text-foreground">{label}</label>}
+            {label && <label className="text-sm md:text-base font-bold text-main">{label}</label>}
 
             <div
                 onClick={() => fileInputRef.current?.click()}

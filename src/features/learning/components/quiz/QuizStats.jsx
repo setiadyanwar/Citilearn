@@ -13,7 +13,7 @@ const QuizStats = ({ bestScore, passingScore = 80 }) => {
                 Best Score
             </span>
             <div className="flex items-baseline gap-1">
-                <span className={`text-3xl font-bold ${isPassed ? 'text-emerald-600 dark:text-emerald-400' : 'text-gray-900 dark:text-white'}`}>
+                <span className={`text-3xl font-bold ${isPassed ? 'text-emerald-600 dark:text-emerald-400' : 'text-main dark:text-white'}`}>
                     {bestScore}
                 </span>
                 <span className="text-sm text-gray-400 dark:text-gray-500 font-medium">

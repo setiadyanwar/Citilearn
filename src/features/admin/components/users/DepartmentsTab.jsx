@@ -39,7 +39,7 @@ const DepartmentsTab = ({ search }) => {
                                 <span className="text-white text-xs font-black">{dept.shortCode}</span>
                             </div>
                             <div>
-                                <h3 className="font-bold text-slate-900 text-sm leading-tight">{dept.name}</h3>
+                                <h3 className="font-bold text-main text-sm leading-tight">{dept.name}</h3>
                                 <p className="text-xs text-slate-400 font-medium mt-0.5">{dept.memberCount} members</p>
                             </div>
                         </div>

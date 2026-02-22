@@ -40,7 +40,7 @@ const FeaturedPost = ({ post }) => {
                 </div>
 
                 {/* Title */}
-                <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-emerald-50 leading-tight tracking-tight">
+                <h2 className="text-xl md:text-2xl font-bold text-main dark:text-emerald-50 leading-tight tracking-tight">
                     {post.title}
                 </h2>
 
